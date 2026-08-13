@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>C'est Chic Peluqueros · Peluquería y estética en Gáldar</title>
+<meta name="description" content="Peluquería y centro de estética en Gáldar, Gran Canaria. Corte, color, tratamientos capilares, estética y novias. C/ Calvario 17. Reservas: 928 55 06 49.">
+<style>
+:root{
+  --noir:#0C0B0A; --noir-2:#151312; --bone:#EFE9E0; --bone-2:#DED5C8;
+  --gold:#B99553; --gold-l:#D7BC8A;
+  --mut:#948C81; --line:rgba(239,233,224,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter','Helvetica Neue',system-ui,sans-serif;background:var(--noir);color:var(--bone);
+  overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,.dis{font-family:'Playfair Display','Didot',Georgia,serif;font-weight:400;line-height:1.02;letter-spacing:-.015em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1280px,90vw);margin-inline:auto}
+.kick{font-size:.64rem;letter-spacing:.46em;text-transform:uppercase;color:var(--gold);font-weight:600}
+::selection{background:var(--gold);color:var(--noir)}
+
+/* cursor */
+#cur{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;
+  z-index:300;transform:translate(-50%,-50%);transition:width .35s cubic-bezier(.16,1,.3,1),height .35s cubic-bezier(.16,1,.3,1),background .35s}
+#cur.on{width:74px;height:74px;background:rgba(185,149,83,.22);backdrop-filter:blur(2px)}
+#cur::after{content:attr(data-l);position:absolute;inset:0;display:grid;place-items:center;
+  font-family:'Inter',sans-serif;font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:var(--bone);opacity:0;transition:opacity .3s}
+#cur.on::after{opacity:1}
+@media(hover:none){#cur{display:none}}
+
+/* intro: barras */
+#intro{position:fixed;inset:0;z-index:400;display:flex;pointer-events:none}
+#intro b{flex:1;background:var(--noir-2);transform-origin:top;transition:transform 1s cubic-bezier(.76,0,.24,1)}
+#intro.out b{transform:scaleY(0)}
+#intro b:nth-child(2){transition-delay:.08s}#intro b:nth-child(3){transition-delay:.16s}
+#intro b:nth-child(4){transition-delay:.24s}#intro b:nth-child(5){transition-delay:.32s}
+#intro .lbl{position:absolute;inset:0;display:grid;place-items:center;transition:opacity .5s}
+#intro.out .lbl{opacity:0}
+#intro .lbl i{font-family:'Playfair Display',Georgia,serif;font-style:italic;font-size:clamp(2rem,7vw,4.4rem);
+  color:var(--bone);animation:iu 1s cubic-bezier(.16,1,.3,1) both}
+@keyframes iu{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+
+/* nav */
+header{position:fixed;top:0;width:100%;z-index:150;padding:1.5rem 0;transition:.5s cubic-bezier(.16,1,.3,1)}
+header.stuck{padding:.7rem 0;background:rgba(12,11,10,.88);backdrop-filter:blur(18px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.brand{font-family:'Playfair Display',Georgia,serif;font-size:1.5rem;font-style:italic;letter-spacing:.01em}
+.brand span{color:var(--gold)}
+.menu{display:flex;gap:2.4rem;font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;font-weight:500}
+.menu a{position:relative;padding:.2rem 0;color:var(--mut);transition:color .3s}
+.menu a:hover{color:var(--bone)}
+.menu a::after{content:"";position:absolute;left:0;bottom:-3px;height:1px;width:0;background:var(--gold);transition:width .4s cubic-bezier(.16,1,.3,1)}
+.menu a:hover::after{width:100%}
+.navbtn{border:1px solid var(--gold);color:var(--gold);padding:.65rem 1.4rem;font-size:.68rem;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;transition:.35s;white-space:nowrap}
+.navbtn:hover{background:var(--gold);color:var(--noir)}
+.burger{display:none;background:none;border:0;color:var(--bone);font-size:1.4rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;align-items:center;position:relative;overflow:hidden;padding:9rem 0 6rem}
+.hero .veil{position:absolute;inset:0;
+  background:radial-gradient(ellipse 70% 55% at 78% 42%,rgba(185,149,83,.17),transparent 70%),
+             radial-gradient(ellipse 60% 60% at 12% 88%,rgba(185,149,83,.07),transparent 65%)}
+.hero .rings{position:absolute;right:-14vw;top:50%;translate:0 -50%;width:64vw;aspect-ratio:1;pointer-events:none}
+.hero .rings i{position:absolute;inset:0;border:1px solid rgba(185,149,83,.16);border-radius:50%;animation:sp 40s linear infinite}
+.hero .rings i:nth-child(2){inset:12%;border-color:rgba(185,149,83,.24);animation-duration:28s;animation-direction:reverse}
+.hero .rings i:nth-child(3){inset:26%;border-color:rgba(185,149,83,.1);animation-duration:52s}
+@keyframes sp{to{transform:rotate(360deg)}}
+.hero-in{position:relative;z-index:3;width:100%}
+.hero .kick{opacity:0;animation:fd .8s 1.1s forwards}
+@keyframes fd{to{opacity:1}}
+.hero h1{font-size:clamp(3.2rem,11vw,10rem);margin:1.6rem 0 0;letter-spacing:-.03em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
+.hero h1 .ln i{display:block;font-style:normal;transform:translateY(104%);animation:up 1.1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+.hero h1 em{font-style:italic;color:var(--gold)}
+.hero h1 .out{-webkit-text-stroke:1px var(--gold);color:transparent}
+.hero-foot{display:flex;justify-content:space-between;align-items:flex-end;gap:3rem;flex-wrap:wrap;margin-top:3rem;
+  opacity:0;animation:fd .8s 1.5s forwards}
+.hero-foot p{max-width:400px;color:var(--mut)}
+.acts{display:flex;gap:.8rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.2rem;font-size:.72rem;letter-spacing:.18em;
+  text-transform:uppercase;font-weight:600;transition:.4s cubic-bezier(.16,1,.3,1);position:relative;overflow:hidden}
+.btn>span{position:relative;z-index:2}
+.btn::before{content:"";position:absolute;inset:0;background:var(--gold);transform:translateY(101%);transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.btn:hover::before{transform:none}
+.btn:hover{color:var(--noir)}
+.btn-g{background:var(--gold);color:var(--noir)}
+.btn-g::before{background:var(--bone)}
+.btn-o{border:1px solid var(--bone)}
+.score{position:absolute;right:0;bottom:12%;z-index:3;text-align:right;opacity:0;animation:fd .8s 1.7s forwards}
+.score b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:clamp(3.6rem,8vw,6.4rem);line-height:.85;color:var(--gold)}
+.score .st{letter-spacing:.3em;color:var(--gold);font-size:.85rem;margin:.5rem 0 .3rem}
+.score span{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut)}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(36px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}.rv[data-d="3"]{transition-delay:.3s}
+
+section{padding:8rem 0;position:relative}
+.head{display:grid;grid-template-columns:1fr .8fr;gap:4rem;align-items:end;margin-bottom:4rem}
+.head h2{font-size:clamp(2.2rem,5.6vw,4.4rem);margin-top:1rem}
+.head p{color:var(--mut)}
+
+/* SERVICIOS acordeón numerado */
+.svc{border-top:1px solid var(--line)}
+.s{border-bottom:1px solid var(--line);position:relative}
+.s>button{width:100%;background:none;border:0;cursor:pointer;font:inherit;color:inherit;text-align:left;
+  display:grid;grid-template-columns:78px 1fr auto;gap:2rem;align-items:center;padding:2.1rem 0;transition:padding .45s cubic-bezier(.16,1,.3,1)}
+.s>button:hover{padding-inline:1.4rem}
+.s .n{font-size:.7rem;letter-spacing:.22em;color:var(--gold);font-weight:600}
+.s h3{font-size:clamp(1.5rem,3.6vw,2.6rem);transition:color .35s}
+.s>button:hover h3{color:var(--gold)}
+.s .pm{width:20px;height:20px;position:relative;flex:0 0 auto}
+.s .pm::before,.s .pm::after{content:"";position:absolute;background:var(--bone);transition:.45s cubic-bezier(.16,1,.3,1)}
+.s .pm::before{left:0;right:0;top:50%;height:1px}
+.s .pm::after{top:0;bottom:0;left:50%;width:1px}
+.s.open .pm::after{transform:scaleY(0)}
+.s.open .pm::before{background:var(--gold)}
+.s .body{max-height:0;overflow:hidden;transition:max-height .6s cubic-bezier(.16,1,.3,1)}
+.s .body-in{display:grid;grid-template-columns:78px 1fr;gap:2rem;padding-bottom:2.2rem}
+.s .body p{color:var(--mut);max-width:64ch}
+.s .tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.2rem}
+.s .tags i{font-style:normal;border:1px solid var(--line);color:var(--mut);padding:.35rem .9rem;
+  font-size:.66rem;letter-spacing:.14em;text-transform:uppercase}
+
+/* LOOKBOOK horizontal */
+.look{padding:0;background:var(--noir-2)}
+.look .sticky{position:sticky;top:0;height:100svh;display:flex;align-items:center;overflow:hidden}
+.look .track{display:flex;gap:1.6rem;padding-inline:6vw;will-change:transform}
+.pane{flex:0 0 clamp(250px,30vw,400px);aspect-ratio:3/4.1;position:relative;overflow:hidden}
+.pane .fill{position:absolute;inset:0;transition:transform 1s cubic-bezier(.16,1,.3,1)}
+.pane:hover .fill{transform:scale(1.07)}
+.pane:nth-child(1) .fill{background:linear-gradient(160deg,#2A2521,#6A5B47)}
+.pane:nth-child(2) .fill{background:linear-gradient(160deg,#413428,#B99553)}
+.pane:nth-child(3) .fill{background:linear-gradient(160deg,#191817,#514C44)}
+.pane:nth-child(4) .fill{background:linear-gradient(160deg,#7A6A52,#DED5C8)}
+.pane:nth-child(5) .fill{background:linear-gradient(160deg,#2E2A26,#8B7355)}
+.pane .fill::after{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(58deg,rgba(255,255,255,.055) 0 1px,transparent 1px 15px)}
+.pane figcaption{position:absolute;left:0;right:0;bottom:0;z-index:2;padding:1.8rem 1.5rem;
+  background:linear-gradient(transparent,rgba(0,0,0,.78))}
+.pane figcaption b{display:block;font-family:'Playfair Display',Georgia,serif;font-size:1.4rem;font-weight:400}
+.pane figcaption span{font-size:.62rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold)}
+.look .intro-txt{flex:0 0 clamp(260px,26vw,360px);padding-right:2rem}
+.look .intro-txt h2{font-size:clamp(2rem,4.4vw,3.4rem);margin:1rem 0}
+.look .intro-txt p{color:var(--mut);font-size:.96rem}
+.hint{position:absolute;bottom:2.5rem;right:6vw;font-size:.62rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);display:flex;align-items:center;gap:.7rem}
+.hint i{display:block;width:44px;height:1px;background:var(--gold);animation:sl 2s ease-in-out infinite}
+@keyframes sl{0%,100%{transform:scaleX(.35);transform-origin:left}50%{transform:scaleX(1);transform-origin:left}}
+
+/* franja */
+.mqw{overflow:hidden;border-block:1px solid var(--line)}
+.mq{display:flex;white-space:nowrap;animation:run 30s linear infinite}
+.mq span{font-family:'Playfair Display',Georgia,serif;font-size:clamp(1.5rem,3.6vw,2.6rem);padding:1.6rem 1.5rem;color:var(--bone-2)}
+.mq span:nth-child(even){font-style:italic;color:var(--gold)}
+.mq span::after{content:"—";margin-left:1.5rem;color:rgba(185,149,83,.5)}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* opiniones */
+.qs{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.qc{background:var(--noir);padding:2.6rem 2.2rem;transition:background .45s}
+.qc:hover{background:var(--noir-2)}
+.qc .st{color:var(--gold);letter-spacing:.2em;font-size:.85rem;margin-bottom:1.2rem}
+.qc p{font-family:'Playfair Display',Georgia,serif;font-size:1.16rem;font-style:italic;line-height:1.55}
+.qc footer{margin-top:1.5rem;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut)}
+
+/* contacto */
+.ct{background:var(--bone);color:var(--noir)}
+.ct .kick{color:#8A6E33}
+.ct .head p{color:#6B645B}
+.ct-grid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dl{border-top:1px solid rgba(12,11,10,.14)}
+.dl div{display:grid;grid-template-columns:120px 1fr;gap:1.5rem;padding:1.25rem 0;
+  border-bottom:1px solid rgba(12,11,10,.14);align-items:baseline}
+.dl dt{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:#6B645B}
+.dl dd{font-size:1.06rem}
+.dl dd a:hover{color:#8A6E33}
+.hrs{width:100%;border-collapse:collapse;font-size:.95rem}
+.hrs td{padding:.78rem 0;border-bottom:1px solid rgba(12,11,10,.14);color:#6B645B}
+.hrs td:last-child{text-align:right;color:var(--noir);font-variant-numeric:tabular-nums}
+.hrs tr.now td{color:#8A6E33;font-weight:700}
+.hrs tr.now td:first-child::before{content:"→ "}
+.live{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.3rem;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:#6B645B}
+.pt{width:8px;height:8px;border-radius:50%;background:#4B7A4E;position:relative}
+.pt::after{content:"";position:absolute;inset:0;border-radius:50%;background:#4B7A4E;animation:pg 1.9s ease-out infinite}
+.pt.off,.pt.off::after{background:#A8492F}
+@keyframes pg{to{transform:scale(2.8);opacity:0}}
+.ct .btn-o{border-color:var(--noir)}
+.ct .btn-o::before{background:var(--noir)}
+.ct .btn-o:hover{color:var(--bone)}
+.mapa{display:grid;place-items:center;text-align:center;min-height:250px;margin-top:2rem;padding:2.4rem;
+  border:1px solid rgba(12,11,10,.16);transition:.4s;
+  background:repeating-linear-gradient(0deg,rgba(12,11,10,.05) 0 1px,transparent 1px 38px),
+             repeating-linear-gradient(90deg,rgba(12,11,10,.05) 0 1px,transparent 1px 38px),var(--bone)}
+.mapa:hover{border-color:var(--noir)}
+.mapa .pin{font-size:2rem;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.ft{background:var(--noir);color:var(--mut);padding:3rem 0 5rem;font-size:.84rem}
+.ft-in{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.ft-in a:hover{color:var(--gold)}
+
+.bookbar{position:fixed;left:0;right:0;bottom:0;z-index:120;background:var(--gold);color:var(--noir);
+  display:flex;align-items:center;justify-content:space-between;gap:1.5rem;padding:.85rem clamp(1rem,5vw,3rem);
+  transform:translateY(110%);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.bookbar.up{transform:none}
+.bookbar p{font-size:.86rem;font-weight:500}
+.bookbar .acts{display:flex;gap:.6rem}
+.bookbar a{padding:.7rem 1.4rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;transition:.3s}
+.bookbar .p1{background:var(--noir);color:var(--gold)}
+.bookbar .p1:hover{background:var(--bone);color:var(--noir)}
+.bookbar .p2{border:1px solid rgba(12,11,10,.4)}
+.bookbar .p2:hover{background:rgba(12,11,10,.12)}
+
+.demo{position:fixed;left:0;bottom:0;z-index:130;background:rgba(12,11,10,.82);color:var(--bone);
+  font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.4rem .85rem}
+
+@media(max-width:1000px){
+  .head,.ct-grid{grid-template-columns:1fr;gap:2rem}
+  .qs{grid-template-columns:1fr}
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+    background:var(--noir-2);padding:2rem;gap:1.4rem;border-bottom:1px solid var(--line)}
+  section{padding:5rem 0}
+  .score{position:static;text-align:left;margin-top:2.5rem}
+  .s>button{grid-template-columns:44px 1fr auto;gap:1rem}
+  .s .body-in{grid-template-columns:1fr}
+  .look .sticky{height:auto;padding:5rem 0;display:block}
+  .look .track{transform:none!important;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:1rem}
+  .pane{scroll-snap-align:center;flex-basis:74vw}
+  .look .intro-txt{flex-basis:auto;padding:0 6vw 2rem}
+  .hint{display:none}
+  .bookbar{flex-direction:column;align-items:stretch;text-align:center;gap:.7rem}
+  .bookbar .acts{justify-content:center}
+  .demo{display:none}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.look .track{transform:none!important}}
+</style>
+</head>
+<body>
+
+<div id="cur" data-l="ver"></div>
+<div id="intro"><b></b><b></b><b></b><b></b><b></b><div class="lbl"><i>C'est Chic</i></div></div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">C'est <span>Chic</span></a>
+    <nav class="menu" id="menu">
+      <a href="#servicios">Servicios</a>
+      <a href="#salon">El salón</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="tel:+34928550649" class="navbtn">Reservar cita</a>
+    <button class="burger" id="burger" aria-label="Abrir menú">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="veil"></div>
+  <div class="rings"><i></i><i></i><i></i></div>
+  <div class="wrap hero-in">
+    <p class="kick">Peluquería & estética · Gáldar, Gran Canaria</p>
+    <h1>
+      <span class="ln"><i style="animation-delay:1.15s">El pelo</i></span>
+      <span class="ln"><i style="animation-delay:1.28s" class="out">que se te</i></span>
+      <span class="ln"><i style="animation-delay:1.41s"><em>nota</em></i></span>
+    </h1>
+    <div class="hero-foot">
+      <p>Un salón exclusivo en el casco de Gáldar. Corte, color y estética con el tiempo que hace falta y el criterio de quien lleva años haciéndolo bien.</p>
+      <div class="acts">
+        <a href="tel:+34928550649" class="btn btn-g" data-c="llamar"><span>928 55 06 49</span></a>
+        <a href="#servicios" class="btn btn-o" data-c="ver"><span>Servicios</span></a>
+      </div>
+    </div>
+    <div class="score">
+      <b>4,9</b>
+      <div class="st">★★★★★</div>
+      <span>Valoración en Google</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICIOS -->
+<section id="servicios">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <p class="kick">Servicios</p>
+        <h2>Lo que hacemos<br>y cómo lo hacemos</h2>
+      </div>
+      <p>Despliega cada servicio para ver qué incluye. Los precios dependen del largo, la densidad y el punto de partida de tu pelo: te los confirmamos al reservar.</p>
+    </div>
+
+    <div class="svc rv" id="svc">
+      <article class="s">
+        <button><span class="n">01</span><h3>Corte y peinado</h3><span class="pm"></span></button>
+        <div class="body"><div class="body-in"><span></span><div>
+          <p>Antes de coger las tijeras miramos tu tipo de pelo, tu cara y sobre todo cuánto tiempo estás dispuesta a dedicarle cada mañana. Un corte precioso que no sabes mantener no sirve de nada. Incluye lavado, corte y acabado.</p>
+          <div class="tags"><i>Lavado incluido</i><i>Asesoramiento</i><i>Acabado</i></div>
+        </div></div></div>
+      </article>
+
+      <article class="s">
+        <button><span class="n">02</span><h3>Color y mechas</h3><span class="pm"></span></button>
+        <div class="body"><div class="body-in"><span></span><div>
+          <p>Coloración completa, balayage, mechas y matices. Trabajamos el color cuidando la fibra: preferimos llegar al tono en dos sesiones antes que dejarte el pelo roto en una. Reserva con margen, es el servicio más largo.</p>
+          <div class="tags"><i>Balayage</i><i>Mechas</i><i>Matiz</i><i>Cobertura de canas</i></div>
+        </div></div></div>
+      </article>
+
+      <article class="s">
+        <button><span class="n">03</span><h3>Tratamientos capilares</h3><span class="pm"></span></button>
+        <div class="body"><div class="body-in"><span></span><div>
+          <p>Hidratación profunda, reparación y alisados. En Gran Canaria el sol, el salitre y el cloro pasan factura: estos tratamientos son los que devuelven el brillo cuando el pelo empieza a verse apagado y poroso.</p>
+          <div class="tags"><i>Hidratación</i><i>Reparación</i><i>Alisado</i></div>
+        </div></div></div>
+      </article>
+
+      <article class="s">
+        <button><span class="n">04</span><h3>Estética facial</h3><span class="pm"></span></button>
+        <div class="body"><div class="body-in"><span></span><div>
+          <p>Limpiezas de cutis, hidratación y tratamientos específicos según tu tipo de piel. Se puede combinar con el color: mientras actúa el tinte aprovechamos para el facial y sales con las dos cosas hechas.</p>
+          <div class="tags"><i>Limpieza de cutis</i><i>Hidratación</i><i>Combinable</i></div>
+        </div></div></div>
+      </article>
+
+      <article class="s">
+        <button><span class="n">05</span><h3>Manicura y pedicura</h3><span class="pm"></span></button>
+        <div class="body"><div class="body-in"><span></span><div>
+          <p>Manicura y pedicura con esmaltado normal o semipermanente, incluida la retirada cuidada del anterior. Acabados que aguantan sin saltarse a los tres días.</p>
+          <div class="tags"><i>Semipermanente</i><i>Pedicura</i><i>Retirada incluida</i></div>
+        </div></div></div>
+      </article>
+
+      <article class="s">
+        <button><span class="n">06</span><h3>Novias y eventos</h3><span class="pm"></span></button>
+        <div class="body"><div class="body-in"><span></span><div>
+          <p>Peinado y preparación para bodas, comuniones y celebraciones. Hacemos prueba previa para que el día no haya sorpresas, y reservamos el salón según la hora de la ceremonia. Pide fecha con la mayor antelación posible.</p>
+          <div class="tags"><i>Prueba previa</i><i>Bodas</i><i>Comuniones</i><i>Cita reservada</i></div>
+        </div></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- LOOKBOOK -->
+<section class="look" id="salon">
+  <div class="sticky">
+    <div class="track" id="track">
+      <div class="intro-txt">
+        <p class="kick">El salón</p>
+        <h2>Calle Calvario,<br>número 17</h2>
+        <p>Un espacio acogedor donde nos preocupamos por cada detalle para darte la mejor experiencia. Pocas clientas a la vez y ninguna prisa.</p>
+      </div>
+      <figure class="pane" data-c="salón"><div class="fill"></div><figcaption><span>01 · Recepción</span><b>La entrada</b></figcaption></figure>
+      <figure class="pane" data-c="corte"><div class="fill"></div><figcaption><span>02 · Zona de corte</span><b>El espejo</b></figcaption></figure>
+      <figure class="pane" data-c="color"><div class="fill"></div><figcaption><span>03 · Técnica</span><b>El color</b></figcaption></figure>
+      <figure class="pane" data-c="cabina"><div class="fill"></div><figcaption><span>04 · Estética</span><b>La cabina</b></figcaption></figure>
+      <figure class="pane" data-c="lavado"><div class="fill"></div><figcaption><span>05 · Ritual</span><b>El lavado</b></figcaption></figure>
+    </div>
+    <div class="hint"><i></i> Sigue bajando</div>
+  </div>
+</section>
+
+<!-- FRANJA -->
+<div class="mqw"><div class="mq">
+  <span>Corte</span><span>Color</span><span>Balayage</span><span>Estética</span><span>Novias</span><span>Uñas</span>
+  <span>Corte</span><span>Color</span><span>Balayage</span><span>Estética</span><span>Novias</span><span>Uñas</span>
+</div></div>
+
+<!-- OPINIONES -->
+<section id="opiniones">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <p class="kick">Opiniones</p>
+        <h2>4,9 sobre 5</h2>
+      </div>
+      <p>Una de las valoraciones más altas de Gáldar. Lo que más repiten: el criterio y el trato.</p>
+    </div>
+    <div class="qs rv">
+      <article class="qc"><div class="st">★★★★★</div>
+        <p>“Un salón exclusivo donde se nota que cuidan cada detalle. Salgo siempre encantada con el resultado.”</p>
+        <footer>Reseña en Google</footer></article>
+      <article class="qc"><div class="st">★★★★★</div>
+        <p>“Profesionales de verdad. Te asesoran y te dicen qué te queda bien, no lo que quieres oír.”</p>
+        <footer>Clienta de Gáldar</footer></article>
+      <article class="qc"><div class="st">★★★★★</div>
+        <p>“El trato es cercanísimo y el sitio es precioso. Merece la pena reservar con tiempo.”</p>
+        <footer>Clienta habitual</footer></article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="ct" id="contacto">
+  <div class="wrap">
+    <div class="head rv">
+      <div>
+        <p class="kick">Contacto</p>
+        <h2>Reserva<br>tu cita</h2>
+      </div>
+      <p>Llámanos y buscamos el hueco que mejor te venga. Para color o novias, cuanto antes mejor.</p>
+    </div>
+    <div class="ct-grid">
+      <div class="rv">
+        <dl class="dl">
+          <div><dt>Teléfono</dt><dd><a href="tel:+34928550649">928 55 06 49</a></dd></div>
+          <div><dt>Dirección</dt><dd>C/ Calvario, 17<br>35460 Gáldar, Las Palmas</dd></div>
+          <div><dt>Valoración</dt><dd>4,9 ★ en Google</dd></div>
+          <div><dt>Reservas</dt><dd>Cita previa por teléfono</dd></div>
+        </dl>
+        <a class="mapa" href="https://www.google.com/maps/search/?api=1&query=C%27est+Chic+peluqueros+Calle+Calvario+17+G%C3%A1ldar" target="_blank" rel="noopener" data-c="mapa">
+          <div>
+            <div class="pin">📍</div>
+            <p class="dis" style="font-size:1.4rem;margin-top:.5rem">C/ Calvario, 17 · Gáldar</p>
+            <p style="color:#6B645B;font-size:.88rem;margin-top:.3rem">Abrir en Google Maps</p>
+          </div>
+        </a>
+      </div>
+      <div class="rv" data-d="1">
+        <div class="live"><span class="pt" id="pt"></span><span id="ptTxt">Comprobando horario…</span></div>
+        <table class="hrs">
+          <tr data-day="1"><td>Lunes</td><td>Cerrado</td></tr>
+          <tr data-day="2"><td>Martes</td><td>09:30 – 19:00</td></tr>
+          <tr data-day="3"><td>Miércoles</td><td>09:30 – 19:00</td></tr>
+          <tr data-day="4"><td>Jueves</td><td>09:30 – 19:00</td></tr>
+          <tr data-day="5"><td>Viernes</td><td>09:30 – 20:00</td></tr>
+          <tr data-day="6"><td>Sábado</td><td>09:00 – 14:00</td></tr>
+          <tr data-day="0"><td>Domingo</td><td>Cerrado</td></tr>
+        </table>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem">
+          <a href="tel:+34928550649" class="btn btn-g" data-c="llamar"><span>Llamar ahora</span></a>
+          <a href="https://wa.me/34928550649" target="_blank" rel="noopener" class="btn btn-o" data-c="whatsapp"><span>WhatsApp</span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap ft-in">
+    <span>© <span id="yr"></span> C'est Chic Peluqueros · Gáldar, Gran Canaria</span>
+    <span><a href="tel:+34928550649">928 55 06 49</a> · C/ Calvario, 17</span>
+  </div>
+</footer>
+
+<div class="bookbar" id="bar">
+  <p>Cita previa · C/ Calvario 17, Gáldar</p>
+  <div class="acts">
+    <a href="tel:+34928550649" class="p1" data-c="llamar">Llamar</a>
+    <a href="https://wa.me/34928550649" target="_blank" rel="noopener" class="p2" data-c="whatsapp">WhatsApp</a>
+  </div>
+</div>
+
+<div class="demo">DEMO · propuesta de diseño no oficial</div>
+
+<script>
+addEventListener('load',()=>setTimeout(()=>document.getElementById('intro').classList.add('out'),850));
+
+const hd=document.getElementById('hd'),bar=document.getElementById('bar');
+addEventListener('scroll',()=>{
+  const y=scrollY,max=document.body.scrollHeight-innerHeight;
+  hd.classList.toggle('stuck',y>70);
+  bar.classList.toggle('up',y>innerHeight*.95 && y<max-160);
+},{passive:true});
+
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.onclick=()=>menu.classList.toggle('open');
+menu.onclick=e=>{if(e.target.tagName==='A')menu.classList.remove('open')};
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+// acordeón de servicios
+document.querySelectorAll('.s>button').forEach(b=>{
+  b.onclick=()=>{
+    const s=b.parentElement,body=s.querySelector('.body'),was=s.classList.contains('open');
+    document.querySelectorAll('.s').forEach(x=>{x.classList.remove('open');x.querySelector('.body').style.maxHeight=null});
+    if(!was){s.classList.add('open');body.style.maxHeight=body.scrollHeight+'px'}
+  };
+});
+// primero abierto
+const first=document.querySelector('.s');
+first.classList.add('open');
+addEventListener('load',()=>{const b=first.querySelector('.body');b.style.maxHeight=b.scrollHeight+'px'});
+
+// lookbook: scroll vertical → desplazamiento horizontal
+const look=document.querySelector('.look'),track=document.getElementById('track');
+function sizeLook(){
+  if(innerWidth<=1000){look.style.height='';track.style.transform='';return}
+  const extra=track.scrollWidth-innerWidth;
+  look.style.height=(innerHeight+Math.max(extra,0))+'px';
+}
+function moveLook(){
+  if(innerWidth<=1000)return;
+  const r=look.getBoundingClientRect(),extra=track.scrollWidth-innerWidth;
+  if(extra<=0)return;
+  const p=Math.min(Math.max(-r.top/(look.offsetHeight-innerHeight),0),1);
+  track.style.transform=`translateX(${-p*extra}px)`;
+}
+addEventListener('resize',()=>{sizeLook();moveLook()});
+addEventListener('scroll',moveLook,{passive:true});
+addEventListener('load',()=>{sizeLook();moveLook()});
+sizeLook();
+
+// cursor con etiqueta
+const cur=document.getElementById('cur');
+addEventListener('mousemove',e=>{cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px'},{passive:true});
+document.querySelectorAll('a,button,.pane').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.classList.add('on');cur.dataset.l=el.dataset.c||'ver'});
+  el.addEventListener('mouseleave',()=>cur.classList.remove('on'));
+});
+
+// horario en vivo
+const H={1:null,2:[9.5,19],3:[9.5,19],4:[9.5,19],5:[9.5,20],6:[9,14],0:null};
+const now=new Date(),day=now.getDay(),h=now.getHours()+now.getMinutes()/60,r=H[day];
+const ab=r&&h>=r[0]&&h<r[1];
+const fmt=v=>String(Math.floor(v)).padStart(2,'0')+':'+String(Math.round(v%1*60)).padStart(2,'0');
+document.getElementById('ptTxt').textContent=ab?`Abierto ahora · hasta las ${fmt(r[1])}`:'Cerrado ahora · consulta el horario';
+if(!ab)document.getElementById('pt').classList.add('off');
+document.querySelectorAll('.hrs tr').forEach(tr=>{if(+tr.dataset.day===day)tr.classList.add('now')});
+document.getElementById('yr').textContent=now.getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+/* Red de seguridad: nada de lo que forma el contenido puede depender de una animacion para verse. */
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .ln i,.word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .kick,.hero .kicker,.hero .est,.hero p,.hero-sub,.hero-acts,.hero-foot,.hero-card,
+  .score,.rating,.badge5,.open-now,.rule,.arc-tag,.lead,.scroll-hint,.rating-card,.i-mark>*{opacity:1!important}
+  #intro,#load,#curtain,#preloader{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .ln i,.word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .kick,.hero .kicker,.hero .est,.hero p,.hero-sub,.hero-acts,.hero-foot,.hero-card,
+  .score,.rating,.badge5,.open-now,.rule,.arc-tag,.lead,.scroll-hint,.rating-card,.i-mark>*{opacity:1!important;animation:none!important}
+  #intro,#load,#curtain,#preloader{display:none!important}
+  .look .track{transform:none!important;overflow-x:auto!important}
+  .look .sticky{height:auto!important;position:static!important;padding:4rem 0!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    ['#intro','#load','#curtain','#preloader'].forEach(function(s){
+      var e=document.querySelector(s); if(e) e.style.setProperty('display','none','important');
+    });
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.ln i,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    var h=document.querySelector('.hero h1');
+    if(h) h.querySelectorAll('.ln i,.word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
