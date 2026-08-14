@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tasca Galileo · Tapas y cocina canaria en Las Palmas de Gran Canaria</title>
+<meta name="description" content="Tasca de tapas en Las Palmas de Gran Canaria: queso frito con mermelada de melón, carrillera, lagarto ibérico. C/ Galileo, 13. Tel. 928 49 45 99. 4,6 en Google con 2.278 reseñas.">
+<style>
+:root{
+  --teja:#8C2B1F; --teja-2:#6B1F16; --cream:#F4EDE2; --cream-2:#E7DCCB;
+  --verde:#2E5E4E; --ink:#1E1512; --mut:#7A6759; --azul:#2C5F8A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.7;overflow-x:hidden}
+h1,h2,h3,.slab{font-family:'Bebas Neue','Oswald','Arial Narrow',Impact,sans-serif;font-weight:400;letter-spacing:.035em;text-transform:uppercase;line-height:.98}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,91vw);margin-inline:auto}
+.eyebrow{font-size:.68rem;letter-spacing:.42em;text-transform:uppercase;color:var(--teja);font-weight:700}
+
+/* azulejo canario */
+.tiles{background-image:
+  radial-gradient(circle at 0 0,rgba(44,95,138,.18) 12%,transparent 13%),
+  radial-gradient(circle at 100% 0,rgba(44,95,138,.18) 12%,transparent 13%),
+  radial-gradient(circle at 0 100%,rgba(44,95,138,.18) 12%,transparent 13%),
+  radial-gradient(circle at 100% 100%,rgba(44,95,138,.18) 12%,transparent 13%),
+  radial-gradient(circle at 50% 50%,rgba(140,43,31,.16) 16%,transparent 17%);
+  background-size:52px 52px}
+
+#load{position:fixed;inset:0;z-index:999;background:var(--ink);display:grid;place-items:center;transition:opacity .6s,visibility .6s}
+#load.off{opacity:0;visibility:hidden}
+.pan{width:84px;height:84px;margin:0 auto;border:3px solid var(--cream);border-radius:50%;position:relative;animation:sizz 1.5s ease-in-out infinite}
+.pan::after{content:"";position:absolute;inset:16px;border-radius:50%;background:radial-gradient(circle,#E8A33C,#8C2B1F)}
+@keyframes sizz{50%{transform:rotate(-9deg) scale(1.06)}}
+#load p{color:var(--cream);font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.34em;margin-top:1.5rem;text-align:center;font-size:1.25rem}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.15rem 0;transition:.4s}
+header.stuck{background:rgba(30,21,18,.97);padding:.6rem 0;box-shadow:0 4px 24px rgba(0,0,0,.3)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{display:flex;align-items:center;gap:.7rem;color:var(--cream)}
+.brand .em{width:36px;height:36px;background:var(--teja);display:grid;place-items:center;font-family:'Bebas Neue',Impact,sans-serif;color:var(--cream);font-size:1.15rem;border-radius:4px}
+.brand b{font-family:'Bebas Neue',Impact,sans-serif;font-size:1.3rem;letter-spacing:.1em;font-weight:400;display:block}
+.brand small{display:block;font-size:.55rem;letter-spacing:.32em;color:#E0B76A;margin-top:-3px}
+.menu{display:flex;gap:2rem;font-size:.74rem;letter-spacing:.19em;text-transform:uppercase;color:var(--cream);font-weight:600}
+.menu a{position:relative;padding-bottom:3px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:#E0B76A;transition:width .35s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--teja);color:var(--cream);padding:.75rem 1.55rem;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;transition:.3s;border-radius:4px}
+.cta:hover{background:#E0B76A;color:var(--ink)}
+.burger{display:none;background:none;border:0;color:var(--cream);font-size:1.4rem;cursor:pointer}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;place-items:center;text-align:center;position:relative;overflow:hidden;background:var(--ink);color:var(--cream);padding:8rem 0 5.5rem}
+.hero::before{content:"";position:absolute;inset:0;opacity:.5;background:radial-gradient(ellipse at 50% 30%,rgba(224,183,106,.16),transparent 62%),radial-gradient(ellipse at 50% 100%,rgba(140,43,31,.44),transparent 62%)}
+.hero .tiles{position:absolute;inset:0;opacity:.22;animation:tdrift 32s linear infinite}
+@keyframes tdrift{to{background-position:52px 52px,52px 52px,52px 52px,52px 52px,52px 52px}}
+.hero-in{position:relative;z-index:2;max-width:920px}
+.hero .est{font-size:.7rem;letter-spacing:.5em;text-transform:uppercase;color:#E0B76A;opacity:0;animation:fade .8s .3s forwards}
+.rule{display:flex;align-items:center;gap:1rem;justify-content:center;margin:1.5rem 0;opacity:0;animation:fade .8s .5s forwards}
+.rule i{height:1px;width:70px;background:#E0B76A;opacity:.6}
+.rule b{color:#E0B76A;font-size:.95rem}
+.hero h1{font-size:clamp(3rem,12vw,8.4rem)}
+.hero h1 .ln{display:block;overflow:hidden}
+.hero h1 .ln i{display:block;font-style:normal;transform:translateY(102%);animation:up 1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:normal;color:#E0B76A}
+.hero p.lead{max-width:580px;margin:1.7rem auto 0;color:rgba(244,237,226,.72);opacity:0;animation:fade .8s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:2.4rem;opacity:0;animation:fade .8s 1.4s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.05rem 2.15rem;font-size:.74rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:.35s;border-radius:4px}
+.btn-t{background:var(--teja);color:var(--cream)}
+.btn-t:hover{background:#E0B76A;color:var(--ink);transform:translateY(-3px)}
+.btn-o{border:2px solid currentColor}
+.btn-o:hover{background:var(--cream);color:var(--ink);border-color:var(--cream)}
+.badge5{position:absolute;bottom:5.5%;left:50%;transform:translateX(-50%);z-index:2;font-size:.77rem;letter-spacing:.13em;text-transform:uppercase;color:rgba(244,237,226,.72);opacity:0;animation:fade .8s 1.7s forwards}
+.badge5 b{color:#E0B76A;letter-spacing:.2em}
+
+.bar3{height:26px;opacity:.85}
+
+section{padding:7rem 0;position:relative}
+.rv{opacity:0;transform:translateY(36px);transition:.9s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}
+.rv[data-d="3"]{transition-delay:.3s}
+.sec-head{text-align:center;max-width:660px;margin:0 auto 3.6rem}
+.sec-head h2{font-size:clamp(2.2rem,6vw,4rem);margin-top:.85rem}
+.sec-head p{color:var(--mut);margin-top:1rem}
+
+/* TAPAS */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.5rem}
+.t{background:#fff;border:1px solid var(--cream-2);border-radius:6px;padding:2.2rem 1.9rem;transition:.42s;position:relative;overflow:hidden}
+.t::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--teja);transform:scaleY(0);transform-origin:top;transition:transform .45s}
+.t:hover{transform:translateY(-9px);box-shadow:0 28px 52px -32px rgba(30,21,18,.5)}
+.t:hover::before{transform:scaleY(1)}
+.t .ico{font-size:1.8rem;line-height:1}
+.t h3{font-size:1.45rem;margin:.8rem 0 .55rem}
+.t p{font-size:.93rem;color:var(--mut)}
+.t .star{position:absolute;top:1.2rem;right:1.3rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--verde);font-weight:700}
+.note{text-align:center;color:var(--mut);font-size:.87rem;margin-top:2.4rem}
+
+/* LA TASCA */
+.about{background:var(--ink);color:var(--cream)}
+.agrid{display:grid;grid-template-columns:1fr 1fr;gap:4.4rem;align-items:center}
+.wallbox{aspect-ratio:1;position:relative;overflow:hidden;border:3px solid #E0B76A;border-radius:6px;background:linear-gradient(150deg,#3A2620,#5E2E22 50%,#8C2B1F)}
+.wallbox .tiles{position:absolute;inset:0;opacity:.5}
+.wallbox .shine{position:absolute;width:58%;height:220%;top:-60%;left:-40%;background:linear-gradient(90deg,transparent,rgba(255,220,150,.18),transparent);transform:rotate(19deg);animation:sh 6.8s ease-in-out infinite}
+@keyframes sh{0%{left:-40%}55%,100%{left:120%}}
+.wallbox .stamp{position:absolute;bottom:1.4rem;left:1.4rem;right:1.4rem;text-align:center;border:2px solid rgba(244,237,226,.5);padding:1rem;font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:.24em;font-size:1.05rem;color:rgba(244,237,226,.92);z-index:2}
+.about h2{font-size:clamp(2rem,4.6vw,3.2rem);margin-bottom:1.2rem}
+.about p{color:rgba(244,237,226,.7);margin-bottom:1rem}
+.tick{list-style:none;margin-top:1.7rem}
+.tick li{padding-left:1.6rem;position:relative;margin-bottom:.65rem;color:rgba(244,237,226,.86)}
+.tick li::before{content:"▸";position:absolute;left:0;color:#E0B76A}
+
+/* HORARIO */
+.hgrid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.sched{width:100%;border-collapse:collapse}
+.sched td{padding:1.05rem .3rem;border-bottom:1px solid rgba(30,21,18,.12);font-size:1rem}
+.sched td:last-child{text-align:right;color:var(--mut);font-variant-numeric:tabular-nums}
+.sched tr.today td{color:var(--teja);font-weight:700}
+.sched tr.today td:first-child::before{content:"▸ "}
+.livebox{border:2px solid var(--ink);border-radius:6px;padding:2.2rem;background:#fff;box-shadow:8px 8px 0 var(--teja)}
+.livebox .state{display:flex;align-items:center;gap:.7rem;font-family:'Bebas Neue',Impact,sans-serif;font-size:1.85rem;letter-spacing:.05em}
+.dot{width:12px;height:12px;border-radius:50%;background:#2E9E4F;position:relative}
+.dot::after{content:"";position:absolute;inset:0;border-radius:50%;background:#2E9E4F;animation:pulse 1.9s ease-out infinite}
+@keyframes pulse{to{transform:scale(2.6);opacity:0}}
+.dot.closed,.dot.closed::after{background:var(--teja)}
+.livebox p{color:var(--mut);margin:.75rem 0 1.5rem;font-size:.93rem}
+
+/* OPINIONES */
+.revs{background:var(--cream-2)}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1.6rem}
+.r{background:var(--cream);border-radius:6px;padding:2.2rem;transition:.42s;border-bottom:4px solid var(--teja)}
+.r:hover{transform:translateY(-7px);box-shadow:0 26px 50px -32px rgba(30,21,18,.5)}
+.r .stars{color:#D9A441;letter-spacing:.18em;margin-bottom:.9rem}
+.r p{font-size:.96rem;color:var(--mut);font-style:italic}
+.r footer{margin-top:1.3rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;background:none;padding:0;color:var(--ink)}
+
+/* CONTACTO */
+.contact{background:var(--verde);color:var(--cream)}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.dt{padding:1.45rem 0;border-bottom:1px solid rgba(244,237,226,.16)}
+.dt h4{font-size:.63rem;letter-spacing:.28em;text-transform:uppercase;color:#E0B76A;margin-bottom:.45rem}
+.dt p,.dt a{font-size:1.05rem;color:rgba(244,237,226,.94)}
+.dt a:hover{color:#E0B76A}
+.map{min-height:310px;display:grid;place-items:center;text-align:center;padding:2.5rem;border:2px solid rgba(244,237,226,.24);border-radius:6px;transition:.4s;background:rgba(0,0,0,.16)}
+.map:hover{border-color:#E0B76A}
+.map .pin{font-size:2.2rem;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:#170F0D;color:rgba(244,237,226,.55);padding:2.8rem 0;font-size:.84rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:#E0B76A}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90}
+.fab a{width:56px;height:56px;border-radius:50%;display:grid;place-items:center;font-size:1.3rem;background:var(--teja);color:var(--cream);box-shadow:0 14px 34px -10px rgba(0,0,0,.45);transition:.3s}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(30,21,18,.9);color:var(--cream);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--ink);padding:2rem;gap:1.3rem}
+  .agrid,.hgrid,.cgrid{grid-template-columns:1fr;gap:2.6rem}
+  section{padding:5rem 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load"><div><div class="pan"></div><p>TASCA GALILEO</p></div></div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand"><span class="em">G</span><span><b>Tasca Galileo</b><small>Tapas · Las Palmas</small></span></a>
+    <nav class="menu" id="menu">
+      <a href="#tapas">Las tapas</a>
+      <a href="#tasca">La tasca</a>
+      <a href="#horario">Horario</a>
+      <a href="#opiniones">Opiniones</a>
+    </nav>
+    <a href="tel:+34928494599" class="cta">Llamar</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="tiles"></div>
+  <div class="wrap hero-in">
+    <p class="est">C/ Galileo, 13 · Las Palmas de Gran Canaria</p>
+    <div class="rule"><i></i><b>❋</b><i></i></div>
+    <h1>
+      <span class="ln"><i style="animation-delay:.4s">Tapas</i></span>
+      <span class="ln"><i style="animation-delay:.55s">de las que</i></span>
+      <span class="ln"><i style="animation-delay:.7s"><em>se recuerdan</em></i></span>
+    </h1>
+    <p class="lead">Una tasca de barrio con la cocina que todo el mundo busca: producto, punto y raciones para compartir. Pocas mesas y muchas ganas.</p>
+    <div class="hero-acts">
+      <a href="tel:+34928494599" class="btn btn-t">928 49 45 99</a>
+      <a href="#tapas" class="btn btn-o">Ver las tapas</a>
+    </div>
+  </div>
+  <div class="badge5"><b>★★★★★ 4,6</b> · 2.278 reseñas en Google</div>
+</section>
+
+<div class="bar3 tiles"></div>
+
+<!-- TAPAS -->
+<section id="tapas">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">La carta</p>
+      <h2>Lo que más nos piden</h2>
+      <p>Estos son los platos que más aparecen en las reseñas de nuestros clientes. Todo para compartir en el centro de la mesa.</p>
+    </div>
+    <div class="tgrid">
+      <div class="t rv"><span class="star">El más pedido</span><div class="ico">🧀</div><h3>Queso frito con mermelada de melón</h3><p>El plato del que habla todo el mundo al salir. Crujiente por fuera y fundente por dentro.</p></div>
+      <div class="t rv" data-d="1"><div class="ico">🐖</div><h3>Carrillera</h3><p>Cocinada despacio hasta que se deshace. De las que se rebañan con pan.</p></div>
+      <div class="t rv" data-d="2"><div class="ico">🥩</div><h3>Lagarto ibérico</h3><p>A la plancha, jugoso y en su punto. Ibérico de verdad.</p></div>
+      <div class="t rv"><div class="ico">🍖</div><h3>Lomo alto</h3><p>Carne madurada al punto que pidas, para los que vienen con hambre.</p></div>
+      <div class="t rv" data-d="1"><div class="ico">🍳</div><h3>Tortilla de bacalao</h3><p>Jugosa por dentro, hecha al momento.</p></div>
+      <div class="t rv" data-d="2"><div class="ico">🍄</div><h3>Champiñones rellenos de gambas</h3><p>Uno de los clásicos de la casa, para empezar picando.</p></div>
+      <div class="t rv"><div class="ico">🐟</div><h3>Tartar de salmón</h3><p>Fresco y bien aliñado, para alternar entre tanta brasa.</p></div>
+      <div class="t rv" data-d="1"><span class="star">Postre estrella</span><div class="ico">🍰</div><h3>Polvitos y tarta de queso</h3><p>Los dos postres que más se repiten en las mesas. Caseros.</p></div>
+    </div>
+    <p class="note">Carta orientativa a partir de la información pública del restaurante. La definitiva la ponéis vosotros.</p>
+  </div>
+</section>
+
+<!-- LA TASCA -->
+<section class="about" id="tasca">
+  <div class="wrap agrid">
+    <div class="rv">
+      <div class="wallbox"><div class="tiles"></div><div class="shine"></div><div class="stamp">Galileo 13 · LPGC</div></div>
+    </div>
+    <div class="rv" data-d="1">
+      <p class="eyebrow" style="color:#E0B76A">La tasca</p>
+      <h2>Pequeña, ruidosa<br>y siempre llena</h2>
+      <p>Estamos en la calle Galileo, en un local con pocas mesas donde se come de pie o sentado, pero siempre bien. Ambiente de tasca de las de antes, con la cocina a la vista y el servicio atento.</p>
+      <p>No cogemos reserva: quien llega pronto, coge mesa. Es parte del encanto — y también el motivo de que a las nueve ya no quepa un alfiler.</p>
+      <ul class="tick">
+        <li>Producto fresco del día</li>
+        <li>Raciones para compartir</li>
+        <li>Servicio rápido y atento</li>
+        <li>Sin reservas: por orden de llegada</li>
+        <li>Postres caseros</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- HORARIO -->
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Horario</p>
+      <h2>Cuándo abrimos</h2>
+      <p>Los lunes descansamos. El resto de días, mediodía y noche.</p>
+    </div>
+    <div class="hgrid">
+      <div class="rv">
+        <table class="sched">
+          <tr data-day="1"><td>Lunes</td><td>Cerrado</td></tr>
+          <tr data-day="2"><td>Martes</td><td>12:30–16:00 · 20:00–00:00</td></tr>
+          <tr data-day="3"><td>Miércoles</td><td>12:30–16:00 · 20:00–00:00</td></tr>
+          <tr data-day="4"><td>Jueves</td><td>12:30–16:00 · 20:00–00:00</td></tr>
+          <tr data-day="5"><td>Viernes</td><td>Consultar por teléfono</td></tr>
+          <tr data-day="6"><td>Sábado</td><td>Consultar por teléfono</td></tr>
+          <tr data-day="0"><td>Domingo</td><td>Consultar por teléfono</td></tr>
+        </table>
+      </div>
+      <div class="livebox rv" data-d="1">
+        <div class="state"><span class="dot" id="dot"></span><span id="stateTxt">Comprobando…</span></div>
+        <p id="stateSub">Consultando el horario del día.</p>
+        <a href="tel:+34928494599" class="btn btn-t">Llamar a la tasca</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIONES -->
+<section class="revs" id="opiniones">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>4,6 de 5 · 2.278 reseñas</h2>
+      <p>Miles de clientes han pasado por aquí. Esto es lo que cuentan.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“El queso frito con mermelada de melón es obligatorio. Y las carrilleras, espectaculares.”</p><footer>Reseña de cliente</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Servicio fabuloso y personal muy atento. No cogen reserva, así que hay que llegar pronto para coger mesa.”</p><footer>Cliente habitual</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Comida canaria de calidad y ambiente de tasca de verdad. Los postres, muy buenos.”</p><footer>Reseña de cliente</footer></article>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="contact">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow" style="color:#E0B76A">Contacto</p>
+      <h2 style="color:var(--cream)">Dónde estamos</h2>
+    </div>
+    <div class="cgrid">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C/ Galileo, 13<br>35010 Las Palmas de Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono</h4><p><a href="tel:+34928494599">928 49 45 99</a></p></div>
+        <div class="dt"><h4>Reservas</h4><p>No se aceptan — por orden de llegada</p></div>
+        <div class="dt"><h4>Cocina</h4><p>Tapas · cocina canaria · raciones para compartir</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Tasca+Galileo+Calle+Galileo+13+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p class="slab" style="font-size:1.7rem;margin-top:.8rem">C/ Galileo, 13</p>
+            <p style="color:rgba(244,237,226,.65);margin-top:.4rem">Las Palmas de Gran Canaria</p>
+            <span class="btn btn-o" style="margin-top:1.6rem;display:inline-flex;color:var(--cream)">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Tasca Galileo · Las Palmas de Gran Canaria</span>
+    <span><a href="tel:+34928494599">928 49 45 99</a> · C/ Galileo, 13</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a href="tel:+34928494599" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('load').classList.add('off')},1000)});
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>60)});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+/* abierto / cerrado (solo días con horario confirmado) */
+var TRAMOS={1:[],2:[[12.5,16],[20,24]],3:[[12.5,16],[20,24]],4:[[12.5,16],[20,24]]};
+var now=new Date(),day=now.getDay(),h=now.getHours()+now.getMinutes()/60;
+var tramos=TRAMOS[day],txt=document.getElementById('stateTxt'),sub=document.getElementById('stateSub');
+function fmt(v){return String(Math.floor(v)).padStart(2,'0')+':'+String(Math.round((v%1)*60)).padStart(2,'0')}
+if(tramos===undefined){
+  txt.textContent='Consulta el horario';
+  sub.textContent='Llámanos y te confirmamos el servicio de hoy.';
+}else if(tramos.length===0){
+  txt.textContent='Hoy cerrado';
+  document.getElementById('dot').classList.add('closed');
+  sub.textContent='Los lunes descansamos. Mañana abrimos a las 12:30.';
+}else{
+  var abierto=tramos.some(function(t){return h>=t[0]&&h<t[1]});
+  txt.textContent=abierto?'Abierto ahora':'Cerrado ahora';
+  if(!abierto)document.getElementById('dot').classList.add('closed');
+  var actual=tramos.filter(function(t){return h>=t[0]&&h<t[1]})[0];
+  var prox=tramos.filter(function(t){return h<t[0]})[0];
+  sub.textContent=abierto
+    ? 'Cerramos a las '+fmt(actual[1])+'. Sin reserva: se coge mesa por orden de llegada.'
+    : (prox ? 'Hoy volvemos a abrir a las '+fmt(prox[0])+'.' : 'Por hoy hemos cerrado. Te esperamos mañana.');
+}
+document.querySelectorAll('.sched tr').forEach(function(tr){if(+tr.dataset.day===day)tr.classList.add('today')});
+document.getElementById('yr').textContent=now.getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .ln i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.rule,.badge5{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .ln i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.rule,.badge5{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.ln i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .ln i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
