@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estética Integral Guía · Centro de estética en Santa María de Guía</title>
+<meta name="description" content="Centro de estética en Santa María de Guía. Tratamientos faciales y corporales, depilación láser, presoterapia y masajes drenantes. Av. Alcalde Fernández Alonso de la Guardia 5. Cita: 616 22 94 78.">
+<style>
+:root{
+  --paper:#FBFBF9; --paper-2:#F1F0EC; --sand:#E8E2D6;
+  --deep:#1B3A38; --teal:#2E6E68; --teal-l:#4E9A93;
+  --ink:#20302E; --mut:#6E7E7B; --line:rgba(32,48,46,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--paper);color:var(--ink);
+  overflow-x:hidden;line-height:1.7;-webkit-font-smoothing:antialiased}
+h1,h2,h3,.dis{font-family:'Cormorant Garamond','Playfair Display',Georgia,serif;font-weight:500;line-height:1.08;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1220px,90vw);margin-inline:auto}
+.kick{font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--teal);font-weight:600}
+::selection{background:var(--teal-l);color:#fff}
+
+#prog{position:fixed;top:0;left:0;height:2px;width:0;background:var(--teal);z-index:200;transition:width .1s linear}
+
+/* intro */
+#intro{position:fixed;inset:0;z-index:400;background:var(--deep);display:grid;place-items:center;
+  transition:opacity .8s ease,visibility .8s}
+#intro.out{opacity:0;visibility:hidden}
+.im{text-align:center;color:var(--paper)}
+.im b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:500;font-size:clamp(2rem,6vw,3.6rem)}
+.im .ring{width:56px;height:56px;margin:0 auto 1.6rem;border:2px solid rgba(251,251,249,.25);
+  border-top-color:var(--teal-l);border-radius:50%;animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.im span{display:block;font-size:.6rem;letter-spacing:.44em;text-transform:uppercase;color:rgba(251,251,249,.5);margin-top:.7rem}
+
+/* nav */
+header{position:fixed;top:0;width:100%;z-index:150;padding:1.4rem 0;transition:.45s cubic-bezier(.16,1,.3,1)}
+header.stuck{padding:.65rem 0;background:rgba(251,251,249,.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:2rem}
+.logo{display:flex;flex-direction:column;line-height:1.05}
+.logo b{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;font-size:1.4rem}
+.logo span{font-size:.54rem;letter-spacing:.36em;text-transform:uppercase;color:var(--mut);margin-top:3px}
+.menu{display:flex;gap:2.2rem;font-size:.78rem;font-weight:500}
+.menu a{position:relative;padding:.2rem 0}
+.menu a::after{content:"";position:absolute;left:0;bottom:-2px;height:1px;width:0;background:var(--teal);transition:width .4s cubic-bezier(.16,1,.3,1)}
+.menu a:hover::after{width:100%}
+.navbtn{background:var(--deep);color:var(--paper);padding:.7rem 1.4rem;font-size:.71rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;border-radius:40px;transition:.35s;white-space:nowrap}
+.navbtn:hover{background:var(--teal)}
+.burger{display:none;background:none;border:0;font-size:1.4rem;cursor:pointer;color:inherit}
+
+/* hero */
+.hero{position:relative;padding:10.5rem 0 5rem;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 50% at 82% 30%,rgba(78,154,147,.13),transparent 70%)}
+.hgrid{display:grid;grid-template-columns:1.15fr .85fr;gap:4rem;align-items:center;position:relative;z-index:2}
+.hero h1{font-size:clamp(2.8rem,7.4vw,6.2rem)}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.05em}
+.hero h1 .ln i{display:block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+.hero h1 em{font-style:italic;color:var(--teal)}
+.hero .kick{margin-bottom:1.5rem;opacity:0;animation:fd .8s 1.05s forwards}
+@keyframes fd{to{opacity:1}}
+.hero-sub{max-width:450px;color:var(--mut);margin-top:1.8rem;opacity:0;animation:fd .8s 1.2s forwards}
+.hero-acts{display:flex;gap:.8rem;flex-wrap:wrap;margin-top:2.2rem;opacity:0;animation:fd .8s 1.35s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.05rem 2.05rem;font-size:.74rem;letter-spacing:.14em;
+  text-transform:uppercase;font-weight:600;border-radius:40px;transition:.35s cubic-bezier(.16,1,.3,1)}
+.btn-f{background:var(--deep);color:var(--paper)}
+.btn-f:hover{background:var(--teal);transform:translateY(-3px)}
+.btn-l{border:1px solid var(--ink)}
+.btn-l:hover{background:var(--ink);color:var(--paper);transform:translateY(-3px)}
+
+.horb{position:relative;opacity:0;animation:fd 1s 1.45s forwards}
+.orb{aspect-ratio:1;border-radius:50%;position:relative;overflow:hidden;
+  background:linear-gradient(150deg,#DCEAE6 0%,#9FC6C0 45%,#4E9A93 100%);
+  box-shadow:0 40px 90px -45px rgba(27,58,56,.6)}
+.orb::after{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(120deg,rgba(255,255,255,.14) 0 1px,transparent 1px 19px)}
+.orb .gl{position:absolute;width:170%;height:55%;left:-35%;top:-30%;
+  background:radial-gradient(ellipse,rgba(255,255,255,.62),transparent 66%);animation:gl 8s ease-in-out infinite}
+@keyframes gl{50%{transform:translateY(160%)}}
+.orb-tag{position:absolute;left:50%;bottom:-18px;transform:translateX(-50%);background:var(--paper);
+  padding:.85rem 1.5rem;border-radius:40px;text-align:center;white-space:nowrap;
+  box-shadow:0 16px 40px -16px rgba(27,58,56,.35)}
+.orb-tag b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.7rem;line-height:1}
+.orb-tag span{font-size:.56rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut)}
+
+.trust{border-block:1px solid var(--line);margin-top:5rem}
+.trust-in{display:grid;grid-template-columns:repeat(4,1fr)}
+.tr{padding:1.8rem 1.3rem;border-right:1px solid var(--line)}
+.tr:last-child{border-right:0}
+.tr b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:1.9rem;line-height:1;color:var(--teal)}
+.tr span{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+
+.rv{opacity:0;transform:translateY(34px);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.09s}.rv[data-d="2"]{transition-delay:.18s}
+.rv[data-d="3"]{transition-delay:.27s}.rv[data-d="4"]{transition-delay:.36s}
+
+section{padding:7rem 0;position:relative}
+.head{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;align-items:end;margin-bottom:3.4rem}
+.head h2{font-size:clamp(2rem,5vw,3.6rem);margin-top:.9rem}
+.head p{color:var(--mut)}
+
+/* piel: selector de preocupación */
+.skin{background:var(--paper-2)}
+.chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2.4rem}
+.chips button{border:1px solid var(--line);background:transparent;color:var(--mut);cursor:pointer;font:inherit;
+  font-size:.75rem;padding:.6rem 1.3rem;border-radius:40px;transition:.3s}
+.chips button:hover{border-color:var(--teal);color:var(--teal)}
+.chips button.on{background:var(--deep);color:var(--paper);border-color:var(--deep)}
+.answer{background:var(--paper);border-radius:18px;padding:2.6rem;border:1px solid var(--line);min-height:180px}
+.answer h3{font-size:1.7rem;margin-bottom:.7rem;color:var(--deep)}
+.answer p{color:var(--mut);max-width:66ch}
+.answer ul{list-style:none;margin-top:1.3rem;display:flex;flex-wrap:wrap;gap:.5rem}
+.answer li{border:1px solid rgba(46,110,104,.3);color:var(--teal);padding:.35rem .95rem;border-radius:40px;font-size:.72rem;
+  letter-spacing:.06em}
+.answer.sw{animation:sw .45s cubic-bezier(.16,1,.3,1)}
+@keyframes sw{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* servicios */
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.s{background:var(--paper);padding:2.4rem 2rem;transition:background .45s}
+.s:hover{background:var(--paper-2)}
+.s .n{font-size:.64rem;letter-spacing:.2em;color:var(--teal);font-weight:600}
+.s h3{font-size:1.4rem;margin:.65rem 0 .55rem}
+.s p{font-size:.93rem;color:var(--mut)}
+.s .tag{display:inline-block;margin-top:1.2rem;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--mut);border-top:1px solid var(--line);padding-top:.9rem;width:100%}
+
+/* marquesina */
+.mqw{overflow:hidden;border-block:1px solid var(--line);background:var(--deep)}
+.mq{display:flex;white-space:nowrap;animation:run 30s linear infinite}
+.mq span{font-family:'Cormorant Garamond',Georgia,serif;font-size:clamp(1.4rem,3.2vw,2.3rem);padding:1.4rem 1.5rem;color:var(--paper)}
+.mq span:nth-child(even){font-style:italic;color:var(--teal-l)}
+.mq span::after{content:"·";margin-left:1.5rem;color:var(--teal-l)}
+@keyframes run{to{transform:translateX(-50%)}}
+
+/* opiniones */
+.op{display:grid;grid-template-columns:.8fr 1.2fr;gap:3.5rem;align-items:center}
+.sc{text-align:center;border:1px solid var(--line);border-radius:18px;padding:2.8rem 2rem;background:var(--paper-2)}
+.sc b{display:block;font-family:'Cormorant Garamond',Georgia,serif;font-size:5rem;line-height:.9;color:var(--deep)}
+.sc .st{color:var(--teal);letter-spacing:.24em;margin:.6rem 0 .4rem}
+.sc span{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+.qs{display:grid;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.q{background:var(--paper);padding:1.9rem 2.1rem}
+.q p{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.2rem;font-style:italic;line-height:1.5}
+.q footer{margin-top:.8rem;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+
+/* contacto */
+.ct{background:var(--deep);color:var(--paper)}
+.ct .kick{color:var(--teal-l)}
+.ct .head h2{color:var(--paper)}
+.ct .head p{color:rgba(251,251,249,.6)}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.dl{border-top:1px solid rgba(251,251,249,.16)}
+.dl div{display:grid;grid-template-columns:120px 1fr;gap:1.4rem;padding:1.2rem 0;
+  border-bottom:1px solid rgba(251,251,249,.16);align-items:baseline}
+.dl dt{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--teal-l)}
+.dl dd{font-size:1.05rem;color:rgba(251,251,249,.93)}
+.dl dd a:hover{color:var(--teal-l)}
+.hrs{width:100%;border-collapse:collapse;font-size:.94rem}
+.hrs td{padding:.76rem 0;border-bottom:1px solid rgba(251,251,249,.14);color:rgba(251,251,249,.8)}
+.hrs td:last-child{text-align:right;color:var(--paper);font-variant-numeric:tabular-nums}
+.hrs tr.now td{color:var(--teal-l);font-weight:600}
+.hrs tr.now td:first-child::before{content:"→ "}
+.live{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.3rem;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(251,251,249,.65)}
+.pt{width:8px;height:8px;border-radius:50%;background:var(--teal-l);position:relative}
+.pt::after{content:"";position:absolute;inset:0;border-radius:50%;background:var(--teal-l);animation:pg 1.9s ease-out infinite}
+.pt.off,.pt.off::after{background:#D98A6A}
+@keyframes pg{to{transform:scale(2.8);opacity:0}}
+.mapa{display:grid;place-items:center;text-align:center;min-height:250px;margin-top:2rem;padding:2.3rem;border-radius:18px;
+  border:1px solid rgba(251,251,249,.2);transition:.4s;
+  background:repeating-linear-gradient(0deg,#244744 0 1px,transparent 1px 40px),repeating-linear-gradient(90deg,#244744 0 1px,transparent 1px 40px),var(--deep)}
+.mapa:hover{border-color:var(--teal-l)}
+.mapa .pin{font-size:2rem;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.ft{background:#142B29;color:rgba(251,251,249,.55);padding:2.8rem 0 5rem;font-size:.83rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--teal-l)}
+
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:120;background:var(--deep);color:var(--paper);
+  display:flex;align-items:center;justify-content:space-between;gap:1.4rem;padding:.8rem clamp(1rem,5vw,3rem);
+  transform:translateY(110%);transition:transform .55s cubic-bezier(.16,1,.3,1)}
+.bar.up{transform:none}
+.bar p{font-size:.85rem;color:rgba(251,251,249,.75)}
+.bar .acts{display:flex;gap:.6rem}
+.bar a{padding:.68rem 1.35rem;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-radius:40px;transition:.3s}
+.bar .p1{background:var(--teal-l);color:var(--deep)}
+.bar .p1:hover{background:var(--paper)}
+.bar .p2{border:1px solid rgba(251,251,249,.35)}
+.bar .p2:hover{background:rgba(251,251,249,.14)}
+
+.demo{position:fixed;left:0;bottom:0;z-index:130;background:rgba(27,58,56,.85);color:var(--paper);
+  font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.4rem .85rem}
+
+@media(max-width:1000px){
+  .hgrid,.head,.op,.cg{grid-template-columns:1fr;gap:2.4rem}
+  .horb{max-width:330px}
+  .trust-in{grid-template-columns:1fr 1fr}
+  .tr:nth-child(2){border-right:0}.tr:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+    background:var(--paper);padding:2rem;gap:1.3rem;border-bottom:1px solid var(--line)}
+  section{padding:5rem 0}
+  .bar{flex-direction:column;align-items:stretch;text-align:center;gap:.6rem}
+  .bar .acts{justify-content:center}
+  .demo{display:none}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;transform:none!important}
+  .ln i{transform:none!important;opacity:1!important}
+  .hero .kick,.hero-sub,.hero-acts,.horb,.orb-tag{opacity:1!important}
+  #intro{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<div id="intro"><div class="im"><div class="ring"></div><b>Estética Integral Guía</b><span>Santa María de Guía</span></div></div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="logo"><b>Estética Integral Guía</b><span>Centro de estética</span></a>
+    <nav class="menu" id="menu">
+      <a href="#piel">Tu piel</a>
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="tel:+34616229478" class="navbtn">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hgrid">
+    <div>
+      <p class="kick">Santa María de Guía · Gran Canaria</p>
+      <h1>
+        <span class="ln"><i style="animation-delay:.25s">Tu piel,</i></span>
+        <span class="ln"><i style="animation-delay:.38s">tratada</i></span>
+        <span class="ln"><i style="animation-delay:.51s"><em>en serio</em></i></span>
+      </h1>
+      <p class="hero-sub">Centro de estética en el corazón de Guía. Trabajamos el cuidado integral de la piel: manchas, acné, sensibilidad, y también depilación láser, presoterapia y masajes drenantes.</p>
+      <div class="hero-acts">
+        <a href="tel:+34616229478" class="btn btn-f">Llamar al 616 22 94 78</a>
+        <a href="#tratamientos" class="btn btn-l">Ver tratamientos</a>
+      </div>
+    </div>
+    <div class="horb">
+      <div class="orb"><div class="gl"></div></div>
+      <div class="orb-tag"><b>4,8 ★</b><span>87 reseñas en Google</span></div>
+    </div>
+  </div>
+  <div class="trust wrap">
+    <div class="trust-in">
+      <div class="tr"><b>87</b><span>Reseñas en Google</span></div>
+      <div class="tr"><b>4,8</b><span>Valoración media</span></div>
+      <div class="tr"><b>9:30</b><span>Abrimos de lunes a sábado</span></div>
+      <div class="tr"><b>Cita</b><span>Siempre con reserva previa</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PIEL -->
+<section class="skin" id="piel">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="kick">Tu piel</p><h2>¿Qué te preocupa<br>ahora mismo?</h2></div>
+      <p>Nos especializamos en el cuidado integral de la piel. Elige lo que más te molesta y te contamos por dónde empezaríamos nosotras.</p>
+    </div>
+    <div class="chips rv" id="chips">
+      <button class="on" data-k="manchas">Manchas</button>
+      <button data-k="acne">Acné</button>
+      <button data-k="sensible">Piel sensible</button>
+      <button data-k="flacidez">Falta de firmeza</button>
+      <button data-k="piernas">Piernas cansadas</button>
+      <button data-k="vello">Vello</button>
+    </div>
+    <div class="answer rv" id="answer" data-d="1"></div>
+  </div>
+</section>
+
+<!-- TRATAMIENTOS -->
+<section id="tratamientos">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="kick">Tratamientos</p><h2>Lo que hacemos<br>en el centro</h2></div>
+      <p>Trabajamos siempre con cita previa. Los precios dependen de la zona y del número de sesiones: te los confirmamos al reservar.</p>
+    </div>
+    <div class="sgrid rv">
+      <article class="s"><span class="n">01</span><h3>Tratamientos faciales</h3>
+        <p>Higiene profunda, hidratación y protocolos específicos para manchas, acné o sensibilidad cutánea.</p>
+        <span class="tag">Cuidado integral de la piel</span></article>
+      <article class="s"><span class="n">02</span><h3>Tratamientos corporales</h3>
+        <p>Trabajo corporal por zonas para firmeza, textura y bienestar general.</p>
+        <span class="tag">Por sesiones</span></article>
+      <article class="s"><span class="n">03</span><h3>Depilación láser</h3>
+        <p>Depilación láser por zonas, con la pauta de sesiones que corresponda a tu tipo de piel y vello.</p>
+        <span class="tag">Consulta previa</span></article>
+      <article class="s"><span class="n">04</span><h3>Presoterapia</h3>
+        <p>Sesiones de presoterapia para activar la circulación y aliviar la sensación de piernas pesadas.</p>
+        <span class="tag">Recomendado en tandas</span></article>
+      <article class="s"><span class="n">05</span><h3>Masajes drenantes</h3>
+        <p>Drenaje manual para reducir retención de líquidos y descargar. Se combina bien con la presoterapia.</p>
+        <span class="tag">Combinable</span></article>
+      <article class="s"><span class="n">06</span><h3>Depilación con hilo</h3>
+        <p>Técnica de hilo para cejas y rostro: precisa y respetuosa con las pieles más delicadas.</p>
+        <span class="tag">Rostro y cejas</span></article>
+      <article class="s"><span class="n">07</span><h3>Manos y pies</h3>
+        <p>Cuidado completo de manos y pies, con el acabado que elijas.</p>
+        <span class="tag">Manicura y pedicura</span></article>
+      <article class="s"><span class="n">08</span><h3>Diagnóstico de piel</h3>
+        <p>Si no sabes por dónde empezar, empezamos por mirar. Valoramos tu piel y te planteamos qué tiene sentido.</p>
+        <span class="tag">Primera visita</span></article>
+    </div>
+  </div>
+</section>
+
+<div class="mqw"><div class="mq">
+  <span>Faciales</span><span>Láser</span><span>Presoterapia</span><span>Drenaje</span><span>Corporales</span><span>Hilo</span>
+  <span>Faciales</span><span>Láser</span><span>Presoterapia</span><span>Drenaje</span><span>Corporales</span><span>Hilo</span>
+</div></div>
+
+<!-- OPINIONES -->
+<section id="opiniones">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="kick">Opiniones</p><h2>87 personas<br>ya han venido</h2></div>
+      <p>Lo que más se repite en las reseñas: el trato cercano, la profesionalidad y lo cómodo que se está en el centro.</p>
+    </div>
+    <div class="op">
+      <div class="sc rv"><b>4,8</b><div class="st">★★★★★</div><span>87 reseñas en Google</span></div>
+      <div class="qs rv" data-d="1">
+        <article class="q"><p>“Trato cercano y muy profesional. Se nota que saben lo que hacen con la piel.”</p><footer>Reseña en Google</footer></article>
+        <article class="q"><p>“El centro es comodísimo y muy acogedor. Salgo relajada siempre.”</p><footer>Clienta de Guía</footer></article>
+        <article class="q"><p>“Muy contenta con los tratamientos. Te explican bien qué te están haciendo y por qué.”</p><footer>Clienta habitual</footer></article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACTO -->
+<section class="ct" id="contacto">
+  <div class="wrap">
+    <div class="head rv">
+      <div><p class="kick">Contacto</p><h2>Estamos en<br>el centro de Guía</h2></div>
+      <p>Trabajamos con cita previa para dedicarle a cada tratamiento el tiempo que necesita.</p>
+    </div>
+    <div class="cg">
+      <div class="rv">
+        <dl class="dl">
+          <div><dt>Dirección</dt><dd>Av. Alcalde Fernández Alonso de la Guardia, 5 — Local 9B<br>35450 Santa María de Guía, Las Palmas</dd></div>
+          <div><dt>Teléfono</dt><dd><a href="tel:+34616229478">616 22 94 78</a></dd></div>
+          <div><dt>Reservas</dt><dd>Solo con cita previa</dd></div>
+          <div><dt>Valoración</dt><dd>4,8 ★ · 87 reseñas en Google</dd></div>
+        </dl>
+        <a class="mapa" href="https://www.google.com/maps/search/?api=1&query=Est%C3%A9tica+Integral+Gu%C3%ADa+Avenida+Alcalde+Fern%C3%A1ndez+Alonso+de+la+Guardia+5+Santa+Mar%C3%ADa+de+Gu%C3%ADa" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p class="dis" style="font-size:1.4rem;margin-top:.5rem">Av. Alcalde Fdez. Alonso de la Guardia, 5</p>
+            <p style="color:rgba(251,251,249,.6);font-size:.88rem;margin-top:.3rem">Abrir en Google Maps</p>
+          </div>
+        </a>
+      </div>
+      <div class="rv" data-d="1">
+        <div class="live"><span class="pt" id="pt"></span><span id="ptTxt">Comprobando horario…</span></div>
+        <table class="hrs">
+          <tr data-day="1"><td>Lunes</td><td>09:30 – 20:00</td></tr>
+          <tr data-day="2"><td>Martes</td><td>09:30 – 20:00</td></tr>
+          <tr data-day="3"><td>Miércoles</td><td>09:30 – 20:00</td></tr>
+          <tr data-day="4"><td>Jueves</td><td>09:30 – 20:00</td></tr>
+          <tr data-day="5"><td>Viernes</td><td>09:30 – 20:00</td></tr>
+          <tr data-day="6"><td>Sábado</td><td>09:30 – 13:30</td></tr>
+          <tr data-day="0"><td>Domingo</td><td>Cerrado</td></tr>
+        </table>
+        <div style="display:flex;gap:.7rem;flex-wrap:wrap;margin-top:2rem">
+          <a href="tel:+34616229478" class="btn btn-f" style="background:var(--teal-l);color:var(--deep)">Llamar ahora</a>
+          <a href="https://wa.me/34616229478" target="_blank" rel="noopener" class="btn btn-l" style="border-color:rgba(251,251,249,.4);color:var(--paper)">WhatsApp</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Estética Integral Guía · Santa María de Guía, Gran Canaria</span>
+    <span><a href="tel:+34616229478">616 22 94 78</a> · Av. Alcalde Fdez. Alonso de la Guardia, 5</span>
+  </div>
+</footer>
+
+<div class="bar" id="bar">
+  <p><b>Cita previa</b> · 616 22 94 78 · Santa María de Guía</p>
+  <div class="acts">
+    <a href="tel:+34616229478" class="p1">Llamar</a>
+    <a href="https://wa.me/34616229478" target="_blank" rel="noopener" class="p2">WhatsApp</a>
+  </div>
+</div>
+
+<div class="demo">DEMO · propuesta de diseño no oficial</div>
+
+<script>
+addEventListener('load',()=>setTimeout(()=>document.getElementById('intro').classList.add('out'),800));
+const hd=document.getElementById('hd'),prog=document.getElementById('prog'),bar=document.getElementById('bar');
+addEventListener('scroll',()=>{
+  const y=scrollY,max=document.body.scrollHeight-innerHeight;
+  prog.style.width=(y/max*100)+'%';
+  hd.classList.toggle('stuck',y>70);
+  bar.classList.toggle('up',y>innerHeight*.9&&y<max-150);
+},{passive:true});
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.onclick=()=>menu.classList.toggle('open');
+menu.onclick=e=>{if(e.target.tagName==='A')menu.classList.remove('open')};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+
+const DATA={
+  manchas:{t:'Manchas en la piel',d:'Las manchas necesitan constancia y protección solar, no un milagro en una sesión. Valoramos primero de qué tipo son —sol, edad u hormonales— porque el protocolo cambia mucho según el origen.',x:['Tratamiento facial específico','Valoración previa','Por sesiones']},
+  acne:{t:'Acné y piel con imperfecciones',d:'Trabajamos el acné desde la higiene profunda y protocolos específicos, cuidando de no agredir la piel. También te explicamos qué hacer en casa, que es la mitad del resultado.',x:['Higiene profunda','Protocolo específico','Pauta para casa']},
+  sensible:{t:'Piel sensible o reactiva',d:'Si tu piel se pone roja o tira con casi todo, el error suele ser tratarla con lo mismo que a las demás. Adaptamos técnica y producto, y usamos depilación con hilo en zonas delicadas.',x:['Tratamiento adaptado','Depilación con hilo','Sin agresión']},
+  flacidez:{t:'Falta de firmeza',d:'Trabajo corporal y facial enfocado en tonificar. Va por tandas: una sesión suelta no cambia nada, pero una pauta bien planteada sí se nota.',x:['Corporal','Facial','Por sesiones']},
+  piernas:{t:'Piernas cansadas y retención',d:'La combinación que mejor funciona es presoterapia más masaje drenante. Ideal si pasas muchas horas de pie o notas las piernas pesadas al final del día.',x:['Presoterapia','Masaje drenante','Combinable']},
+  vello:{t:'Vello no deseado',d:'Depilación láser por zonas para resultados duraderos, y depilación con hilo para cejas y rostro cuando hace falta precisión. Te decimos cuántas sesiones necesitarás antes de empezar.',x:['Láser','Hilo','Cejas y rostro']}
+};
+const chips=document.getElementById('chips'),ans=document.getElementById('answer');
+function pinta(k){
+  const d=DATA[k];
+  ans.innerHTML='<h3>'+d.t+'</h3><p>'+d.d+'</p><ul>'+d.x.map(i=>'<li>'+i+'</li>').join('')+'</ul>';
+  ans.classList.remove('sw'); void ans.offsetWidth; ans.classList.add('sw');
+}
+pinta('manchas');
+chips.addEventListener('click',e=>{
+  const b=e.target.closest('button'); if(!b)return;
+  chips.querySelectorAll('button').forEach(x=>x.classList.remove('on')); b.classList.add('on');
+  pinta(b.dataset.k);
+});
+
+const H={1:[9.5,20],2:[9.5,20],3:[9.5,20],4:[9.5,20],5:[9.5,20],6:[9.5,13.5],0:null};
+const now=new Date(),day=now.getDay(),h=now.getHours()+now.getMinutes()/60,r=H[day];
+const ab=r&&h>=r[0]&&h<r[1];
+const fmt=v=>String(Math.floor(v)).padStart(2,'0')+':'+String(Math.round(v%1*60)).padStart(2,'0');
+document.getElementById('ptTxt').textContent=ab?'Abierto ahora · hasta las '+fmt(r[1]):'Cerrado ahora · consulta el horario';
+if(!ab)document.getElementById('pt').classList.add('off');
+document.querySelectorAll('.hrs tr').forEach(tr=>{if(+tr.dataset.day===day)tr.classList.add('now')});
+document.getElementById('yr').textContent=now.getFullYear();
+</script>
+
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .ln i{transform:none!important;opacity:1!important}
+  .hero .kick,.hero-sub,.hero-acts,.horb,.orb-tag{opacity:1!important;animation:none!important}
+  #intro{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia */
+(function(){
+  function rescate(){
+    var i=document.getElementById('intro'); if(i) i.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var j=0;j<n.length;j++){
+      var e=n[j],cs=getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.ln i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .ln i').forEach(function(e){
+      e.style.setProperty('transform','none','important');e.style.setProperty('opacity','1','important');
+    });
+    if(!document.getElementById('answer').innerHTML.trim()){
+      document.getElementById('answer').innerHTML='<h3>Cuidado integral de la piel</h3><p>Tratamos manchas, acne y sensibilidad cutanea, ademas de depilacion laser, presoterapia, masajes drenantes y cuidado de manos y pies. Llamanos al 616 22 94 78 y te orientamos.</p>';
+    }
+  }
+  setTimeout(rescate,1200);
+  addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
