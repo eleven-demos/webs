@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>El Estudio Peluquería · Especialistas en rubios en Las Palmas de Gran Canaria</title>
+<meta name="description" content="Peluquería en Las Palmas de Gran Canaria especialista en rubios, balayage, botox capilar y extensiones método Remy. 4,9 en Google con 350 reseñas. Cita en el 651 46 65 64.">
+<style>
+:root{
+  --cacao:#3E2723; --cacao-2:#2A1A16; --nata:#FAF7F2; --nata-2:#F0E9E0;
+  --oro:#C9A96A; --oro-2:#AE8D4E; --tinta:#241612; --mut:#7A6A63;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter','Segoe UI',system-ui,sans-serif;background:var(--nata);color:var(--tinta);line-height:1.72;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3,.ser{font-family:'Georgia','Times New Roman',serif;font-weight:400;line-height:1.1;letter-spacing:-.015em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{width:min(1150px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.44em;text-transform:uppercase;color:var(--oro);font-weight:700}
+
+#load{position:fixed;inset:0;z-index:999;background:var(--cacao);display:grid;place-items:center;transition:opacity .7s,visibility .7s}
+#load.off{opacity:0;visibility:hidden}
+.ring{width:62px;height:62px;margin:0 auto;border:1px solid rgba(201,169,106,.35);border-top-color:var(--oro);border-radius:50%;animation:sp 1.1s linear infinite}
+@keyframes sp{to{transform:rotate(360deg)}}
+#load p{color:var(--nata);font-family:Georgia,serif;letter-spacing:.36em;margin-top:1.5rem;text-align:center;font-size:1.15rem}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.4rem 0;transition:.45s}
+header.stuck{background:rgba(250,247,242,.97);padding:.7rem 0;box-shadow:0 2px 22px rgba(36,22,18,.09)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+header.stuck .cta{background:var(--cacao);color:var(--nata);border-color:var(--cacao)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:Georgia,serif;font-size:1.55rem;letter-spacing:.08em;color:var(--nata);transition:.4s}
+.brand span{color:var(--oro)}
+.menu{display:flex;gap:2rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--nata);font-weight:500;transition:.4s}
+.menu a{position:relative;padding-bottom:4px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--oro);transition:width .4s}
+.menu a:hover::after{width:100%}
+.cta{border:1px solid var(--oro);color:var(--oro);padding:.7rem 1.5rem;font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;transition:.35s;border-radius:2px}
+.cta:hover{background:var(--oro);color:#fff}
+.burger{display:none;background:none;border:0;color:var(--nata);font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--cacao);color:var(--nata);padding:9rem 0 7rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 74% 28%,rgba(201,169,106,.26),transparent 58%),radial-gradient(ellipse at 8% 84%,rgba(201,169,106,.11),transparent 55%)}
+.hero::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(62deg,rgba(250,247,242,.03) 0 1px,transparent 1px 78px)}
+.hero-in{position:relative;z-index:2;max-width:860px}
+.hero .est{opacity:0;animation:fade .9s .35s forwards}
+.hero h1{font-size:clamp(3rem,9vw,6.6rem);margin:1.5rem 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:italic;color:var(--oro)}
+.hero p.lead{max-width:530px;margin-top:1.9rem;color:rgba(250,247,242,.74);font-size:1.05rem;opacity:0;animation:fade .9s 1.25s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fade .9s 1.45s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.05rem 2.1rem;font-size:.71rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.38s;border-radius:2px}
+.btn-c{background:var(--oro);color:#fff}
+.btn-c:hover{background:var(--oro-2);transform:translateY(-3px)}
+.btn-o{border:1px solid currentColor}
+.btn-o:hover{background:var(--nata);color:var(--cacao);border-color:var(--nata)}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(250,247,242,.16);z-index:2;opacity:0;animation:fade .9s 1.7s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 0;font-size:.73rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(250,247,242,.64)}
+.hf b{color:var(--oro);letter-spacing:.1em}
+
+section{padding:7.5rem 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}.rv[data-d="4"]{transition-delay:.48s}
+.sec-head{max-width:640px;margin-bottom:4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.1rem,5.4vw,3.4rem);margin-top:1rem}
+.sec-head p{color:var(--mut);margin-top:1.15rem}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.p{padding:2.6rem 2.1rem;background:var(--nata-2);border-radius:4px;transition:.45s;position:relative;overflow:hidden}
+.p::after{content:"";position:absolute;left:0;top:0;width:3px;height:0;background:var(--oro);transition:height .5s}
+.p:hover{transform:translateY(-8px);box-shadow:0 26px 50px -30px rgba(36,22,18,.42)}
+.p:hover::after{height:100%}
+.p .num{font-family:Georgia,serif;font-size:2.5rem;color:var(--oro);opacity:.34;line-height:1}
+.p h3{font-size:1.4rem;margin:.7rem 0 .8rem}
+.p p{font-size:.94rem;color:var(--mut)}
+
+.serv{background:var(--cacao);color:var(--nata)}
+.serv .sec-head p{color:rgba(250,247,242,.68)}
+.slist{display:grid;grid-template-columns:1fr 1fr;gap:0 4rem}
+.s{padding:1.85rem 0;border-bottom:1px solid rgba(250,247,242,.14);transition:.35s}
+.s:hover{padding-left:.7rem}
+.s h3{font-size:1.38rem;color:var(--nata);transition:.35s}
+.s:hover h3{color:var(--oro)}
+.s p{font-size:.92rem;color:rgba(250,247,242,.62);margin-top:.35rem}
+.s .kind{font-size:.61rem;letter-spacing:.28em;text-transform:uppercase;color:var(--oro)}
+.serv .note{margin-top:2.6rem;font-size:.85rem;color:rgba(250,247,242,.52);text-align:center}
+
+.nums{background:var(--nata-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-family:Georgia,serif;font-size:clamp(2.3rem,6vw,3.5rem);color:var(--cacao);display:block;line-height:1}
+.n span{font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.6rem}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(275px,1fr));gap:1.8rem}
+.r{background:var(--nata-2);padding:2.4rem;border-radius:4px;transition:.45s;position:relative}
+.r::before{content:"”";position:absolute;top:.4rem;right:1.4rem;font-family:Georgia,serif;font-size:5rem;color:var(--oro);opacity:.26;line-height:1}
+.r:hover{transform:translateY(-7px);box-shadow:0 26px 50px -32px rgba(36,22,18,.44)}
+.r .stars{color:var(--oro);letter-spacing:.2em;margin-bottom:1rem;font-size:.9rem}
+.r p{font-size:.96rem;color:var(--mut);font-style:italic}
+.r footer{margin-top:1.4rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta);background:none;padding:0}
+
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dt{padding:1.5rem 0;border-bottom:1px solid rgba(36,22,18,.1)}
+.dt h4{font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;color:var(--oro);margin-bottom:.45rem}
+.dt p,.dt a{font-size:1.04rem}
+.dt a:hover{color:var(--oro)}
+.map{min-height:340px;display:grid;place-items:center;text-align:center;padding:2.5rem;border-radius:4px;transition:.45s;color:var(--nata);background:linear-gradient(150deg,var(--cacao),var(--cacao-2));position:relative}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2.1rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--cacao-2);color:rgba(250,247,242,.56);padding:3rem 0;font-size:.85rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--oro)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--oro);color:#fff;box-shadow:0 14px 34px -10px rgba(36,22,18,.5);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(36,22,18,.9);color:var(--nata);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cacao);padding:2rem;gap:1.3rem;color:var(--nata)}
+  .pillars,.slist,.cgrid{grid-template-columns:1fr;gap:1.6rem}
+  .ngrid{grid-template-columns:1fr;gap:2.4rem}
+  section{padding:5rem 0}
+  .hero{padding-bottom:9.5rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load"><div><div class="ring"></div><p>EL ESTUDIO</p></div></div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">El Estudio<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#salon">El salón</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34651466564" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Las Palmas de Gran Canaria · peluquería</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.4s">Especialistas</i></span><br>
+      <span class="word"><i style="animation-delay:.55s">en</i></span>
+      <span class="word"><i style="animation-delay:.7s"><em>rubios</em></i></span>
+    </h1>
+    <p class="lead">Color, balayage y tratamientos de cuidado del cabello. Trabajo técnico, hecho con calma y explicado antes de empezar.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34651466564" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="#servicios" class="btn btn-o">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 4,9</b> · 350 reseñas en Google</span>
+      <span>C/ Reyes Católicos, 59</span>
+      <span>651 46 65 64</span>
+    </div>
+  </div>
+</section>
+
+<section id="salon">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">El salón</p>
+      <h2>El color bien hecho<br>lleva su tiempo</h2>
+      <p>Un 4,9 sobre 5 con 350 reseñas no se consigue con prisa. Cada cabello reacciona distinto al color, y de ahí sale nuestra forma de trabajar: diagnóstico primero, técnica después.</p>
+    </div>
+    <div class="pillars">
+      <div class="p rv"><div class="num">01</div><h3>Diagnóstico</h3><p>Antes de tocar el pelo miramos en qué estado está y hasta dónde se puede llegar sin castigarlo. Si algo no conviene, se dice.</p></div>
+      <div class="p rv" data-d="1"><div class="num">02</div><h3>Técnica de color</h3><p>Coloración permanente y sin amoníaco, balayage y decoloración. La especialidad de la casa son los rubios.</p></div>
+      <div class="p rv" data-d="2"><div class="num">03</div><h3>Cuidado después</h3><p>Botox capilar, keratina y alisado para que el pelo aguante el color y siga manejable en casa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que hacemos</h2>
+      <p>Peluquería técnica de color y cuidado capilar, con corte y peinado.</p>
+    </div>
+    <div class="slist">
+      <div class="s rv"><span class="kind">Color</span><h3>Balayage</h3><p>Iluminación a mano alzada, degradada y con crecimiento natural. Una de las técnicas más pedidas del salón.</p></div>
+      <div class="s rv" data-d="1"><span class="kind">Color</span><h3>Coloración sin amoníaco</h3><p>Color permanente y también en versión sin amoníaco, para cabellos más sensibles.</p></div>
+      <div class="s rv"><span class="kind">Color</span><h3>Decoloración y rubios</h3><p>Subir de tono con control del daño. La especialidad por la que nos conocen.</p></div>
+      <div class="s rv" data-d="1"><span class="kind">Tratamiento</span><h3>Botox capilar y keratina</h3><p>Recuperación de cabellos castigados: cuerpo, brillo y menos encrespamiento.</p></div>
+      <div class="s rv"><span class="kind">Tratamiento</span><h3>Alisado</h3><p>Alisado profesional para un acabado liso duradero y fácil de mantener en casa.</p></div>
+      <div class="s rv" data-d="1"><span class="kind">Corte</span><h3>Corte con técnica francesa</h3><p>Corte pensado para la forma de tu cara y para que caiga bien sin plancharlo cada día.</p></div>
+      <div class="s rv"><span class="kind">Extensiones</span><h3>Método Remy</h3><p>Extensiones de cabello natural, colocadas y adaptadas al color de tu melena.</p></div>
+      <div class="s rv" data-d="1"><span class="kind">Eventos</span><h3>Peinados</h3><p>Recogidos y peinados para bodas, comuniones y celebraciones.</p></div>
+    </div>
+    <p class="note">Servicios tomados de la información pública del salón. Los precios y la carta definitiva los ponéis vosotros.</p>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="49" data-dec="1">0</span></b><span>Valoración media sobre 5</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="350">0</span></b><span>Reseñas en Google</span></div>
+    <div class="n rv" data-d="2"><b>Rubios</b><span>Nuestra especialidad</span></div>
+  </div>
+</section>
+
+<section id="opiniones">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>4,9 sobre 5 en Google</h2>
+      <p>350 personas han valorado el salón. Estas son las ideas que más se repiten en sus opiniones.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Salí con el rubio que llevaba años buscando y sin sentir el pelo estropeado.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Te explican qué te van a hacer y por qué. Se nota que saben de color.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Trato cercano y mucho cuidado con el cabello. Llevo años yendo y no cambio.”</p><footer>Clienta habitual</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.85rem;margin-top:2.4rem">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Pide tu cita</h2>
+      <p>Trabajamos con cita previa para dedicarle a cada cabello el tiempo que necesita.</p>
+    </div>
+    <div class="cgrid">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C/ Reyes Católicos, 59<br>35001 Las Palmas de Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34651466564">651 46 65 64</a></p></div>
+        <div class="dt"><h4>Email</h4><p><a href="mailto:elestudio2016@hotmail.com">elestudio2016@hotmail.com</a></p></div>
+        <div class="dt"><h4>Especialidad</h4><p>Rubios · balayage · tratamientos capilares</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=El+Estudio+Peluqueria+Calle+Reyes+Catolicos+59+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p class="ser" style="font-size:1.7rem;margin-top:.8rem">C/ Reyes Católicos, 59</p>
+            <p style="color:rgba(250,247,242,.64);margin-top:.4rem">Las Palmas de Gran Canaria</p>
+            <span class="btn btn-o" style="margin-top:1.6rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> El Estudio Peluquería · Las Palmas de Gran Canaria</span>
+    <span><a href="tel:+34651466564">651 46 65 64</a> · C/ Reyes Católicos, 59</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34651466564" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34651466564" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('load').classList.add('off')},900)});
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

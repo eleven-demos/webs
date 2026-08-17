@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coquetos · Peluquería infantil en Las Palmas de Gran Canaria (0 a 14 años)</title>
+<meta name="description" content="Peluquería solo para niños y bebés de 0 a 14 años en Arenales, Las Palmas de Gran Canaria. 5,0 en Google con 128 reseñas. C/ Obispo Rabadán, 24. Cita: 682 06 40 11.">
+<style>
+:root{
+  --azul:#2E9CCA; --azul-2:#1E6F92; --crema:#FFF8E7; --crema-2:#FFEFD0;
+  --naranja:#F4A93F; --naranja-2:#DB8F22; --tinta:#17323F; --mut:#5F7683;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Nunito','Trebuchet MS','Segoe UI',system-ui,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.75;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:800;line-height:1.12;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1140px,90vw);margin-inline:auto}
+.eyebrow{font-size:.7rem;letter-spacing:.34em;text-transform:uppercase;color:var(--naranja-2);font-weight:800}
+
+#load{position:fixed;inset:0;z-index:999;background:var(--azul);display:grid;place-items:center;transition:opacity .7s,visibility .7s}
+#load.off{opacity:0;visibility:hidden}
+.bub{width:70px;height:70px;margin:0 auto;border-radius:50%;background:var(--crema);animation:pop 1.3s ease-in-out infinite}
+@keyframes pop{50%{transform:scale(.72);background:var(--naranja)}}
+#load p{color:#fff;letter-spacing:.3em;margin-top:1.4rem;text-align:center;font-weight:800;font-size:1.2rem}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.3rem 0;transition:.45s}
+header.stuck{background:rgba(255,248,231,.97);padding:.65rem 0;box-shadow:0 2px 22px rgba(23,50,63,.1)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;color:#fff;transition:.4s}
+.brand span{color:var(--naranja)}
+.menu{display:flex;gap:2rem;font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:#fff;font-weight:700;transition:.4s}
+.menu a{position:relative;padding-bottom:4px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--naranja);transition:width .4s;border-radius:2px}
+.menu a:hover::after{width:100%}
+.cta{background:var(--naranja);color:#fff;padding:.75rem 1.6rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:800;transition:.35s;border-radius:99px}
+.cta:hover{background:var(--naranja-2);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--azul);color:#fff;padding:9rem 0 7rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 22%,rgba(244,169,63,.34),transparent 46%),radial-gradient(circle at 12% 86%,rgba(255,248,231,.2),transparent 48%)}
+.hero .blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.09);animation:float 9s ease-in-out infinite}
+.hero .b1{width:230px;height:230px;top:14%;right:8%}
+.hero .b2{width:130px;height:130px;bottom:18%;right:26%;animation-delay:1.4s}
+.hero .b3{width:90px;height:90px;top:26%;left:6%;animation-delay:2.6s}
+@keyframes float{50%{transform:translateY(-26px)}}
+.hero-in{position:relative;z-index:2;max-width:840px}
+.hero .est{opacity:0;animation:fade .9s .35s forwards}
+.hero h1{font-size:clamp(2.8rem,8.4vw,6rem);margin:1.4rem 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:normal;color:var(--naranja)}
+.hero p.lead{max-width:540px;margin-top:1.8rem;color:rgba(255,255,255,.9);font-size:1.07rem;opacity:0;animation:fade .9s 1.25s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.5rem;opacity:0;animation:fade .9s 1.45s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.05rem 2.1rem;font-size:.76rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;transition:.38s;border-radius:99px}
+.btn-c{background:var(--naranja);color:#fff}
+.btn-c:hover{background:var(--naranja-2);transform:translateY(-3px)}
+.btn-o{border:2px solid currentColor}
+.btn-o:hover{background:#fff;color:var(--azul);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.22);z-index:2;opacity:0;animation:fade .9s 1.7s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.4rem 0;font-size:.78rem;letter-spacing:.1em;color:rgba(255,255,255,.86);font-weight:700}
+.hf b{color:var(--naranja)}
+
+section{padding:7rem 0;position:relative}
+.rv{opacity:0;transform:translateY(32px);transition:.95s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+.sec-head{max-width:640px;margin-bottom:3.6rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2rem,5.2vw,3.2rem);margin-top:.9rem}
+.sec-head p{color:var(--mut);margin-top:1.1rem}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.p{padding:2.4rem 2rem;background:#fff;border-radius:22px;transition:.45s;box-shadow:0 10px 30px -22px rgba(23,50,63,.5)}
+.p:hover{transform:translateY(-9px) rotate(-.6deg);box-shadow:0 28px 52px -30px rgba(23,50,63,.5)}
+.p .ico{font-size:2.2rem;line-height:1}
+.p h3{font-size:1.32rem;margin:.8rem 0 .7rem}
+.p p{font-size:.95rem;color:var(--mut)}
+
+.serv{background:var(--azul);color:#fff}
+.serv .sec-head p{color:rgba(255,255,255,.85)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.s{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:2rem;border-radius:20px;transition:.4s}
+.s:hover{background:rgba(255,255,255,.18);transform:translateY(-7px)}
+.s .kind{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--naranja);font-weight:800}
+.s h3{font-size:1.26rem;margin:.5rem 0 .5rem}
+.s p{font-size:.92rem;color:rgba(255,255,255,.86)}
+.serv .note{margin-top:2.4rem;font-size:.86rem;color:rgba(255,255,255,.72);text-align:center}
+
+.nums{background:var(--crema-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.2rem,5.6vw,3.4rem);color:var(--azul-2);display:block;line-height:1;font-weight:800}
+.n span{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.6rem;font-weight:700}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.7rem}
+.r{background:#fff;padding:2.2rem;border-radius:22px;transition:.45s;position:relative;box-shadow:0 10px 30px -24px rgba(23,50,63,.5)}
+.r::before{content:"”";position:absolute;top:.3rem;right:1.3rem;font-size:4.6rem;color:var(--naranja);opacity:.3;line-height:1;font-weight:800}
+.r:hover{transform:translateY(-7px)}
+.r .stars{color:var(--naranja);letter-spacing:.18em;margin-bottom:.9rem}
+.r p{font-size:.97rem;color:var(--mut);font-style:italic}
+.r footer{margin-top:1.3rem;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta);background:none;padding:0;font-weight:800}
+
+.hor{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1.1rem}
+.h{background:#fff;border-radius:18px;padding:1.4rem 1.5rem;transition:.35s;border-left:5px solid var(--azul)}
+.h.off{border-left-color:var(--crema-2);opacity:.72}
+.h:hover{transform:translateY(-5px)}
+.h b{display:block;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut)}
+.h span{font-size:1.15rem;font-weight:800}
+
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.dt{padding:1.4rem 0;border-bottom:1px solid rgba(23,50,63,.12)}
+.dt h4{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--naranja-2);margin-bottom:.4rem;font-weight:800}
+.dt p,.dt a{font-size:1.04rem}
+.dt a:hover{color:var(--azul-2)}
+.map{min-height:330px;display:grid;place-items:center;text-align:center;padding:2.4rem;border-radius:22px;transition:.45s;color:#fff;background:linear-gradient(150deg,var(--azul),var(--azul-2))}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2.1rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--azul-2);color:rgba(255,255,255,.82);padding:2.8rem 0;font-size:.88rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--naranja)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--naranja);color:#fff;box-shadow:0 14px 34px -12px rgba(23,50,63,.6);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(23,50,63,.92);color:#fff;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--azul);padding:2rem;gap:1.3rem;color:#fff}
+  .pillars,.cgrid{grid-template-columns:1fr;gap:1.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.6rem 0}
+  .hero{padding-bottom:9.5rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load"><div><div class="bub"></div><p>COQUETOS</p></div></div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">Coquetos<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#horario">Horario</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34682064011" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Arenales · Las Palmas de Gran Canaria</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.4s">La peluquería</i></span><br>
+      <span class="word"><i style="animation-delay:.55s">solo para</i></span>
+      <span class="word"><i style="animation-delay:.7s"><em>niños</em></i></span>
+    </h1>
+    <p class="lead">Cortamos el pelo a bebés y niños de 0 a 14 años. Sin prisas, a su ritmo y con paciencia — también si es la primera vez.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34682064011" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="#horario" class="btn btn-o">Ver horario</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 128 reseñas en Google</span>
+      <span>C/ Obispo Rabadán, 24</span>
+      <span>682 06 40 11</span>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2>Un 5 sobre 5,<br>y son 128 familias</h2>
+      <p>Nota perfecta en Google. Detrás de eso hay una idea sencilla: aquí solo cortamos pelo infantil, así que todo — el sitio, el tiempo y la forma de tratarlos — está pensado para ellos.</p>
+    </div>
+    <div class="pillars">
+      <div class="p rv"><div class="ico">👶</div><h3>Desde bebés</h3><p>Atendemos de 0 a 14 años. El primer corte de un bebé se hace con toda la calma del mundo.</p></div>
+      <div class="p rv" data-d="1"><div class="ico">⏳</div><h3>A su ritmo</h3><p>Si hoy no quiere sentarse, se espera. Nadie sale de aquí llorando por ir con prisa.</p></div>
+      <div class="p rv" data-d="2"><div class="ico">⭐</div><h3>5,0 en Google</h3><p>128 reseñas y valoración perfecta. Casi todas de padres y madres del barrio que repiten.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que hacemos</h2>
+      <p>Peluquería infantil de 0 a 14 años, con cita previa.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s rv"><span class="kind">Bebés</span><h3>Primer corte</h3><p>El primero de su vida, con la paciencia que hace falta y un recuerdo para casa.</p></div>
+      <div class="s rv" data-d="1"><span class="kind">Niños</span><h3>Corte de niño</h3><p>Corte adaptado a su edad y a su tipo de pelo, para que le dure y sea fácil de peinar.</p></div>
+      <div class="s rv" data-d="2"><span class="kind">Niñas</span><h3>Corte de niña</h3><p>Puntas, flequillo o cambio de largo, siempre explicándole antes qué le vamos a hacer.</p></div>
+      <div class="s rv"><span class="kind">Peinados</span><h3>Peinados y recogidos</h3><p>Para comuniones, bodas, fiestas del colegio o cualquier día especial.</p></div>
+    </div>
+    <p class="note">Servicios tomados de la información pública de la peluquería. Los precios los ponéis vosotros.</p>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="50" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="128">0</span></b><span>Reseñas de familias</span></div>
+    <div class="n rv" data-d="2"><b>0-14</b><span>Años que atendemos</span></div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Horario</p>
+      <h2>Cuándo estamos</h2>
+      <p>Trabajamos con cita previa. Escríbenos por WhatsApp y buscamos hueco.</p>
+    </div>
+    <div class="hor">
+      <div class="h rv"><b>Lunes</b><span>15:00 – 19:00</span></div>
+      <div class="h rv" data-d="1"><b>Martes a viernes</b><span>11:00 – 19:00</span></div>
+      <div class="h rv" data-d="2"><b>Sábado</b><span>10:00 – 14:00</span></div>
+      <div class="h off rv" data-d="3"><b>Domingo</b><span>Cerrado</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--crema-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen los padres</h2>
+      <p>5,0 sobre 5 con 128 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Es el único sitio donde mi hijo se deja cortar el pelo sin llorar.”</p><footer>Opinión de familia</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Muchísima paciencia con los peques y un trato encantador.”</p><footer>Opinión de familia</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Llevamos años viniendo con los dos niños. Siempre salen contentos.”</p><footer>Familia habitual</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.86rem;margin-top:2.3rem">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Pide cita</h2>
+      <p>Estamos en Obispo Rabadán, 24, en pleno barrio de Arenales.</p>
+    </div>
+    <div class="cgrid">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C/ Obispo Rabadán, 24<br>35003 Las Palmas de Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34682064011">682 06 40 11</a></p></div>
+        <div class="dt"><h4>Email</h4><p><a href="mailto:peluqueriainfantilcoquetos@gmail.com">peluqueriainfantilcoquetos@gmail.com</a></p></div>
+        <div class="dt"><h4>Edades</h4><p>De 0 a 14 años · bebés bienvenidos</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Peluqueria+infantil+Coquetos+Calle+Obispo+Rabadan+24+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.6rem;margin-top:.8rem;font-weight:800">C/ Obispo Rabadán, 24</p>
+            <p style="color:rgba(255,255,255,.85);margin-top:.4rem">Barrio de Arenales</p>
+            <span class="btn btn-o" style="margin-top:1.6rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Peluquería infantil Coquetos · Las Palmas de Gran Canaria</span>
+    <span><a href="tel:+34682064011">682 06 40 11</a> · C/ Obispo Rabadán, 24</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34682064011" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34682064011" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('load').classList.add('off')},900)});
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
