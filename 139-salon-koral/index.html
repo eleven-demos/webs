@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Salón Koral · Peluquería en San Fernando de Maspalomas</title>
+<meta name="description" content="Peluquería en Av. de España, 7, San Fernando de Maspalomas. 5,0 en Google con 96 reseñas. Extensiones y trabajo de salón con cita previa: 610 20 07 14.">
+<style>
+:root{
+  --coral:#E8735A; --coral-2:#CE5942; --crema:#FDF6F2; --crema-2:#F7E9E2;
+  --petroleo:#2F4858; --petroleo-2:#1E313D; --mut:#6E7D86;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Segoe UI','Helvetica Neue',Arial,sans-serif;background:var(--crema);color:var(--petroleo-2);line-height:1.78;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:800;line-height:1.1;letter-spacing:-.025em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,90vw);margin-inline:auto}
+.eyebrow{font-size:.68rem;letter-spacing:.36em;text-transform:uppercase;color:var(--coral-2);font-weight:800}
+
+#load{position:fixed;inset:0;z-index:999;background:var(--petroleo);display:grid;place-items:center;transition:opacity .8s,visibility .8s}
+#load.off{opacity:0;visibility:hidden}
+.dot{width:64px;height:64px;margin:0 auto;border-radius:50%;background:var(--coral);animation:beat 1.25s ease-in-out infinite}
+@keyframes beat{50%{transform:scale(.7);background:var(--crema)}}
+#load p{color:#fff;letter-spacing:.42em;margin-top:1.5rem;text-align:center;font-size:.95rem;font-weight:700}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.4rem 0;transition:.45s}
+header.stuck{background:rgba(253,246,242,.97);padding:.7rem 0;box-shadow:0 2px 22px rgba(30,49,61,.1)}
+header.stuck .brand,header.stuck .menu{color:var(--petroleo-2)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.6rem;font-weight:800;letter-spacing:-.02em;color:#fff;transition:.4s}
+.brand span{color:var(--coral)}
+.menu{display:flex;gap:2.1rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:700;transition:.4s}
+.menu a{position:relative;padding-bottom:4px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--coral);transition:width .4s;border-radius:2px}
+.menu a:hover::after{width:100%}
+.cta{background:var(--coral);color:#fff;padding:.78rem 1.7rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:800;transition:.35s;border-radius:99px}
+.cta:hover{background:var(--coral-2);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--petroleo-2)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--petroleo);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 20%,rgba(232,115,90,.34),transparent 46%),radial-gradient(circle at 8% 86%,rgba(253,246,242,.14),transparent 48%)}
+.hero .blob{position:absolute;border-radius:50%;background:rgba(255,255,255,.07);animation:float 9.5s ease-in-out infinite}
+.hero .b1{width:250px;height:250px;top:13%;right:7%}
+.hero .b2{width:140px;height:140px;bottom:19%;right:25%;animation-delay:1.5s}
+.hero .b3{width:95px;height:95px;top:25%;left:5%;animation-delay:2.8s}
+@keyframes float{50%{transform:translateY(-27px)}}
+.hero-in{position:relative;z-index:2;max-width:860px}
+.hero .est{opacity:0;animation:fade .9s .35s forwards}
+.hero h1{font-size:clamp(2.8rem,8.6vw,6.2rem);margin:1.4rem 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:normal;color:var(--coral)}
+.hero p.lead{max-width:540px;margin-top:1.8rem;color:rgba(255,255,255,.88);font-size:1.07rem;opacity:0;animation:fade .9s 1.25s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fade .9s 1.45s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.05rem 2.1rem;font-size:.73rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;transition:.38s;border-radius:99px}
+.btn-c{background:var(--coral);color:#fff}
+.btn-c:hover{background:var(--coral-2);transform:translateY(-3px)}
+.btn-o{border:2px solid currentColor}
+.btn-o:hover{background:#fff;color:var(--petroleo);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.2);z-index:2;opacity:0;animation:fade .9s 1.7s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.4rem 0;font-size:.76rem;letter-spacing:.1em;color:rgba(255,255,255,.86);font-weight:700}
+.hf b{color:var(--coral)}
+
+section{padding:7rem 0;position:relative}
+.rv{opacity:0;transform:translateY(32px);transition:.95s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+.sec-head{max-width:660px;margin-bottom:3.6rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2rem,5.4vw,3.3rem);margin-top:.9rem}
+.sec-head p{color:var(--mut);margin-top:1.1rem}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.p{padding:2.5rem 2rem;background:#fff;border-radius:22px;transition:.45s;box-shadow:0 10px 30px -24px rgba(30,49,61,.55)}
+.p:hover{transform:translateY(-9px) rotate(-.5deg);box-shadow:0 28px 52px -32px rgba(30,49,61,.5)}
+.p .ico{font-size:2.1rem;line-height:1}
+.p h3{font-size:1.3rem;margin:.85rem 0 .6rem}
+.p p{font-size:.95rem;color:var(--mut)}
+
+.serv{background:var(--petroleo);color:#fff}
+.serv .sec-head p{color:rgba(255,255,255,.85)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.5rem}
+.s{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:2rem;border-radius:20px;transition:.4s}
+.s.star{background:var(--coral);border-color:var(--coral)}
+.s:hover{transform:translateY(-7px);background:rgba(255,255,255,.15)}
+.s.star:hover{background:var(--coral-2)}
+.s .kind{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral);font-weight:800}
+.s.star .kind{color:#fff}
+.s h3{font-size:1.26rem;margin:.5rem 0 .5rem}
+.s p{font-size:.93rem;color:rgba(255,255,255,.86)}
+.serv .note{margin-top:2.4rem;font-size:.85rem;color:rgba(255,255,255,.68);text-align:center}
+
+.nums{background:var(--crema-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.2rem,5.8vw,3.5rem);color:var(--petroleo);display:block;line-height:1;font-weight:800}
+.n span{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.6rem;font-weight:700}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.7rem}
+.r{background:#fff;padding:2.3rem;border-radius:22px;transition:.45s;position:relative;box-shadow:0 10px 30px -26px rgba(30,49,61,.55)}
+.r::before{content:"”";position:absolute;top:.3rem;right:1.3rem;font-size:4.6rem;color:var(--coral);opacity:.3;line-height:1;font-weight:800}
+.r:hover{transform:translateY(-7px)}
+.r .stars{color:var(--coral);letter-spacing:.18em;margin-bottom:.9rem}
+.r p{font-size:.97rem;color:var(--mut);font-style:italic}
+.r footer{margin-top:1.3rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--petroleo-2);background:none;padding:0;font-weight:800}
+
+.cita{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.c{background:#fff;border-radius:18px;padding:1.7rem;transition:.35s;border-left:5px solid var(--coral)}
+.c:hover{transform:translateY(-5px)}
+.c b{display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);font-weight:800}
+.c span{font-size:1.12rem;font-weight:800}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.dt{padding:1.4rem 0;border-bottom:1px solid rgba(30,49,61,.12)}
+.dt h4{font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--coral-2);margin-bottom:.4rem;font-weight:800}
+.dt p,.dt a{font-size:1.04rem}
+.dt a:hover{color:var(--coral-2)}
+.map{min-height:340px;display:grid;place-items:center;text-align:center;padding:2.4rem;border-radius:22px;transition:.45s;color:#fff;background:linear-gradient(150deg,var(--petroleo),var(--petroleo-2))}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2.1rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--petroleo-2);color:rgba(255,255,255,.8);padding:2.9rem 0;font-size:.88rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--coral)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--coral);color:#fff;box-shadow:0 14px 34px -12px rgba(30,49,61,.6);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(30,49,61,.92);color:#fff;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--petroleo);padding:2rem;gap:1.3rem;color:#fff}
+  .pillars,.cont{grid-template-columns:1fr;gap:1.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.6rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load"><div><div class="dot"></div><p>KORAL</p></div></div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">Koral<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#salon">El salón</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#opiniones">Opiniones</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34610200714" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">San Fernando · Maspalomas</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.4s">Un 5,0</i></span><br>
+      <span class="word"><i style="animation-delay:.55s">con 96</i></span>
+      <span class="word"><i style="animation-delay:.7s"><em>reseñas</em></i></span>
+    </h1>
+    <p class="lead">Salón de peluquería en la Avenida de España. Un 5,0 redondo en Google con 96 opiniones — eso lo dicen las clientas, no nosotras.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34610200714" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="#servicios" class="btn btn-o">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 96 reseñas en Google</span>
+      <span>Av. de España, 7</span>
+      <span>610 20 07 14</span>
+    </div>
+  </div>
+</section>
+
+<section id="salon">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">El salón</p>
+      <h2>Un 5,0 clavado<br>en San Fernando</h2>
+      <p>Nota perfecta en Google con casi cien opiniones. Es lo más difícil de conseguir en peluquería, porque basta una clienta descontenta para romperlo. Aquí no ha pasado.</p>
+    </div>
+    <div class="pillars">
+      <div class="p rv"><div class="ico">⭐</div><h3>5,0 con 96 reseñas</h3><p>Valoración perfecta en Google. Sin excepciones, y con volumen suficiente para que signifique algo.</p></div>
+      <div class="p rv" data-d="1"><div class="ico">💇‍♀️</div><h3>Extensiones</h3><p>Uno de nuestros trabajos más pedidos: extensiones colocadas con criterio y explicando el mantenimiento.</p></div>
+      <div class="p rv" data-d="2"><div class="ico">📍</div><h3>Avenida de España</h3><p>En pleno San Fernando de Maspalomas, a pie de calle y fácil de encontrar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que hacemos</h2>
+      <p>Trabajamos con cita previa. Escríbenos por WhatsApp y te decimos hueco y precio.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s star rv"><span class="kind">Nuestro fuerte</span><h3>Extensiones</h3><p>Colocación de extensiones adaptadas a tu pelo, con las indicaciones de cuidado para que duren.</p></div>
+      <div class="s rv" data-d="1"><span class="kind">Salón</span><h3>Corte</h3><p>Corte de mujer y de hombre, adaptado a tu tipo de pelo y a cómo te peinas en casa.</p></div>
+      <div class="s rv" data-d="2"><span class="kind">Salón</span><h3>Color y mechas</h3><p>Color, cobertura de canas y mechas, valorando antes el estado del cabello.</p></div>
+      <div class="s rv" data-d="3"><span class="kind">Salón</span><h3>Peinado y recogido</h3><p>Para una boda, una comunión o cualquier día en que quieras salir con el pelo hecho.</p></div>
+    </div>
+    <p class="note">Las extensiones están confirmadas en vuestro perfil público; el resto son bloques de ejemplo. En la web final ponemos exactamente vuestra carta de servicios, con precios si queréis.</p>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="50" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="96">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b>★</b><span>Especialidad: extensiones</span></div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--crema-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen las clientas</h2>
+      <p>5,0 sobre 5 con 96 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Salgo siempre contenta. Es de esos sitios donde te puedes fiar.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Trato cercano y mucho cuidado con el pelo. Se nota la mano.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Llevo años viniendo y no cambio. Es el salón del barrio de toda la vida, pero bien hecho.”</p><footer>Clienta habitual</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.85rem;margin-top:2.3rem">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="cita">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Cita previa</p>
+      <h2>Cómo pedir hora</h2>
+      <p>El horario exacto lo ponemos aquí en cuanto nos lo digáis; de momento, la cita se pide directamente.</p>
+    </div>
+    <div class="cita">
+      <div class="c rv"><b>Por WhatsApp</b><span>610 20 07 14</span></div>
+      <div class="c rv" data-d="1"><b>Por teléfono</b><span>610 20 07 14</span></div>
+      <div class="c rv" data-d="2"><b>En el salón</b><span>Av. de España, 7</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" style="background:var(--crema-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En la Avenida de España, 7, en San Fernando de Maspalomas.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>Av. de España, 7<br>35100 San Fernando · Maspalomas</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34610200714">610 20 07 14</a></p></div>
+        <div class="dt"><h4>Cita</h4><p>Con cita previa</p></div>
+        <div class="dt"><h4>Valoración</h4><p>5,0 en Google · 96 reseñas</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Salon+Koral+Avenida+de+Espana+7+San+Bartolome+de+Tirajana" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.55rem;margin-top:.8rem;font-weight:800">Av. de España, 7</p>
+            <p style="color:rgba(255,255,255,.85);margin-top:.4rem">San Fernando · Maspalomas</p>
+            <span class="btn btn-o" style="margin-top:1.6rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Salón Koral · San Fernando de Maspalomas</span>
+    <span><a href="tel:+34610200714">610 20 07 14</a> · Av. de España, 7</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34610200714" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34610200714" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('load').classList.add('off')},900)});
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

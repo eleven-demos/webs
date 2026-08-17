@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calma Café · Brunch en Playa del Inglés, Maspalomas</title>
+<meta name="description" content="Brunch, tostadas, bowls y café de especialidad en Av. de Tirajana, 3 (Apt. Aloe), Playa del Inglés. 4,8 en Google con 870 reseñas. Opciones veganas y sin gluten. Reservas: 681 66 79 17.">
+<style>
+:root{
+  --verde:#2F4A3C; --verde-2:#1E3327; --crema:#F4F1EA; --crema-2:#EAE4D8;
+  --oro:#C9A227; --oro-2:#A8851A; --tinta:#1B231D; --mut:#6B7A6E;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Georgia','Iowan Old Style',serif;background:var(--crema);color:var(--tinta);line-height:1.78;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:700;line-height:1.1;letter-spacing:-.015em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1160px,90vw);margin-inline:auto}
+.eyebrow{font-family:'Helvetica Neue',Arial,sans-serif;font-size:.68rem;letter-spacing:.36em;text-transform:uppercase;color:var(--oro-2);font-weight:700}
+.sans{font-family:'Helvetica Neue',Arial,sans-serif}
+
+#load{position:fixed;inset:0;z-index:999;background:var(--verde);display:grid;place-items:center;transition:opacity .8s,visibility .8s}
+#load.off{opacity:0;visibility:hidden}
+.cup{width:66px;height:66px;margin:0 auto;border-radius:50%;border:3px solid rgba(244,241,234,.35);border-top-color:var(--oro);animation:spin 1.1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+#load p{color:#fff;letter-spacing:.42em;margin-top:1.5rem;text-align:center;font-size:.95rem;font-family:'Helvetica Neue',Arial,sans-serif;font-weight:600}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.4rem 0;transition:.45s}
+header.stuck{background:rgba(244,241,234,.97);padding:.7rem 0;box-shadow:0 2px 22px rgba(27,35,29,.09)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.62rem;letter-spacing:.02em;color:#fff;transition:.4s}
+.brand span{color:var(--oro)}
+.menu{display:flex;gap:2.1rem;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:#fff;font-weight:600;transition:.4s;font-family:'Helvetica Neue',Arial,sans-serif}
+.menu a{position:relative;padding-bottom:4px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--oro);transition:width .4s}
+.menu a:hover::after{width:100%}
+.cta{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--oro);color:var(--verde-2);padding:.78rem 1.7rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;transition:.35s;border-radius:99px}
+.cta:hover{background:#fff;transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--verde);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 18%,rgba(201,162,39,.3),transparent 45%),radial-gradient(circle at 8% 88%,rgba(244,241,234,.16),transparent 50%)}
+.hero .leaf{position:absolute;border-radius:52% 48% 60% 40%/45% 55% 45% 55%;background:rgba(255,255,255,.06);animation:float 10s ease-in-out infinite}
+.hero .l1{width:260px;height:260px;top:12%;right:6%}
+.hero .l2{width:150px;height:150px;bottom:20%;right:24%;animation-delay:1.6s}
+.hero .l3{width:100px;height:100px;top:24%;left:5%;animation-delay:3s}
+@keyframes float{50%{transform:translateY(-28px) rotate(8deg)}}
+.hero-in{position:relative;z-index:2;max-width:860px}
+.hero .est{opacity:0;animation:fade .9s .35s forwards}
+.hero h1{font-size:clamp(2.9rem,8.6vw,6.2rem);margin:1.4rem 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:italic;color:var(--oro)}
+.hero p.lead{max-width:560px;margin-top:1.8rem;color:rgba(255,255,255,.9);font-size:1.08rem;opacity:0;animation:fade .9s 1.25s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fade .9s 1.45s forwards}
+.btn{font-family:'Helvetica Neue',Arial,sans-serif;display:inline-flex;align-items:center;gap:.6rem;padding:1.05rem 2.1rem;font-size:.73rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;transition:.38s;border-radius:99px}
+.btn-c{background:var(--oro);color:var(--verde-2)}
+.btn-c:hover{background:#fff;transform:translateY(-3px)}
+.btn-o{border:1.5px solid currentColor}
+.btn-o:hover{background:#fff;color:var(--verde);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.2);z-index:2;opacity:0;animation:fade .9s 1.7s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.4rem 0;font-size:.76rem;letter-spacing:.1em;color:rgba(255,255,255,.86);font-family:'Helvetica Neue',Arial,sans-serif;font-weight:600}
+.hf b{color:var(--oro)}
+
+section{padding:7rem 0;position:relative}
+.rv{opacity:0;transform:translateY(32px);transition:.95s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}.rv[data-d="4"]{transition-delay:.48s}
+.sec-head{max-width:660px;margin-bottom:3.6rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2rem,5.4vw,3.3rem);margin-top:.9rem}
+.sec-head p{color:var(--mut);margin-top:1.1rem}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem}
+.p{padding:2.5rem 2rem;background:#fff;border-radius:4px;transition:.45s;box-shadow:0 10px 30px -24px rgba(27,35,29,.6)}
+.p:hover{transform:translateY(-9px);box-shadow:0 28px 52px -32px rgba(27,35,29,.55)}
+.p .ico{font-size:2.1rem;line-height:1}
+.p h3{font-size:1.3rem;margin:.85rem 0 .6rem}
+.p p{font-size:.95rem;color:var(--mut)}
+
+.carta{background:var(--verde);color:#fff}
+.carta .sec-head p{color:rgba(255,255,255,.85)}
+.cgrid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.d{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);padding:2rem;border-radius:4px;transition:.4s}
+.d:hover{background:rgba(255,255,255,.13);transform:translateY(-7px)}
+.d .kind{font-family:'Helvetica Neue',Arial,sans-serif;font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--oro);font-weight:700}
+.d h3{font-size:1.24rem;margin:.55rem 0 .55rem}
+.d p{font-size:.93rem;color:rgba(255,255,255,.86)}
+.d .price{display:inline-block;margin-top:1rem;font-family:'Helvetica Neue',Arial,sans-serif;font-size:.74rem;letter-spacing:.1em;color:var(--oro);font-weight:700}
+.tags{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:2.6rem}
+.tag{font-family:'Helvetica Neue',Arial,sans-serif;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.3);padding:.5rem 1.1rem;border-radius:99px;color:rgba(255,255,255,.9)}
+.carta .note{margin-top:2.2rem;font-size:.85rem;color:rgba(255,255,255,.68);text-align:center}
+
+.nums{background:var(--crema-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.2rem,5.8vw,3.5rem);color:var(--verde);display:block;line-height:1}
+.n span{font-family:'Helvetica Neue',Arial,sans-serif;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.6rem;font-weight:600}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.7rem}
+.r{background:#fff;padding:2.3rem;border-radius:4px;transition:.45s;position:relative;box-shadow:0 10px 30px -26px rgba(27,35,29,.6)}
+.r::before{content:"”";position:absolute;top:.2rem;right:1.3rem;font-size:4.8rem;color:var(--oro);opacity:.28;line-height:1}
+.r:hover{transform:translateY(-7px)}
+.r .stars{color:var(--oro);letter-spacing:.18em;margin-bottom:.9rem}
+.r p{font-size:.98rem;color:var(--mut);font-style:italic}
+.r footer{font-family:'Helvetica Neue',Arial,sans-serif;margin-top:1.3rem;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--tinta);background:none;padding:0;font-weight:700}
+
+.hor{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:1.1rem}
+.h{background:#fff;border-radius:4px;padding:1.5rem 1.5rem;transition:.35s;border-left:4px solid var(--verde)}
+.h.off{border-left-color:var(--crema-2);opacity:.7}
+.h:hover{transform:translateY(-5px)}
+.h b{font-family:'Helvetica Neue',Arial,sans-serif;display:block;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--mut);font-weight:700}
+.h span{font-size:1.14rem;font-weight:700}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.dt{padding:1.4rem 0;border-bottom:1px solid rgba(27,35,29,.12)}
+.dt h4{font-family:'Helvetica Neue',Arial,sans-serif;font-size:.68rem;letter-spacing:.22em;text-transform:uppercase;color:var(--oro-2);margin-bottom:.4rem;font-weight:700}
+.dt p,.dt a{font-size:1.04rem}
+.dt a:hover{color:var(--verde)}
+.map{min-height:340px;display:grid;place-items:center;text-align:center;padding:2.4rem;border-radius:4px;transition:.45s;color:#fff;background:linear-gradient(150deg,var(--verde),var(--verde-2))}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2.1rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--verde-2);color:rgba(255,255,255,.8);padding:2.9rem 0;font-size:.88rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--oro)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--verde);color:#fff;box-shadow:0 14px 34px -12px rgba(27,35,29,.65);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(27,35,29,.92);color:#fff;font-family:'Helvetica Neue',Arial,sans-serif;font-size:.58rem;letter-spacing:.14em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--verde);padding:2rem;gap:1.3rem;color:#fff}
+  .pillars,.cont{grid-template-columns:1fr;gap:1.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.6rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load"><div><div class="cup"></div><p>CALMA</p></div></div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">Calma<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#carta">Carta</a>
+      <a href="#horario">Horario</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34681667917" class="cta" target="_blank" rel="noopener">Reservar mesa</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="leaf l1"></span><span class="leaf l2"></span><span class="leaf l3"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Playa del Inglés · Maspalomas</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.4s">Brunch</i></span>
+      <span class="word"><i style="animation-delay:.55s">con</i></span><br>
+      <span class="word"><i style="animation-delay:.7s"><em>calma</em></i></span>
+    </h1>
+    <p class="lead">Desayunos, tostadas y bowls hechos al momento, con café de verdad. Abrimos a las nueve y no hay prisa: por eso nos llamamos así.</p>
+    <div class="hero-acts">
+      <a href="#carta" class="btn btn-c">Ver la carta</a>
+      <a href="https://wa.me/34681667917" class="btn btn-o" target="_blank" rel="noopener">Reservar por WhatsApp</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 4,8</b> · 870 reseñas en Google</span>
+      <span>Av. de Tirajana, 3 · Apt. Aloe</span>
+      <span>9:00 – 15:00 · martes cerrado</span>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2>870 reseñas<br>y un 4,8 de nota</h2>
+      <p>Somos una cafetería de brunch en pleno Playa del Inglés. Todo se hace al momento y en la carta hay sitio para todos: vegetariano, vegano y sin gluten no son un añadido, están desde el principio.</p>
+    </div>
+    <div class="pillars">
+      <div class="p rv"><div class="ico">🥐</div><h3>Recién hecho</h3><p>Bollería y pan del día, dulces caseros y zumos exprimidos en el momento.</p></div>
+      <div class="p rv" data-d="1"><div class="ico">🌱</div><h3>Vegano y sin gluten</h3><p>Secciones propias en la carta, no una excepción: tofu, bowls y dulces sin gluten.</p></div>
+      <div class="p rv" data-d="2"><div class="ico">☕</div><h3>Café de verdad</h3><p>Lattes y capuchinos que salen en muchas de nuestras reseñas. Es de lo que más nos escriben.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">La carta</p>
+      <h2>Lo que servimos</h2>
+      <p>Brunch de 9:00 a 15:00. Casi todo se puede personalizar con extras: aguacate, hummus o la proteína que prefieras.</p>
+    </div>
+    <div class="cgrid2">
+      <div class="d rv"><span class="kind">La especialidad</span><h3>Triassant</h3><p>Nuestra mezcla de cruasán y pan de cereales. Con huevo revuelto y bacon, con aguacate, o con brie, miel y nueces.</p><span class="price">Desde 5 €</span></div>
+      <div class="d rv" data-d="1"><span class="kind">Brunch</span><h3>Bowls y tortitas</h3><p>Bowl de granola con fruta fresca y yogur, y tortitas para quien quiera empezar el día por lo dulce.</p></div>
+      <div class="d rv" data-d="2"><span class="kind">Salado</span><h3>Tostadas y sándwiches</h3><p>Tostadas y sándwiches a la plancha: pollo con pesto y queso, aguacate con champiñones, mozzarella con serrano.</p><span class="price">5 – 14,50 €</span></div>
+      <div class="d rv"><span class="kind">Plato principal</span><h3>Ensaladas y fajitas</h3><p>Ensaladas y fajitas con salmón, atún o pollo, para quien viene ya a la hora de comer.</p></div>
+      <div class="d rv" data-d="1"><span class="kind">Vegano</span><h3>Sección vegana</h3><p>Platos con tofu y alternativas vegetales marcadas en la carta, sin tener que preguntar.</p></div>
+      <div class="d rv" data-d="2"><span class="kind">Dulce</span><h3>Gofres y cinnamon rolls</h3><p>Gofres, cinnamon rolls y dulces caseros, con opciones sin gluten.</p></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Vegetariano</span><span class="tag">Vegano</span><span class="tag">Sin gluten</span>
+      <span class="tag">Smoothies</span><span class="tag">Zumos naturales</span><span class="tag">Cócteles</span>
+    </div>
+    <p class="note">Platos y precios tomados de vuestra carta digital pública. En la web final la carta se actualiza cuando queráis, sin depender de nadie.</p>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="48" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="870">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b>9:00</b><span>Abrimos cada día menos el martes</span></div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Horario</p>
+      <h2>Cuándo estamos</h2>
+      <p>Brunch de mañana y mediodía. Si venís en grupo, mejor avisad por WhatsApp.</p>
+    </div>
+    <div class="hor">
+      <div class="h rv"><b>Lunes</b><span>9:00 – 15:00</span></div>
+      <div class="h off rv" data-d="1"><b>Martes</b><span>Cerrado</span></div>
+      <div class="h rv" data-d="2"><b>Miércoles a sábado</b><span>9:00 – 15:00</span></div>
+      <div class="h rv" data-d="3"><b>Domingo</b><span>9:00 – 15:00</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--crema-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dice la gente</h2>
+      <p>4,8 sobre 5 con 870 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“De los mejores lattes y capuchinos que hemos tomado en Gran Canaria.”</p><footer>Opinión de cliente</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“El pan y los cruasanes, recién hechos. Y el yogur con fruta fresca, muy recomendable.”</p><footer>Opinión de cliente</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Comida buenísima y un servicio excelente. Se come con calma, como dice el nombre.”</p><footer>Cliente habitual</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.85rem;margin-top:2.3rem">Extractos orientativos redactados a partir de las opiniones públicas de Google y TripAdvisor. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En la avenida de Tirajana, en los apartamentos Aloe, a un paso del centro de Playa del Inglés.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>Av. de Tirajana, 3 · Apt. Aloe<br>35100 Maspalomas, Las Palmas</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34681667917">681 66 79 17</a></p></div>
+        <div class="dt"><h4>Horario</h4><p>9:00 – 15:00 · martes cerrado</p></div>
+        <div class="dt"><h4>Instagram</h4><p><a href="https://www.instagram.com/calmacafegc/" target="_blank" rel="noopener">@calmacafegc</a></p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Calma+Cafe+Avenida+de+Tirajana+3+Maspalomas" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.55rem;margin-top:.8rem;font-weight:700">Av. de Tirajana, 3</p>
+            <p style="color:rgba(255,255,255,.85);margin-top:.4rem">Playa del Inglés · Maspalomas</p>
+            <span class="btn btn-o" style="margin-top:1.6rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Calma Café · Playa del Inglés, Maspalomas</span>
+    <span><a href="tel:+34681667917">681 66 79 17</a> · Av. de Tirajana, 3</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34681667917" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34681667917" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+window.addEventListener('load',function(){setTimeout(function(){document.getElementById('load').classList.add('off')},900)});
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
