@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Werdum Maspalomas · Jiu-jitsu brasileño, MMA y muay thai en Maspalomas</title>
+<meta name="description" content="Club de artes marciales en C. Lanzarote, 39, Maspalomas. Jiu-jitsu brasileño, grappling, MMA, muay thai, boxeo y defensa personal. 5,0 en Google con 74 reseñas. Clase de prueba: 640 10 35 61.">
+<style>
+:root{
+  --tinta:#0E1116; --tinta-2:#05070A; --hueso:#F3F4F6; --hueso-2:#E3E6EA;
+  --rojo:#C1121F; --rojo-2:#E42535; --mut:#5F666F;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--hueso);color:var(--tinta);line-height:1.75;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:700;line-height:1.02;letter-spacing:-.035em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--rojo-2);font-weight:700}
+
+/* ===== MOMENTO FIRMA: el cinturón que se ata y descubre el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--tinta-2);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem;position:relative}
+.cint{position:relative;width:min(300px,72vw);height:54px;margin:0 auto}
+.cint .banda{position:absolute;top:18px;height:18px;width:52%;background:var(--rojo)}
+.cint .bI{left:0;transform-origin:left;transform:scaleX(0);animation:entraI .5s .15s cubic-bezier(.3,0,.2,1) forwards}
+.cint .bD{right:0;transform-origin:right;transform:scaleX(0);animation:entraD .5s .15s cubic-bezier(.3,0,.2,1) forwards}
+@keyframes entraI{to{transform:scaleX(1)}}
+@keyframes entraD{to{transform:scaleX(1)}}
+.cint .nudo{position:absolute;left:50%;top:8px;width:40px;height:38px;margin-left:-20px;background:var(--rojo-2);transform:scale(0) rotate(-45deg);animation:nudo .45s .62s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes nudo{to{transform:scale(1) rotate(-45deg)}}
+.cint .grado{position:absolute;left:50%;top:18px;height:18px;width:26px;margin-left:44px;background:#0E1116;transform:scaleX(0);transform-origin:left;animation:grado .3s .96s ease-out forwards}
+@keyframes grado{to{transform:scaleX(1)}}
+.nombre{position:relative;overflow:hidden;margin-top:2rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:700;font-size:clamp(1.2rem,5vw,2rem);letter-spacing:.24em;padding:0 .3em}
+.nombre .cort{position:absolute;top:0;bottom:0;width:50.5%;background:var(--tinta-2)}
+.nombre .cI{left:0;transform-origin:left;animation:cortI .6s 1.02s cubic-bezier(.6,0,.2,1) forwards}
+.nombre .cD{right:0;transform-origin:right;animation:cortD .6s 1.02s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes cortI{to{transform:scaleX(0)}}
+@keyframes cortD{to{transform:scaleX(0)}}
+.skip{color:rgba(255,255,255,.4);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 1.6s forwards}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.4rem 0;transition:.45s}
+header.stuck{background:rgba(14,17,22,.96);padding:.7rem 0;box-shadow:0 1px 22px rgba(0,0,0,.4)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.2rem;letter-spacing:.24em;color:#fff;font-weight:700}
+.brand span{color:var(--rojo-2)}
+.menu{display:flex;gap:2.1rem;font-size:.71rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:600}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rojo-2);transition:width .4s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--rojo);color:#fff;padding:.85rem 1.8rem;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;transition:.35s}
+.cta:hover{background:#fff;color:var(--tinta);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--tinta);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 22%,rgba(193,18,31,.4),transparent 46%),radial-gradient(circle at 6% 88%,rgba(255,255,255,.06),transparent 50%)}
+.hero .diag{position:absolute;background:rgba(193,18,31,.16);width:2px;height:150%;top:-25%}
+.hero .d1{right:26%;transform:rotate(14deg)}
+.hero .d2{right:15%;transform:rotate(14deg)}
+.hero .ring{position:absolute;border:1px solid rgba(193,18,31,.34);border-radius:50%;animation:pulse 6s ease-in-out infinite}
+.hero .r1{width:420px;height:420px;top:9%;right:-110px}
+.hero .r2{width:230px;height:230px;bottom:15%;right:20%;animation-delay:1.8s}
+@keyframes pulse{50%{transform:scale(1.09);opacity:.45}}
+.hero-in{position:relative;z-index:2;max-width:940px}
+.hero .est{opacity:0;animation:fade .9s .3s forwards}
+.hero h1{font-size:clamp(2.9rem,9.6vw,7rem);margin:1.4rem 0 0;letter-spacing:-.05em;text-transform:uppercase}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:normal;color:var(--rojo-2)}
+.hero p.lead{max-width:540px;margin-top:1.8rem;color:rgba(255,255,255,.84);font-size:1.05rem;font-weight:400;opacity:0;animation:fade .9s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fade .9s 1.4s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.2rem;font-size:.7rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;transition:.38s}
+.btn-c{background:var(--rojo);color:#fff}
+.btn-c:hover{background:#fff;color:var(--tinta);transform:translateY(-3px)}
+.btn-o{border:2px solid rgba(255,255,255,.4)}
+.btn-o:hover{background:#fff;color:var(--tinta);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.15);z-index:2;opacity:0;animation:fade .9s 1.65s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 0;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.82);font-weight:600}
+.hf b{color:var(--rojo-2)}
+.vivo{display:inline-flex;align-items:center;gap:.5rem}
+.punto{width:7px;height:7px;border-radius:50%;background:#43D67F;animation:late 2s ease-in-out infinite}
+.punto.cerr{background:#D6564F;animation:none}
+@keyframes late{50%{transform:scale(1.5);opacity:.55}}
+
+section{padding:7rem 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}
+.rv[data-d="3"]{transition-delay:.3s}.rv[data-d="4"]{transition-delay:.4s}
+.rv[data-d="5"]{transition-delay:.5s}
+.sec-head{max-width:670px;margin-bottom:3.6rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.1rem,6vw,3.8rem);margin-top:1rem;text-transform:uppercase}
+.sec-head p{color:var(--mut);margin-top:1.2rem;font-weight:400}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+.frame{aspect-ratio:4/5;background:linear-gradient(150deg,var(--tinta),#1c222b);position:relative;display:grid;place-items:center;overflow:hidden}
+.frame::after{content:"";position:absolute;inset:14px;border:2px solid rgba(193,18,31,.5)}
+.frame .k{color:#fff;text-align:center;padding:2rem;position:relative;z-index:2}
+.frame .k b{display:block;font-size:clamp(3rem,7vw,4.8rem);color:var(--rojo-2);font-weight:700;line-height:1}
+.frame .k span{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.72);display:block;margin-top:1rem;font-weight:600}
+
+.serv{background:var(--tinta);color:#fff}
+.serv .sec-head p{color:rgba(255,255,255,.75)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(238px,1fr));gap:2px;background:rgba(255,255,255,.12)}
+.s{background:var(--tinta);padding:2.5rem 1.9rem;transition:.45s}
+.s:hover{background:#171d26;transform:translateY(-6px)}
+.s .num{font-size:.66rem;letter-spacing:.3em;color:var(--rojo-2);font-weight:700}
+.s h3{font-size:1.35rem;margin:.85rem 0 .7rem;text-transform:uppercase}
+.s p{font-size:.93rem;color:rgba(255,255,255,.72);font-weight:400}
+.serv .note{margin-top:2.5rem;font-size:.84rem;color:rgba(255,255,255,.58);text-align:center;font-weight:400}
+
+.nums{background:var(--hueso-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.4rem,6.4vw,3.8rem);color:var(--tinta);display:block;line-height:1;font-weight:700}
+.n span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.7rem;font-weight:700}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.6rem}
+.r{background:#fff;padding:2.3rem;transition:.45s;position:relative;border-left:4px solid var(--rojo)}
+.r:hover{transform:translateY(-7px)}
+.r .stars{color:var(--rojo);letter-spacing:.2em;margin-bottom:1rem;font-size:.9rem}
+.r p{font-size:.98rem;color:var(--mut);font-style:italic}
+.r footer{margin-top:1.3rem;font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--tinta);background:none;padding:0;font-weight:700}
+
+.hor{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:2px;background:var(--hueso-2)}
+.h{background:#fff;padding:1.7rem 1.6rem;transition:.35s}
+.h.off{background:var(--hueso-2);opacity:.75}
+.h:hover{transform:translateY(-5px);background:var(--tinta);color:#fff}
+.h:hover b{color:var(--rojo-2)}
+.h b{display:block;font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);font-weight:700;transition:.35s}
+.h span{font-size:1.1rem;font-weight:400}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dt{padding:1.5rem 0;border-bottom:1px solid var(--hueso-2)}
+.dt h4{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--rojo);margin-bottom:.5rem;font-weight:700}
+.dt p,.dt a{font-size:1.05rem;font-weight:400}
+.dt a:hover{color:var(--rojo)}
+.map{min-height:350px;display:grid;place-items:center;text-align:center;padding:2.4rem;transition:.45s;color:#fff;background:linear-gradient(150deg,var(--tinta),#1d232c)}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.7);padding:3rem 0;font-size:.86rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--rojo-2)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--tinta);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.55);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(14,17,22,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--tinta);padding:2rem;gap:1.3rem;color:#fff}
+  .split,.cont{grid-template-columns:1fr;gap:2.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.6rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div class="firma">
+    <div class="cint">
+      <span class="banda bI"></span><span class="banda bD"></span>
+      <span class="grado"></span><span class="nudo"></span>
+    </div>
+    <div class="nombre"><b>WERDUM MASPALOMAS</b><span class="cort cI"></span><span class="cort cD"></span></div>
+    <p class="skip">Toca para entrar</p>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">WERDUM<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#club">El club</a>
+      <a href="#disciplinas">Disciplinas</a>
+      <a href="#horario">Horario</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34640103561" class="cta" target="_blank" rel="noopener">Clase de prueba</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="diag d1"></span><span class="diag d2"></span>
+  <span class="ring r1"></span><span class="ring r2"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Maspalomas · San Bartolomé de Tirajana</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">El equipo</i></span><br>
+      <span class="word"><i style="animation-delay:.5s"><em>Werdum</em></i></span>
+      <span class="word"><i style="animation-delay:.65s">en el sur</i></span>
+    </h1>
+    <p class="lead">Jiu-jitsu brasileño, grappling, MMA, muay thai, boxeo y defensa personal en la calle Lanzarote. 5,0 en Google con 74 reseñas.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34640103561" class="btn btn-c" target="_blank" rel="noopener">Pedir clase de prueba</a>
+      <a href="#disciplinas" class="btn btn-o">Ver disciplinas</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 74 reseñas en Google</span>
+      <span class="vivo"><span class="punto" id="pt"></span><span id="estadoVivo">Consultando horario…</span></span>
+      <span>C. Lanzarote, 39</span>
+    </div>
+  </div>
+</section>
+
+<section id="club">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">El club</p>
+      <h2 style="font-size:clamp(2.1rem,6vw,3.8rem);margin-top:1rem;text-transform:uppercase">Afiliados a<br>Fabricio Werdum</h2>
+      <p style="color:var(--mut);margin-top:1.4rem">Somos el equipo local afiliado a Fabricio Werdum, campeón mundial de jiu-jitsu brasileño y de grappling y excampeón de peso pesado de UFC. Eso significa un método y un linaje detrás de cada clase, no una sala de máquinas con un monitor.</p>
+      <p style="color:var(--mut);margin-top:1.1rem">Entrenamos en la calle Lanzarote, 39, en Maspalomas. Se empieza cuando se quiera: la primera clase es de prueba y no hace falta saber nada ni traer equipo.</p>
+      <a href="#contacto" class="btn btn-c" style="margin-top:2.2rem;color:#fff">Cómo llegar</a>
+    </div>
+    <div class="frame rv" data-d="1">
+      <div class="k">
+        <b><span class="count" data-to="50" data-dec="1">0</span></b>
+        <span>Valoración media en Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="disciplinas">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Disciplinas</p>
+      <h2>Lo que se entrena</h2>
+      <p>Seis disciplinas bajo el mismo techo, con progresión real y compañeros de todos los niveles.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s rv"><span class="num">01</span><h3>Jiu-jitsu brasileño</h3><p>La base del club. Trabajo de suelo, control y sumisión, con progresión por grados.</p></div>
+      <div class="s rv" data-d="1"><span class="num">02</span><h3>Grappling</h3><p>Lucha sin kimono, agarre y control. Complemento directo del jiu-jitsu.</p></div>
+      <div class="s rv" data-d="2"><span class="num">03</span><h3>MMA</h3><p>Artes marciales mixtas: golpeo, derribo y suelo integrados en un mismo combate.</p></div>
+      <div class="s rv" data-d="3"><span class="num">04</span><h3>Muay thai</h3><p>Boxeo tailandés: puños, codos, rodillas y patadas. Técnica y muchísimo fondo.</p></div>
+      <div class="s rv" data-d="4"><span class="num">05</span><h3>Boxeo</h3><p>Técnica de manos, movimiento de piernas y guardia. Entra bien a cualquier edad.</p></div>
+      <div class="s rv" data-d="5"><span class="num">06</span><h3>Defensa personal</h3><p>Recursos concretos para situaciones reales, sin adornos ni coreografías.</p></div>
+    </div>
+    <p class="note">Disciplinas tomadas de vuestros perfiles públicos. En la web final se añade el cuadro de horarios por disciplina y por grupo, y las tarifas si queréis mostrarlas.</p>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="50" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="74">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b><span class="count" data-to="6">0</span></b><span>Disciplinas</span></div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Horario</p>
+      <h2>Cuándo entrenamos</h2>
+      <p>De lunes a viernes, de 10:00 a 20:00. Escríbenos y te decimos qué clase te encaja mejor.</p>
+    </div>
+    <div class="hor">
+      <div class="h rv"><b>Lunes a viernes</b><span>10:00 – 20:00</span></div>
+      <div class="h rv" data-d="1"><b>Primera clase</b><span>De prueba</span></div>
+      <div class="h rv" data-d="2"><b>Equipo</b><span>No hace falta</span></div>
+      <div class="h off rv" data-d="3"><b>Sábado y domingo</b><span>Consultar</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--hueso-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen</h2>
+      <p>5,0 sobre 5 con 74 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“El maestro José Fernández corrige uno por uno, no te deja hacerlo mal.”</p><footer>Opinión de alumno</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Ambiente de equipo de verdad. Te acogen desde el primer día aunque no sepas nada.”</p><footer>Opinión de alumno</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Se entrena en serio y a la vez se pasa bien. Difícil de encontrar.”</p><footer>Alumno habitual</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.84rem;margin-top:2.4rem">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Ven a probar</h2>
+      <p>Calle Lanzarote, 39, bajo · Maspalomas, San Bartolomé de Tirajana.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C. Lanzarote, 39, bajo<br>35100 Maspalomas</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34640103561">640 10 35 61</a></p></div>
+        <div class="dt"><h4>Horario</h4><p>Lunes a viernes 10:00 – 20:00</p></div>
+        <div class="dt"><h4>Primera clase</h4><p>De prueba · sin equipo ni experiencia previa</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Werdum+Maspalomas+Calle+Lanzarote+39+Maspalomas+Las+Palmas" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.5rem;margin-top:.9rem;font-weight:700">C. Lanzarote, 39</p>
+            <p style="color:rgba(255,255,255,.8);margin-top:.5rem">Maspalomas</p>
+            <span class="btn btn-o" style="margin-top:1.7rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Werdum Maspalomas · San Bartolomé de Tirajana</span>
+    <span><a href="tel:+34640103561">640 10 35 61</a> · C. Lanzarote, 39</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34640103561" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34640103561" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function cerrar(){l.classList.add('off')}
+  window.addEventListener('load',function(){setTimeout(cerrar,1800)});
+  setTimeout(cerrar,2400);
+  l.addEventListener('click',cerrar);
+  addEventListener('keydown',cerrar,{once:true});
+})();
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+/* Horario en vivo: lunes a viernes 10:00-20:00 */
+(function(){
+  var txt=document.getElementById('estadoVivo'),pt=document.getElementById('pt');
+  if(!txt)return;
+  var d=new Date(),dia=d.getDay(),m=d.getHours()*60+d.getMinutes(),abierto=false;
+  if(dia>=1&&dia<=5&&m>=600&&m<1200)abierto=true;
+  if(abierto){txt.textContent='Abierto ahora · cerramos a las 20:00'}
+  else{txt.textContent='Cerrado ahora · escríbenos por WhatsApp';pt.classList.add('cerr')}
+})();
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  .nombre .cort{display:none!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2600);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

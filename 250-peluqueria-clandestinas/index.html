@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería Clandestina's · Corte, color y pelo rizado en Las Palmas de Gran Canaria</title>
+<meta name="description" content="Peluquería en C. Ingeniero Salinas, 84, Las Palmas de Gran Canaria. Corte, peinado, trenzas y pelo rizado. 5,0 en Google con 62 reseñas. Cita: 673 28 99 31.">
+<style>
+:root{
+  --tinta:#3E2A3F; --tinta-2:#2A1B2B; --hueso:#FBF6F3; --hueso-2:#F0E6E2;
+  --rosa:#D98BA0; --rosa-2:#C2637D; --mut:#726069;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--hueso);color:var(--tinta);line-height:1.8;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:300;line-height:1.07;letter-spacing:-.03em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--rosa-2);font-weight:600}
+
+/* ===== MOMENTO FIRMA: el peine que peina y descubre el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--tinta-2);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem}
+.peine{width:min(260px,66vw);margin:0 auto;position:relative;height:76px}
+.peine .lomo{position:absolute;top:0;left:0;right:0;height:15px;border-radius:8px;background:var(--rosa);transform:scaleX(0);transform-origin:left;animation:lomo .5s .1s cubic-bezier(.4,0,.2,1) forwards}
+@keyframes lomo{to{transform:scaleX(1)}}
+.peine .pua{position:absolute;top:14px;width:4px;height:54px;border-radius:0 0 3px 3px;background:var(--rosa);transform:scaleY(0);transform-origin:top;animation:pua .34s cubic-bezier(.3,1.3,.5,1) forwards}
+@keyframes pua{to{transform:scaleY(1)}}
+.nombre{position:relative;overflow:hidden;margin-top:2.1rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:300;font-size:clamp(1rem,4.2vw,1.6rem);letter-spacing:.32em;padding:0 .3em}
+.nombre .cort{position:absolute;top:0;bottom:0;width:50.5%;background:var(--tinta-2)}
+.nombre .cI{left:0;transform-origin:left;animation:cortI .8s 1.02s cubic-bezier(.6,0,.2,1) forwards}
+.nombre .cD{right:0;transform-origin:right;animation:cortD .8s 1.02s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes cortI{to{transform:scaleX(0)}}
+@keyframes cortD{to{transform:scaleX(0)}}
+.skip{color:rgba(255,255,255,.4);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 1.7s forwards}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(251,246,243,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(62,42,63,.1)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.22rem;letter-spacing:.28em;color:#fff;transition:.4s;font-weight:400}
+.brand span{color:var(--rosa)}
+.menu{display:flex;gap:2.2rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:500;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--rosa);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--rosa-2);color:#fff;padding:.8rem 1.8rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;transition:.35s}
+.cta:hover{background:#fff;color:var(--tinta);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--tinta);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 77% 25%,rgba(217,139,160,.32),transparent 46%),radial-gradient(circle at 8% 86%,rgba(255,255,255,.07),transparent 50%)}
+.hero .ln{position:absolute;background:rgba(255,255,255,.08)}
+.hero .ln1{width:1px;height:60%;top:12%;right:23%}
+.hero .ln2{width:1px;height:40%;bottom:0;right:37%}
+.hero .ring{position:absolute;border:1px solid rgba(217,139,160,.34);border-radius:50%;animation:pulse 7s ease-in-out infinite}
+.hero .r1{width:420px;height:420px;top:10%;right:-95px}
+.hero .r2{width:245px;height:245px;bottom:15%;right:17%;animation-delay:2s}
+@keyframes pulse{50%{transform:scale(1.07);opacity:.5}}
+.hero-in{position:relative;z-index:2;max-width:920px}
+.hero .est{opacity:0;animation:fade .9s .3s forwards}
+.hero h1{font-size:clamp(2.8rem,9vw,6.6rem);margin:1.5rem 0 0;letter-spacing:-.045em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:normal;color:var(--rosa)}
+.hero p.lead{max-width:530px;margin-top:1.9rem;color:rgba(255,255,255,.84);font-size:1.05rem;font-weight:300;opacity:0;animation:fade .9s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.7rem;opacity:0;animation:fade .9s 1.4s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.2rem;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;transition:.38s}
+.btn-c{background:var(--rosa-2);color:#fff}
+.btn-c:hover{background:#fff;color:var(--tinta);transform:translateY(-3px)}
+.btn-o{border:1px solid rgba(255,255,255,.45)}
+.btn-o:hover{background:#fff;color:var(--tinta);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.16);z-index:2;opacity:0;animation:fade .9s 1.65s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.82);font-weight:500}
+.hf b{color:var(--rosa)}
+
+section{padding:7.5rem 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+.sec-head{max-width:670px;margin-bottom:4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.1rem,5.6vw,3.6rem);margin-top:1rem}
+.sec-head p{color:var(--mut);margin-top:1.2rem;font-weight:300}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+.frame{aspect-ratio:4/5;background:linear-gradient(150deg,var(--tinta),#4e3750);position:relative;display:grid;place-items:center;overflow:hidden}
+.frame::after{content:"";position:absolute;inset:14px;border:1px solid rgba(217,139,160,.45)}
+.frame .k{color:#fff;text-align:center;padding:2rem;position:relative;z-index:2}
+.frame .k b{display:block;font-size:clamp(3rem,7vw,4.6rem);color:var(--rosa);font-weight:300;line-height:1}
+.frame .k span{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.72);display:block;margin-top:1rem}
+
+.serv{background:var(--tinta);color:#fff}
+.serv .sec-head p{color:rgba(255,255,255,.75)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(255,255,255,.14)}
+.s{background:var(--tinta);padding:2.6rem 2rem;transition:.45s}
+.s:hover{background:#4a3349;transform:translateY(-6px)}
+.s .num{font-size:.66rem;letter-spacing:.3em;color:var(--rosa);font-weight:600}
+.s h3{font-size:1.4rem;margin:.9rem 0 .7rem;font-weight:300}
+.s p{font-size:.93rem;color:rgba(255,255,255,.74);font-weight:300}
+.serv .note{margin-top:2.6rem;font-size:.84rem;color:rgba(255,255,255,.6);text-align:center;font-weight:300}
+
+.nums{background:var(--hueso-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.3rem,6vw,3.6rem);color:var(--tinta);display:block;line-height:1;font-weight:300}
+.n span{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.7rem;font-weight:600}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.6rem}
+.r{background:#fff;padding:2.4rem;transition:.45s;position:relative;border:1px solid var(--hueso-2)}
+.r::before{content:"”";position:absolute;top:.5rem;right:1.4rem;font-size:4.4rem;color:var(--rosa);opacity:.4;line-height:1;font-weight:300}
+.r:hover{transform:translateY(-7px);border-color:var(--rosa)}
+.r .stars{color:var(--rosa-2);letter-spacing:.2em;margin-bottom:1rem;font-size:.9rem}
+.r p{font-size:.98rem;color:var(--mut);font-style:italic;font-weight:300}
+.r footer{margin-top:1.4rem;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta);background:none;padding:0;font-weight:600}
+
+.aviso{background:#FFF4F7;border-left:4px solid var(--rosa);padding:1.6rem 1.9rem;font-size:.93rem;color:#7A4A58;font-weight:300}
+.aviso b{font-weight:600}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dt{padding:1.5rem 0;border-bottom:1px solid var(--hueso-2)}
+.dt h4{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--rosa-2);margin-bottom:.5rem;font-weight:600}
+.dt p,.dt a{font-size:1.05rem;font-weight:300}
+.dt a:hover{color:var(--rosa-2)}
+.map{min-height:350px;display:grid;place-items:center;text-align:center;padding:2.4rem;transition:.45s;color:#fff;background:linear-gradient(150deg,var(--tinta),#503752)}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.74);padding:3rem 0;font-size:.86rem;font-weight:300}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--rosa)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--tinta);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.45);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(62,42,63,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--tinta);padding:2rem;gap:1.3rem;color:#fff}
+  .split,.cont{grid-template-columns:1fr;gap:2.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.8rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div class="firma">
+    <div class="peine">
+      <span class="lomo"></span>
+      <span class="pua" style="left:4%;animation-delay:.46s"></span>
+      <span class="pua" style="left:14%;animation-delay:.51s"></span>
+      <span class="pua" style="left:24%;animation-delay:.56s"></span>
+      <span class="pua" style="left:34%;animation-delay:.61s"></span>
+      <span class="pua" style="left:44%;animation-delay:.66s"></span>
+      <span class="pua" style="left:54%;animation-delay:.71s"></span>
+      <span class="pua" style="left:64%;animation-delay:.76s"></span>
+      <span class="pua" style="left:74%;animation-delay:.81s"></span>
+      <span class="pua" style="left:84%;animation-delay:.86s"></span>
+      <span class="pua" style="left:94%;animation-delay:.91s"></span>
+    </div>
+    <div class="nombre"><b>CLANDESTINA'S</b><span class="cort cI"></span><span class="cort cD"></span></div>
+    <p class="skip">Toca para entrar</p>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">CLANDESTINA'S<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#salon">El salón</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#horario">Horario</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34673289931" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="ln ln1"></span><span class="ln ln2"></span>
+  <span class="ring r1"></span><span class="ring r2"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Ingeniero Salinas · Las Palmas de Gran Canaria</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">Tu rizo</i></span>
+      <span class="word"><i style="animation-delay:.5s"><em>tiene forma.</em></i></span><br>
+      <span class="word"><i style="animation-delay:.65s">Aquí la respetamos.</i></span>
+    </h1>
+    <p class="lead">Corte, peinado, trenzas y trabajo de pelo rizado en la calle Ingeniero Salinas. 5,0 en Google con 62 reseñas.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34673289931" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="#servicios" class="btn btn-o">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 62 reseñas en Google</span>
+      <span>C. Ingeniero Salinas, 84</span>
+      <span>Con cita previa</span>
+    </div>
+  </div>
+</section>
+
+<section id="salon">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">El salón</p>
+      <h2 style="font-size:clamp(2.1rem,5.6vw,3.6rem);margin-top:1rem">Un 5,0 con<br>62 opiniones</h2>
+      <p style="color:var(--mut);margin-top:1.4rem;font-weight:300">Sesenta y dos clientas han valorado este salón y ninguna ha bajado de cinco estrellas. En peluquería, donde el resultado se lleva puesto durante semanas, esa nota vale más que cualquier anuncio.</p>
+      <p style="color:var(--mut);margin-top:1.1rem;font-weight:300">Estamos en la calle Ingeniero Salinas, 84. Trabajamos con cita previa: escríbenos por WhatsApp y buscamos hueco según lo que necesites.</p>
+      <a href="#contacto" class="btn btn-c" style="margin-top:2.2rem;color:#fff">Cómo llegar</a>
+    </div>
+    <div class="frame rv" data-d="1">
+      <div class="k">
+        <b><span class="count" data-to="50" data-dec="1">0</span></b>
+        <span>Valoración media en Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que hacemos</h2>
+      <p>Trabajo de salón, con cita previa. El rizado y las trenzas se valoran antes en persona.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s rv"><span class="num">01</span><h3>Corte de mujer</h3><p>Corte pensado para tu tipo de pelo y para cómo te lo vas a peinar tú en casa.</p></div>
+      <div class="s rv" data-d="1"><span class="num">02</span><h3>Pelo rizado</h3><p>Corte y tratamiento específicos de rizo, respetando la forma natural en lugar de domarla.</p></div>
+      <div class="s rv" data-d="2"><span class="num">03</span><h3>Trenzas</h3><p>Trenzas y recogidos trenzados, con el tiempo que hace falta para que aguanten.</p></div>
+      <div class="s rv" data-d="3"><span class="num">04</span><h3>Secado y peinado</h3><p>Peinado para un evento o simplemente para salir con el pelo hecho.</p></div>
+    </div>
+    <p class="note">Servicios tomados de la información pública del salón. En la web final se ponen exactamente los vuestros, con precios si queréis mostrarlos.</p>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="50" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="62">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b>100%</b><span>Reseñas de 5 estrellas</span></div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Horario</p>
+      <h2>Cuándo estamos</h2>
+      <p>Aquí iría vuestro horario real. Lo hemos dejado en blanco a propósito.</p>
+    </div>
+    <div class="rv">
+      <div class="aviso">
+        <b>Bloque pendiente de confirmar.</b> Vuestro horario no está publicado en la ficha de Google ni en ningún portal, así que preferimos preguntároslo antes que inventar unas horas que luego hagan ir a alguien a puerta cerrada. Decidnos los días y las horas y lo dejamos puesto en la web final, con el cartel de «abierto ahora» que se calcula solo según la hora de quien visita la página.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--hueso-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen</h2>
+      <p>5,0 sobre 5 con 62 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Es de los pocos sitios donde entienden el pelo rizado de verdad.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Se toman su tiempo y te explican qué te van a hacer antes de empezar.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Salí con exactamente lo que había pedido. No es tan habitual.”</p><footer>Clienta habitual</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.84rem;margin-top:2.4rem;font-weight:300">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Pide tu cita</h2>
+      <p>Calle Ingeniero Salinas, 84 · Las Palmas de Gran Canaria.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C. Ingeniero Salinas, 84<br>35006 Las Palmas de Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34673289931">673 28 99 31</a></p></div>
+        <div class="dt"><h4>Valoración</h4><p>5,0 sobre 5 con 62 reseñas en Google</p></div>
+        <div class="dt"><h4>Cita</h4><p>Con cita previa · también por WhatsApp</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Peluqueria+Clandestinas+Calle+Ingeniero+Salinas+84+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.5rem;margin-top:.9rem;font-weight:300">C. Ingeniero Salinas, 84</p>
+            <p style="color:rgba(255,255,255,.8);margin-top:.5rem;font-weight:300">Las Palmas de Gran Canaria</p>
+            <span class="btn btn-o" style="margin-top:1.7rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Peluquería Clandestina's · Las Palmas de Gran Canaria</span>
+    <span><a href="tel:+34673289931">673 28 99 31</a> · C. Ingeniero Salinas, 84</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34673289931" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34673289931" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function cerrar(){l.classList.add('off')}
+  window.addEventListener('load',function(){setTimeout(cerrar,1900)});
+  setTimeout(cerrar,2500);
+  l.addEventListener('click',cerrar);
+  addEventListener('keydown',cerrar,{once:true});
+})();
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  .nombre .cort{display:none!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2700);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

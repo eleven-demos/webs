@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laura Galán · Clínica estética en Néstor de la Torre, Las Palmas de Gran Canaria</title>
+<meta name="description" content="Centro de estética en C. Néstor de la Torre, 3, planta 1ª, puerta 5, Las Palmas de Gran Canaria. 5,0 en Google con 59 reseñas. Cita: 623 58 99 53.">
+<style>
+:root{
+  --tinta:#1F5F6B; --tinta-2:#123B44; --hueso:#F7FAFA; --hueso-2:#E7F0F1;
+  --arena:#C9B08A; --arena-2:#A98F68; --mut:#5C6C6E;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--hueso);color:#193238;line-height:1.82;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:300;line-height:1.08;letter-spacing:-.03em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--arena-2);font-weight:600}
+
+/* ===== MOMENTO FIRMA: el halo de luz que se extiende y descubre el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--tinta-2);display:grid;place-items:center;transition:opacity .8s,visibility .8s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem;position:relative}
+.halo{width:150px;height:150px;margin:0 auto;position:relative}
+.halo span{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(201,176,138,.6);transform:scale(0);opacity:0}
+.halo .h1a{animation:onda 1.7s .1s cubic-bezier(.2,.7,.3,1) forwards}
+.halo .h2a{animation:onda 1.7s .28s cubic-bezier(.2,.7,.3,1) forwards}
+.halo .h3a{animation:onda 1.7s .46s cubic-bezier(.2,.7,.3,1) forwards}
+@keyframes onda{0%{transform:scale(0);opacity:0}25%{opacity:.95}100%{transform:scale(1);opacity:.14}}
+.halo .gota{position:absolute;left:50%;top:50%;width:26px;height:26px;margin:-13px 0 0 -13px;border-radius:50%;
+  background:radial-gradient(circle at 35% 32%,#F2E6D0,var(--arena));transform:scale(0);animation:gota .7s .05s cubic-bezier(.3,1.5,.5,1) forwards}
+@keyframes gota{to{transform:scale(1)}}
+.nombre{position:relative;overflow:hidden;margin-top:2.2rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:300;font-size:clamp(1.05rem,4.4vw,1.7rem);letter-spacing:.36em;padding:0 .3em}
+.nombre .cort{position:absolute;top:0;bottom:0;width:50.5%;background:var(--tinta-2)}
+.nombre .cI{left:0;transform-origin:left;animation:cortI .9s .9s cubic-bezier(.6,0,.2,1) forwards}
+.nombre .cD{right:0;transform-origin:right;animation:cortD .9s .9s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes cortI{to{transform:scaleX(0)}}
+@keyframes cortD{to{transform:scaleX(0)}}
+.skip{color:rgba(255,255,255,.4);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 1.8s forwards}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(247,250,250,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(31,95,107,.11)}
+header.stuck .brand,header.stuck .menu{color:#193238}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.22rem;letter-spacing:.3em;color:#fff;transition:.4s;font-weight:400}
+.brand span{color:var(--arena)}
+.menu{display:flex;gap:2.2rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:500;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--arena);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--arena-2);color:#fff;padding:.8rem 1.8rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:600;transition:.35s}
+.cta:hover{background:#fff;color:var(--tinta);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:#193238}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--tinta);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 26%,rgba(201,176,138,.3),transparent 46%),radial-gradient(circle at 8% 86%,rgba(255,255,255,.08),transparent 50%)}
+.hero .ln{position:absolute;background:rgba(255,255,255,.09)}
+.hero .ln1{width:1px;height:60%;top:12%;right:23%}
+.hero .ln2{width:1px;height:40%;bottom:0;right:37%}
+.hero .ring{position:absolute;border:1px solid rgba(201,176,138,.32);border-radius:50%;animation:pulse 8s ease-in-out infinite}
+.hero .r1{width:430px;height:430px;top:9%;right:-100px}
+.hero .r2{width:250px;height:250px;bottom:15%;right:17%;animation-delay:2.4s}
+@keyframes pulse{50%{transform:scale(1.06);opacity:.5}}
+.hero-in{position:relative;z-index:2;max-width:920px}
+.hero .est{opacity:0;animation:fade .9s .3s forwards}
+.hero h1{font-size:clamp(2.8rem,8.8vw,6.4rem);margin:1.5rem 0 0;letter-spacing:-.045em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:normal;color:var(--arena)}
+.hero p.lead{max-width:540px;margin-top:1.9rem;color:rgba(255,255,255,.85);font-size:1.05rem;font-weight:300;opacity:0;animation:fade .9s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.7rem;opacity:0;animation:fade .9s 1.4s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.2rem;font-size:.7rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;transition:.38s}
+.btn-c{background:var(--arena-2);color:#fff}
+.btn-c:hover{background:#fff;color:var(--tinta);transform:translateY(-3px)}
+.btn-o{border:1px solid rgba(255,255,255,.45)}
+.btn-o:hover{background:#fff;color:var(--tinta);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.17);z-index:2;opacity:0;animation:fade .9s 1.65s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.84);font-weight:500}
+.hf b{color:var(--arena)}
+
+section{padding:7.5rem 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+.sec-head{max-width:670px;margin-bottom:4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.1rem,5.6vw,3.6rem);margin-top:1rem}
+.sec-head p{color:var(--mut);margin-top:1.2rem;font-weight:300}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+.frame{aspect-ratio:4/5;background:linear-gradient(150deg,var(--tinta),#2b757f);position:relative;display:grid;place-items:center;overflow:hidden}
+.frame::after{content:"";position:absolute;inset:14px;border:1px solid rgba(201,176,138,.5)}
+.frame .k{color:#fff;text-align:center;padding:2rem;position:relative;z-index:2}
+.frame .k b{display:block;font-size:clamp(3rem,7vw,4.6rem);color:var(--arena);font-weight:300;line-height:1}
+.frame .k span{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.75);display:block;margin-top:1rem}
+
+.serv{background:var(--tinta);color:#fff}
+.serv .sec-head p{color:rgba(255,255,255,.78)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(255,255,255,.16)}
+.s{background:var(--tinta);padding:2.6rem 2rem;transition:.45s}
+.s:hover{background:#26707c;transform:translateY(-6px)}
+.s .num{font-size:.66rem;letter-spacing:.3em;color:var(--arena);font-weight:600}
+.s h3{font-size:1.4rem;margin:.9rem 0 .7rem;font-weight:300}
+.s p{font-size:.93rem;color:rgba(255,255,255,.76);font-weight:300}
+.serv .note{margin-top:2.6rem;font-size:.84rem;color:rgba(255,255,255,.62);text-align:center;font-weight:300}
+
+.nums{background:var(--hueso-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.3rem,6vw,3.6rem);color:var(--tinta);display:block;line-height:1;font-weight:300}
+.n span{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.7rem;font-weight:600}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.6rem}
+.r{background:#fff;padding:2.4rem;transition:.45s;position:relative;border:1px solid var(--hueso-2)}
+.r::before{content:"”";position:absolute;top:.5rem;right:1.4rem;font-size:4.4rem;color:var(--arena);opacity:.45;line-height:1;font-weight:300}
+.r:hover{transform:translateY(-7px);border-color:var(--arena)}
+.r .stars{color:var(--arena-2);letter-spacing:.2em;margin-bottom:1rem;font-size:.9rem}
+.r p{font-size:.98rem;color:var(--mut);font-style:italic;font-weight:300}
+.r footer{margin-top:1.4rem;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta);background:none;padding:0;font-weight:600}
+
+.aviso{background:#FCF7EE;border-left:4px solid var(--arena);padding:1.6rem 1.9rem;font-size:.93rem;color:#6F5B3B;font-weight:300}
+.aviso b{font-weight:600}
+
+.llegar{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:var(--hueso-2)}
+.paso{background:#fff;padding:2rem 1.7rem;transition:.35s}
+.paso:hover{transform:translateY(-5px);background:var(--tinta);color:#fff}
+.paso:hover b{color:var(--arena)}
+.paso b{display:block;font-size:2rem;color:var(--arena-2);font-weight:300;line-height:1;transition:.35s}
+.paso span{display:block;margin-top:.8rem;font-size:.95rem;font-weight:300}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dt{padding:1.5rem 0;border-bottom:1px solid var(--hueso-2)}
+.dt h4{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--arena-2);margin-bottom:.5rem;font-weight:600}
+.dt p,.dt a{font-size:1.05rem;font-weight:300}
+.dt a:hover{color:var(--arena-2)}
+.map{min-height:350px;display:grid;place-items:center;text-align:center;padding:2.4rem;transition:.45s;color:#fff;background:linear-gradient(150deg,var(--tinta),#2c7883)}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.76);padding:3rem 0;font-size:.86rem;font-weight:300}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--arena)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--tinta);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.4);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(18,59,68,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--tinta);padding:2rem;gap:1.3rem;color:#fff}
+  .split,.cont{grid-template-columns:1fr;gap:2.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.8rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div class="firma">
+    <div class="halo">
+      <span class="h1a"></span><span class="h2a"></span><span class="h3a"></span>
+      <span class="gota"></span>
+    </div>
+    <div class="nombre"><b>LAURA GALÁN</b><span class="cort cI"></span><span class="cort cD"></span></div>
+    <p class="skip">Toca para entrar</p>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">LAURA GALÁN<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#centro">El centro</a>
+      <a href="#tratamientos">Tratamientos</a>
+      <a href="#llegar">Cómo llegar</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34623589953" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="ln ln1"></span><span class="ln ln2"></span>
+  <span class="ring r1"></span><span class="ring r2"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Néstor de la Torre · Las Palmas de Gran Canaria</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">Cincuenta y nueve</i></span><br>
+      <span class="word"><i style="animation-delay:.5s">opiniones.</i></span>
+      <span class="word"><i style="animation-delay:.65s"><em>Todas de cinco.</em></i></span>
+    </h1>
+    <p class="lead">Clínica estética en la calle Néstor de la Torre, 3. Trato personal, cita reservada y resultados que las clientas cuentan por su cuenta.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34623589953" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="#llegar" class="btn btn-o">Cómo llegar</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 59 reseñas en Google</span>
+      <span>Néstor de la Torre, 3 · 1ª planta</span>
+      <span>Con cita previa</span>
+    </div>
+  </div>
+</section>
+
+<section id="centro">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">El centro</p>
+      <h2 style="font-size:clamp(2.1rem,5.6vw,3.6rem);margin-top:1rem">Un 5,0 con<br>59 opiniones</h2>
+      <p style="color:var(--mut);margin-top:1.4rem;font-weight:300">Cincuenta y nueve clientas han valorado este centro y ninguna ha bajado de cinco estrellas. Eso no se consigue con publicidad: se consigue con resultados y con tiempo dedicado a cada persona.</p>
+      <p style="color:var(--mut);margin-top:1.1rem;font-weight:300">Estamos en la calle Néstor de la Torre, 3, en la primera planta, puerta 5. Se atiende siempre con cita reservada, para que nadie coincida con nadie ni tenga que esperar.</p>
+      <a href="#contacto" class="btn btn-c" style="margin-top:2.2rem;color:#fff">Pedir cita</a>
+    </div>
+    <div class="frame rv" data-d="1">
+      <div class="k">
+        <b><span class="count" data-to="50" data-dec="1">0</span></b>
+        <span>Valoración media en Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="tratamientos">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Tratamientos</p>
+      <h2>Qué se hace aquí</h2>
+      <p>Estos cuatro bloques son una propuesta de partida. Los definitivos los ponéis vosotros.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s rv"><span class="num">01</span><h3>Cuidado facial</h3><p>Limpiezas, hidratación y tratamientos de piel, con valoración previa del tipo de piel.</p></div>
+      <div class="s rv" data-d="1"><span class="num">02</span><h3>Cuidado corporal</h3><p>Tratamientos de cuerpo con seguimiento de resultados sesión a sesión.</p></div>
+      <div class="s rv" data-d="2"><span class="num">03</span><h3>Estética avanzada</h3><p>Aparatología y técnicas avanzadas, siempre explicadas antes de empezar.</p></div>
+      <div class="s rv" data-d="3"><span class="num">04</span><h3>Primera consulta</h3><p>Una primera cita para valorar, hablar de expectativas y decidir sin compromiso.</p></div>
+    </div>
+    <p class="note">Importante: estos cuatro bloques son un ejemplo de estructura, NO tratamientos vuestros confirmados. No aparecen publicados en ningún sitio y no queremos inventarlos. En la web final van exactamente los que nos digáis.</p>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="50" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="59">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b>100%</b><span>Reseñas de 5 estrellas</span></div>
+  </div>
+</section>
+
+<section id="llegar">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2>Estamos en la primera planta</h2>
+      <p>En una calle con varias consultas, encontrar la puerta correcta importa. Así se llega.</p>
+    </div>
+    <div class="llegar">
+      <div class="paso rv"><b>1</b><span>Calle Néstor de la Torre, número 3, en Las Palmas de Gran Canaria.</span></div>
+      <div class="paso rv" data-d="1"><b>2</b><span>Sube a la primera planta del edificio.</span></div>
+      <div class="paso rv" data-d="2"><b>3</b><span>Puerta 5. Ahí estamos.</span></div>
+      <div class="paso rv" data-d="3"><b>4</b><span>Siempre con cita reservada previamente por WhatsApp o teléfono.</span></div>
+    </div>
+    <div class="rv" style="margin-top:2.4rem">
+      <div class="aviso">
+        <b>El horario está pendiente de confirmar.</b> No aparece publicado en la ficha de Google ni en ningún portal, así que hemos preferido preguntároslo antes que poner unas horas inventadas. Decidnos los días y las horas y lo dejamos puesto en la web final, con el cartel de «abierto ahora» que se calcula solo según la hora de quien visita la página.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--hueso-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen</h2>
+      <p>5,0 sobre 5 con 59 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Te explica lo que te va a hacer y por qué, sin venderte nada de más.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Trato muy cercano y muchísimo cuidado con los detalles.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Voy desde hace tiempo y siempre salgo contenta con el resultado.”</p><footer>Clienta habitual</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.84rem;margin-top:2.4rem;font-weight:300">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Pide tu cita</h2>
+      <p>Calle Néstor de la Torre, 3, planta 1ª, puerta 5 · Las Palmas de Gran Canaria.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C. Néstor de la Torre, 3<br>Planta 1ª · Puerta 5<br>35006 Las Palmas de Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34623589953">623 58 99 53</a></p></div>
+        <div class="dt"><h4>Valoración</h4><p>5,0 sobre 5 con 59 reseñas en Google</p></div>
+        <div class="dt"><h4>Cita</h4><p>Siempre con cita reservada</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Laura+Galan+Clinica+estetica+Calle+Nestor+de+la+Torre+3+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.5rem;margin-top:.9rem;font-weight:300">Néstor de la Torre, 3</p>
+            <p style="color:rgba(255,255,255,.82);margin-top:.5rem;font-weight:300">Planta 1ª · Puerta 5</p>
+            <span class="btn btn-o" style="margin-top:1.7rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Laura Galán Clínica estética · Las Palmas de Gran Canaria</span>
+    <span><a href="tel:+34623589953">623 58 99 53</a> · Néstor de la Torre, 3</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34623589953" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34623589953" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function cerrar(){l.classList.add('off')}
+  window.addEventListener('load',function(){setTimeout(cerrar,2000)});
+  setTimeout(cerrar,2600);
+  l.addEventListener('click',cerrar);
+  addEventListener('keydown',cerrar,{once:true});
+})();
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  .nombre .cort{display:none!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
