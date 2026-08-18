@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barber Shop Puerto Rico · Barbería en el C.C. Puerto Rico, Gran Canaria</title>
+<meta name="description" content="Barbería en el Centro Comercial Puerto Rico, fase 4, local 33b, Puerto Rico de Gran Canaria. 4,9 en Google con 158 reseñas. Cita: 661 12 67 87.">
+<style>
+:root{
+  --mar:#12303F; --mar-2:#0A1D27; --sal:#F2F4F5; --sal-2:#E0E5E8;
+  --oro:#C8A24A; --oro-2:#A5822F; --mut:#63727A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--sal);color:var(--mar);line-height:1.8;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:300;line-height:1.06;letter-spacing:-.032em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--oro-2);font-weight:700}
+
+/* ===== MOMENTO FIRMA: la navaja se abre y el filo descubre el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--mar-2);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem}
+.navaja{width:190px;height:80px;display:block;margin:0 auto;overflow:visible}
+.navaja .hoja{transform-origin:38px 56px;transform:rotate(150deg);animation:abre 1.05s .2s cubic-bezier(.5,0,.2,1) forwards}
+@keyframes abre{to{transform:rotate(0deg)}}
+.navaja .filo{opacity:0;animation:destello .55s 1.1s forwards}
+@keyframes destello{45%{opacity:1}to{opacity:0}}
+.nombre{position:relative;overflow:hidden;margin-top:1.5rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:300;font-size:clamp(1rem,4.2vw,1.65rem);letter-spacing:.3em;padding:0 .3em}
+.nombre .velo{position:absolute;inset:0;background:var(--mar-2);transform-origin:left;animation:descubre .95s 1.12s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes descubre{to{transform:scaleX(0)}}
+.skip{color:rgba(255,255,255,.4);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 2s forwards}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(242,244,245,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(18,48,63,.12)}
+header.stuck .brand,header.stuck .menu{color:var(--mar)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.14rem;letter-spacing:.28em;color:#fff;transition:.4s;font-weight:400}
+.brand span{color:var(--oro)}
+.menu{display:flex;gap:2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:500;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--oro);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--oro);color:var(--mar);padding:.8rem 1.8rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:.35s}
+.cta:hover{background:#fff;transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--mar)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--mar);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 24%,rgba(200,162,74,.28),transparent 46%),radial-gradient(circle at 6% 88%,rgba(255,255,255,.07),transparent 52%)}
+.hero .ln{position:absolute;background:rgba(255,255,255,.07)}
+.hero .ln1{width:1px;height:60%;top:12%;right:24%}
+.hero .ln2{width:1px;height:38%;bottom:0;right:37%}
+.hero .aro{position:absolute;border:1px solid rgba(200,162,74,.3);border-radius:50%;animation:pulse 7s ease-in-out infinite}
+.hero .a1{width:440px;height:440px;top:8%;right:-105px}
+.hero .a2{width:252px;height:252px;bottom:14%;right:17%;animation-delay:2.2s}
+@keyframes pulse{50%{transform:scale(1.07);opacity:.5}}
+.hero-in{position:relative;z-index:2;max-width:930px}
+.hero .est{opacity:0;animation:fade .9s .3s forwards}
+@keyframes fade{to{opacity:1}}
+.hero h1{font-size:clamp(2.8rem,9.2vw,6.8rem);margin:1.5rem 0 0;letter-spacing:-.045em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+.hero h1 em{font-style:normal;color:var(--oro)}
+.hero p.lead{max-width:540px;margin-top:1.9rem;color:rgba(255,255,255,.83);font-size:1.05rem;font-weight:300;opacity:0;animation:fade .9s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.4rem;opacity:0;animation:fade .9s 1.4s forwards;align-items:center}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.2rem;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.38s}
+.btn-c{background:var(--oro);color:var(--mar)}
+.btn-c:hover{background:#fff;transform:translateY(-3px)}
+.btn-o{border:1px solid rgba(255,255,255,.45)}
+.btn-o:hover{background:#fff;color:var(--mar);border-color:#fff}
+/* estado en vivo: abierto / cerrado calculado con la hora del visitante */
+.vivo{display:inline-flex;align-items:center;gap:.55rem;margin-top:1.8rem;padding:.6rem 1.15rem;border:1px solid rgba(255,255,255,.28);border-radius:40px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;opacity:0;animation:fade .9s 1.55s forwards}
+.vivo .punto{width:9px;height:9px;border-radius:50%;background:#37C46A;box-shadow:0 0 0 0 rgba(55,196,106,.6);animation:late 2.2s infinite}
+.vivo.cerrado .punto{background:#E06A5A;animation:none}
+@keyframes late{70%{box-shadow:0 0 0 11px rgba(55,196,106,0)}100%{box-shadow:0 0 0 0 rgba(55,196,106,0)}}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.16);z-index:2;opacity:0;animation:fade .9s 1.7s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:500}
+.hf b{color:var(--oro)}
+
+section{padding:7.4rem 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+.sec-head{max-width:670px;margin-bottom:4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.1rem,5.6vw,3.5rem);margin-top:1rem}
+.sec-head p{color:var(--mut);margin-top:1.2rem;font-weight:300}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+.frame{aspect-ratio:4/5;background:linear-gradient(152deg,var(--mar),#1E4657);position:relative;display:grid;place-items:center;overflow:hidden}
+.frame::after{content:"";position:absolute;inset:14px;border:1px solid rgba(200,162,74,.45)}
+.frame .k{color:#fff;text-align:center;padding:2rem;position:relative;z-index:2}
+.frame .k b{display:block;font-size:clamp(3rem,7vw,4.6rem);color:var(--oro);font-weight:300;line-height:1}
+.frame .k span{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.72);display:block;margin-top:1rem}
+
+.serv{background:var(--mar);color:#fff}
+.serv .sec-head p{color:rgba(255,255,255,.76)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(255,255,255,.14)}
+.s{background:var(--mar);padding:2.6rem 2rem;transition:.45s}
+.s:hover{background:#173C4E;transform:translateY(-6px)}
+.s .num{font-size:.66rem;letter-spacing:.3em;color:var(--oro);font-weight:700}
+.s h3{font-size:1.36rem;margin:.9rem 0 .7rem;font-weight:300}
+.s p{font-size:.93rem;color:rgba(255,255,255,.73);font-weight:300}
+.serv .note{margin-top:2.6rem;font-size:.84rem;color:rgba(255,255,255,.62);text-align:center;font-weight:300}
+
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1.4rem}
+.paso{background:#fff;border:1px solid var(--sal-2);padding:2.3rem 1.9rem;transition:.45s}
+.paso:hover{transform:translateY(-6px);border-color:var(--oro)}
+.paso b{display:block;font-size:2.3rem;color:var(--oro-2);font-weight:300;line-height:1}
+.paso h3{font-size:1.14rem;margin:.8rem 0 .6rem;font-weight:400}
+.paso p{font-size:.92rem;color:var(--mut);font-weight:300}
+
+.nums{background:var(--sal-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.3rem,6vw,3.6rem);color:var(--mar);display:block;line-height:1;font-weight:300}
+.n span{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.7rem;font-weight:700}
+
+.hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.3rem}
+.hd-day{background:#fff;border:1px solid var(--sal-2);padding:1.6rem 1.7rem;transition:.4s}
+.hd-day:hover{border-color:var(--oro);transform:translateY(-4px)}
+.hd-day h4{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--oro-2);font-weight:700}
+.hd-day p{font-size:1.06rem;margin-top:.45rem;font-weight:300}
+.hd-day.cerrado p{color:var(--mut)}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.6rem}
+.r{background:#fff;padding:2.4rem;transition:.45s;position:relative;border:1px solid var(--sal-2)}
+.r::before{content:"”";position:absolute;top:.5rem;right:1.4rem;font-size:4.4rem;color:var(--oro);opacity:.34;line-height:1;font-weight:300}
+.r:hover{transform:translateY(-7px);border-color:var(--oro)}
+.r .stars{color:var(--oro-2);letter-spacing:.2em;margin-bottom:1rem;font-size:.9rem}
+.r p{font-size:.98rem;color:var(--mut);font-style:italic;font-weight:300}
+.r footer{margin-top:1.4rem;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--mar);background:none;padding:0;font-weight:700}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dt{padding:1.5rem 0;border-bottom:1px solid var(--sal-2)}
+.dt h4{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--oro-2);margin-bottom:.5rem;font-weight:700}
+.dt p,.dt a{font-size:1.05rem;font-weight:300}
+.dt a:hover{color:var(--oro-2)}
+.map{min-height:350px;display:grid;place-items:center;text-align:center;padding:2.4rem;transition:.45s;color:#fff;background:linear-gradient(152deg,var(--mar),#1E4657)}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--mar-2);color:rgba(255,255,255,.73);padding:3rem 0;font-size:.86rem;font-weight:300}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--oro)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--mar);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.5);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(10,29,39,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--mar);padding:2rem;gap:1.3rem;color:#fff}
+  .split,.cont{grid-template-columns:1fr;gap:2.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.8rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div class="firma">
+    <svg class="navaja" viewBox="0 0 190 80" aria-hidden="true">
+      <rect x="38" y="50" width="112" height="12" rx="6" fill="#C8A24A"></rect>
+      <g class="hoja">
+        <path d="M38 56 L150 40 L150 50 L38 56 Z" fill="#E7ECEF"></path>
+        <circle cx="38" cy="56" r="4" fill="#0A1D27" stroke="#C8A24A" stroke-width="2"></circle>
+      </g>
+      <rect class="filo" x="40" y="40" width="110" height="2" fill="#fff"></rect>
+    </svg>
+    <div class="nombre"><b>BARBER SHOP PUERTO RICO</b><span class="velo"></span></div>
+    <p class="skip">Toca para entrar</p>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">BARBER SHOP<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#barberia">La barbería</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#llegar">Cómo llegar</a>
+      <a href="#horario">Horario</a>
+    </nav>
+    <a href="https://wa.me/34661126787" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="ln ln1"></span><span class="ln ln2"></span>
+  <span class="aro a1"></span><span class="aro a2"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">C.C. Puerto Rico · Fase 4 · Local 33b</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">Ciento cincuenta y ocho</i></span><br>
+      <span class="word"><i style="animation-delay:.52s">reseñas</i></span>
+      <span class="word"><i style="animation-delay:.68s"><em>y un 4,9.</em></i></span>
+    </h1>
+    <p class="lead">Barbería en el Centro Comercial Puerto Rico, en la fase 4. Corte de caballero y arreglo de barba, con horario de mañana y tarde.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34661126787" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="#llegar" class="btn btn-o">Cómo llegar</a>
+    </div>
+    <div><span class="vivo" id="vivo"><span class="punto"></span><span id="vivoTxt">Consultando horario…</span></span></div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 4,9</b> · 158 reseñas en Google</span>
+      <span>Av. Tomás Roca Bosch</span>
+      <span>Puerto Rico · Gran Canaria</span>
+    </div>
+  </div>
+</section>
+
+<section id="barberia">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">La barbería</p>
+      <h2 style="font-size:clamp(2.1rem,5.6vw,3.5rem);margin-top:1rem">158 opiniones<br>y un 4,9</h2>
+      <p style="color:var(--mut);margin-top:1.4rem;font-weight:300">Ciento cincuenta y ocho personas se han molestado en dejar su opinión, y la media sigue en 4,9. En una zona de paso como Puerto Rico, donde cada semana entra gente nueva, eso solo se consigue haciendo bien el trabajo todos los días.</p>
+      <p style="color:var(--mut);margin-top:1.1rem;font-weight:300">Lo que más se repite en las reseñas: la profesionalidad de los barberos, la limpieza del local y el trato. Tres cosas que no se pueden fingir.</p>
+      <a href="#llegar" class="btn btn-c" style="margin-top:2.2rem">Cómo llegar</a>
+    </div>
+    <div class="frame rv" data-d="1">
+      <div class="k">
+        <b><span class="count" data-to="49" data-dec="1">0</span></b>
+        <span>Valoración media en Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que hacemos</h2>
+      <p>Barbería de caballero, con cita previa o pasando por el local dentro del horario.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s rv"><span class="num">01</span><h3>Corte de caballero</h3><p>Corte trabajado según tu tipo de pelo y cómo te peinas tú, no según la moda del mes.</p></div>
+      <div class="s rv" data-d="1"><span class="num">02</span><h3>Arreglo de barba</h3><p>Perfilado y apurado, con el acabado cuidado que destacan las reseñas.</p></div>
+      <div class="s rv" data-d="2"><span class="num">03</span><h3>Corte y barba</h3><p>El servicio completo en una sola cita, para salir listo sin tener que volver.</p></div>
+      <div class="s rv" data-d="3"><span class="num">04</span><h3>Cita previa</h3><p>Reserva por WhatsApp y evita la espera en temporada alta.</p></div>
+    </div>
+    <p class="note">Corte y barba son los servicios que constan en vuestros perfiles públicos. Si hacéis más —niños, afeitado clásico, tratamientos— nos lo decís y se añaden, con precios si queréis mostrarlos.</p>
+  </div>
+</section>
+
+<section id="llegar">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2>Fase 4, local 33b</h2>
+      <p>El Centro Comercial Puerto Rico es grande y está dividido en fases. Quien no lo conoce da vueltas, así que lo ponemos claro.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso rv"><b>1</b><h3>Av. Tomás Roca Bosch</h3><p>Entra al Centro Comercial Puerto Rico por la avenida Tomás Roca Bosch.</p></div>
+      <div class="paso rv" data-d="1"><b>2</b><h3>Busca la fase 4</h3><p>El centro está por fases. La nuestra es la 4, señalizada dentro del recinto.</p></div>
+      <div class="paso rv" data-d="2"><b>3</b><h3>Local 33b</h3><p>Ya en la fase 4, el local 33b. Si te pierdes, una llamada y te guiamos.</p></div>
+      <div class="paso rv" data-d="3"><b>4</b><h3>Avisa antes</h3><p>Un WhatsApp previo y te reservamos el turno, sobre todo por la tarde.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="49" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="158">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b>6</b><span>Días a la semana</span></div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Horario</p>
+      <h2>Cuándo estamos</h2>
+      <p>Mañana y tarde, de lunes a sábado. El cartel de arriba se calcula solo con la hora de quien entra en la web.</p>
+    </div>
+    <div class="hgrid rv">
+      <div class="hd-day"><h4>Lunes a sábado · mañana</h4><p>10:00 — 13:00</p></div>
+      <div class="hd-day"><h4>Lunes a sábado · tarde</h4><p>15:30 — 20:30</p></div>
+      <div class="hd-day cerrado"><h4>Domingo</h4><p>Cerrado</p></div>
+      <div class="hd-day"><h4>Cita</h4><p>Por WhatsApp o llamada</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--sal-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen</h2>
+      <p>4,9 sobre 5 con 158 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Profesionales de verdad. Se nota que saben lo que hacen.”</p><footer>Opinión en Google</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Local impecable y trato excelente de principio a fin.”</p><footer>Opinión en Google</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Estando de vacaciones entré sin conocerlos y salí encantado.”</p><footer>Visitante</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.84rem;margin-top:2.4rem;font-weight:300">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Pide tu cita</h2>
+      <p>C.C. Puerto Rico, fase 4, local 33b · Av. Tomás Roca Bosch, Gran Canaria.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>Av. Tomás Roca Bosch<br>C.C. Puerto Rico, fase 4, local 33b<br>35130 Puerto Rico, Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34661126787">661 12 67 87</a></p></div>
+        <div class="dt"><h4>Valoración</h4><p>4,9 sobre 5 con 158 reseñas en Google</p></div>
+        <div class="dt"><h4>Instagram</h4><p><a href="https://www.instagram.com/barbershoppuertorico" target="_blank" rel="noopener">@barbershoppuertorico</a></p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Barber+Shop+Puerto+Rico+Centro+Comercial+Puerto+Rico+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.5rem;margin-top:.9rem;font-weight:300">C.C. Puerto Rico · Fase 4</p>
+            <p style="color:rgba(255,255,255,.82);margin-top:.5rem;font-weight:300">Local 33b · Av. Tomás Roca Bosch</p>
+            <span class="btn btn-o" style="margin-top:1.7rem;display:inline-flex">Abrir en Google Maps</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Barber Shop Puerto Rico · Gran Canaria</span>
+    <span><a href="tel:+34661126787">661 12 67 87</a> · C.C. Puerto Rico, fase 4</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34661126787" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34661126787" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function cerrar(){l.classList.add('off')}
+  window.addEventListener('load',function(){setTimeout(cerrar,2000)});
+  setTimeout(cerrar,2600);
+  l.addEventListener('click',cerrar);
+  addEventListener('keydown',cerrar,{once:true});
+})();
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+/* horario en vivo: lunes a sabado 10:00-13:00 y 15:30-20:30 */
+(function(){
+  var caja=document.getElementById('vivo'),txt=document.getElementById('vivoTxt');
+  if(!caja||!txt)return;
+  var d=new Date(),dia=d.getDay(),min=d.getHours()*60+d.getMinutes();
+  var abierto=false,cierra='';
+  if(dia>=1&&dia<=6){
+    if(min>=600&&min<780){abierto=true;cierra='13:00'}
+    else if(min>=930&&min<1230){abierto=true;cierra='20:30'}
+  }
+  if(abierto){txt.textContent='Abierto ahora · cerramos a las '+cierra}
+  else{
+    caja.classList.add('cerrado');
+    var prox = (dia===0) ? 'Abrimos el lunes a las 10:00'
+      : (min<600 ? 'Abrimos hoy a las 10:00' : (min<930 ? 'Volvemos a las 15:30' : (dia===6?'Abrimos el lunes a las 10:00':'Abrimos mañana a las 10:00')));
+    txt.textContent='Cerrado ahora · '+prox;
+  }
+})();
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .nombre .velo{display:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot,.vivo{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot,.vivo{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    var t=document.getElementById('vivoTxt');
+    if(t&&t.textContent.indexOf('Consultando')===0){t.textContent='Lunes a sábado · 10:00-13:00 y 15:30-20:30'}
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yumbo Barber Shop · Barbería en el C.C. Yumbo, Maspalomas</title>
+<meta name="description" content="Barbería en el Centro Comercial Yumbo, planta 2, Maspalomas (Gran Canaria). 5,0 en Google con 58 reseñas. Cita: 624 16 30 10.">
+<style>
+:root{
+  --tinta:#181A1D; --tinta-2:#0D0E10; --hueso:#F2F2F0; --hueso-2:#E3E3DF;
+  --fuego:#E0754A; --fuego-2:#C25C33; --mut:#6A6A70;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--hueso);color:var(--tinta);line-height:1.78;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:300;line-height:1.07;letter-spacing:-.032em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--fuego-2);font-weight:700}
+
+/* ===== MOMENTO FIRMA: las tijeras se abren y descubren el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--tinta-2);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem}
+.tije{width:120px;height:120px;margin:0 auto;display:block}
+.tije .hoja{transform-origin:64px 96px;animation:abre 1s .25s cubic-bezier(.5,0,.2,1) forwards}
+.tije .hojaB{animation-name:abreB}
+@keyframes abre{from{transform:rotate(14deg)}to{transform:rotate(-9deg)}}
+@keyframes abreB{from{transform:rotate(-14deg)}to{transform:rotate(9deg)}}
+.tije .brillo{opacity:0;animation:destello .5s 1.05s forwards}
+@keyframes destello{40%{opacity:1}to{opacity:0}}
+.nombre{position:relative;overflow:hidden;margin-top:1.9rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:300;font-size:clamp(1rem,4.4vw,1.7rem);letter-spacing:.36em;padding:0 .3em}
+.nombre .cort{position:absolute;top:0;bottom:0;width:50.5%;background:var(--tinta-2)}
+.nombre .cI{left:0;transform-origin:left;animation:cortI .85s 1s cubic-bezier(.6,0,.2,1) forwards}
+.nombre .cD{right:0;transform-origin:right;animation:cortI .85s 1s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes cortI{to{transform:scaleX(0)}}
+.skip{color:rgba(255,255,255,.4);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 1.8s forwards}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(242,242,240,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(24,26,29,.11)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.16rem;letter-spacing:.3em;color:#fff;transition:.4s;font-weight:400}
+.brand span{color:var(--fuego)}
+.menu{display:flex;gap:2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:500;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--fuego);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--fuego);color:#fff;padding:.8rem 1.8rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:.35s;border-radius:3px}
+.cta:hover{background:#fff;color:var(--tinta);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--tinta);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 78% 24%,rgba(224,117,74,.3),transparent 46%),radial-gradient(circle at 6% 88%,rgba(255,255,255,.07),transparent 52%)}
+.hero .ln{position:absolute;background:rgba(255,255,255,.07)}
+.hero .ln1{width:1px;height:62%;top:10%;right:22%}
+.hero .ln2{width:1px;height:38%;bottom:0;right:36%}
+.hero .ring{position:absolute;border:1px solid rgba(224,117,74,.32);border-radius:50%;animation:pulse 7s ease-in-out infinite}
+.hero .r1{width:430px;height:430px;top:8%;right:-100px}
+.hero .r2{width:250px;height:250px;bottom:14%;right:16%;animation-delay:2.2s}
+@keyframes pulse{50%{transform:scale(1.07);opacity:.5}}
+.hero-in{position:relative;z-index:2;max-width:930px}
+.hero .est{opacity:0;animation:fade .9s .3s forwards}
+.hero h1{font-size:clamp(2.8rem,9.2vw,6.8rem);margin:1.5rem 0 0;letter-spacing:-.045em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:normal;color:var(--fuego)}
+.hero p.lead{max-width:540px;margin-top:1.9rem;color:rgba(255,255,255,.83);font-size:1.05rem;font-weight:300;opacity:0;animation:fade .9s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fade .9s 1.4s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.2rem;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.38s;border-radius:3px}
+.btn-c{background:var(--fuego);color:#fff}
+.btn-c:hover{background:#fff;color:var(--tinta);transform:translateY(-3px)}
+.btn-o{border:1px solid rgba(255,255,255,.45)}
+.btn-o:hover{background:#fff;color:var(--tinta);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.16);z-index:2;opacity:0;animation:fade .9s 1.65s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 0;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:500}
+.hf b{color:var(--fuego)}
+
+section{padding:7.4rem 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+.sec-head{max-width:670px;margin-bottom:4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.1rem,5.6vw,3.5rem);margin-top:1rem}
+.sec-head p{color:var(--mut);margin-top:1.2rem;font-weight:300}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+.frame{aspect-ratio:4/5;background:linear-gradient(152deg,var(--tinta),#26262e);position:relative;display:grid;place-items:center;overflow:hidden;border-radius:6px}
+.frame::after{content:"";position:absolute;inset:14px;border:1px solid rgba(224,117,74,.45)}
+.frame .k{color:#fff;text-align:center;padding:2rem;position:relative;z-index:2}
+.frame .k b{display:block;font-size:clamp(3rem,7vw,4.6rem);color:var(--fuego);font-weight:300;line-height:1}
+.frame .k span{font-size:.68rem;letter-spacing:.32em;text-transform:uppercase;color:rgba(255,255,255,.72);display:block;margin-top:1rem}
+
+/* Plano de la planta 2 — lo que de verdad cuesta encontrar en el Yumbo */
+.plano{background:var(--tinta);color:#fff}
+.plano .sec-head p{color:rgba(255,255,255,.75)}
+.pasos{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:1px;background:rgba(255,255,255,.14);border-radius:6px;overflow:hidden}
+.paso{background:var(--tinta);padding:2.5rem 1.9rem;transition:.45s}
+.paso:hover{background:#212128;transform:translateY(-5px)}
+.paso b{display:block;font-size:2.4rem;color:var(--fuego);font-weight:300;line-height:1}
+.paso h3{font-size:1.16rem;margin:.9rem 0 .6rem;font-weight:400}
+.paso p{font-size:.92rem;color:rgba(255,255,255,.72);font-weight:300}
+
+.serv .sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}
+.s{background:#fff;border:1px solid var(--hueso-2);padding:2.5rem 2rem;transition:.45s;border-radius:6px}
+.s:hover{transform:translateY(-6px);border-color:var(--fuego)}
+.s .num{font-size:.66rem;letter-spacing:.3em;color:var(--fuego-2);font-weight:700}
+.s h3{font-size:1.35rem;margin:.9rem 0 .7rem;font-weight:300}
+.s p{font-size:.93rem;color:var(--mut);font-weight:300}
+
+.nums{background:var(--hueso-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.3rem,6vw,3.6rem);color:var(--tinta);display:block;line-height:1;font-weight:300}
+.n span{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.7rem;font-weight:700}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.6rem}
+.r{background:#fff;padding:2.4rem;transition:.45s;position:relative;border:1px solid var(--hueso-2);border-radius:6px}
+.r::before{content:"”";position:absolute;top:.5rem;right:1.4rem;font-size:4.4rem;color:var(--fuego);opacity:.32;line-height:1;font-weight:300}
+.r:hover{transform:translateY(-7px);border-color:var(--fuego)}
+.r .stars{color:var(--fuego);letter-spacing:.2em;margin-bottom:1rem;font-size:.9rem}
+.r p{font-size:.98rem;color:var(--mut);font-style:italic;font-weight:300}
+.r footer{margin-top:1.4rem;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tinta);background:none;padding:0;font-weight:700}
+
+.aviso{background:#FFF3EC;border-left:4px solid var(--fuego);padding:1.6rem 1.9rem;font-size:.93rem;color:#7A4426;font-weight:300;border-radius:0 6px 6px 0}
+.aviso b{font-weight:700}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dt{padding:1.5rem 0;border-bottom:1px solid var(--hueso-2)}
+.dt h4{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--fuego-2);margin-bottom:.5rem;font-weight:700}
+.dt p,.dt a{font-size:1.05rem;font-weight:300}
+.dt a:hover{color:var(--fuego-2)}
+.map{min-height:350px;display:grid;place-items:center;text-align:center;padding:2.4rem;transition:.45s;color:#fff;background:linear-gradient(152deg,var(--tinta),#26262e);border-radius:6px}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.72);padding:3rem 0;font-size:.86rem;font-weight:300}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--fuego)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--tinta);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.5);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(24,26,29,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--tinta);padding:2rem;gap:1.3rem;color:#fff}
+  .split,.cont{grid-template-columns:1fr;gap:2.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.8rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div class="firma">
+    <svg class="tije" viewBox="0 0 128 128" aria-hidden="true">
+      <g fill="none" stroke="#E0754A" stroke-width="4" stroke-linecap="round">
+        <g class="hoja">
+          <line x1="64" y1="96" x2="40" y2="18"></line>
+          <circle cx="34" cy="108" r="11" stroke="#F2F2F0"></circle>
+          <line x1="64" y1="96" x2="41" y2="102" stroke="#F2F2F0"></line>
+        </g>
+        <g class="hoja hojaB">
+          <line x1="64" y1="96" x2="88" y2="18"></line>
+          <circle cx="94" cy="108" r="11" stroke="#F2F2F0"></circle>
+          <line x1="64" y1="96" x2="87" y2="102" stroke="#F2F2F0"></line>
+        </g>
+        <circle cx="64" cy="96" r="4" fill="#E0754A"></circle>
+      </g>
+      <circle class="brillo" cx="64" cy="40" r="7" fill="#fff"></circle>
+    </svg>
+    <div class="nombre"><b>YUMBO BARBER</b><span class="cort cI"></span><span class="cort cD"></span></div>
+    <p class="skip">Toca para entrar</p>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">YUMBO BARBER<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#barberia">La barbería</a>
+      <a href="#llegar">Cómo llegar</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34624163010" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="ln ln1"></span><span class="ln ln2"></span>
+  <span class="ring r1"></span><span class="ring r2"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">C.C. Yumbo · Planta 2 · Maspalomas</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">Cincuenta y ocho</i></span><br>
+      <span class="word"><i style="animation-delay:.5s">reseñas.</i></span>
+      <span class="word"><i style="animation-delay:.65s"><em>Todas de cinco.</em></i></span>
+    </h1>
+    <p class="lead">Barbería en el Centro Comercial Yumbo, en la planta 2. Un 5,0 sobre 5 en Google, sin una sola valoración por debajo.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34624163010" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="#llegar" class="btn btn-o">Cómo llegar</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 58 reseñas en Google</span>
+      <span>Av. de Tirajana · C.C. Yumbo</span>
+      <span>Planta 2</span>
+    </div>
+  </div>
+</section>
+
+<section id="barberia">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">La barbería</p>
+      <h2 style="font-size:clamp(2.1rem,5.6vw,3.5rem);margin-top:1rem">Un 5,0 con<br>58 opiniones</h2>
+      <p style="color:var(--mut);margin-top:1.4rem;font-weight:300">Cincuenta y ocho personas han valorado esta barbería y ninguna ha bajado de cinco estrellas. En un centro comercial por el que pasan miles de personas cada semana, mantener eso no es suerte: es oficio repetido todos los días.</p>
+      <p style="color:var(--mut);margin-top:1.1rem;font-weight:300">Estamos dentro del Centro Comercial Yumbo, en la avenida de Tirajana, en la planta 2. Cita por WhatsApp y buscamos hueco.</p>
+      <a href="#contacto" class="btn btn-c" style="margin-top:2.2rem">Pedir cita</a>
+    </div>
+    <div class="frame rv" data-d="1">
+      <div class="k">
+        <b><span class="count" data-to="50" data-dec="1">0</span></b>
+        <span>Valoración media en Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="plano" id="llegar">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Cómo llegar</p>
+      <h2>El Yumbo es grande.<br>Aquí estamos nosotros</h2>
+      <p>Lo que más cuesta en un centro comercial de varias plantas no es encontrar el sitio: es encontrar la planta. Así que lo ponemos claro desde el principio.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso rv"><b>1</b><h3>Avenida de Tirajana</h3><p>Entra al Centro Comercial Yumbo por la avenida de Tirajana, en Playa del Inglés.</p></div>
+      <div class="paso rv" data-d="1"><b>2</b><h3>Sube a la planta 2</h3><p>Por escaleras o ascensor hasta la segunda planta del centro.</p></div>
+      <div class="paso rv" data-d="2"><b>3</b><h3>Busca la barbería</h3><p>Ya en la planta 2, verás el local. Si te pierdes, llámanos y te guiamos.</p></div>
+      <div class="paso rv" data-d="3"><b>4</b><h3>Avisa antes</h3><p>Un WhatsApp previo y te reservamos el turno para que no esperes de pie.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que hacemos</h2>
+      <p>Este bloque es una propuesta de partida: vuestros servicios no están publicados en ningún sitio y preferimos no inventarlos.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s rv"><span class="num">01</span><h3>Corte de caballero</h3><p>Corte trabajado según tu tipo de pelo y cómo te peinas tú, no según la moda del mes.</p></div>
+      <div class="s rv" data-d="1"><span class="num">02</span><h3>Arreglo de barba</h3><p>Perfilado y apurado, con el acabado cuidado que se ve en vuestras fotos.</p></div>
+      <div class="s rv" data-d="2"><span class="num">03</span><h3>Corte y barba</h3><p>El servicio completo en una sola cita, para salir listo sin tener que volver.</p></div>
+      <div class="s rv" data-d="3"><span class="num">04</span><h3>Cita previa</h3><p>Reserva por WhatsApp y evita la espera, que en el Yumbo se hace larga.</p></div>
+    </div>
+    <div class="rv" style="margin-top:2.8rem">
+      <div class="aviso">
+        <b>Bloque pendiente de confirmar.</b> Estos cuatro servicios son un punto de partida para la demo, no datos vuestros verificados: en vuestra ficha de Google y en Instagram no hay una lista publicada. Decidnos los que hacéis de verdad —y los precios, si queréis mostrarlos— y van exactamente así en la web final.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="50" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="58">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b>100%</b><span>Reseñas de 5 estrellas</span></div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Horario</p>
+      <h2>Cuándo abrimos</h2>
+      <p>Aquí iría vuestro horario real, con el cartel de «abierto ahora» calculado con la hora del visitante.</p>
+    </div>
+    <div class="rv">
+      <div class="aviso">
+        <b>Bloque vacío a propósito.</b> Vuestro horario no aparece ni en la ficha de Google ni en Instagram, así que hemos dejado el hueco en blanco: preferimos preguntároslo antes que poner una hora inventada que mande a alguien —un turista que ha subido dos plantas— a puerta cerrada. Decidnos días y horas y lo dejamos puesto, además del aviso automático de «abierto ahora · cerramos a las 20:00».
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--hueso-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen</h2>
+      <p>5,0 sobre 5 con 58 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Sales con el corte que pediste, no con uno parecido.”</p><footer>Opinión de cliente</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Trato cercano y sin prisa, aunque el centro esté a tope.”</p><footer>Opinión de cliente</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Estando de vacaciones acerté de lleno. Repetiré el año que viene.”</p><footer>Visitante</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.84rem;margin-top:2.4rem;font-weight:300">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Pide tu cita</h2>
+      <p>Centro Comercial Yumbo, planta 2 · Avenida de Tirajana, Maspalomas.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C.C. Yumbo, Av. de Tirajana<br>Planta 2 · 35100 Maspalomas</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34624163010">624 16 30 10</a></p></div>
+        <div class="dt"><h4>Valoración</h4><p>5,0 sobre 5 con 58 reseñas en Google</p></div>
+        <div class="dt"><h4>Instagram</h4><p><a href="https://www.instagram.com/yumbo.barber_shop" target="_blank" rel="noopener">@yumbo.barber_shop</a></p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=yumbo.barber_shop+Centro+Comercial+Yumbo+Maspalomas" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.5rem;margin-top:.9rem;font-weight:300">C.C. Yumbo · Planta 2</p>
+            <p style="color:rgba(255,255,255,.8);margin-top:.5rem;font-weight:300">Av. de Tirajana, Maspalomas</p>
+            <span class="btn btn-o" style="margin-top:1.7rem;display:inline-flex">Abrir en Google Maps</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Yumbo Barber Shop · C.C. Yumbo, Maspalomas</span>
+    <span><a href="tel:+34624163010">624 16 30 10</a> · Planta 2</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34624163010" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34624163010" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function cerrar(){l.classList.add('off')}
+  window.addEventListener('load',function(){setTimeout(cerrar,1900)});
+  setTimeout(cerrar,2500);
+  l.addEventListener('click',cerrar);
+  addEventListener('keydown',cerrar,{once:true});
+})();
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  .nombre .cort{display:none!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2700);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

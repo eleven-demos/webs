@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Star Gym · Gimnasio en el C.C. Botánico, Maspalomas</title>
+<meta name="description" content="Gimnasio en Calle Los Tenderetitos, C.C. Botánico, Maspalomas (Gran Canaria). 5,0 en Google con 54 reseñas. Información: 624 88 94 86.">
+<style>
+:root{
+  --noche:#16181C; --noche-2:#0B0C0E; --claro:#F1F3F5; --claro-2:#E1E4E8;
+  --rayo:#E8B923; --rayo-2:#C79A0F; --mut:#6C7076;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--claro);color:var(--noche);line-height:1.75;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:800;line-height:1.02;letter-spacing:-.04em;text-transform:uppercase}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--rayo-2);font-weight:800}
+
+/* ===== MOMENTO FIRMA: cuenta atrás 3·2·1 y el nombre entra de golpe ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--noche-2);display:grid;place-items:center;transition:opacity .6s,visibility .6s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem;position:relative}
+.cuenta{height:120px;display:grid;place-items:center;position:relative}
+.cuenta span{position:absolute;font-size:5.6rem;font-weight:800;color:var(--rayo);opacity:0;transform:scale(2.2);letter-spacing:-.05em}
+.cuenta .c3{animation:golpe .45s 0s forwards}
+.cuenta .c2{animation:golpe .45s .42s forwards}
+.cuenta .c1{animation:golpe .45s .84s forwards}
+@keyframes golpe{0%{opacity:0;transform:scale(2.2)}35%{opacity:1;transform:scale(1)}80%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(.86)}}
+.nombre{overflow:hidden;display:inline-block;margin-top:.6rem}
+.nombre b{display:block;color:#fff;font-weight:800;font-size:clamp(1.4rem,6vw,2.4rem);letter-spacing:.12em;transform:translateY(110%);animation:entra .6s 1.28s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes entra{to{transform:none}}
+.barra{width:0;height:4px;background:var(--rayo);margin:1.1rem auto 0;animation:carga .7s 1.5s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes carga{to{width:180px}}
+.skip{color:rgba(255,255,255,.4);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 2s forwards}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.4rem 0;transition:.45s}
+header.stuck{background:rgba(241,243,245,.97);padding:.65rem 0;box-shadow:0 1px 20px rgba(22,24,28,.12)}
+header.stuck .brand,header.stuck .menu{color:var(--noche)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.1rem;letter-spacing:.2em;color:#fff;transition:.4s;font-weight:800;text-transform:uppercase}
+.brand span{color:var(--rayo)}
+.menu{display:flex;gap:2rem;font-size:.71rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:700;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--rayo);transition:width .4s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--rayo);color:var(--noche);padding:.85rem 1.8rem;font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;transition:.35s}
+.cta:hover{background:#fff;transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--noche)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--noche);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 22%,rgba(232,185,35,.26),transparent 45%),radial-gradient(circle at 4% 90%,rgba(255,255,255,.06),transparent 52%)}
+.hero .diag{position:absolute;top:0;bottom:0;width:2px;background:rgba(232,185,35,.16);transform:skewX(-14deg)}
+.hero .d1{right:24%}.hero .d2{right:31%;background:rgba(255,255,255,.07)}.hero .d3{right:17%;background:rgba(255,255,255,.05)}
+.hero-in{position:relative;z-index:2;max-width:940px}
+.hero .est{opacity:0;animation:fade .9s .3s forwards}
+@keyframes fade{to{opacity:1}}
+.hero h1{font-size:clamp(3rem,10.5vw,7.6rem);margin:1.4rem 0 0;letter-spacing:-.05em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+.hero h1 em{font-style:normal;color:var(--rayo)}
+.hero p.lead{max-width:545px;margin-top:1.8rem;color:rgba(255,255,255,.82);font-size:1.05rem;font-weight:400;opacity:0;animation:fade .9s 1.2s forwards;text-transform:none}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fade .9s 1.4s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.15rem 2.2rem;font-size:.69rem;font-weight:800;letter-spacing:.2em;text-transform:uppercase;transition:.36s}
+.btn-c{background:var(--rayo);color:var(--noche)}
+.btn-c:hover{background:#fff;transform:translateY(-3px)}
+.btn-o{border:2px solid rgba(255,255,255,.4)}
+.btn-o:hover{background:#fff;color:var(--noche);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.16);z-index:2;opacity:0;animation:fade .9s 1.65s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 0;font-size:.71rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:700}
+.hf b{color:var(--rayo)}
+
+section{padding:7.2rem 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+.sec-head{max-width:680px;margin-bottom:3.8rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.2rem,6vw,3.8rem);margin-top:1rem}
+.sec-head p{color:var(--mut);margin-top:1.2rem;font-weight:400;text-transform:none}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+.frame{aspect-ratio:4/5;background:linear-gradient(148deg,var(--noche),#252932);position:relative;display:grid;place-items:center;overflow:hidden}
+.frame::after{content:"";position:absolute;inset:14px;border:2px solid rgba(232,185,35,.4)}
+.frame .k{color:#fff;text-align:center;padding:2rem;position:relative;z-index:2}
+.frame .k b{display:block;font-size:clamp(3.2rem,7.5vw,5rem);color:var(--rayo);font-weight:800;line-height:1}
+.frame .k span{font-size:.67rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.72);display:block;margin-top:1rem;font-weight:700}
+
+.mot{background:var(--noche);color:#fff}
+.mot .sec-head p{color:rgba(255,255,255,.75)}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1px;background:rgba(255,255,255,.14)}
+.m{background:var(--noche);padding:2.7rem 2rem;transition:.42s}
+.m:hover{background:#20242b;transform:translateY(-6px)}
+.m .num{font-size:.65rem;letter-spacing:.3em;color:var(--rayo);font-weight:800}
+.m h3{font-size:1.32rem;margin:.9rem 0 .7rem;font-weight:800}
+.m p{font-size:.93rem;color:rgba(255,255,255,.73);font-weight:400;text-transform:none}
+
+.nums{background:var(--claro-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.5rem,6.5vw,4rem);color:var(--noche);display:block;line-height:1;font-weight:800}
+.n span{font-size:.65rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.7rem;font-weight:800}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.6rem}
+.r{background:#fff;padding:2.4rem;transition:.45s;position:relative;border-left:4px solid var(--rayo)}
+.r:hover{transform:translateY(-7px);box-shadow:0 22px 44px -26px rgba(22,24,28,.5)}
+.r .stars{color:var(--rayo-2);letter-spacing:.2em;margin-bottom:1rem;font-size:.9rem}
+.r p{font-size:.98rem;color:var(--mut);font-style:italic;font-weight:400}
+.r footer{margin-top:1.4rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--noche);background:none;padding:0;font-weight:800}
+
+.aviso{background:#FFF8E0;border-left:5px solid var(--rayo);padding:1.7rem 1.9rem;font-size:.93rem;color:#6B5407;font-weight:400;text-transform:none}
+.aviso b{font-weight:800}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dt{padding:1.5rem 0;border-bottom:1px solid var(--claro-2)}
+.dt h4{font-size:.65rem;letter-spacing:.26em;text-transform:uppercase;color:var(--rayo-2);margin-bottom:.5rem;font-weight:800}
+.dt p,.dt a{font-size:1.05rem;font-weight:400;text-transform:none}
+.dt a:hover{color:var(--rayo-2)}
+.map{min-height:350px;display:grid;place-items:center;text-align:center;padding:2.4rem;transition:.45s;color:#fff;background:linear-gradient(148deg,var(--noche),#252932)}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--noche-2);color:rgba(255,255,255,.72);padding:3rem 0;font-size:.86rem;font-weight:400}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--rayo)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--noche);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.5);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(22,24,28,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--noche);padding:2rem;gap:1.3rem;color:#fff}
+  .split,.cont{grid-template-columns:1fr;gap:2.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.8rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div class="firma">
+    <div class="cuenta">
+      <span class="c3">3</span><span class="c2">2</span><span class="c1">1</span>
+    </div>
+    <div class="nombre"><b>LA STAR GYM</b></div>
+    <div class="barra"></div>
+    <p class="skip">Toca para entrar</p>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">LA STAR<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#gym">El gimnasio</a>
+      <a href="#entreno">Entrenamiento</a>
+      <a href="#tarifas">Tarifas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34624889486" class="cta" target="_blank" rel="noopener">Info y cuota</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="diag d1"></span><span class="diag d2"></span><span class="diag d3"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">C.C. Botánico · Maspalomas</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">54 reseñas.</i></span><br>
+      <span class="word"><i style="animation-delay:.52s"><em>Ni una</em></i></span>
+      <span class="word"><i style="animation-delay:.68s"><em>por debajo de 5.</em></i></span>
+    </h1>
+    <p class="lead">Gimnasio en el Centro Comercial Botánico, en la calle Los Tenderetitos. Amplio, con variedad de máquinas y entrenamiento guiado de verdad.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34624889486" class="btn btn-c" target="_blank" rel="noopener">Preguntar por la cuota</a>
+      <a href="#gym" class="btn btn-o">Ver el gimnasio</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 54 reseñas en Google</span>
+      <span>C. Los Tenderetitos</span>
+      <span>C.C. Botánico</span>
+    </div>
+  </div>
+</section>
+
+<section id="gym">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">El gimnasio</p>
+      <h2 style="font-size:clamp(2.2rem,6vw,3.8rem);margin-top:1rem">Un 5,0<br>con 54 opiniones</h2>
+      <p style="color:var(--mut);margin-top:1.4rem;font-weight:400;text-transform:none">Cincuenta y cuatro personas han valorado este gimnasio y ninguna ha puesto menos de cinco estrellas. En un sector donde la gente se apunta, prueba y se va, mantener eso significa que quien entra se queda.</p>
+      <p style="color:var(--mut);margin-top:1.1rem;font-weight:400;text-transform:none">Lo que más repiten las opiniones públicas: que es un sitio amplio, con gran variedad de máquinas, y que se entrena acompañado —corrigiendo la técnica, no mirando el móvil.</p>
+      <a href="#contacto" class="btn btn-c" style="margin-top:2.2rem">Cómo llegar</a>
+    </div>
+    <div class="frame rv" data-d="1">
+      <div class="k">
+        <b><span class="count" data-to="50" data-dec="1">0</span></b>
+        <span>Valoración media en Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mot" id="entreno">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Entrenamiento</p>
+      <h2>Cómo se entrena aquí</h2>
+      <p>Redactado a partir de lo que dicen vuestras reseñas públicas de Google. Si algo no encaja, se cambia: para eso está la demo.</p>
+    </div>
+    <div class="mgrid">
+      <div class="m rv"><span class="num">01</span><h3>Sala amplia</h3><p>Espacio de sobra para entrenar sin esperar turno ni pedir permiso para usar una máquina.</p></div>
+      <div class="m rv" data-d="1"><span class="num">02</span><h3>Variedad de máquinas</h3><p>Equipamiento para trabajar el cuerpo entero, no cuatro aparatos repetidos.</p></div>
+      <div class="m rv" data-d="2"><span class="num">03</span><h3>Técnica corregida</h3><p>Se vigila cómo haces cada ejercicio. Es lo que más agradecen vuestros clientes en Google.</p></div>
+      <div class="m rv" data-d="3"><span class="num">04</span><h3>Plan personalizado</h3><p>Adaptado a cada persona y a su punto de partida, tenga 20 años o 60.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="50" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="54">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b>100%</b><span>Reseñas de 5 estrellas</span></div>
+  </div>
+</section>
+
+<section id="tarifas">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Tarifas y horario</p>
+      <h2>Aquí van vuestras cuotas</h2>
+      <p>Es lo primero que pregunta quien busca gimnasio, y por eso ocupa un bloque entero de la web.</p>
+    </div>
+    <div class="rv">
+      <div class="aviso">
+        <b>Bloque vacío a propósito.</b> Ni vuestras cuotas ni vuestro horario están publicados en ningún sitio: no aparecen en la ficha de Google ni en Instagram. No los hemos inventado. Decidnos las tarifas (mensual, trimestral, matrícula, si la hay) y los días y horas de apertura, y este bloque se rellena con vuestros datos reales, más el cartel automático de «abierto ahora» calculado con la hora de quien visita la web.<br><br>
+        Este es, seguramente, el bloque que más socios os traería: quien no encuentra el precio, se va al gimnasio que sí lo enseña.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--claro-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen</h2>
+      <p>5,0 sobre 5 con 54 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Gimnasio muy amplio y con mucha variedad de máquinas.”</p><footer>Opinión en Google</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Te corrigen para que hagas bien cada ejercicio, no te dejan a tu aire.”</p><footer>Opinión en Google</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Trato personalizado y adaptado a lo que cada uno necesita.”</p><footer>Opinión en Google</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.84rem;margin-top:2.4rem;font-weight:400;text-transform:none">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Ven a verlo</h2>
+      <p>Calle Los Tenderetitos, Centro Comercial Botánico · Maspalomas.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C. Los Tenderetitos<br>C.C. Botánico · 35100 Maspalomas</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34624889486">624 88 94 86</a></p></div>
+        <div class="dt"><h4>Valoración</h4><p>5,0 sobre 5 con 54 reseñas en Google</p></div>
+        <div class="dt"><h4>Instagram</h4><p><a href="https://www.instagram.com/lastargym/" target="_blank" rel="noopener">@lastargym</a></p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=La+Star+Gym+Centro+Comercial+Botanico+Maspalomas" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.5rem;margin-top:.9rem;font-weight:800">C.C. Botánico</p>
+            <p style="color:rgba(255,255,255,.8);margin-top:.5rem;font-weight:400;text-transform:none">C. Los Tenderetitos, Maspalomas</p>
+            <span class="btn btn-o" style="margin-top:1.7rem;display:inline-flex">Abrir en Google Maps</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> La Star Gym · C.C. Botánico, Maspalomas</span>
+    <span><a href="tel:+34624889486">624 88 94 86</a> · C. Los Tenderetitos</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34624889486" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34624889486" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function cerrar(){l.classList.add('off')}
+  window.addEventListener('load',function(){setTimeout(cerrar,2100)});
+  setTimeout(cerrar,2700);
+  l.addEventListener('click',cerrar);
+  addEventListener('keydown',cerrar,{once:true});
+})();
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .nombre b{transform:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2900);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

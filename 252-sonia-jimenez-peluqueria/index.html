@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Sonia Jiménez Peluquería · Fernando Guanarteme, Las Palmas de Gran Canaria</title>
+<meta name="description" content="Peluquería en Calle Fernando Guanarteme, 90, Las Palmas de Gran Canaria. 5,0 en Google con 43 reseñas. Cita: 667 40 94 91.">
+<style>
+:root{
+  --pizarra:#3D3A44; --pizarra-2:#26242B; --lino:#FAF7F4; --lino-2:#EDE7E1;
+  --cobre:#C08A6E; --cobre-2:#9E6748; --mut:#75707A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--lino);color:var(--pizarra);line-height:1.82;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1170px,90vw);margin-inline:auto}
+.eyebrow{font-size:.65rem;letter-spacing:.42em;text-transform:uppercase;color:var(--cobre-2);font-weight:700;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}
+
+/* ===== MOMENTO FIRMA: el peine recorre y detrás aparece el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--pizarra-2);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem}
+.peine{width:170px;height:66px;display:block;margin:0 auto;overflow:visible}
+.peine .cuerpo{animation:pasa 1.5s .15s cubic-bezier(.5,0,.25,1) forwards;transform:translateX(-96px)}
+@keyframes pasa{to{transform:translateX(96px)}}
+.peine .estela{opacity:0;animation:estelar 1.5s .15s forwards}
+@keyframes estelar{20%{opacity:.55}to{opacity:0}}
+.nombre{position:relative;overflow:hidden;margin-top:1.7rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-family:Georgia,serif;font-weight:400;font-size:clamp(1.05rem,4.3vw,1.75rem);letter-spacing:.26em;padding:0 .3em}
+.nombre .velo{position:absolute;inset:0;background:var(--pizarra-2);transform-origin:left;animation:descubre 1s .82s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes descubre{to{transform:scaleX(0)}}
+.skip{color:rgba(255,255,255,.4);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 1.9s forwards}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(250,247,244,.97);padding:.7rem 0;box-shadow:0 1px 22px rgba(61,58,68,.1)}
+header.stuck .brand,header.stuck .menu{color:var(--pizarra)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:Georgia,serif;font-size:1.2rem;letter-spacing:.18em;color:#fff;transition:.4s}
+.brand span{color:var(--cobre)}
+.menu{display:flex;gap:2.1rem;font-size:.71rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:600;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--cobre);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--cobre);color:#fff;padding:.85rem 1.8rem;font-size:.66rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:.35s;border-radius:40px}
+.cta:hover{background:#fff;color:var(--pizarra);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--pizarra)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--pizarra);color:#fff;padding:9.2rem 0 7.4rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 26%,rgba(192,138,110,.32),transparent 46%),radial-gradient(circle at 8% 86%,rgba(255,255,255,.06),transparent 52%)}
+.hero .ln{position:absolute;background:rgba(255,255,255,.07)}
+.hero .ln1{width:1px;height:58%;top:14%;right:25%}
+.hero .ln2{width:1px;height:36%;bottom:0;right:38%}
+.hero .aro{position:absolute;border:1px solid rgba(192,138,110,.3);border-radius:50%;animation:respira 7.5s ease-in-out infinite}
+.hero .a1{width:440px;height:440px;top:9%;right:-105px}
+.hero .a2{width:255px;height:255px;bottom:15%;right:18%;animation-delay:2.3s}
+@keyframes respira{50%{transform:scale(1.06);opacity:.52}}
+.hero-in{position:relative;z-index:2;max-width:930px}
+.hero .est{opacity:0;animation:fade .9s .3s forwards}
+@keyframes fade{to{opacity:1}}
+.hero h1{font-size:clamp(2.7rem,8.8vw,6.4rem);margin:1.5rem 0 0;letter-spacing:-.03em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+.hero h1 em{font-style:italic;color:var(--cobre)}
+.hero p.lead{max-width:530px;margin-top:1.9rem;color:rgba(255,255,255,.83);font-size:1.05rem;opacity:0;animation:fade .9s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fade .9s 1.4s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.2rem;font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.38s;border-radius:40px}
+.btn-c{background:var(--cobre);color:#fff}
+.btn-c:hover{background:#fff;color:var(--pizarra);transform:translateY(-3px)}
+.btn-o{border:1px solid rgba(255,255,255,.45)}
+.btn-o:hover{background:#fff;color:var(--pizarra);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.16);z-index:2;opacity:0;animation:fade .9s 1.65s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.5rem 0;font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.8);font-weight:600}
+.hf b{color:var(--cobre)}
+
+section{padding:7.4rem 0;position:relative}
+.rv{opacity:0;transform:translateY(34px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}
+.sec-head{max-width:670px;margin-bottom:4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2.1rem,5.4vw,3.4rem);margin-top:1rem}
+.sec-head p{color:var(--mut);margin-top:1.2rem}
+
+.split{display:grid;grid-template-columns:1.03fr .97fr;gap:5rem;align-items:center}
+.frame{aspect-ratio:4/5;background:linear-gradient(152deg,var(--pizarra),#514C5A);position:relative;display:grid;place-items:center;overflow:hidden;border-radius:14px}
+.frame::after{content:"";position:absolute;inset:15px;border:1px solid rgba(192,138,110,.45);border-radius:8px}
+.frame .k{color:#fff;text-align:center;padding:2rem;position:relative;z-index:2}
+.frame .k b{display:block;font-family:Georgia,serif;font-size:clamp(3rem,7vw,4.6rem);color:var(--cobre);line-height:1}
+.frame .k span{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.72);display:block;margin-top:1rem;font-weight:600}
+
+.serv{background:var(--pizarra);color:#fff}
+.serv .sec-head p{color:rgba(255,255,255,.76)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.4rem}
+.s{background:rgba(255,255,255,.06);padding:2.5rem 2rem;transition:.45s;border-radius:14px;border:1px solid rgba(255,255,255,.13)}
+.s:hover{background:rgba(255,255,255,.1);transform:translateY(-6px)}
+.s .num{font-size:.64rem;letter-spacing:.3em;color:var(--cobre);font-weight:700}
+.s h3{font-size:1.32rem;margin:.9rem 0 .7rem}
+.s p{font-size:.93rem;color:rgba(255,255,255,.74)}
+
+.nums{background:var(--lino-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-family:Georgia,serif;font-size:clamp(2.3rem,6vw,3.6rem);color:var(--pizarra);display:block;line-height:1}
+.n span{font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.7rem;font-weight:700}
+
+.hgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1.2rem;margin-top:.5rem}
+.hd-day{background:#fff;border:1px solid var(--lino-2);border-radius:14px;padding:1.5rem 1.6rem;transition:.4s}
+.hd-day:hover{border-color:var(--cobre);transform:translateY(-4px)}
+.hd-day h4{font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--cobre-2);font-weight:700;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif}
+.hd-day p{font-size:1.1rem;margin-top:.4rem}
+.hd-day.cerrado p{color:var(--mut)}
+
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:1.6rem}
+.r{background:#fff;padding:2.4rem;transition:.45s;position:relative;border:1px solid var(--lino-2);border-radius:14px}
+.r::before{content:"”";position:absolute;top:.6rem;right:1.4rem;font-family:Georgia,serif;font-size:4.4rem;color:var(--cobre);opacity:.36;line-height:1}
+.r:hover{transform:translateY(-7px);border-color:var(--cobre)}
+.r .stars{color:var(--cobre-2);letter-spacing:.2em;margin-bottom:1rem;font-size:.9rem}
+.r p{font-size:.98rem;color:var(--mut);font-style:italic}
+.r footer{margin-top:1.4rem;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--pizarra);background:none;padding:0;font-weight:700}
+
+.aviso{background:#FCF3EC;border-left:4px solid var(--cobre);padding:1.7rem 1.9rem;font-size:.93rem;color:#6F4530;border-radius:0 14px 14px 0}
+.aviso b{font-weight:700}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4.5rem}
+.dt{padding:1.5rem 0;border-bottom:1px solid var(--lino-2)}
+.dt h4{font-size:.64rem;letter-spacing:.26em;text-transform:uppercase;color:var(--cobre-2);margin-bottom:.5rem;font-weight:700}
+.dt p,.dt a{font-size:1.05rem}
+.dt a:hover{color:var(--cobre-2)}
+.map{min-height:350px;display:grid;place-items:center;text-align:center;padding:2.4rem;transition:.45s;color:#fff;background:linear-gradient(152deg,var(--pizarra),#514C5A);border-radius:14px}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:2rem;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-11px)}}
+
+footer.foot{background:var(--pizarra-2);color:rgba(255,255,255,.74);padding:3rem 0;font-size:.86rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--cobre)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--pizarra);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.45);transition:.3s}
+.fab a.wa{background:#25D366}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(38,36,43,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--pizarra);padding:2rem;gap:1.3rem;color:#fff}
+  .split,.cont{grid-template-columns:1fr;gap:2.5rem}
+  .ngrid{grid-template-columns:1fr;gap:2.2rem}
+  section{padding:4.8rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div class="firma">
+    <svg class="peine" viewBox="0 0 170 66" aria-hidden="true">
+      <rect class="estela" x="10" y="30" width="150" height="2" fill="#C08A6E"></rect>
+      <g class="cuerpo" fill="none" stroke="#C08A6E" stroke-width="3" stroke-linecap="round">
+        <rect x="52" y="14" width="66" height="9" rx="4" fill="#C08A6E" stroke="none"></rect>
+        <line x1="58" y1="24" x2="58" y2="46"></line>
+        <line x1="68" y1="24" x2="68" y2="46"></line>
+        <line x1="78" y1="24" x2="78" y2="46"></line>
+        <line x1="88" y1="24" x2="88" y2="46"></line>
+        <line x1="98" y1="24" x2="98" y2="46"></line>
+        <line x1="108" y1="24" x2="108" y2="46"></line>
+      </g>
+    </svg>
+    <div class="nombre"><b>SONIA JIMÉNEZ</b><span class="velo"></span></div>
+    <p class="skip">Toca para entrar</p>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">Sonia Jiménez<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#salon">El salón</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#horario">Horario</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="https://wa.me/34667409491" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="ln ln1"></span><span class="ln ln2"></span>
+  <span class="aro a1"></span><span class="aro a2"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Fernando Guanarteme · Las Palmas de Gran Canaria</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">Cuarenta y tres</i></span><br>
+      <span class="word"><i style="animation-delay:.5s">reseñas.</i></span>
+      <span class="word"><i style="animation-delay:.66s"><em>Cuarenta y tres cincos.</em></i></span>
+    </h1>
+    <p class="lead">Peluquería en la calle Fernando Guanarteme, 90, a un paso de Las Canteras. Un 5,0 sobre 5 en Google, sin una sola valoración por debajo.</p>
+    <div class="hero-acts">
+      <a href="https://wa.me/34667409491" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="#horario" class="btn btn-o">Ver horario</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 43 reseñas en Google</span>
+      <span>C. Fernando Guanarteme, 90</span>
+      <span>Zona Guanarteme</span>
+    </div>
+  </div>
+</section>
+
+<section id="salon">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">El salón</p>
+      <h2 style="font-size:clamp(2.1rem,5.4vw,3.4rem);margin-top:1rem">Un 5,0 limpio,<br>con 43 opiniones</h2>
+      <p style="color:var(--mut);margin-top:1.4rem">Cuarenta y tres personas han valorado este salón y ninguna ha puesto menos de cinco estrellas. En un oficio en el que todo el mundo tiene una opinión sobre su pelo, eso dice más que cualquier eslogan.</p>
+      <p style="color:var(--mut);margin-top:1.1rem">Estamos en la calle Fernando Guanarteme, 90, en pleno barrio de Guanarteme y a un paso de la playa de Las Canteras. Se atiende con cita previa.</p>
+      <a href="#contacto" class="btn btn-c" style="margin-top:2.2rem">Cómo llegar</a>
+    </div>
+    <div class="frame rv" data-d="1">
+      <div class="k">
+        <b><span class="count" data-to="50" data-dec="1">0</span></b>
+        <span>Valoración media en Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Peluquería y estética</h2>
+      <p>Propuesta de partida para la demo: vuestra lista concreta de servicios no está publicada, así que no la hemos inventado.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s rv"><span class="num">01</span><h3>Corte y peinado</h3><p>Corte estudiado según tu tipo de pelo y el tiempo real que le vas a dedicar en casa.</p></div>
+      <div class="s rv" data-d="1"><span class="num">02</span><h3>Color y mechas</h3><p>Trabajo de color con la raíz cuidada, buscando un tono que aguante bien entre visitas.</p></div>
+      <div class="s rv" data-d="2"><span class="num">03</span><h3>Tratamientos</h3><p>Hidratación y cuidado para pelo castigado por el sol, la sal y el cloro.</p></div>
+      <div class="s rv" data-d="3"><span class="num">04</span><h3>Estética</h3><p>Servicios de estética en el mismo salón, para resolverlo todo en una sola visita.</p></div>
+    </div>
+    <div class="rv" style="margin-top:2.8rem">
+      <div class="aviso" style="background:rgba(255,255,255,.08);color:rgba(255,255,255,.86);border-left-color:var(--cobre)">
+        <b>Bloque pendiente de confirmar.</b> Estos cuatro apartados son una propuesta, no vuestro catálogo real. Decidnos los servicios que hacéis y, si queréis, los precios, y en la web final aparecen exactamente así.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap ngrid">
+    <div class="n rv"><b><span class="count" data-to="50" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="43">0</span></b><span>Reseñas</span></div>
+    <div class="n rv" data-d="2"><b>100%</b><span>Reseñas de 5 estrellas</span></div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Horario</p>
+      <h2>Cuándo estamos</h2>
+      <p>Este horario es el que aparece publicado en vuestro perfil de reservas. Nos falta que lo confirméis vosotras.</p>
+    </div>
+    <div class="hgrid rv">
+      <div class="hd-day cerrado"><h4>Lunes</h4><p>Cerrado</p></div>
+      <div class="hd-day"><h4>Martes a viernes</h4><p>9:00 — 17:00</p></div>
+      <div class="hd-day"><h4>Sábado</h4><p>9:00 — 13:00</p></div>
+      <div class="hd-day cerrado"><h4>Domingo</h4><p>Cerrado</p></div>
+    </div>
+    <div class="rv" style="margin-top:2.4rem">
+      <div class="aviso">
+        <b>Dato pendiente de vuestro visto bueno.</b> Lo hemos sacado de vuestro perfil público de reservas, no de vuestra ficha de Google, así que puede estar desactualizado. Confirmádnoslo y en la web final añadimos además el cartel automático de «abierto ahora · cerramos a las 17:00», que se calcula con la hora de quien entra en la web. Si el horario no es este, nos lo decís y se cambia.
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="opiniones" style="background:var(--lino-2)">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Opiniones</p>
+      <h2>Lo que dicen</h2>
+      <p>5,0 sobre 5 con 43 reseñas en Google. Estas son las ideas que más se repiten.</p>
+    </div>
+    <div class="rgrid">
+      <article class="r rv"><div class="stars">★★★★★</div><p>“Sales con el pelo que habías pedido, no con uno parecido.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="1"><div class="stars">★★★★★</div><p>“Trato cercano y sin prisas, aunque el salón esté lleno.”</p><footer>Opinión de clienta</footer></article>
+      <article class="r rv" data-d="2"><div class="stars">★★★★★</div><p>“Encontré peluquería para quedarme. No he vuelto a probar otra.”</p><footer>Clienta habitual</footer></article>
+    </div>
+    <p style="text-align:center;color:var(--mut);font-size:.84rem;margin-top:2.4rem">Extractos orientativos redactados a partir de las opiniones públicas de Google. En la web final se integran vuestras reseñas reales, actualizadas automáticamente.</p>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Pide tu cita</h2>
+      <p>Calle Fernando Guanarteme, 90 · Las Palmas de Gran Canaria.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C. Fernando Guanarteme, 90<br>35010 Las Palmas de Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34667409491">667 40 94 91</a></p></div>
+        <div class="dt"><h4>Valoración</h4><p>5,0 sobre 5 con 43 reseñas en Google</p></div>
+        <div class="dt"><h4>Instagram</h4><p><a href="https://www.instagram.com/soniajimenezpeluqueria/" target="_blank" rel="noopener">@soniajimenezpeluqueria</a></p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Sonia+Jimenez+Peluqueria+Fernando+Guanarteme+90+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-family:Georgia,serif;font-size:1.5rem;margin-top:.9rem">C. Fernando Guanarteme, 90</p>
+            <p style="color:rgba(255,255,255,.82);margin-top:.5rem">Zona Guanarteme · Las Palmas</p>
+            <span class="btn btn-o" style="margin-top:1.7rem;display:inline-flex">Abrir en Google Maps</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Sonia Jiménez Peluquería · Las Palmas de Gran Canaria</span>
+    <span><a href="tel:+34667409491">667 40 94 91</a> · C. Fernando Guanarteme, 90</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="wa" href="https://wa.me/34667409491" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a href="tel:+34667409491" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function cerrar(){l.classList.add('off')}
+  window.addEventListener('load',function(){setTimeout(cerrar,1950)});
+  setTimeout(cerrar,2600);
+  l.addEventListener('click',cerrar);
+  addEventListener('keydown',cerrar,{once:true});
+})();
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .nombre .velo{display:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
