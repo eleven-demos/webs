@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dámaris Peluquería · Obispo Rabadán, Las Palmas de Gran Canaria</title>
+<meta name="description" content="Peluquería en C. Obispo Rabadán, 57, Las Palmas de Gran Canaria. 5,0 en Google con 21 reseñas. Cita: 655 15 36 26.">
+<style>
+:root{
+  --vino:#5C1F2B; --vino-2:#3A101A; --crema:#F7F1E8; --crema-2:#E8DCCB;
+  --oro:#C9A227; --oro-2:#A2801A; --mut:#736A64;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--crema);color:var(--vino-2);line-height:1.78;overflow-x:hidden;font-size:16.5px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:300;line-height:1.08;letter-spacing:-.028em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--oro-2);font-weight:700}
+
+/* ===== MOMENTO FIRMA: el peine recorre la pantalla y detrás aparece el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--vino-2);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem}
+.peine{width:210px;height:74px;display:block;margin:0 auto;overflow:visible;transform:translateX(-118%);animation:pasada 1.25s .2s cubic-bezier(.45,0,.25,1) forwards}
+@keyframes pasada{to{transform:translateX(118%)}}
+.peine .puas line{stroke:#C9A227;stroke-width:2.2;stroke-linecap:round}
+.destello{position:absolute;width:2px;height:80px;background:linear-gradient(180deg,transparent,#fff,transparent);opacity:0;animation:chispa .5s 1.05s forwards}
+@keyframes chispa{40%{opacity:.85}to{opacity:0}}
+.nombre{position:relative;overflow:hidden;margin-top:1.5rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:300;font-size:clamp(1rem,4.2vw,1.6rem);letter-spacing:.34em;padding:0 .3em}
+.nombre .velo{position:absolute;inset:0;background:var(--vino-2);animation:descubre 1s .95s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes descubre{to{transform:scaleX(0)}}
+.skip{color:rgba(255,255,255,.36);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 1.95s forwards}
+@keyframes fade{to{opacity:1}}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(247,241,232,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(92,31,43,.14)}
+header.stuck .brand,header.stuck .menu{color:var(--vino)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.05rem;letter-spacing:.28em;color:#fff;transition:.4s;font-weight:400}
+.brand span{color:var(--oro)}
+.menu{display:flex;gap:2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:500;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--oro);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--oro);color:var(--vino-2);padding:.8rem 1.7rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:transform .35s,background .35s;border-radius:2px}
+.cta:hover{background:#fff;transform:translateY(-2px)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--vino);color:#fff;padding:9rem 0 8rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 24%,rgba(201,162,39,.28),transparent 47%),radial-gradient(circle at 5% 88%,rgba(255,255,255,.07),transparent 52%)}
+.aro{position:absolute;border:1px solid rgba(201,162,39,.28);border-radius:50%;animation:pulso 8s ease-in-out infinite}
+.a1{width:460px;height:460px;top:6%;right:-115px}
+.a2{width:255px;height:255px;bottom:12%;right:18%;animation-delay:2.4s}
+@keyframes pulso{50%{transform:scale(1.06);opacity:.5}}
+.hero-in{position:relative;z-index:2;max-width:950px}
+.hero .est{opacity:0;animation:sube .8s .2s forwards}
+@keyframes sube{to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(2.6rem,8vw,6.1rem);margin:1.5rem 0 1.6rem}
+.word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.word i{display:inline-block;font-style:normal;transform:translateY(105%);opacity:0;animation:palabra .85s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes palabra{to{transform:translateY(0);opacity:1}}
+.hero .lead{font-size:clamp(1rem,2.2vw,1.2rem);color:rgba(255,255,255,.78);max-width:660px;opacity:0;animation:sube .8s 1.2s forwards;font-weight:300}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:sube .8s 1.45s forwards}
+.btn{padding:1.05rem 2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;border-radius:2px;transition:transform .35s,background .35s,color .35s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-oro{background:var(--oro);color:var(--vino-2)}
+.btn-oro:hover{background:#fff;transform:translateY(-3px)}
+.btn-linea{border:1px solid rgba(255,255,255,.38);color:#fff}
+.btn-linea:hover{background:#fff;color:var(--vino);transform:translateY(-3px)}
+.hero-foot{margin-top:3.4rem;display:flex;gap:2.6rem;flex-wrap:wrap;font-size:.78rem;color:rgba(255,255,255,.62);opacity:0;animation:sube .8s 1.7s forwards}
+.hero-foot b{color:var(--oro);font-weight:600}
+
+section{padding:7rem 0}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.on{opacity:1;transform:none}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin:1rem 0 1.5rem}
+.sub{color:var(--mut);max-width:680px;font-weight:300}
+
+.nums{background:var(--vino);color:#fff;padding:5rem 0}
+.nums-g{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;text-align:center}
+.num{font-size:clamp(2.5rem,7vw,4.4rem);font-weight:200;color:var(--oro);line-height:1}
+.num-lb{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:.9rem}
+
+.serv-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:3.4rem}
+.card{background:#fff;padding:2.3rem 2rem;border-radius:4px;border:1px solid var(--crema-2);transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s}
+.card:hover{transform:translateY(-7px);box-shadow:0 22px 50px rgba(92,31,43,.14)}
+.card h3{font-size:1.24rem;font-weight:400;margin-bottom:.5rem}
+.card p{font-size:.92rem;color:var(--mut)}
+.card .hueco{display:inline-block;margin-top:1rem;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--oro-2);font-weight:700}
+
+.rese{background:#fff}
+.rese-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:3.4rem}
+.quote{background:var(--crema);padding:2.4rem 2rem;border-radius:4px;border-left:2px solid var(--oro)}
+.quote p{font-weight:300;font-size:1.04rem;margin-bottom:1.3rem}
+.quote cite{font-style:normal;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.stars{color:var(--oro);letter-spacing:.18em;font-size:.9rem;margin-bottom:1rem}
+
+.cont-g{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3.4rem;align-items:start}
+.dato{padding:1.5rem 0;border-bottom:1px solid var(--crema-2)}
+.dato-lb{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-bottom:.45rem}
+.dato-v{font-size:1.14rem;font-weight:300}
+.mapa{background:var(--vino);color:#fff;padding:3rem 2.4rem;border-radius:4px}
+.mapa h3{font-size:1.5rem;margin-bottom:1rem}
+.mapa p{color:rgba(255,255,255,.72);font-weight:300;margin-bottom:2rem;font-size:.95rem}
+
+.aviso{background:rgba(201,162,39,.13);border:1px dashed var(--oro-2);padding:1.5rem 1.7rem;border-radius:4px;font-size:.9rem;color:#5d4a12;font-weight:300}
+.aviso b{font-weight:600}
+
+footer{background:var(--vino-2);color:rgba(255,255,255,.64);padding:4.5rem 0 8rem;font-size:.86rem;font-weight:300}
+.f-g{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+.f-marca{font-size:1.1rem;letter-spacing:.24em;color:#fff}
+.f-marca span{color:var(--oro)}
+.f-demo{border:1px solid rgba(201,162,39,.45);padding:1.4rem 1.7rem;border-radius:4px;max-width:430px;color:rgba(255,255,255,.8)}
+.f-demo b{color:var(--oro)}
+
+.sello{position:fixed;top:38%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);font-size:min(20vw,15rem);font-weight:800;color:rgba(92,31,43,.055);letter-spacing:.1em;pointer-events:none;z-index:1;user-select:none}
+.cinta{position:fixed;top:0;left:0;z-index:120;background:var(--oro);color:var(--vino-2);font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;font-weight:800;padding:.4rem 1.1rem;border-bottom-right-radius:4px}
+
+.barra{position:fixed;bottom:0;left:0;right:0;z-index:110;background:rgba(58,16,26,.97);display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(201,162,39,.32)}
+.barra a{padding:1.05rem;text-align:center;color:#fff;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.barra a+a{border-left:1px solid rgba(255,255,255,.12);background:var(--oro);color:var(--vino-2)}
+
+@media(max-width:860px){
+  .menu{display:none}
+  .cont-g{grid-template-columns:1fr;gap:2.2rem}
+  .nums-g{grid-template-columns:1fr;gap:2.8rem}
+  section{padding:5rem 0}
+  .hero{padding:8rem 0 7rem}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:none!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="load"><div class="firma">
+  <svg class="peine" viewBox="0 0 210 74" aria-hidden="true">
+    <g class="puas">
+      <rect x="6" y="12" width="198" height="9" rx="4.5" fill="#C9A227"></rect>
+      <line x1="14" y1="23" x2="14" y2="62"></line>
+      <line x1="30" y1="23" x2="30" y2="62"></line>
+      <line x1="46" y1="23" x2="46" y2="62"></line>
+      <line x1="62" y1="23" x2="62" y2="62"></line>
+      <line x1="78" y1="23" x2="78" y2="62"></line>
+      <line x1="94" y1="23" x2="94" y2="62"></line>
+      <line x1="110" y1="23" x2="110" y2="62"></line>
+      <line x1="126" y1="23" x2="126" y2="62"></line>
+      <line x1="142" y1="23" x2="142" y2="62"></line>
+      <line x1="158" y1="23" x2="158" y2="62"></line>
+      <line x1="174" y1="23" x2="174" y2="62"></line>
+      <line x1="190" y1="23" x2="190" y2="62"></line>
+    </g>
+  </svg>
+  <span class="destello"></span>
+  <div class="nombre"><b>DÁMARIS</b><span class="velo"></span></div>
+  <div class="skip">Toca para entrar</div>
+</div></div>
+
+<div class="cinta">Demo · Eleven AI</div>
+<div class="sello">DEMO</div>
+
+<header id="cab"><nav class="wrap nav">
+  <a href="#" class="brand">DÁMARIS <span>PELUQUERÍA</span></a>
+  <div class="menu">
+    <a href="#servicios">Servicios</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Cómo llegar</a>
+  </div>
+  <a href="tel:+34655153626" class="cta">Pedir cita</a>
+</nav></header>
+
+<section class="hero">
+  <div class="aro a1"></div>
+  <div class="aro a2"></div>
+  <div class="wrap hero-in">
+    <div class="est eyebrow">Obispo Rabadán · Las Palmas de Gran Canaria</div>
+    <h1><span class="word"><i style="animation-delay:.35s">La</i></span> <span class="word"><i style="animation-delay:.48s">peluquería</i></span> <span class="word"><i style="animation-delay:.63s">del</i></span> <span class="word"><i style="animation-delay:.76s">barrio</i></span><br><span class="word"><i style="animation-delay:.91s">con</i></span> <span class="word"><i style="animation-delay:1.04s">un</i></span> <span class="word"><i style="animation-delay:1.17s">5,0</i></span> <span class="word"><i style="animation-delay:1.3s">limpio.</i></span></h1>
+    <p class="lead">Obispo Rabadán, 57. Veintiuna vecinas y vecinos han puntuado el salón en Google y ninguno ha bajado de cinco estrellas.</p>
+    <div class="hero-acts">
+      <a href="tel:+34655153626" class="btn btn-oro">Llamar y pedir cita</a>
+      <a href="#contacto" class="btn btn-linea">Cómo llegar</a>
+    </div>
+    <div class="hero-foot">
+      <span><b>5,0</b> en Google · 21 reseñas</span>
+      <span><b>Obispo Rabadán</b>, 57</span>
+      <span><b>Cita</b> por teléfono</span>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap nums-g">
+    <div class="rv"><div class="num count" data-to="50" data-dec="1">0</div><div class="num-lb">Valoración en Google</div></div>
+    <div class="rv"><div class="num count" data-to="21">0</div><div class="num-lb">Reseñas publicadas</div></div>
+    <div class="rv"><div class="num count" data-to="100">0</div><div class="num-lb">% de reseñas de 5 estrellas</div></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">El salón</div>
+    <h2>En una calle<br>llena de peluquerías.</h2>
+    <p class="sub">En Obispo Rabadán hay varios salones a pocos números de distancia. Cuando alguien del barrio compara desde el móvil, entra antes en la que tiene algo que enseñar. Aquí la nota es de las mejores de la calle — lo que falta es el escaparate: un sitio propio con la dirección, el teléfono a un toque y los servicios a la vista.</p></div>
+  </div>
+</section>
+
+<section id="servicios" style="background:#fff">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Servicios</div>
+    <h2>Este bloque<br>lo rellenas tú.</h2>
+    <p class="sub">Hemos buscado tu carta de servicios en Google, en Instagram, en Booksy, en Fresha y en Treatwell. No aparece en ninguna parte, así que aquí no hay ni un precio inventado: solo el hueco, con su formato listo.</p></div>
+    <div class="serv-g">
+      <div class="card rv"><h3>Corte y peinado</h3><p>Aquí va el nombre real que le des tú, con la descripción y el precio si quieres mostrarlo.</p><span class="hueco">Pendiente de tus datos</span></div>
+      <div class="card rv"><h3>Color y mechas</h3><p>El servicio que más se compara por internet antes de decidirse.</p><span class="hueco">Pendiente de tus datos</span></div>
+      <div class="card rv"><h3>Tratamientos</h3><p>Hidratación, keratina, lo que trabajéis en el salón.</p><span class="hueco">Pendiente de tus datos</span></div>
+      <div class="card rv"><h3>Recogidos y eventos</h3><p>Bodas y comuniones: si lo hacéis, conviene que se vea.</p><span class="hueco">Pendiente de tus datos</span></div>
+    </div>
+    <div class="rv" style="margin-top:2.8rem">
+      <div class="aviso"><b>Cuatro tarjetas de ejemplo, no tu carta real.</b> Están puestas para que veas cómo queda la sección. Mándanos tus servicios —con precios si quieres mostrarlos— y en la web final aparecen exactamente como los envíes.</div>
+    </div>
+  </div>
+</section>
+
+<section class="rese" id="opiniones">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Reputación</div>
+    <h2>Veintiuna reseñas.<br>Ni una por debajo de cinco.</h2>
+    <p class="sub">En peluquería, donde la gente puntúa con dureza, un 5,0 redondo significa que no hay ni una clienta que se haya ido descontenta. Eso es lo primero que tiene que ver quien entre en la web.</p></div>
+    <div class="rese-g">
+      <div class="quote rv"><div class="stars">★★★★★</div><p>5,0 de media · 21 valoraciones · ninguna por debajo de cinco estrellas.</p><cite>Ficha de Google · agosto de 2026</cite></div>
+      <div class="quote rv"><div class="stars">★★★★★</div><p>Este hueco es para tres reseñas tuyas, textuales y con el nombre de quien las escribió. No las hemos copiado aún porque una reseña mal citada la detecta la clienta al segundo, y preferimos pedírtelas.</p><cite>Bloque pendiente de completar</cite></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Cómo llegar</div>
+    <h2>Obispo Rabadán, 57.</h2></div>
+    <div class="cont-g">
+      <div class="rv">
+        <div class="dato"><div class="dato-lb">Dirección</div><div class="dato-v">C. Obispo Rabadán, 57<br>35003 Las Palmas de Gran Canaria</div></div>
+        <div class="dato"><div class="dato-lb">Cita</div><div class="dato-v"><a href="tel:+34655153626">655 15 36 26</a></div></div>
+        <div class="dato"><div class="dato-lb">Valoración</div><div class="dato-v">5,0 ★ · 21 reseñas en Google</div></div>
+        <div class="dato" style="border:0"><div class="dato-lb">Horario</div><div class="dato-v" style="color:var(--mut);font-size:1rem">Pendiente de confirmar — no está publicado en ningún sitio y preferimos preguntártelo antes que poner uno inventado.</div></div>
+      </div>
+      <div class="mapa rv">
+        <h3>En pleno centro</h3>
+        <p>Obispo Rabadán está a un paso de Triana y de Bravo Murillo. Abre el mapa desde el móvil y te lleva al portal.</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=D%C3%A1maris+Peluquer%C3%ADa+Obispo+Rabad%C3%A1n+57+Las+Palmas" target="_blank" rel="noopener" class="btn btn-oro">Abrir en Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-g">
+    <div>
+      <div class="f-marca">DÁMARIS <span>PELUQUERÍA</span></div>
+      <p style="margin-top:.8rem">C. Obispo Rabadán, 57 · Las Palmas de Gran Canaria<br>655 15 36 26</p>
+    </div>
+    <div class="f-demo">
+      <b>Esto es una DEMO</b> creada por Eleven AI con tus datos públicos reales. Esta web puede ser tuya: <b>490 €</b> pago único, entrega en 7 días.<br>
+      <span style="font-size:.78rem;opacity:.7">ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · CIF B56862691 · Canarias · elevenprime.es</span>
+    </div>
+  </div>
+</footer>
+
+<div class="barra">
+  <a href="tel:+34655153626">Llamar</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=D%C3%A1maris+Peluquer%C3%ADa+Obispo+Rabad%C3%A1n+57+Las+Palmas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function fuera(){l.classList.add('off')}
+  setTimeout(fuera,2250);
+  l.addEventListener('click',fuera);
+  window.addEventListener('keydown',fuera,{once:true});
+})();
+
+var cab=document.getElementById('cab');
+window.addEventListener('scroll',function(){
+  requestAnimationFrame(function(){
+    if(window.scrollY>60)cab.classList.add('stuck');else cab.classList.remove('stuck');
+  });
+},{passive:true});
+
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.classList.add('on')},i*85);io.unobserve(e.target)}
+  });
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

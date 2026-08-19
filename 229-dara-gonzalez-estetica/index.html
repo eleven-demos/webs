@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Centro de Estética Dara González · León y Castillo, Las Palmas de Gran Canaria</title>
+<meta name="description" content="Centro de estética natural y quiromasaje en C. León y Castillo, 83, Las Palmas de Gran Canaria. 5,0 en Google con 23 reseñas. Cita: 682 65 67 93.">
+<style>
+:root{
+  --salvia:#3E4A45; --salvia-2:#28322E; --nude:#F5EFE9; --nude-2:#E6DCD1;
+  --terra:#B98A6F; --terra-2:#96684E; --mut:#71787A;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--nude);color:var(--salvia);line-height:1.78;overflow-x:hidden;font-size:16.5px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:300;line-height:1.08;letter-spacing:-.028em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--terra-2);font-weight:700}
+
+/* ===== MOMENTO FIRMA: los pétalos se abren y dejan ver el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--salvia-2);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem}
+.flor{width:170px;height:170px;display:block;margin:0 auto;overflow:visible}
+.flor .pet{transform-origin:85px 85px;opacity:0;animation:petalo 1.15s cubic-bezier(.3,.9,.3,1) forwards}
+.flor .p1{animation-delay:.15s}
+.flor .p2{animation-delay:.28s}
+.flor .p3{animation-delay:.41s}
+.flor .p4{animation-delay:.54s}
+@keyframes petalo{0%{transform:scale(.25) rotate(0deg);opacity:0}55%{opacity:.95}100%{transform:scale(1) rotate(var(--g));opacity:.85}}
+.flor .centro{opacity:0;animation:brota .7s .85s forwards}
+@keyframes brota{to{opacity:1}}
+.nombre{position:relative;overflow:hidden;margin-top:1.4rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:300;font-size:clamp(.95rem,4vw,1.55rem);letter-spacing:.32em;padding:0 .3em}
+.nombre .velo{position:absolute;inset:0;background:var(--salvia-2);animation:descubre 1s 1.1s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes descubre{to{transform:scaleX(0)}}
+.skip{color:rgba(255,255,255,.36);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2rem;opacity:0;animation:fade .6s 2s forwards}
+@keyframes fade{to{opacity:1}}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(245,239,233,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(62,74,69,.12)}
+header.stuck .brand,header.stuck .menu{color:var(--salvia)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.05rem;letter-spacing:.26em;color:#fff;transition:.4s;font-weight:400}
+.brand span{color:var(--terra)}
+.menu{display:flex;gap:2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:500;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--terra);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--terra);color:#fff;padding:.8rem 1.7rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:transform .35s,background .35s;border-radius:2px}
+.cta:hover{background:#fff;color:var(--salvia);transform:translateY(-2px)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--salvia);color:#fff;padding:9rem 0 8rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 75% 24%,rgba(185,138,111,.32),transparent 48%),radial-gradient(circle at 5% 88%,rgba(255,255,255,.06),transparent 52%)}
+.aro{position:absolute;border:1px solid rgba(185,138,111,.28);border-radius:50%;animation:pulso 8s ease-in-out infinite}
+.a1{width:460px;height:460px;top:6%;right:-115px}
+.a2{width:255px;height:255px;bottom:12%;right:18%;animation-delay:2.4s}
+@keyframes pulso{50%{transform:scale(1.06);opacity:.5}}
+.hero-in{position:relative;z-index:2;max-width:950px}
+.hero .est{opacity:0;animation:sube .8s .2s forwards}
+@keyframes sube{to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(2.6rem,8vw,6.1rem);margin:1.5rem 0 1.6rem}
+.word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.word i{display:inline-block;font-style:normal;transform:translateY(105%);opacity:0;animation:palabra .85s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes palabra{to{transform:translateY(0);opacity:1}}
+.hero .lead{font-size:clamp(1rem,2.2vw,1.2rem);color:rgba(255,255,255,.76);max-width:660px;opacity:0;animation:sube .8s 1.2s forwards;font-weight:300}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:sube .8s 1.45s forwards}
+.btn{padding:1.05rem 2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;border-radius:2px;transition:transform .35s,background .35s,color .35s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-oro{background:var(--terra);color:#fff}
+.btn-oro:hover{background:#fff;color:var(--salvia);transform:translateY(-3px)}
+.btn-linea{border:1px solid rgba(255,255,255,.38);color:#fff}
+.btn-linea:hover{background:#fff;color:var(--salvia);transform:translateY(-3px)}
+.vivo{margin-top:3rem;display:inline-flex;align-items:center;gap:.75rem;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);padding:.75rem 1.3rem;border-radius:100px;font-size:.84rem;color:rgba(255,255,255,.88);opacity:0;animation:sube .8s 1.7s forwards}
+.punto{width:9px;height:9px;border-radius:50%;background:#7FD18B;box-shadow:0 0 0 0 rgba(127,209,139,.6);animation:latido 2.4s infinite}
+.punto.cerrado{background:#E08A7A;box-shadow:none;animation:none}
+@keyframes latido{70%{box-shadow:0 0 0 9px rgba(127,209,139,0)}100%{box-shadow:0 0 0 0 rgba(127,209,139,0)}}
+
+section{padding:7rem 0}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.on{opacity:1;transform:none}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin:1rem 0 1.5rem}
+.sub{color:var(--mut);max-width:680px;font-weight:300}
+
+.nums{background:var(--salvia);color:#fff;padding:5rem 0}
+.nums-g{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;text-align:center}
+.num{font-size:clamp(2.5rem,7vw,4.4rem);font-weight:200;color:var(--terra);line-height:1}
+.num-lb{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:.9rem}
+
+.serv-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:3.4rem}
+.card{background:#fff;padding:2.3rem 2rem;border-radius:4px;border:1px solid var(--nude-2);transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s}
+.card:hover{transform:translateY(-7px);box-shadow:0 22px 50px rgba(62,74,69,.13)}
+.card h3{font-size:1.24rem;font-weight:400;margin-bottom:.5rem}
+.card p{font-size:.92rem;color:var(--mut)}
+
+.rese{background:#fff}
+.rese-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.4rem;margin-top:3.4rem}
+.quote{background:var(--nude);padding:2.4rem 2rem;border-radius:4px;border-left:2px solid var(--terra)}
+.quote p{font-style:italic;font-weight:300;font-size:1.04rem;margin-bottom:1.3rem}
+.quote cite{font-style:normal;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut)}
+.stars{color:var(--terra);letter-spacing:.18em;font-size:.9rem;margin-bottom:1rem}
+
+.horas{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:.9rem;margin-top:2.4rem}
+.dia{background:#fff;border:1px solid var(--nude-2);border-radius:4px;padding:1.1rem 1.2rem}
+.dia.hoy{border-color:var(--terra);background:rgba(185,138,111,.09)}
+.dia b{display:block;font-size:.66rem;letter-spacing:.24em;text-transform:uppercase;color:var(--mut);font-weight:700;margin-bottom:.3rem}
+.dia span{font-size:1rem;font-weight:300}
+
+.cont-g{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3.4rem;align-items:start}
+.dato{padding:1.5rem 0;border-bottom:1px solid var(--nude-2)}
+.dato-lb{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-bottom:.45rem}
+.dato-v{font-size:1.14rem;font-weight:300}
+.mapa{background:var(--salvia);color:#fff;padding:3rem 2.4rem;border-radius:4px}
+.mapa h3{font-size:1.5rem;margin-bottom:1rem}
+.mapa p{color:rgba(255,255,255,.7);font-weight:300;margin-bottom:2rem;font-size:.95rem}
+
+.aviso{background:rgba(185,138,111,.14);border:1px dashed var(--terra-2);padding:1.5rem 1.7rem;border-radius:4px;font-size:.9rem;color:#6b4a37;font-weight:300}
+.aviso b{font-weight:600}
+
+footer{background:var(--salvia-2);color:rgba(255,255,255,.62);padding:4.5rem 0 8rem;font-size:.86rem;font-weight:300}
+.f-g{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+.f-marca{font-size:1.1rem;letter-spacing:.24em;color:#fff}
+.f-marca span{color:var(--terra)}
+.f-demo{border:1px solid rgba(185,138,111,.45);padding:1.4rem 1.7rem;border-radius:4px;max-width:430px;color:rgba(255,255,255,.78)}
+.f-demo b{color:var(--terra)}
+
+.sello{position:fixed;top:38%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);font-size:min(20vw,15rem);font-weight:800;color:rgba(62,74,69,.05);letter-spacing:.1em;pointer-events:none;z-index:1;user-select:none}
+.cinta{position:fixed;top:0;left:0;z-index:120;background:var(--terra);color:#fff;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;font-weight:800;padding:.4rem 1.1rem;border-bottom-right-radius:4px}
+
+.barra{position:fixed;bottom:0;left:0;right:0;z-index:110;background:rgba(40,50,46,.97);display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(185,138,111,.3)}
+.barra a{padding:1.05rem;text-align:center;color:#fff;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700}
+.barra a+a{border-left:1px solid rgba(255,255,255,.12);background:var(--terra)}
+
+@media(max-width:860px){
+  .menu{display:none}
+  .cont-g{grid-template-columns:1fr;gap:2.2rem}
+  .nums-g{grid-template-columns:1fr;gap:2.8rem}
+  section{padding:5rem 0}
+  .hero{padding:8rem 0 7rem}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:none!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot,.vivo{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="load"><div class="firma">
+  <svg class="flor" viewBox="0 0 170 170" aria-hidden="true">
+    <g fill="none" stroke="#B98A6F" stroke-width="1.5">
+      <ellipse class="pet p1" style="--g:0deg" cx="85" cy="55" rx="21" ry="42"></ellipse>
+      <ellipse class="pet p2" style="--g:45deg" cx="85" cy="55" rx="21" ry="42"></ellipse>
+      <ellipse class="pet p3" style="--g:90deg" cx="85" cy="55" rx="21" ry="42"></ellipse>
+      <ellipse class="pet p4" style="--g:135deg" cx="85" cy="55" rx="21" ry="42"></ellipse>
+      <circle class="centro" cx="85" cy="85" r="5" fill="#B98A6F" stroke="none"></circle>
+    </g>
+  </svg>
+  <div class="nombre"><b>DARA GONZÁLEZ</b><span class="velo"></span></div>
+  <div class="skip">Toca para entrar</div>
+</div></div>
+
+<div class="cinta">Demo · Eleven AI</div>
+<div class="sello">DEMO</div>
+
+<header id="cab"><nav class="wrap nav">
+  <a href="#" class="brand">DARA <span>GONZÁLEZ</span></a>
+  <div class="menu">
+    <a href="#tratamientos">Tratamientos</a>
+    <a href="#horario">Horario</a>
+    <a href="#contacto">Cómo llegar</a>
+  </div>
+  <a href="tel:+34682656793" class="cta">Pedir cita</a>
+</nav></header>
+
+<section class="hero">
+  <div class="aro a1"></div>
+  <div class="aro a2"></div>
+  <div class="wrap hero-in">
+    <div class="est eyebrow">León y Castillo · Las Palmas de Gran Canaria</div>
+    <h1><span class="word"><i style="animation-delay:.35s">Estética</i></span> <span class="word"><i style="animation-delay:.48s">natural</i></span><br><span class="word"><i style="animation-delay:.63s">y</i></span> <span class="word"><i style="animation-delay:.76s">manos</i></span> <span class="word"><i style="animation-delay:.89s">que</i></span> <span class="word"><i style="animation-delay:1.02s">saben.</i></span></h1>
+    <p class="lead">Centro de estética y quiromasaje de Dara González Romero, en pleno León y Castillo. Veintitrés valoraciones en Google y ni una sola por debajo de cinco estrellas.</p>
+    <div class="hero-acts">
+      <a href="tel:+34682656793" class="btn btn-oro">Llamar y reservar</a>
+      <a href="#tratamientos" class="btn btn-linea">Qué hacemos</a>
+    </div>
+    <div class="vivo"><span class="punto" id="punto"></span><span id="vivoTxt">Consultando horario…</span></div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap nums-g">
+    <div class="rv"><div class="num count" data-to="50" data-dec="1">0</div><div class="num-lb">Valoración en Google</div></div>
+    <div class="rv"><div class="num count" data-to="23">0</div><div class="num-lb">Reseñas publicadas</div></div>
+    <div class="rv"><div class="num count" data-to="5">0</div><div class="num-lb">Días de atención por semana</div></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Quién está detrás</div>
+    <h2>Dara González Romero,<br>esteticista y quiromasajista.</h2>
+    <p class="sub">Un centro pequeño donde se trabaja con calma y con la piel de cada persona, no con protocolos en cadena. La especialidad declarada es la estética natural y el quiromasaje: tratar el cuerpo con las manos y respetar lo que la piel ya hace bien. Con 5,0 de media en Google, la gente que entra vuelve.</p></div>
+  </div>
+</section>
+
+<section id="tratamientos" style="background:#fff">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Tratamientos</div>
+    <h2>Lo que se hace<br>en cabina.</h2>
+    <p class="sub">Estos son los que están confirmados en sus fichas públicas. La lista completa la ponemos cuando nos la paséis.</p></div>
+    <div class="serv-g">
+      <div class="card rv"><h3>Estética natural</h3><p>Cuidado de la piel con un enfoque respetuoso, adaptado a cada tipo de piel y a cada momento del año.</p></div>
+      <div class="card rv"><h3>Quiromasaje</h3><p>Masaje terapéutico manual. La especialidad de la casa junto con la estética facial.</p></div>
+      <div class="card rv"><h3>Cuidado facial</h3><p>Limpiezas y tratamientos de rostro, el servicio que más aparece en su ficha de reservas.</p></div>
+    </div>
+    <div class="rv" style="margin-top:2.8rem">
+      <div class="aviso"><b>Bloque pendiente de completar.</b> Estos tres son los servicios que hemos podido confirmar en Google y en tu ficha de reservas. No hay precios publicados en ningún sitio, así que no hemos puesto ninguno: dinos tu carta completa —con precios si quieres mostrarlos— y aparece aquí exactamente como la mandes.</div>
+    </div>
+  </div>
+</section>
+
+<section class="rese" id="opiniones">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Opiniones</div>
+    <h2>5,0 en Google<br>con 23 reseñas.</h2>
+    <p class="sub">Veintitrés personas se han tomado la molestia de puntuarte, y ninguna ha bajado de cinco estrellas. Eso, en un sector donde la media ronda el 4,5, no es normal.</p></div>
+    <div class="rese-g">
+      <div class="quote rv"><div class="stars">★★★★★</div><p>5,0 de media. Veintitrés valoraciones. Cero por debajo de cinco.</p><cite>Ficha de Google · agosto de 2026</cite></div>
+      <div class="quote rv"><div class="stars">★★★★★</div><p>Este hueco es para tres reseñas tuyas, textuales y con el nombre de quien las escribió. No las hemos copiado todavía porque preferimos tenerlas delante palabra por palabra antes que parafrasear: una reseña mal citada la detecta el cliente al segundo.</p><cite>Bloque pendiente de completar</cite></div>
+    </div>
+  </div>
+</section>
+
+<section id="horario">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Horario</div>
+    <h2>De lunes a viernes,<br>con cita.</h2>
+    <p class="sub">La web sabe qué hora es: arriba del todo verás en directo si el centro está abierto o cerrado en este momento.</p></div>
+    <div class="horas rv" id="horas">
+      <div class="dia" data-d="1"><b>Lunes</b><span>10:00 – 20:00</span></div>
+      <div class="dia" data-d="2"><b>Martes</b><span>10:00 – 19:00</span></div>
+      <div class="dia" data-d="3"><b>Miércoles</b><span>10:00 – 20:00</span></div>
+      <div class="dia" data-d="4"><b>Jueves</b><span>10:00 – 19:00</span></div>
+      <div class="dia" data-d="5"><b>Viernes</b><span>10:00 – 20:00</span></div>
+      <div class="dia" data-d="6"><b>Sáb y dom</b><span>Cerrado</span></div>
+    </div>
+    <div class="rv" style="margin-top:2.4rem">
+      <div class="aviso"><b>Confírmanos este horario.</b> Lo hemos sacado de tu ficha de Fresha, que —según avisa la propia página— no está gestionada por ti. Si alguna hora no cuadra, nos lo dices y lo corregimos: en la web final tiene que estar exacto.</div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto" style="background:#fff">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Cómo llegar</div>
+    <h2>León y Castillo, 83.</h2></div>
+    <div class="cont-g">
+      <div class="rv">
+        <div class="dato"><div class="dato-lb">Dirección</div><div class="dato-v">C. León y Castillo, 83, 3F<br>35004 Las Palmas de Gran Canaria</div></div>
+        <div class="dato"><div class="dato-lb">Cita</div><div class="dato-v"><a href="tel:+34682656793">682 65 67 93</a></div></div>
+        <div class="dato"><div class="dato-lb">Valoración</div><div class="dato-v">5,0 ★ · 23 reseñas en Google</div></div>
+        <div class="dato" style="border:0"><div class="dato-lb">Titular</div><div class="dato-v">Dara González Romero · esteticista y quiromasajista</div></div>
+      </div>
+      <div class="mapa rv">
+        <h3>En pleno León y Castillo</h3>
+        <p>Una de las calles con más paso de la ciudad. Abre el mapa desde el móvil y te lleva al portal.</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=centro+est%C3%A9tica+Dara+Gonz%C3%A1lez+Le%C3%B3n+y+Castillo+83+Las+Palmas" target="_blank" rel="noopener" class="btn btn-oro">Abrir en Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-g">
+    <div>
+      <div class="f-marca">DARA <span>GONZÁLEZ</span></div>
+      <p style="margin-top:.8rem">C. León y Castillo, 83, 3F · Las Palmas de Gran Canaria<br>682 65 67 93</p>
+    </div>
+    <div class="f-demo">
+      <b>Esto es una DEMO</b> creada por Eleven AI con tus datos públicos reales. Esta web puede ser tuya: <b>490 €</b> pago único, entrega en 7 días.<br>
+      <span style="font-size:.78rem;opacity:.7">ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · CIF B56862691 · Canarias · elevenprime.es</span>
+    </div>
+  </div>
+</footer>
+
+<div class="barra">
+  <a href="tel:+34682656793">Llamar</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=centro+est%C3%A9tica+Dara+Gonz%C3%A1lez+Le%C3%B3n+y+Castillo+83+Las+Palmas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function fuera(){l.classList.add('off')}
+  setTimeout(fuera,2300);
+  l.addEventListener('click',fuera);
+  window.addEventListener('keydown',fuera,{once:true});
+})();
+
+var cab=document.getElementById('cab');
+window.addEventListener('scroll',function(){
+  requestAnimationFrame(function(){
+    if(window.scrollY>60)cab.classList.add('stuck');else cab.classList.remove('stuck');
+  });
+},{passive:true});
+
+/* horario en vivo: cierre distinto segun el dia */
+(function(){
+  var cierra={1:20,2:19,3:20,4:19,5:20}, abre=10;
+  var ahora=new Date(), d=ahora.getDay(), h=ahora.getHours()+ahora.getMinutes()/60;
+  var txt=document.getElementById('vivoTxt'), pt=document.getElementById('punto');
+  var nom=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  if(cierra[d] && h>=abre && h<cierra[d]){
+    txt.textContent='Abierto ahora · cerramos a las '+cierra[d]+':00';
+  }else{
+    pt.classList.add('cerrado');
+    var sig=d; for(var i=1;i<=7;i++){ var c=(d+i)%7; if(cierra[c]){sig=c;break} }
+    txt.textContent='Cerrado ahora · abrimos el '+nom[sig]+' a las 10:00';
+  }
+  var celdas=document.querySelectorAll('#horas .dia');
+  for(var j=0;j<celdas.length;j++){ if(+celdas[j].dataset.d===d) celdas[j].classList.add('hoy') }
+})();
+
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.classList.add('on')},i*85);io.unobserve(e.target)}
+  });
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.vivo{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    var t=document.getElementById('vivoTxt');
+    if(t&&t.textContent.indexOf('Consultando')===0){t.textContent='Lunes a viernes · desde las 10:00'}
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
