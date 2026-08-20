@@ -149,7 +149,6 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.72);padding:3rem 0
 .fin a:hover{color:var(--oro-2)}
 .fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
 .fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--tinta);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.5);transition:.3s}
-.fab a.wa{background:#25D366}
 .fab a:hover{transform:scale(1.12)}
 .demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(26,26,26,.92);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
 
@@ -199,7 +198,7 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.72);padding:3rem 0
       <a href="#horario">Horario</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a href="https://wa.me/34660719252" class="cta" target="_blank" rel="noopener">Pedir cita</a>
+    <a href="tel:+34660719252" class="cta">Pedir cita</a>
     <button class="burger" id="burger" aria-label="Menú">☰</button>
   </div>
 </header>
@@ -216,7 +215,7 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.72);padding:3rem 0
     </h1>
     <p class="lead">La barbería de Lionel Sánchez en Pintor Felo Monzón. Corte y barba con cita, sin prisa y sin sorpresas.</p>
     <div class="hero-acts">
-      <a href="https://wa.me/34660719252" class="btn btn-c" target="_blank" rel="noopener">Pedir cita por WhatsApp</a>
+      <a href="tel:+34660719252" class="btn btn-c">Pedir cita por teléfono</a>
       <a href="#servicios" class="btn btn-o">Ver servicios</a>
     </div>
   </div>
@@ -258,7 +257,7 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.72);padding:3rem 0
       <div class="s rv"><span class="num">01</span><h3>Corte de caballero</h3><p>Corte adaptado a tu tipo de pelo y a cómo te peinas tú en casa, no a la moda del mes.</p></div>
       <div class="s rv" data-d="1"><span class="num">02</span><h3>Arreglo de barba</h3><p>Perfilado y arreglo de barba, con toalla caliente y acabado a navaja.</p></div>
       <div class="s rv" data-d="2"><span class="num">03</span><h3>Corte y barba</h3><p>El servicio completo en una sola cita, para salir listo sin tener que volver.</p></div>
-      <div class="s rv" data-d="3"><span class="num">04</span><h3>Cita previa</h3><p>Reserva por WhatsApp o llamada. Sin colas y sin esperar de pie en el local.</p></div>
+      <div class="s rv" data-d="3"><span class="num">04</span><h3>Cita previa</h3><p>Reserva por teléfono. Sin colas y sin esperar de pie en el local.</p></div>
     </div>
     <p class="note">Estos servicios son una propuesta de partida para la demo. En la web final se ponen exactamente los vuestros, con precios si queréis mostrarlos.</p>
   </div>
@@ -314,9 +313,9 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.72);padding:3rem 0
     <div class="cont">
       <div class="rv">
         <div class="dt"><h4>Dirección</h4><p>Av. Pintor Felo Monzón, 19, local 6<br>35019 Las Palmas de Gran Canaria</p></div>
-        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34660719252">660 71 92 52</a></p></div>
+        <div class="dt"><h4>Teléfono</h4><p><a href="tel:+34660719252">660 71 92 52</a></p></div>
         <div class="dt"><h4>Horario</h4><p>Lun a vie 9:00–13:30 y 15:30–20:00 · Sáb 9:00–13:00</p></div>
-        <div class="dt"><h4>Cita</h4><p>Con cita previa · también por WhatsApp</p></div>
+        <div class="dt"><h4>Cita</h4><p>Con cita previa · también por teléfono</p></div>
       </div>
       <div class="rv" data-d="1">
         <a class="map" href="https://www.google.com/maps/search/?api=1&query=El+Barbero+Lionel+Sanchez+Avenida+Pintor+Felo+Monzon+19+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
@@ -340,7 +339,6 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.72);padding:3rem 0
 </footer>
 
 <div class="fab">
-  <a class="wa" href="https://wa.me/34660719252" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
   <a href="tel:+34660719252" aria-label="Llamar">☎</a>
 </div>
 <div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
@@ -383,7 +381,7 @@ document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
     else if(m>=930&&m<1200){abierto=true;cierra='20:00'}
   } else if(dia===6){ if(m>=540&&m<780){abierto=true;cierra='13:00'} }
   if(abierto){txt.textContent='Abierto ahora · cerramos a las '+cierra}
-  else{txt.textContent='Cerrado ahora · escríbenos por WhatsApp';pt.classList.add('cerr')}
+  else{txt.textContent='Cerrado ahora · llámanos';pt.classList.add('cerr')}
 })();
 
 document.getElementById('yr').textContent=new Date().getFullYear();

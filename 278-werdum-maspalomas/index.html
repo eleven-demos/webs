@@ -149,7 +149,6 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.7);padding:3rem 0;
 .fin a:hover{color:var(--rojo-2)}
 .fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
 .fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.25rem;background:var(--tinta);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.55);transition:.3s}
-.fab a.wa{background:#25D366}
 .fab a:hover{transform:scale(1.12)}
 .demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(14,17,22,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
 
@@ -186,7 +185,7 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.7);padding:3rem 0;
       <a href="#horario">Horario</a>
       <a href="#contacto">Contacto</a>
     </nav>
-    <a href="https://wa.me/34640103561" class="cta" target="_blank" rel="noopener">Clase de prueba</a>
+    <a href="tel:+34640103561" class="cta">Clase de prueba</a>
     <button class="burger" id="burger" aria-label="Menú">☰</button>
   </div>
 </header>
@@ -203,7 +202,7 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.7);padding:3rem 0;
     </h1>
     <p class="lead">Jiu-jitsu brasileño, grappling, MMA, muay thai, boxeo y defensa personal en la calle Lanzarote. 5,0 en Google con 74 reseñas.</p>
     <div class="hero-acts">
-      <a href="https://wa.me/34640103561" class="btn btn-c" target="_blank" rel="noopener">Pedir clase de prueba</a>
+      <a href="tel:+34640103561" class="btn btn-c">Pedir clase de prueba</a>
       <a href="#disciplinas" class="btn btn-o">Ver disciplinas</a>
     </div>
   </div>
@@ -303,7 +302,7 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.7);padding:3rem 0;
     <div class="cont">
       <div class="rv">
         <div class="dt"><h4>Dirección</h4><p>C. Lanzarote, 39, bajo<br>35100 Maspalomas</p></div>
-        <div class="dt"><h4>Teléfono y WhatsApp</h4><p><a href="tel:+34640103561">640 10 35 61</a></p></div>
+        <div class="dt"><h4>Teléfono</h4><p><a href="tel:+34640103561">640 10 35 61</a></p></div>
         <div class="dt"><h4>Horario</h4><p>Lunes a viernes 10:00 – 20:00</p></div>
         <div class="dt"><h4>Primera clase</h4><p>De prueba · sin equipo ni experiencia previa</p></div>
       </div>
@@ -329,7 +328,6 @@ footer.foot{background:var(--tinta-2);color:rgba(255,255,255,.7);padding:3rem 0;
 </footer>
 
 <div class="fab">
-  <a class="wa" href="https://wa.me/34640103561" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
   <a href="tel:+34640103561" aria-label="Llamar">☎</a>
 </div>
 <div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
@@ -369,7 +367,7 @@ document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
   var d=new Date(),dia=d.getDay(),m=d.getHours()*60+d.getMinutes(),abierto=false;
   if(dia>=1&&dia<=5&&m>=600&&m<1200)abierto=true;
   if(abierto){txt.textContent='Abierto ahora · cerramos a las 20:00'}
-  else{txt.textContent='Cerrado ahora · escríbenos por WhatsApp';pt.classList.add('cerr')}
+  else{txt.textContent='Cerrado ahora · llámanos';pt.classList.add('cerr')}
 })();
 
 document.getElementById('yr').textContent=new Date().getFullYear();
