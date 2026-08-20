@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Coffeebook · Café literario en Siete Palmas, Las Palmas de Gran Canaria</title>
+<meta name="description" content="Café literario con más de 3.500 libros en C. Lomo San Lázaro 7, local 10, Las Palmas de Gran Canaria. 4,5 en Google con 694 reseñas. Brunch, tostas de pan de papa y café de especialidad. 622 76 27 34.">
+<style>
+:root{
+  --tinta:#33241B; --tinta-2:#1E140E; --crema:#F6F0E6; --crema-2:#E4DACA;
+  --cobre:#A8763E; --cobre-2:#87591F; --verde:#2E5D50; --mut:#7C7166;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Iowan Old Style','Palatino Linotype',Palatino,Georgia,serif;background:var(--crema);color:var(--tinta);line-height:1.8;overflow-x:hidden;font-size:16.5px;-webkit-font-smoothing:antialiased}
+h1,h2,h3{font-weight:400;line-height:1.1;letter-spacing:-.02em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--cobre-2);font-weight:700}
+
+/* ===== MOMENTO FIRMA: el libro se abre y el nombre aparece entre las paginas ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--tinta-2);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem}
+.libro{width:230px;height:140px;display:block;margin:0 auto;overflow:visible}
+.libro .pagIzq{transform-origin:115px 100px;transform:rotateY(0) skewY(0);animation:abreIzq 1.1s .25s cubic-bezier(.5,0,.2,1) forwards}
+.libro .pagDcha{transform-origin:115px 100px;animation:abreDcha 1.1s .25s cubic-bezier(.5,0,.2,1) forwards}
+@keyframes abreIzq{from{transform:translateX(0) scaleX(.06)}to{transform:translateX(0) scaleX(1)}}
+@keyframes abreDcha{from{transform:translateX(0) scaleX(.06)}to{transform:translateX(0) scaleX(1)}}
+.libro .lineas path{stroke-dasharray:60;stroke-dashoffset:60;animation:escribe .7s 1s forwards}
+.libro .lineas path:nth-child(2){animation-delay:1.12s}
+.libro .lineas path:nth-child(3){animation-delay:1.24s}
+.libro .lineas path:nth-child(4){animation-delay:1.36s}
+@keyframes escribe{to{stroke-dashoffset:0}}
+.nombre{position:relative;overflow:hidden;margin-top:1.4rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:400;font-size:clamp(1.05rem,4.6vw,1.85rem);letter-spacing:.3em;padding:0 .3em}
+.nombre .velo{position:absolute;inset:0;background:var(--tinta-2);animation:descubre .9s 1.2s cubic-bezier(.6,0,.2,1) forwards;transform-origin:left}
+@keyframes descubre{to{transform:scaleX(0)}}
+.skip{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;color:rgba(255,255,255,.35);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:1.9rem;opacity:0;animation:fade .6s 2.1s forwards}
+@keyframes fade{to{opacity:1}}
+
+/* ===== NAV ===== */
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(246,240,230,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(51,36,27,.13)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.15rem;letter-spacing:.24em;color:#fff;transition:.4s}
+.brand span{color:var(--cobre)}
+.menu{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;display:flex;gap:2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:500;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--cobre);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--cobre);color:#fff;padding:.8rem 1.7rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:transform .35s,background .35s;border-radius:3px}
+.cta:hover{background:#fff;color:var(--tinta);transform:translateY(-2px)}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--tinta);color:#fff;padding:9rem 0 8rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 76% 20%,rgba(168,118,62,.32),transparent 46%),radial-gradient(circle at 4% 90%,rgba(46,93,80,.28),transparent 52%)}
+.lomo{position:absolute;width:34px;border-radius:3px;background:rgba(255,255,255,.05);border:1px solid rgba(168,118,62,.3);animation:respira 9s ease-in-out infinite}
+.l1{height:200px;top:16%;right:8%;transform:rotate(3deg)}
+.l2{height:250px;top:12%;right:14%;transform:rotate(-2deg);animation-delay:1.8s}
+.l3{height:170px;top:22%;right:20%;transform:rotate(5deg);animation-delay:3.6s}
+@keyframes respira{50%{transform:translateY(-14px) rotate(0deg)}}
+.hero-in{position:relative;z-index:2;max-width:950px}
+.hero .est{opacity:0;animation:sube .8s .2s forwards}
+@keyframes sube{to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(2.6rem,8vw,6rem);margin:1.5rem 0 1.6rem}
+.word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.word i{display:inline-block;font-style:normal;transform:translateY(105%);opacity:0;animation:palabra .85s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes palabra{to{transform:translateY(0);opacity:1}}
+.hero .lead{font-size:clamp(1rem,2.2vw,1.2rem);color:rgba(255,255,255,.8);max-width:660px;opacity:0;animation:sube .8s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:sube .8s 1.45s forwards}
+.btn{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;padding:1.05rem 2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;border-radius:3px;transition:transform .35s,background .35s,color .35s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-cobre{background:var(--cobre);color:#fff}
+.btn-cobre:hover{background:#fff;color:var(--tinta);transform:translateY(-3px)}
+.btn-linea{border:1px solid rgba(255,255,255,.4);color:#fff}
+.btn-linea:hover{background:#fff;color:var(--tinta);transform:translateY(-3px)}
+.hero-foot{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;margin-top:3.4rem;display:flex;gap:2.6rem;flex-wrap:wrap;font-size:.78rem;color:rgba(255,255,255,.62);opacity:0;animation:sube .8s 1.7s forwards}
+.hero-foot b{color:var(--cobre);font-weight:700}
+.vivo{display:inline-flex;align-items:center;gap:.5rem}
+.punto{width:9px;height:9px;border-radius:50%;background:#38C172;box-shadow:0 0 0 0 rgba(56,193,114,.6);animation:latido 2.4s infinite}
+.punto.cerrado{background:#E05B4B;animation:none}
+@keyframes latido{70%{box-shadow:0 0 0 9px rgba(56,193,114,0)}100%{box-shadow:0 0 0 0 rgba(56,193,114,0)}}
+
+/* ===== SECCIONES ===== */
+section{padding:7rem 0}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.on{opacity:1;transform:none}
+h2{font-size:clamp(2rem,5vw,3.4rem);margin:1rem 0 1.5rem}
+.sub{color:var(--mut);max-width:690px}
+
+.nums{background:var(--tinta);color:#fff;padding:5rem 0}
+.nums-g{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;text-align:center}
+.num{font-size:clamp(2.5rem,7vw,4.4rem);font-weight:400;color:var(--cobre);line-height:1}
+.num-lb{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:.9rem}
+
+.serv-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.3rem;margin-top:3.4rem}
+.card{background:#fff;padding:2.1rem 1.9rem;border-radius:6px;border:1px solid var(--crema-2);transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s;position:relative}
+.card:hover{transform:translateY(-7px);box-shadow:0 22px 50px rgba(51,36,27,.13)}
+.card h3{font-size:1.22rem;margin-bottom:.4rem}
+.card p{font-size:.94rem;color:var(--mut)}
+.card .ico{font-size:1.7rem;margin-bottom:.9rem;display:block}
+
+.rese{background:#fff}
+.rese-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:3.4rem}
+.quote{background:var(--crema);padding:2.3rem 2rem;border-radius:6px;border-left:3px solid var(--cobre)}
+.quote h3{font-size:1.15rem;margin-bottom:.6rem}
+.quote p{font-size:1.02rem;color:var(--mut)}
+.quote cite{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-style:normal;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:block;margin-top:1.1rem}
+.stars{color:var(--cobre);letter-spacing:.18em;font-size:.9rem;margin-bottom:1rem}
+
+.cont-g{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3.4rem;align-items:start}
+.dato{padding:1.5rem 0;border-bottom:1px solid var(--crema-2)}
+.dato-lb{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-bottom:.45rem}
+.dato-v{font-size:1.12rem}
+.horas{display:grid;gap:.35rem;margin-top:.6rem;font-size:.98rem}
+.horas span{display:flex;justify-content:space-between;gap:1rem;border-bottom:1px dotted var(--crema-2);padding-bottom:.3rem}
+.horas b{font-weight:600}
+.mapa{background:var(--tinta);color:#fff;padding:3rem 2.4rem;border-radius:6px}
+.mapa h3{font-size:1.5rem;margin-bottom:1rem}
+.mapa p{color:rgba(255,255,255,.72);margin-bottom:2rem;font-size:.97rem}
+
+.aviso{background:rgba(168,118,62,.1);border:1px dashed var(--cobre-2);padding:1.5rem 1.7rem;border-radius:6px;font-size:.95rem;color:#6b4718}
+.aviso b{font-weight:700}
+
+footer{background:var(--tinta-2);color:rgba(255,255,255,.62);padding:4.5rem 0 8rem;font-size:.9rem}
+.f-g{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+.f-marca{font-size:1.15rem;letter-spacing:.24em;color:#fff}
+.f-marca span{color:var(--cobre)}
+.f-demo{border:1px solid rgba(168,118,62,.45);padding:1.4rem 1.7rem;border-radius:6px;max-width:430px;color:rgba(255,255,255,.78)}
+.f-demo b{color:var(--cobre)}
+
+.sello{position:fixed;top:38%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);font-size:min(20vw,15rem);font-weight:800;color:rgba(51,36,27,.05);letter-spacing:.1em;pointer-events:none;z-index:1;user-select:none}
+.cinta{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;position:fixed;top:0;left:0;z-index:120;background:var(--cobre);color:#fff;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;font-weight:800;padding:.4rem 1.1rem;border-bottom-right-radius:4px}
+
+.barra{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;position:fixed;bottom:0;left:0;right:0;z-index:110;background:rgba(30,20,14,.97);display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(168,118,62,.32)}
+.barra a{padding:1.05rem;text-align:center;color:#fff;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+.barra a+a{border-left:1px solid rgba(255,255,255,.12);background:var(--cobre);color:#fff}
+
+@media(max-width:860px){
+  .menu{display:none}
+  .cont-g{grid-template-columns:1fr;gap:2.2rem}
+  .nums-g{grid-template-columns:1fr;gap:2.8rem}
+  section{padding:5rem 0}
+  .hero{padding:8rem 0 7rem}
+  .lomo{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:none!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="load"><div class="firma">
+  <svg class="libro" viewBox="0 0 230 140" aria-hidden="true">
+    <g class="pagIzq"><path d="M115 100 L22 84 V26 L115 42 Z" fill="#F6F0E6" opacity=".92"></path></g>
+    <g class="pagDcha"><path d="M115 100 L208 84 V26 L115 42 Z" fill="#EDE4D6" opacity=".92"></path></g>
+    <g class="lineas" stroke="#A8763E" stroke-width="2" stroke-linecap="round" fill="none">
+      <path d="M36 46 L100 57"></path>
+      <path d="M36 58 L100 69"></path>
+      <path d="M130 57 L194 46"></path>
+      <path d="M130 69 L194 58"></path>
+    </g>
+    <path d="M115 100 V42" stroke="#33241B" stroke-width="3"></path>
+  </svg>
+  <div class="nombre"><b>COFFEEBOOK</b><span class="velo"></span></div>
+  <div class="skip">Toca para entrar</div>
+</div></div>
+
+<div class="cinta">Demo · Eleven AI</div>
+<div class="sello">DEMO</div>
+
+<header id="cab"><nav class="wrap nav">
+  <a href="#" class="brand">COFFEE<span>BOOK</span></a>
+  <div class="menu">
+    <a href="#carta">La carta</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Dónde estamos</a>
+  </div>
+  <a href="tel:+34622762734" class="cta">622 76 27 34</a>
+</nav></header>
+
+<section class="hero">
+  <div class="lomo l1"></div>
+  <div class="lomo l2"></div>
+  <div class="lomo l3"></div>
+  <div class="wrap hero-in">
+    <div class="est eyebrow">Siete Palmas · Las Palmas de Gran Canaria</div>
+    <h1><span class="word"><i style="animation-delay:.35s">Más</i></span> <span class="word"><i style="animation-delay:.46s">de</i></span> <span class="word"><i style="animation-delay:.57s">3.500</i></span> <span class="word"><i style="animation-delay:.7s">libros</i></span><br><span class="word"><i style="animation-delay:.85s">y</i></span> <span class="word"><i style="animation-delay:.96s">un</i></span> <span class="word"><i style="animation-delay:1.07s">café</i></span> <span class="word"><i style="animation-delay:1.18s">de</i></span> <span class="word"><i style="animation-delay:1.29s">verdad.</i></span></h1>
+    <p class="lead">Un café literario donde puedes desayunar bien y llevarte a casa el libro que estabas leyendo. Abierto desde octubre de 2022 en Lomo San Lázaro, con 694 reseñas en Google y un 4,5 de media.</p>
+    <div class="hero-acts">
+      <a href="tel:+34622762734" class="btn btn-cobre">Llamar y reservar mesa</a>
+      <a href="#carta" class="btn btn-linea">Ver la carta</a>
+    </div>
+    <div class="hero-foot">
+      <span><b>4,5</b> en Google · 694 reseñas</span>
+      <span class="vivo"><span class="punto" id="pt"></span><span id="estado">Comprobando horario…</span></span>
+      <span><b>Viernes</b> de encuentros literarios</span>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap nums-g">
+    <div class="rv"><div class="num count" data-to="3500">0</div><div class="num-lb">Libros en la sala</div></div>
+    <div class="rv"><div class="num count" data-to="694">0</div><div class="num-lb">Reseñas en Google</div></div>
+    <div class="rv"><div class="num count" data-to="45" data-dec="1">0</div><div class="num-lb">Valoración media</div></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">La casa</div>
+    <h2>«El objetivo es que el cliente<br>regrese por el café, y no por el libro».</h2>
+    <p class="sub">Lo dijeron Bella Cámara y José Ángel Quesada cuando la prensa local vino a contar qué era esto: una cafetería con más de 3.500 libros, relojes parados en las paredes —<em>dentro el tiempo se para, así que mejor olvidarse de las prisas</em>— y mariposas que, según Bella, transmiten armonía, paz y belleza. Los viernes hay encuentros literarios. Nada de eso cabe en una ficha de Google, y es justo lo que hace que alguien cruce la ciudad para venir.</p></div>
+  </div>
+</section>
+
+<section id="carta" style="background:#fff">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">La carta</div>
+    <h2>Brunch, tostas de pan de papa<br>y café de especialidad.</h2>
+    <p class="sub">Esto es lo que aparece publicado y lo que nombran vuestros clientes en sus reseñas. Los precios los ponéis vosotros y quedan actualizables desde el móvil, sin llamar a nadie.</p></div>
+    <div class="serv-g">
+      <div class="card rv"><span class="ico">🍞</span><h3>Tostas de pan de papa</h3><p>La marca de la casa. La de salmón con aguacate, tomate picado y huevo escalfado es la que más sale en las crónicas.</p></div>
+      <div class="card rv"><span class="ico">☕</span><h3>Café de especialidad</h3><p>Del capuchino al café del día. Los clientes nombran vuestras versiones con nombre propio: Guanche Latte, Dolcce Latte, Hot Chocolina.</p></div>
+      <div class="card rv"><span class="ico">🍰</span><h3>Tartas y dulces</h3><p>Repostería fresca: cinnamon roll, Red Velvet y los waffles que se repiten en las opiniones.</p></div>
+      <div class="card rv"><span class="ico">🥑</span><h3>Brunch completo</h3><p>Desayunos largos de fin de semana, con tostas personalizables a lo que cada uno quiera.</p></div>
+      <div class="card rv"><span class="ico">🌾</span><h3>Sin gluten y vegano</h3><p>Hay platos sin gluten y opciones veganas: es de las primeras cosas que la gente busca antes de decidir dónde desayuna.</p></div>
+      <div class="card rv"><span class="ico">📚</span><h3>Libros y coworking</h3><p>Más de 3.500 títulos para hojear o llevarse, y espacio para sentarse a trabajar con el portátil.</p></div>
+    </div>
+    <div class="rv" style="margin-top:2.8rem">
+      <div class="aviso"><b>Nada inventado.</b> Solo aparecen platos y bebidas que se pueden comprobar en vuestras reseñas y en el reportaje de prensa. No hemos escrito ni un precio: no hay ninguno publicado y preferimos preguntároslo a poner una cifra falsa en vuestra web.</div>
+    </div>
+  </div>
+</section>
+
+<section class="rese" id="opiniones">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Opiniones reales</div>
+    <h2>694 reseñas.<br>Y ni una en una web vuestra.</h2>
+    <p class="sub">Por cierto: hay directorios que os listan con un <em>coffeebook.es</em> que no existe. Quien lo pulsa se encuentra un error — y piensa que el cerrado sois vosotros.</p></div>
+    <div class="rese-g">
+      <div class="quote rv"><div class="stars">★★★★★</div><p>«Excelente local para desayunar disfrutando del ambiente y trato agradable.»</p><cite>Reseña en Google</cite></div>
+      <div class="quote rv"><div class="stars">★★★★★</div><h3>El ambiente de lectura</h3><p>Lo que más se repite: se está a gusto, se puede leer sin prisa y el trato del equipo hace el resto.</p></div>
+      <div class="quote rv"><div class="stars">★★★★★</div><h3>Las tostas personalizables</h3><p>Poder elegir el pan y lo que lleva encima es de lo que la gente más habla al puntuar la casa.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Dónde estamos</div>
+    <h2>Lomo San Lázaro 7,<br>local 10.</h2></div>
+    <div class="cont-g">
+      <div class="rv">
+        <div class="dato"><div class="dato-lb">Dirección</div><div class="dato-v">C. Lomo San Lázaro, 7, local 10<br>35019 Las Palmas de Gran Canaria</div></div>
+        <div class="dato"><div class="dato-lb">Teléfono</div><div class="dato-v"><a href="tel:+34622762734">622 76 27 34</a></div></div>
+        <div class="dato"><div class="dato-lb">Valoración</div><div class="dato-v">4,5 ★ · 694 reseñas en Google</div></div>
+        <div class="dato" style="border:0"><div class="dato-lb">Horario</div>
+          <div class="horas">
+            <span>Lunes a viernes <b>8:00 – 21:00</b></span>
+            <span>Sábado <b>8:00 – 15:00</b></span>
+            <span>Domingo <b>Cerrado</b></span>
+          </div>
+          <div class="dato-v" style="color:var(--mut);font-size:.88rem;margin-top:.8rem">El aviso de «abierto ahora» de arriba se calcula con la hora real de quien entra en la web. Si cambiáis el horario, se toca en un solo sitio.</div>
+        </div>
+      </div>
+      <div class="mapa rv">
+        <h3>Cómo llegar</h3>
+        <p>Estamos en Lomo San Lázaro, 7, local 10, en Siete Palmas. Abre el mapa y sigue la ruta desde el móvil.</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=Coffeebook+Lomo+San+L%C3%A1zaro+7+Las+Palmas" target="_blank" rel="noopener" class="btn btn-cobre">Abrir en Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-g">
+    <div>
+      <div class="f-marca">COFFEE<span>BOOK</span></div>
+      <p style="margin-top:.8rem">C. Lomo San Lázaro, 7, local 10 · 35019 Las Palmas de Gran Canaria<br>622 76 27 34</p>
+    </div>
+    <div class="f-demo">
+      <b>Esto es una DEMO</b> creada por Eleven AI con vuestros datos públicos reales. Esta web puede ser tuya: <b>490 €</b> pago único, entrega en 7 días.<br>
+      <span style="font-size:.78rem;opacity:.7">ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · CIF B56862691 · Canarias · elevenprime.es</span>
+    </div>
+  </div>
+</footer>
+
+<div class="barra">
+  <a href="tel:+34622762734">Llamar</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=Coffeebook+Lomo+San+L%C3%A1zaro+7+Las+Palmas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function fuera(){l.classList.add('off')}
+  setTimeout(fuera,2400);
+  l.addEventListener('click',fuera);
+  window.addEventListener('keydown',fuera,{once:true});
+})();
+
+/* horario en vivo: L-V 8:00-21:00, S 8:00-15:00, D cerrado */
+(function(){
+  var pt=document.getElementById('pt'), tx=document.getElementById('estado');
+  if(!pt||!tx)return;
+  var f=new Date(), d=f.getDay(), m=f.getHours()*60+f.getMinutes();
+  var hoy = d===0 ? null : (d===6 ? [480,900] : [480,1260]);
+  if(hoy && m>=hoy[0] && m<hoy[1]){
+    var cierre = hoy[1]===1260 ? '21:00' : '15:00';
+    tx.textContent='Abierto ahora · cerramos a las '+cierre;
+  }else{
+    pt.classList.add('cerrado');
+    if(d===0) tx.textContent='Hoy cerrado · abrimos mañana a las 8:00';
+    else if(hoy && m<hoy[0]) tx.textContent='Cerrado ahora · abrimos hoy a las 8:00';
+    else tx.textContent='Cerrado ahora · abrimos mañana a las 8:00';
+  }
+})();
+
+var cab=document.getElementById('cab');
+window.addEventListener('scroll',function(){
+  requestAnimationFrame(function(){
+    if(window.scrollY>60)cab.classList.add('stuck');else cab.classList.remove('stuck');
+  });
+},{passive:true});
+
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.classList.add('on')},i*85);io.unobserve(e.target)}
+  });
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

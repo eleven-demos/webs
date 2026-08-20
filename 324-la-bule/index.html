@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Bulé · All day brunch en Las Canteras y Tamaraceite</title>
+<meta name="description" content="All day brunch en C. Numancia 17 (Las Canteras) y C. San Juan de Ávila 61 (Tamaraceite), Las Palmas de Gran Canaria. 4,7 en Google con 378 reseñas. Obrador propio. 722 12 87 69.">
+<style>
+:root{
+  --am:#F4B9C8; --am-2:#E8899F; --pm:#2B4BE0; --pm-2:#1B32A8;
+  --acento:var(--am-2); --acento-b:var(--am); --fondo-hero:#1B1420;
+  --tinta:#221A26; --tinta-2:#140F18; --nata:#FFF8F3; --nata-2:#F0E4DC; --mut:#7E7383;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--nata);color:var(--tinta);line-height:1.75;overflow-x:hidden;font-size:16.5px;-webkit-font-smoothing:antialiased;transition:background .6s}
+body.pm{--acento:var(--pm);--acento-b:#7C8CF0}
+h1,h2,h3{font-weight:300;line-height:1.06;letter-spacing:-.03em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.42em;text-transform:uppercase;color:var(--acento);font-weight:800;transition:color .6s}
+
+/* ===== MOMENTO FIRMA: el dia pasa de rosa a azul y aparece el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--fondo-hero);display:grid;place-items:center;transition:opacity .7s,visibility .7s;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem;position:relative}
+.cielo{width:250px;height:130px;display:block;margin:0 auto;overflow:visible}
+.cielo .astro{transform:translateY(46px);opacity:0;animation:sale 1.3s .2s cubic-bezier(.3,0,.2,1) forwards}
+@keyframes sale{30%{opacity:1}to{transform:translateY(-10px);opacity:1}}
+.cielo .halo{transform-origin:125px 78px;transform:scale(.2);opacity:0;animation:halo 1.4s .45s cubic-bezier(.2,.8,.3,1) forwards}
+@keyframes halo{40%{opacity:.55}to{transform:scale(1);opacity:0}}
+.cielo .raya{stroke-dasharray:210;stroke-dashoffset:210;animation:pinta 1.1s .55s forwards}
+@keyframes pinta{to{stroke-dashoffset:0}}
+.nombre{position:relative;overflow:hidden;margin-top:1.5rem;display:inline-block}
+.nombre b{display:block;color:#fff;font-weight:200;font-size:clamp(1.3rem,6vw,2.4rem);letter-spacing:.3em;padding:0 .3em}
+.nombre .velo{position:absolute;inset:0;background:var(--fondo-hero);animation:descubre .9s 1.25s cubic-bezier(.6,0,.2,1) forwards;transform-origin:left}
+@keyframes descubre{to{transform:scaleX(0)}}
+.lema{color:rgba(255,255,255,.5);font-size:.66rem;letter-spacing:.36em;text-transform:uppercase;margin-top:.9rem;opacity:0;animation:fade .7s 1.8s forwards}
+.skip{color:rgba(255,255,255,.3);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:1.7rem;opacity:0;animation:fade .6s 2.1s forwards}
+@keyframes fade{to{opacity:1}}
+
+/* ===== NAV ===== */
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(255,248,243,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(34,26,38,.12)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-size:1.15rem;letter-spacing:.3em;color:#fff;transition:.4s;font-weight:300}
+.brand span{color:var(--acento-b)}
+.menu{display:flex;gap:2rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:600;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:0;background:var(--acento-b);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--acento);color:#fff;padding:.8rem 1.7rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;transition:transform .35s,background .6s;border-radius:40px}
+.cta:hover{background:#fff;color:var(--tinta);transform:translateY(-2px)}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--fondo-hero);color:#fff;padding:9rem 0 8rem;transition:background .8s}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 74% 18%,rgba(244,185,200,.34),transparent 48%),radial-gradient(circle at 6% 92%,rgba(43,75,224,.3),transparent 52%);transition:opacity .8s}
+body.pm .hero::before{background:radial-gradient(circle at 74% 18%,rgba(43,75,224,.42),transparent 48%),radial-gradient(circle at 6% 92%,rgba(244,185,200,.18),transparent 52%)}
+.orbe{position:absolute;border-radius:50%;border:1px solid rgba(255,255,255,.14);animation:flota 9s ease-in-out infinite}
+.o1{width:400px;height:400px;top:8%;right:-90px}
+.o2{width:220px;height:220px;bottom:14%;right:20%;animation-delay:2.5s}
+@keyframes flota{50%{transform:translateY(-18px) scale(1.04)}}
+.hero-in{position:relative;z-index:2;max-width:950px}
+.hero .est{opacity:0;animation:sube .8s .2s forwards}
+@keyframes sube{to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(2.6rem,8.4vw,6.4rem);margin:1.5rem 0 1.6rem;font-weight:200}
+.word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.word i{display:inline-block;font-style:normal;transform:translateY(105%);opacity:0;animation:palabra .85s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes palabra{to{transform:translateY(0);opacity:1}}
+.hero .lead{font-size:clamp(1rem,2.2vw,1.2rem);color:rgba(255,255,255,.8);max-width:660px;opacity:0;animation:sube .8s 1.2s forwards;font-weight:300}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:sube .8s 1.45s forwards}
+.btn{padding:1.05rem 2.1rem;font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;border-radius:40px;transition:transform .35s,background .6s,color .35s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-ac{background:var(--acento);color:#fff}
+.btn-ac:hover{background:#fff;color:var(--tinta);transform:translateY(-3px)}
+.btn-linea{border:1px solid rgba(255,255,255,.42);color:#fff}
+.btn-linea:hover{background:#fff;color:var(--tinta);transform:translateY(-3px)}
+.hero-foot{margin-top:3.4rem;display:flex;gap:2.6rem;flex-wrap:wrap;font-size:.78rem;color:rgba(255,255,255,.62);opacity:0;animation:sube .8s 1.7s forwards}
+.hero-foot b{color:var(--acento-b);font-weight:700;transition:color .6s}
+
+/* interruptor AM/PM */
+.switch{position:fixed;right:1.2rem;bottom:5.6rem;z-index:115;display:flex;background:rgba(20,15,24,.9);border:1px solid rgba(255,255,255,.16);border-radius:40px;padding:4px;backdrop-filter:blur(6px)}
+.switch button{border:0;background:transparent;color:rgba(255,255,255,.6);font:inherit;font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;padding:.5rem .95rem;border-radius:40px;cursor:pointer;transition:background .4s,color .4s}
+.switch button.on{background:var(--acento);color:#fff}
+
+/* ===== SECCIONES ===== */
+section{padding:7rem 0}
+.rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.rv.on{opacity:1;transform:none}
+h2{font-size:clamp(2rem,5vw,3.5rem);margin:1rem 0 1.5rem}
+.sub{color:var(--mut);max-width:690px;font-weight:300}
+
+.nums{background:var(--tinta);color:#fff;padding:5rem 0}
+.nums-g{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem;text-align:center}
+.num{font-size:clamp(2.5rem,7vw,4.4rem);font-weight:200;color:var(--acento-b);line-height:1;transition:color .6s}
+.num-lb{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-top:.9rem}
+
+.serv-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:1.3rem;margin-top:2.6rem}
+.card{background:#fff;padding:2.1rem 1.9rem;border-radius:14px;border:1px solid var(--nata-2);transition:transform .4s cubic-bezier(.22,1,.36,1),box-shadow .4s;position:relative}
+.card:hover{transform:translateY(-7px);box-shadow:0 22px 50px rgba(34,26,38,.12)}
+.card h3{font-size:1.2rem;font-weight:500;margin-bottom:.4rem}
+.card p{font-size:.92rem;color:var(--mut)}
+.card .ico{font-size:1.7rem;margin-bottom:.9rem;display:block}
+.franja{display:none}
+.franja.ver{display:grid}
+
+.locales{background:#fff}
+.loc-g{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;margin-top:3.4rem}
+.loc{border:1px solid var(--nata-2);border-radius:14px;padding:2.4rem 2.1rem;background:var(--nata)}
+.loc h3{font-size:1.5rem;font-weight:400;margin-bottom:.3rem}
+.loc .zona{font-size:.66rem;letter-spacing:.3em;text-transform:uppercase;color:var(--acento);font-weight:800;margin-bottom:1.2rem;transition:color .6s}
+.loc p{color:var(--mut);font-size:.95rem;font-weight:300;margin-bottom:1.6rem}
+
+.rese{background:var(--nata)}
+.rese-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem;margin-top:3.4rem}
+.quote{background:#fff;padding:2.3rem 2rem;border-radius:14px;border-left:3px solid var(--acento);transition:border-color .6s}
+.quote h3{font-size:1.14rem;font-weight:500;margin-bottom:.6rem}
+.quote p{font-weight:300;font-size:.98rem;color:var(--mut)}
+.quote cite{font-style:normal;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:block;margin-top:1.1rem}
+.stars{color:var(--acento);letter-spacing:.18em;font-size:.9rem;margin-bottom:1rem;transition:color .6s}
+
+.cont-g{display:grid;grid-template-columns:1fr 1fr;gap:3.5rem;margin-top:3.4rem;align-items:start}
+.dato{padding:1.5rem 0;border-bottom:1px solid var(--nata-2)}
+.dato-lb{font-size:.64rem;letter-spacing:.3em;text-transform:uppercase;color:var(--mut);margin-bottom:.45rem}
+.dato-v{font-size:1.12rem;font-weight:300}
+.mapa{background:var(--tinta);color:#fff;padding:3rem 2.4rem;border-radius:14px}
+.mapa h3{font-size:1.5rem;margin-bottom:1rem}
+.mapa p{color:rgba(255,255,255,.72);font-weight:300;margin-bottom:2rem;font-size:.95rem}
+
+.aviso{background:rgba(232,137,159,.12);border:1px dashed var(--am-2);padding:1.5rem 1.7rem;border-radius:14px;font-size:.92rem;color:#8a3a4e;font-weight:300}
+.aviso b{font-weight:700}
+
+footer{background:var(--tinta-2);color:rgba(255,255,255,.62);padding:4.5rem 0 8rem;font-size:.88rem;font-weight:300}
+.f-g{display:flex;justify-content:space-between;gap:2rem;flex-wrap:wrap;align-items:flex-end}
+.f-marca{font-size:1.15rem;letter-spacing:.3em;color:#fff}
+.f-marca span{color:var(--acento-b)}
+.f-demo{border:1px solid rgba(255,255,255,.22);padding:1.4rem 1.7rem;border-radius:14px;max-width:430px;color:rgba(255,255,255,.78)}
+.f-demo b{color:var(--acento-b)}
+
+.sello{position:fixed;top:38%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);font-size:min(20vw,15rem);font-weight:800;color:rgba(34,26,38,.05);letter-spacing:.1em;pointer-events:none;z-index:1;user-select:none}
+.cinta{position:fixed;top:0;left:0;z-index:120;background:var(--acento);color:#fff;font-size:.6rem;letter-spacing:.26em;text-transform:uppercase;font-weight:800;padding:.4rem 1.1rem;border-bottom-right-radius:4px;transition:background .6s}
+
+.barra{position:fixed;bottom:0;left:0;right:0;z-index:110;background:rgba(20,15,24,.97);display:grid;grid-template-columns:1fr 1fr;border-top:1px solid rgba(255,255,255,.14)}
+.barra a{padding:1.05rem;text-align:center;color:#fff;font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;font-weight:800}
+.barra a+a{border-left:1px solid rgba(255,255,255,.12);background:var(--acento);color:#fff;transition:background .6s}
+
+@media(max-width:860px){
+  .menu{display:none}
+  .cont-g,.loc-g{grid-template-columns:1fr;gap:2.2rem}
+  .nums-g{grid-template-columns:1fr;gap:2.8rem}
+  section{padding:5rem 0}
+  .hero{padding:8rem 0 7rem}
+  .orbe{display:none}
+}
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:none!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="load"><div class="firma">
+  <svg class="cielo" viewBox="0 0 250 130" aria-hidden="true">
+    <circle class="halo" cx="125" cy="78" r="52" fill="none" stroke="#F4B9C8" stroke-width="2"></circle>
+    <circle class="astro" cx="125" cy="68" r="26" fill="#F4B9C8"></circle>
+    <path class="raya" d="M20 104 H230" stroke="#2B4BE0" stroke-width="4" stroke-linecap="round" fill="none"></path>
+  </svg>
+  <div class="nombre"><b>LA BULÉ</b><span class="velo"></span></div>
+  <div class="lema">All day brunch</div>
+  <div class="skip">Toca para entrar</div>
+</div></div>
+
+<div class="cinta">Demo · Eleven AI</div>
+<div class="sello">DEMO</div>
+
+<header id="cab"><nav class="wrap nav">
+  <a href="#" class="brand">LA <span>BULÉ</span></a>
+  <div class="menu">
+    <a href="#carta">La carta</a>
+    <a href="#locales">Los dos locales</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="tel:+34722128769" class="cta">722 12 87 69</a>
+</nav></header>
+
+<section class="hero">
+  <div class="orbe o1"></div>
+  <div class="orbe o2"></div>
+  <div class="wrap hero-in">
+    <div class="est eyebrow">Las Canteras · Tamaraceite</div>
+    <h1><span class="word"><i style="animation-delay:.35s">De</i></span> <span class="word"><i style="animation-delay:.46s">café</i></span> <span class="word"><i style="animation-delay:.58s">por</i></span> <span class="word"><i style="animation-delay:.7s">la</i></span> <span class="word"><i style="animation-delay:.82s">mañana</i></span><br><span class="word"><i style="animation-delay:.96s">a</i></span> <span class="word"><i style="animation-delay:1.07s">tardeo</i></span> <span class="word"><i style="animation-delay:1.19s">sin</i></span> <span class="word"><i style="animation-delay:1.31s">levantarte.</i></span></h1>
+    <p class="lead">All day brunch con obrador propio a la vista, frente al paseo de Las Canteras y con el Auditorio Alfredo Kraus de fondo. Y desde marzo, también en Tamaraceite.</p>
+    <div class="hero-acts">
+      <a href="tel:+34722128769" class="btn btn-ac">Llamar y reservar</a>
+      <a href="#carta" class="btn btn-linea">Ver la carta</a>
+    </div>
+    <div class="hero-foot">
+      <span><b>4,7</b> en Google · 378 reseñas</span>
+      <span><b>2</b> locales en la isla</span>
+      <span><b>Abrimos</b> a las 8:00</span>
+    </div>
+  </div>
+</section>
+
+<section class="nums">
+  <div class="wrap nums-g">
+    <div class="rv"><div class="num count" data-to="47" data-dec="1">0</div><div class="num-lb">Valoración en Google</div></div>
+    <div class="rv"><div class="num count" data-to="378">0</div><div class="num-lb">Reseñas publicadas</div></div>
+    <div class="rv"><div class="num count" data-to="12">0</div><div class="num-lb">Personas en plantilla</div></div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">La casa</div>
+    <h2>El obrador empieza a las 5<br>y está a la vista de todos.</h2>
+    <p class="sub">Las cookies, los queques y las tartas de queso se hacen aquí, en un obrador abierto a la sala para que se vea. Lo montaron Oliver Asencio y Dayron Acosta, y cuando la prensa vino a contar la apertura del segundo local, Oliver lo resumió así: <em>«Tener a más de 12 empleados en nómina es un orgullo. Tengo 26 años y eso me enorgullece mucho»</em>. Esa historia hoy solo la cuentan los periódicos. En vuestra propia web la contáis vosotros.</p></div>
+  </div>
+</section>
+
+<section id="carta">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">La carta</div>
+    <h2>La misma casa,<br>dos momentos del día.</h2>
+    <p class="sub">Pulsa arriba a la derecha en <b>AM</b> o <b>PM</b> y la web entera cambia de turno, igual que hace el local: rosa por la mañana, azul por la tarde. La carta también cambia.</p></div>
+
+    <div class="serv-g franja ver" id="fAM">
+      <div class="card rv"><span class="ico">🍞</span><h3>Tostas de masa madre</h3><p>Con jamón ibérico, aguacate, huevo o salmón. El clásico de la mañana.</p></div>
+      <div class="card rv"><span class="ico">🥣</span><h3>Bowls de açaí y yogur</h3><p>La opción fresca para empezar el día, con fruta.</p></div>
+      <div class="card rv"><span class="ico">🍪</span><h3>Repostería del obrador</h3><p>Cookies, queques y tarta de queso hechos aquí desde primera hora.</p></div>
+      <div class="card rv"><span class="ico">🥤</span><h3>Zumos y café</h3><p>Zumos de fruta y café de especialidad, con leches alternativas.</p></div>
+      <div class="card rv"><span class="ico">🥖</span><h3>Pulguitas y bocadillos</h3><p>Para el desayuno rápido de camino al trabajo.</p></div>
+      <div class="card rv"><span class="ico">🌾</span><h3>Sin gluten y vegano</h3><p>Panes adaptados para celíacos e intolerantes, y carta detallada para veganos y vegetarianos. El equipo está formado en alergias.</p></div>
+    </div>
+
+    <div class="serv-g franja" id="fPM">
+      <div class="card rv"><span class="ico">🍔</span><h3>Minihamburguesas</h3><p>El picoteo de la tarde, para compartir en mesa.</p></div>
+      <div class="card rv"><span class="ico">🧀</span><h3>Nachos</h3><p>Para acompañar la cerveza fría cuando baja el sol.</p></div>
+      <div class="card rv"><span class="ico">🥪</span><h3>Tostas partidas</h3><p>Las mismas tostas de la mañana, en versión de picoteo.</p></div>
+      <div class="card rv"><span class="ico">🍺</span><h3>Cerveza fría y tardeo</h3><p>El café va dando paso al picoteo según avanza la tarde.</p></div>
+      <div class="card rv"><span class="ico">🍰</span><h3>Dulce de media tarde</h3><p>Lo que quede del obrador, que no suele durar mucho.</p></div>
+      <div class="card rv"><span class="ico">🌅</span><h3>Vistas al Kraus</h3><p>La terraza mira al paseo de Las Canteras y al Auditorio Alfredo Kraus.</p></div>
+    </div>
+
+    <div class="rv" style="margin-top:2.8rem">
+      <div class="aviso"><b>Sin precios inventados.</b> Los platos salen de vuestra carta tal y como la han contado los reportajes de Canarias7. No hemos puesto ni un precio porque no hay ninguno publicado: nos los pasáis y la carta queda completa, y actualizable desde el móvil cuando cambiéis algo.</div>
+    </div>
+  </div>
+</section>
+
+<section class="locales" id="locales">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Dónde estamos</div>
+    <h2>Dos locales.<br>Y ninguna página que lo diga.</h2>
+    <p class="sub">Quien lee en el periódico que habéis abierto en Tamaraceite y busca «La Bulé» en Google no encuentra una página que le diga dónde están los dos, qué horario tiene cada uno ni qué hay en la carta. Aquí sí.</p></div>
+    <div class="loc-g">
+      <div class="loc rv">
+        <div class="zona">El primero · 2025</div>
+        <h3>Las Canteras</h3>
+        <p>C. Numancia, 17 · 35010 Las Palmas de Gran Canaria<br>Frente al paseo, con el Auditorio Alfredo Kraus a la vista.</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Bul%C3%A9+Numancia+17+Las+Palmas" target="_blank" rel="noopener" class="btn btn-ac">Cómo llegar</a>
+      </div>
+      <div class="loc rv">
+        <div class="zona">Nuevo · marzo 2026</div>
+        <h3>Tamaraceite</h3>
+        <p>C. San Juan de Ávila, 61 · Las Palmas de Gran Canaria<br>Abrió el 27 de marzo de 2026 y el primer día ya estaba lleno.</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Bul%C3%A9+San+Juan+de+%C3%81vila+61+Tamaraceite" target="_blank" rel="noopener" class="btn btn-ac">Cómo llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="rese" id="opiniones">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Lo que se dice de vosotros</div>
+    <h2>378 reseñas y un 4,7.<br>Todo en manos de otros.</h2>
+    <p class="sub">Vuestra reputación vive hoy repartida entre Google, Instagram y los periódicos. Cuando queráis, aquí van las reseñas literales que vosotros elijáis, con el nombre de quien las escribió.</p></div>
+    <div class="rese-g">
+      <div class="quote rv"><div class="stars">★★★★★</div><h3>Un local para todo el día</h3><p>El concepto AM-PM es lo que más os distingue: se entra a desayunar y se puede acabar la tarde en la misma mesa.</p></div>
+      <div class="quote rv"><div class="stars">★★★★★</div><p>«Tener a más de 12 empleados en nómina es un orgullo. Tengo 26 años y eso me enorgullece mucho.»</p><cite>Oliver Asencio · en Canarias7</cite></div>
+      <div class="quote rv"><div class="stars">★★★★★</div><h3>Obrador propio</h3><p>Que la repostería se haga a la vista, desde las cinco de la mañana, es un argumento que casi nadie en la isla puede poner en su web.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="rv"><div class="eyebrow">Contacto</div>
+    <h2>Escríbenos<br>o pásate.</h2></div>
+    <div class="cont-g">
+      <div class="rv">
+        <div class="dato"><div class="dato-lb">Teléfono</div><div class="dato-v"><a href="tel:+34722128769">722 12 87 69</a></div></div>
+        <div class="dato"><div class="dato-lb">Las Canteras</div><div class="dato-v">C. Numancia, 17 · 35010 Las Palmas de Gran Canaria</div></div>
+        <div class="dato"><div class="dato-lb">Tamaraceite</div><div class="dato-v">C. San Juan de Ávila, 61 · Las Palmas de Gran Canaria</div></div>
+        <div class="dato" style="border:0"><div class="dato-lb">Horario</div><div class="dato-v">Abrimos a las 8:00.<br><span style="color:var(--mut);font-size:.88rem">El horario completo de cada local no está publicado en ningún sitio, así que no lo hemos inventado: decídnoslo y lo ponemos, con el cartel de «abierto ahora» calculándose solo.</span></div></div>
+      </div>
+      <div class="mapa rv">
+        <h3>4,7 ★ en Google</h3>
+        <p>378 personas os han puntuado. Esa nota es hoy vuestro mejor argumento de venta y solo se ve dentro de Google. En una web propia va arriba del todo, donde la vea el que aún no os conoce.</p>
+        <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Bul%C3%A9+Numancia+17+Las+Palmas" target="_blank" rel="noopener" class="btn btn-ac">Ver en Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap f-g">
+    <div>
+      <div class="f-marca">LA <span>BULÉ</span></div>
+      <p style="margin-top:.8rem">C. Numancia, 17 · Las Canteras<br>C. San Juan de Ávila, 61 · Tamaraceite<br>722 12 87 69</p>
+    </div>
+    <div class="f-demo">
+      <b>Esto es una DEMO</b> creada por Eleven AI con vuestros datos públicos reales. Esta web puede ser tuya: <b>490 €</b> pago único, entrega en 7 días.<br>
+      <span style="font-size:.78rem;opacity:.7">ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · CIF B56862691 · Canarias · elevenprime.es</span>
+    </div>
+  </div>
+</footer>
+
+<div class="switch">
+  <button type="button" id="bAM" class="on">AM</button>
+  <button type="button" id="bPM">PM</button>
+</div>
+
+<div class="barra">
+  <a href="tel:+34722128769">Llamar</a>
+  <a href="https://www.google.com/maps/search/?api=1&amp;query=La+Bul%C3%A9+Numancia+17+Las+Palmas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function fuera(){l.classList.add('off')}
+  setTimeout(fuera,2400);
+  l.addEventListener('click',fuera);
+  window.addEventListener('keydown',fuera,{once:true});
+})();
+
+/* AM/PM: arranca segun la hora real del visitante y se puede cambiar a mano */
+(function(){
+  var bAM=document.getElementById('bAM'), bPM=document.getElementById('bPM');
+  var fAM=document.getElementById('fAM'), fPM=document.getElementById('fPM');
+  function pon(modo){
+    var pm = modo==='pm';
+    document.body.classList.toggle('pm',pm);
+    bPM.classList.toggle('on',pm); bAM.classList.toggle('on',!pm);
+    fPM.classList.toggle('ver',pm); fAM.classList.toggle('ver',!pm);
+  }
+  bAM.addEventListener('click',function(){pon('am')});
+  bPM.addEventListener('click',function(){pon('pm')});
+  pon(new Date().getHours()>=16 ? 'pm' : 'am');
+})();
+
+var cab=document.getElementById('cab');
+window.addEventListener('scroll',function(){
+  requestAnimationFrame(function(){
+    if(window.scrollY>60)cab.classList.add('stuck');else cab.classList.remove('stuck');
+  });
+},{passive:true});
+
+var io=new IntersectionObserver(function(es){
+  es.forEach(function(e,i){
+    if(e.isIntersecting){setTimeout(function(){e.target.classList.add('on')},i*85);io.unobserve(e.target)}
+  });
+},{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+  .franja{display:grid!important}
+  .switch{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+    if(!document.querySelector('.franja.ver')) document.getElementById('fAM').classList.add('ver');
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
