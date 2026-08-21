@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El Mirador de Tunte · Cocina canaria con vistas, GC-520</title>
+<meta name="description" content="El Mirador de Tunte: restaurante con terraza y vistas al barranco en la GC-520, San Bartolomé de Tirajana. Cocina canaria, solomillo a la pimienta, pescado fresco.">
+<meta name="theme-color" content="#2F5D3A">
+<style>
+:root{
+  --verde:#2F5D3A; --verde-osc:#1E3F26; --crema:#F5F1E8; --ocre:#C4762A;
+  --tinta:#1F2620; --gris:#66705F; --linea:rgba(31,38,32,.12);
+  --sombra:0 2px 8px rgba(31,38,32,.06), 0 12px 32px rgba(31,38,32,.09);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Georgia","Iowan Old Style",serif;
+  background:var(--crema); color:var(--tinta); line-height:1.6; overflow-x:hidden;
+}
+h1,h2,h3,.sans{font-family:"Helvetica Neue",Arial,sans-serif}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: amanece sobre el barranco y aparece el nombre ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;
+  background:linear-gradient(180deg,#122C1B 0%,#25462C 46%,#3E5B36 100%);
+  display:grid;place-items:center;animation:irse .6s ease 2.1s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(320px,72vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.sol{transform:translateY(46px);opacity:0;animation:salir 1.35s cubic-bezier(.25,.9,.3,1) .3s both}
+@keyframes salir{to{transform:translateY(0);opacity:1}}
+.rayo{opacity:0;animation:brillar 1.1s ease .95s both}
+@keyframes brillar{0%{opacity:0}55%{opacity:.55}100%{opacity:.22}}
+.cresta{opacity:0;animation:aparecer .8s ease .15s both}
+.cresta2{opacity:0;animation:aparecer .8s ease .3s both}
+@keyframes aparecer{to{opacity:1}}
+#load .nombre{
+  color:var(--crema);font-size:clamp(1.4rem,5.2vw,2.3rem);letter-spacing:.15em;
+  margin-top:16px;opacity:0;animation:surgir .75s ease 1.2s both;
+}
+#load .lema{color:rgba(245,241,232,.6);font-size:.78rem;letter-spacing:.3em;margin-top:9px;
+  opacity:0;animation:surgir .75s ease 1.45s both}
+@keyframes surgir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#load .skip{position:absolute;bottom:-52px;left:0;right:0;text-align:center;
+  color:rgba(245,241,232,.36);font-size:.7rem;letter-spacing:.22em}
+
+/* ---------- marca de agua ---------- */
+.cinta{position:fixed;top:15px;left:-46px;z-index:60;transform:rotate(-45deg);
+  background:var(--ocre);color:#fff;font:600 .62rem/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.16em;padding:6px 52px;box-shadow:0 2px 10px rgba(0,0,0,.18)}
+.sello{position:fixed;right:14px;bottom:74px;z-index:60;pointer-events:none;
+  font:700 .66rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.24em;
+  color:rgba(47,93,58,.32);border:1.5px solid rgba(47,93,58,.24);
+  padding:7px 11px;border-radius:4px;transform:rotate(-8deg)}
+
+/* ---------- cabecera ---------- */
+#cab{position:sticky;top:0;z-index:50;background:rgba(245,241,232,.87);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{font:700 1.04rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.1em;
+  text-decoration:none;color:var(--verde)}
+.brand span{color:var(--tinta);font-weight:400}
+.menu{display:none;gap:30px}
+.menu a{text-decoration:none;font:500 .84rem/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.04em;color:var(--gris);transition:color .2s}
+.menu a:hover{color:var(--verde)}
+.tel-top{display:none;background:var(--verde);color:var(--crema);text-decoration:none;
+  font:600 .8rem/1 "Helvetica Neue",Arial,sans-serif;padding:11px 20px;border-radius:100px;
+  transition:transform .2s,background .2s}
+.tel-top:hover{transform:translateY(-2px);background:var(--verde-osc)}
+@media(min-width:900px){.menu{display:flex}.tel-top{display:inline-block}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:clamp(56px,11vw,104px) 0 clamp(44px,8vw,76px);overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:-22% -10% auto -10%;height:124%;z-index:-1;
+  background:radial-gradient(56% 50% at 20% 16%,rgba(47,93,58,.16),transparent 68%),
+             radial-gradient(50% 46% at 86% 10%,rgba(196,118,42,.16),transparent 66%);
+}
+.est{display:inline-flex;align-items:center;gap:9px;background:rgba(196,118,42,.11);
+  border:1px solid rgba(196,118,42,.24);border-radius:100px;padding:7px 15px;
+  font:600 .7rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.13em;color:#9A5A18;
+  opacity:0;animation:surgir .6s ease .1s both}
+.hero h1{font-size:clamp(2.4rem,8.2vw,4.9rem);line-height:1.03;letter-spacing:-.03em;
+  font-weight:800;margin:20px 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:top}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);
+  animation:sube .72s cubic-bezier(.2,.9,.25,1) both}
+@keyframes sube{to{transform:translateY(0)}}
+.hero h1 em{font-style:normal;color:var(--verde)}
+.lead{max-width:56ch;margin-top:20px;font-size:clamp(1.02rem,2.3vw,1.2rem);color:var(--gris);
+  opacity:0;animation:surgir .6s ease .75s both}
+.hero-acts{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px;
+  opacity:0;animation:surgir .6s ease .88s both}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:100px;
+  font:600 .92rem/1 "Helvetica Neue",Arial,sans-serif;padding:16px 28px;
+  transition:transform .22s cubic-bezier(.2,.9,.25,1),box-shadow .22s,background .22s,border-color .22s,color .22s}
+.btn-p{background:var(--verde);color:var(--crema);box-shadow:0 6px 20px rgba(47,93,58,.26)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(47,93,58,.34)}
+.btn-s{border:1.5px solid rgba(31,38,32,.2);color:var(--tinta)}
+.btn-s:hover{transform:translateY(-3px);border-color:var(--verde);color:var(--verde)}
+
+/* ---------- franja de confianza ---------- */
+.confia{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linea);
+  border:1px solid var(--linea);border-radius:18px;overflow:hidden;margin-top:44px;
+  opacity:0;animation:surgir .6s ease 1s both}
+@media(min-width:760px){.confia{grid-template-columns:repeat(4,1fr)}}
+.conf{background:var(--crema);padding:24px 18px;text-align:center}
+.conf b{display:block;font:800 clamp(1.65rem,4.3vw,2.3rem)/1 "Helvetica Neue",Arial,sans-serif;
+  color:var(--verde);letter-spacing:-.02em}
+.conf span{display:block;margin-top:7px;font:500 .7rem/1.4 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.1em;color:var(--gris)}
+.estrellas{color:#D89B2C;letter-spacing:.1em;font-size:.9rem}
+
+/* ---------- secciones ---------- */
+section{padding:clamp(58px,10vw,104px) 0}
+.tit{font-size:clamp(1.72rem,4.5vw,2.85rem);letter-spacing:-.025em;font-weight:800;line-height:1.1}
+.sub{color:var(--gris);margin-top:13px;max-width:60ch}
+.eyebrow{font:600 .7rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;
+  color:var(--ocre);margin-bottom:14px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.9,.25,1)}
+.rv.ver{opacity:1;transform:none}
+
+/* la vista */
+.vista{background:var(--verde-osc);color:var(--crema);position:relative;overflow:hidden}
+.vista .tit{color:var(--crema)}
+.vista .eyebrow{color:rgba(245,241,232,.55)}
+.vista p{color:rgba(245,241,232,.72);margin-top:16px;max-width:62ch}
+.vista p b{color:#fff}
+.panorama{margin-top:44px;border-radius:20px;overflow:hidden;border:1px solid rgba(245,241,232,.16);
+  background:linear-gradient(180deg,#20402A 0%,#2C5236 58%,#3A6040 100%);position:relative;height:clamp(190px,32vw,300px)}
+.panorama svg{position:absolute;inset:0;width:100%;height:100%}
+.panorama .cap{position:absolute;left:0;right:0;bottom:0;padding:20px 24px;
+  background:linear-gradient(180deg,transparent,rgba(18,44,27,.82));
+  font:500 .82rem/1.5 "Helvetica Neue",Arial,sans-serif;color:rgba(245,241,232,.86)}
+
+/* carta */
+.platos{display:grid;gap:18px;margin-top:44px}
+@media(min-width:680px){.platos{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1000px){.platos{grid-template-columns:repeat(3,1fr)}}
+.plato{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:28px 26px;
+  transition:transform .28s cubic-bezier(.2,.9,.25,1),box-shadow .28s,border-color .28s}
+.plato:hover{transform:translateY(-6px);box-shadow:var(--sombra);border-color:rgba(47,93,58,.3)}
+.plato .ico{width:44px;height:44px;border-radius:12px;background:rgba(47,93,58,.1);
+  display:grid;place-items:center;margin-bottom:16px}
+.plato .ico svg{width:22px;height:22px;stroke:var(--verde);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.plato h3{font-size:1.13rem;letter-spacing:-.01em}
+.plato p{color:var(--gris);font-size:.94rem;margin-top:9px}
+.etq{display:inline-block;margin-top:14px;background:rgba(196,118,42,.14);color:#9A5A18;
+  font:600 .66rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.1em;padding:6px 11px;border-radius:100px}
+
+/* opiniones */
+.ops{background:#fff}
+.tarjetas{display:grid;gap:18px;margin-top:44px}
+@media(min-width:820px){.tarjetas{grid-template-columns:repeat(3,1fr)}}
+.op{background:var(--crema);border:1px solid var(--linea);border-radius:18px;padding:28px 26px;
+  transition:transform .28s cubic-bezier(.2,.9,.25,1),box-shadow .28s}
+.op:hover{transform:translateY(-6px);box-shadow:var(--sombra)}
+.op .est5{color:#D89B2C;letter-spacing:.12em;font-size:.86rem}
+.op q{display:block;margin-top:14px;font-size:1.05rem;line-height:1.55;quotes:"«" "»"}
+.op cite{display:block;margin-top:16px;font-style:normal;
+  font:500 .72rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;color:var(--gris)}
+
+/* contacto */
+.cont-grid{display:grid;gap:34px}
+@media(min-width:900px){.cont-grid{grid-template-columns:1fr 1fr;gap:60px}}
+.datos{list-style:none;margin-top:30px}
+.datos li{display:flex;gap:16px;padding:19px 0;border-bottom:1px solid var(--linea)}
+.datos li:last-child{border-bottom:0}
+.datos .k{font:600 .68rem/1.7 "Helvetica Neue",Arial,sans-serif;letter-spacing:.14em;
+  color:var(--gris);min-width:96px}
+.datos .v{font-weight:600}
+.datos .v a{text-decoration:none;color:var(--verde)}
+.datos .v small{display:block;font-weight:400;color:var(--gris);font-size:.85rem;margin-top:3px}
+.mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);background:#fff;
+  min-height:280px;display:grid;place-items:center;text-align:center;padding:36px}
+.mapa svg{width:52px;height:52px;stroke:var(--verde);fill:none;stroke-width:1.4;
+  stroke-linecap:round;stroke-linejoin:round}
+.mapa p{margin:16px 0 20px;color:var(--gris);font-size:.95rem}
+
+/* pie */
+footer{background:var(--tinta);color:rgba(245,241,232,.66);padding:56px 0 96px;
+  font:400 .88rem/1.7 "Helvetica Neue",Arial,sans-serif}
+.aviso{background:rgba(47,93,58,.28);border:1px solid rgba(47,93,58,.5);border-radius:16px;
+  padding:24px 26px;margin-bottom:32px;color:var(--crema)}
+.aviso b{color:#fff}
+.pie-fin{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  padding-top:26px;border-top:1px solid rgba(245,241,232,.14);font-size:.8rem}
+
+/* barra fija móvil */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:rgba(31,38,32,.14);backdrop-filter:blur(10px);border-top:1px solid var(--linea)}
+.barra a{display:flex;align-items:center;justify-content:center;gap:9px;padding:15px 8px;
+  text-decoration:none;background:rgba(245,241,232,.95);
+  font:600 .84rem/1 "Helvetica Neue",Arial,sans-serif;color:var(--tinta)}
+.barra a.p{background:var(--verde);color:var(--crema)}
+.barra svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:900px){.barra{display:none}footer{padding-bottom:56px}.sello{bottom:22px}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .hero h1 .word i{transform:none}
+  #load{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- MOMENTO FIRMA: amanece sobre el barranco y aparece el nombre -->
+<div id="load"><div class="esc">
+  <svg viewBox="0 0 320 150" aria-hidden="true">
+    <defs>
+      <clipPath id="corte"><rect x="0" y="0" width="320" height="112"></rect></clipPath>
+    </defs>
+    <g clip-path="url(#corte)">
+      <circle class="sol" cx="160" cy="96" r="34" fill="#E8A83C"></circle>
+      <circle class="sol rayo" cx="160" cy="96" r="58" fill="#E8A83C" opacity=".22"></circle>
+    </g>
+    <path class="cresta2" d="M0 112 L46 84 L84 100 L128 66 L172 94 L214 74 L262 102 L320 82 L320 150 L0 150 Z"
+          fill="#1B3823" opacity=".85"></path>
+    <path class="cresta" d="M0 124 L54 104 L96 118 L142 92 L188 116 L232 98 L282 120 L320 106 L320 150 L0 150 Z"
+          fill="#122C1B"></path>
+  </svg>
+  <div class="nombre">EL MIRADOR DE TUNTE</div>
+  <div class="lema">COCINA CANARIA CON VISTAS</div>
+  <div class="skip">Toca para entrar</div>
+</div></div>
+
+<div class="cinta">Demo · Eleven AI</div>
+<div class="sello">DEMO</div>
+
+<header id="cab"><nav class="wrap nav">
+  <a href="#" class="brand">EL MIRADOR <span>DE TUNTE</span></a>
+  <div class="menu">
+    <a href="#vista">Las vistas</a>
+    <a href="#carta">La cocina</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Cómo llegar</a>
+  </div>
+  <a class="tel-top" href="tel:+34928127432">928 12 74 32</a>
+</nav></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="est">● EN LA GC-520, TUNTE</div>
+  <h1>
+    <span class="word"><i style="animation-delay:.25s">Se para a comer</i></span><br>
+    <span class="word"><i style="animation-delay:.37s">y se queda</i></span><br>
+    <span class="word"><i style="animation-delay:.49s">por <em>las vistas</em>.</i></span>
+  </h1>
+  <p class="lead">
+    Restaurante-mirador sobre el barranco, en la carretera de la cumbre. Desde la terraza
+    se ve Vecindario y toda la costa. Dentro, cocina canaria de producto fresco: el
+    solomillo a la pimienta, el cerdo y el pescado del día.
+  </p>
+  <div class="hero-acts">
+    <a class="btn btn-p" href="tel:+34928127432">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Llamar y reservar mesa
+    </a>
+    <a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=El+Mirador+de+Tunte+GC-520+San+Bartolom%C3%A9+de+Tirajana" target="_blank" rel="noopener">Cómo llegar</a>
+  </div>
+
+  <div class="confia">
+    <div class="conf">
+      <b><span class="count" data-to="41" data-dec="1">0</span></b>
+      <div class="estrellas">★★★★☆</div>
+      <span>EN GOOGLE</span>
+    </div>
+    <div class="conf"><b><span class="count" data-to="1542">0</span></b><span>RESEÑAS</span></div>
+    <div class="conf"><b>GC-520</b><span>CARRETERA DE TUNTE</span></div>
+    <div class="conf"><b>★</b><span>TERRAZA CON VISTAS</span></div>
+  </div>
+</div></section>
+
+<section class="vista" id="vista"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">LAS VISTAS</div>
+    <h2 class="tit">La terraza es media carta.</h2>
+    <p>
+      El restaurante está colgado sobre el barranco, en la GC-520. <b>Desde la terraza se ve
+      toda la zona de Vecindario y la costa</b>, y es lo primero que cuenta casi todo el que
+      viene. Si subes o bajas de la cumbre, es la parada.
+    </p>
+    <p>
+      Dentro, decoración cuidada y ambiente tranquilo. <b>Se hacen muchas comidas familiares</b>:
+      hay sitio, no hay prisa y los precios están ajustados.
+    </p>
+  </div>
+  <div class="panorama rv">
+    <svg viewBox="0 0 1200 320" preserveAspectRatio="none" aria-hidden="true">
+      <circle cx="960" cy="96" r="40" fill="#E8A83C" opacity=".55"></circle>
+      <path d="M0 210 L120 168 L230 196 L360 138 L470 184 L600 146 L720 190 L850 156 L980 196 L1100 168 L1200 190 L1200 320 L0 320 Z" fill="#24462D"></path>
+      <path d="M0 250 L140 218 L270 246 L400 206 L520 244 L660 214 L790 250 L930 220 L1060 252 L1200 228 L1200 320 L0 320 Z" fill="#1B3823"></path>
+      <path d="M0 292 L160 272 L320 294 L480 268 L640 296 L800 272 L960 298 L1120 276 L1200 290 L1200 320 L0 320 Z" fill="#122C1B"></path>
+    </svg>
+    <div class="cap">Vista hacia la costa desde la terraza — Tunte, San Bartolomé de Tirajana</div>
+  </div>
+</div></section>
+
+<section id="carta"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">LA COCINA</div>
+    <h2 class="tit">Canario, fresco y sin florituras</h2>
+    <p class="sub">Una muestra de lo que más piden los clientes. La carta completa está en el
+    restaurante.</p>
+  </div>
+  <div class="platos">
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 18h14M7 18c0-4 2-7 5-7s5 3 5 7"/><path d="M9 8V4M13 8V4M17 8V4"/></svg></div>
+      <h3>Solomillo a la pimienta</h3>
+      <p>El plato que más se nombra en las opiniones. Salsa hecha en casa.</p>
+      <span class="etq">EL MÁS PEDIDO</span>
+    </div>
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12c3-4 7-6 11-6s6 2 7 6c-1 4-3 6-7 6s-8-2-11-6z"/><circle cx="16" cy="11" r="1"/></svg></div>
+      <h3>Pescado fresco</h3>
+      <p>Según lo que llegue ese día. Se pregunta al camarero y se elige.</p>
+    </div>
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 14h16M6 14a6 6 0 0 1 12 0M9 18h6"/><path d="M12 4v3"/></svg></div>
+      <h3>Cerdo canario</h3>
+      <p>Otro de los fuertes de la casa, en varias preparaciones.</p>
+    </div>
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M9 10.5s.6-1 1.4 0M13.6 10.5s.6-1 1.4 0M9 15c1.8 1.2 4.2 1.2 6 0"/></svg></div>
+      <h3>Cocina tradicional canaria</h3>
+      <p>Producto fresco y platos de siempre, hechos cada día.</p>
+    </div>
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h13v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 9h2a2 2 0 0 1 0 4h-2"/></svg></div>
+      <h3>El café de después</h3>
+      <p>Sale mencionado una y otra vez en las opiniones. Con esas vistas, se alarga.</p>
+    </div>
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20h16"/><path d="M7 20V9l5-4 5 4v11"/><path d="M10 20v-5h4v5"/></svg></div>
+      <h3>Comidas familiares</h3>
+      <p>Salones amplios: es sitio habitual de reuniones y celebraciones de familia.</p>
+      <span class="etq">GRUPOS</span>
+    </div>
+  </div>
+</div></section>
+
+<section class="ops" id="opiniones"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">LO QUE DICEN</div>
+    <h2 class="tit">1.542 opiniones y 4,1 en Google</h2>
+    <p class="sub">Frases de opiniones públicas de clientes.</p>
+  </div>
+  <div class="tarjetas">
+    <div class="op rv"><div class="est5">★★★★★</div>
+      <q>Si decides sentarte en la terraza, podrás disfrutar de unas vistas increíbles</q>
+      <cite>OPINIÓN DE CLIENTE</cite></div>
+    <div class="op rv"><div class="est5">★★★★★</div>
+      <q>Comida exquisita, sobre todo el solomillo a la pimienta</q>
+      <cite>OPINIÓN DE CLIENTE</cite></div>
+    <div class="op rv"><div class="est5">★★★★★</div>
+      <q>Muy recomendable por su afable personal y su eficiente servicio</q>
+      <cite>OPINIÓN DE CLIENTE</cite></div>
+  </div>
+</div></section>
+
+<section id="contacto"><div class="wrap cont-grid">
+  <div class="rv">
+    <div class="eyebrow">CÓMO LLEGAR</div>
+    <h2 class="tit">Carretera GC-520, Tunte</h2>
+    <p class="sub">San Bartolomé de Tirajana, en la subida a la cumbre de Gran Canaria.</p>
+    <ul class="datos">
+      <li><span class="k">DIRECCIÓN</span><span class="v">GC-520<small>35290 San Bartolomé de Tirajana, Las Palmas</small></span></li>
+      <li><span class="k">TELÉFONO</span><span class="v"><a href="tel:+34928127432">928 12 74 32</a></span></li>
+      <li><span class="k">TERRAZA</span><span class="v">Con vistas al barranco<small>Pide mesa fuera al llamar</small></span></li>
+      <li><span class="k">GRUPOS</span><span class="v">Comidas familiares<small>Mejor avisar por teléfono</small></span></li>
+    </ul>
+  </div>
+  <div class="mapa rv">
+    <div>
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <p>Carretera GC-520 — Tunte<br>San Bartolomé de Tirajana</p>
+      <a class="btn btn-p" href="https://www.google.com/maps/search/?api=1&query=El+Mirador+de+Tunte+GC-520+San+Bartolom%C3%A9+de+Tirajana" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="aviso">
+    <b>Esto es una DEMO</b> creada por Eleven AI con los datos públicos reales de El Mirador de Tunte.
+    Esta web puede ser vuestra: <b>490 €</b> pago único, entrega en 7 días.
+  </div>
+  <div class="pie-fin">
+    <span>El Mirador de Tunte · GC-520 · San Bartolomé de Tirajana · 928 12 74 32</span>
+    <span>Demo de Eleven AI · elevenprime.es</span>
+  </div>
+</div></footer>
+
+<nav class="barra">
+  <a class="p" href="tel:+34928127432">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Llamar
+  </a>
+  <a href="https://www.google.com/maps/search/?api=1&query=El+Mirador+de+Tunte+GC-520+San+Bartolom%C3%A9+de+Tirajana" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Cómo llegar
+  </a>
+</nav>
+
+<script>
+(function(){
+  var load=document.getElementById('load');
+  function fuera(){ if(load) load.style.setProperty('display','none','important'); }
+  if(load){
+    load.addEventListener('click',fuera);
+    document.addEventListener('keydown',fuera,{once:true});
+    setTimeout(fuera,2700);
+  }
+
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('ver'); obs.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(e,i){
+    e.style.transitionDelay=(Math.min(i,5)*70)+'ms';
+    obs.observe(e);
+  });
+
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1250;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), e=1-Math.pow(1-p,3), v=to*e;
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',')
+                           : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var oc=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); oc.unobserve(e.target); } });
+  },{threshold:.4});
+  document.querySelectorAll('.count').forEach(function(e){ oc.observe(e); });
+})();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.confia{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
