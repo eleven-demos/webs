@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Cueva · Cocina canaria dentro de una cueva natural, Tunte</title>
+<meta name="description" content="La Cueva: restaurante de cocina canaria dentro de una cueva natural en C. Tamarán 15, Hoya de Tunte, San Bartolomé de Tirajana. Ropa vieja, papas arrugadas con mojo, postres caseros. 4,4★ en Google con 739 reseñas.">
+<meta name="theme-color" content="#4A3624">
+<style>
+:root{
+  --primario:#4A3624; --primario-osc:#2E2013; --secundario:#F1E9DC; --acento:#B4712E;
+  --acento-clar:#D99A52; --tinta:#2A1D12; --gris:#7A6650; --linea:rgba(42,29,18,.13);
+  --sombra:0 2px 8px rgba(42,29,18,.07), 0 14px 34px rgba(42,29,18,.11);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:Georgia,"Iowan Old Style","Times New Roman",serif;
+  background:var(--secundario); color:var(--tinta); line-height:1.6; overflow-x:hidden;
+}
+h1,h2,h3,.sans{font-family:"Helvetica Neue",Arial,sans-serif}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: se abre la boca de la cueva y se ilumina la roca ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 55%,#241609 0%,#150C05 55%,#0B0603 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.15s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(340px,76vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.luz{opacity:0;transform-box:fill-box;transform-origin:center;transform:scale(.5);
+  animation:resplandor 1.1s ease .2s both;will-change:opacity,transform}
+@keyframes resplandor{0%{opacity:0;transform:scale(.5)}60%{opacity:.95}100%{opacity:.62;transform:scale(1)}}
+.jaw{will-change:transform}
+.jaw-arriba{transform:translateY(0);animation:abrir-arriba 1s cubic-bezier(.25,.85,.3,1) .18s both}
+@keyframes abrir-arriba{to{transform:translateY(-62px)}}
+.jaw-abajo{transform:translateY(0);animation:abrir-abajo 1s cubic-bezier(.25,.85,.3,1) .18s both}
+@keyframes abrir-abajo{to{transform:translateY(62px)}}
+#load .nombre{
+  color:var(--secundario);font-size:clamp(1.5rem,5.6vw,2.5rem);letter-spacing:.16em;font-weight:700;
+  margin-top:18px;opacity:0;text-shadow:0 0 22px rgba(217,154,82,.55);
+  animation:surgir .7s ease 1.05s both;
+}
+#load .lema{color:rgba(241,233,220,.62);font-size:.76rem;letter-spacing:.28em;margin-top:10px;
+  opacity:0;animation:surgir .7s ease 1.28s both}
+@keyframes surgir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#load .skip{position:absolute;bottom:-50px;left:0;right:0;text-align:center;
+  color:rgba(241,233,220,.34);font-size:.7rem;letter-spacing:.22em;opacity:0;
+  animation:surgir .7s ease 1.6s both}
+
+/* ---------- marca de agua ---------- */
+.cinta{position:fixed;top:15px;left:-46px;z-index:60;transform:rotate(-45deg);
+  background:var(--acento);color:#fff;font:600 .62rem/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.16em;padding:6px 52px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.sello{position:fixed;right:14px;bottom:74px;z-index:60;pointer-events:none;
+  font:700 .66rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.24em;
+  color:rgba(74,54,36,.34);border:1.5px solid rgba(74,54,36,.26);
+  padding:7px 11px;border-radius:4px;transform:rotate(-8deg)}
+
+/* ---------- cabecera ---------- */
+#cab{position:sticky;top:0;z-index:50;background:rgba(241,233,220,.88);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{font:700 1.04rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.1em;
+  text-decoration:none;color:var(--primario)}
+.brand span{color:var(--acento);font-weight:400}
+.menu{display:none;gap:30px}
+.menu a{text-decoration:none;font:500 .84rem/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.04em;color:var(--gris);transition:color .2s}
+.menu a:hover{color:var(--acento)}
+.tel-top{display:none;background:var(--primario);color:var(--secundario);text-decoration:none;
+  font:600 .8rem/1 "Helvetica Neue",Arial,sans-serif;padding:11px 20px;border-radius:100px;
+  transition:transform .2s,background .2s}
+.tel-top:hover{transform:translateY(-2px);background:var(--primario-osc)}
+@media(min-width:900px){.menu{display:flex}.tel-top{display:inline-block}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:clamp(56px,11vw,104px) 0 clamp(44px,8vw,76px);overflow:hidden}
+.hero::before{
+  content:"";position:absolute;inset:-22% -10% auto -10%;height:124%;z-index:-1;
+  background:radial-gradient(56% 50% at 18% 14%,rgba(74,54,36,.14),transparent 68%),
+             radial-gradient(50% 46% at 88% 8%,rgba(180,113,46,.18),transparent 66%);
+}
+.est{display:inline-flex;align-items:center;gap:9px;background:rgba(180,113,46,.12);
+  border:1px solid rgba(180,113,46,.28);border-radius:100px;padding:7px 15px;
+  font:600 .7rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.13em;color:#8A5620;
+  opacity:0;animation:surgir2 .6s ease .1s both}
+@keyframes surgir2{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.hero h1{font-size:clamp(2.3rem,7.8vw,4.6rem);line-height:1.05;letter-spacing:-.03em;
+  font-weight:800;margin:20px 0 0;color:var(--primario)}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:top}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);
+  animation:sube .72s cubic-bezier(.2,.9,.25,1) both}
+@keyframes sube{to{transform:translateY(0)}}
+.hero h1 em{font-style:normal;color:var(--acento)}
+.lead{max-width:56ch;margin-top:20px;font-size:clamp(1.02rem,2.3vw,1.2rem);color:var(--gris);
+  opacity:0;animation:surgir2 .6s ease .75s both}
+.hero-acts{display:flex;flex-wrap:wrap;gap:13px;margin-top:30px;
+  opacity:0;animation:surgir2 .6s ease .88s both}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:100px;
+  font:600 .92rem/1 "Helvetica Neue",Arial,sans-serif;padding:16px 28px;
+  transition:transform .22s cubic-bezier(.2,.9,.25,1),box-shadow .22s,background .22s,border-color .22s,color .22s}
+.btn-p{background:var(--acento);color:#fff;box-shadow:0 6px 20px rgba(180,113,46,.32)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(180,113,46,.4)}
+.btn-s{border:1.5px solid rgba(42,29,18,.22);color:var(--tinta)}
+.btn-s:hover{transform:translateY(-3px);border-color:var(--acento);color:var(--acento)}
+
+/* ---------- franja de confianza ---------- */
+.confia{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linea);
+  border:1px solid var(--linea);border-radius:18px;overflow:hidden;margin-top:44px;
+  opacity:0;animation:surgir2 .6s ease 1s both}
+@media(min-width:760px){.confia{grid-template-columns:repeat(4,1fr)}}
+.conf{background:var(--secundario);padding:24px 18px;text-align:center}
+.conf b{display:block;font:800 clamp(1.65rem,4.3vw,2.3rem)/1 "Helvetica Neue",Arial,sans-serif;
+  color:var(--acento);letter-spacing:-.02em}
+.conf span{display:block;margin-top:7px;font:500 .7rem/1.4 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.1em;color:var(--gris)}
+.estrellas{color:#C88A2E;letter-spacing:.1em;font-size:.9rem}
+
+/* ---------- secciones ---------- */
+section{padding:clamp(58px,10vw,104px) 0}
+.tit{font-size:clamp(1.68rem,4.4vw,2.75rem);letter-spacing:-.025em;font-weight:800;line-height:1.1;color:var(--primario)}
+.sub{color:var(--gris);margin-top:13px;max-width:60ch}
+.eyebrow{font:600 .7rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.2em;
+  color:var(--acento);margin-bottom:14px}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.9,.25,1)}
+.rv.ver{opacity:1;transform:none}
+
+/* la cueva (identidad) */
+.cueva{background:var(--primario-osc);color:var(--secundario);position:relative;overflow:hidden}
+.cueva .tit{color:var(--secundario)}
+.cueva .eyebrow{color:var(--acento-clar)}
+.cueva p{color:rgba(241,233,220,.74);margin-top:16px;max-width:62ch}
+.cueva p b{color:#fff}
+.roca{margin-top:44px;border-radius:20px;overflow:hidden;border:1px solid rgba(241,233,220,.16);
+  background:linear-gradient(180deg,#20140A 0%,#2E1D0F 55%,#3D2712 100%);position:relative;height:clamp(190px,32vw,300px)}
+.roca svg{position:absolute;inset:0;width:100%;height:100%}
+.roca .cap{position:absolute;left:0;right:0;bottom:0;padding:20px 24px;
+  background:linear-gradient(180deg,transparent,rgba(21,12,5,.86));
+  font:500 .82rem/1.5 "Helvetica Neue",Arial,sans-serif;color:rgba(241,233,220,.88)}
+
+/* carta */
+.platos{display:grid;gap:18px;margin-top:44px}
+@media(min-width:680px){.platos{grid-template-columns:repeat(3,1fr)}}
+.plato{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:28px 26px;
+  transition:transform .28s cubic-bezier(.2,.9,.25,1),box-shadow .28s,border-color .28s}
+.plato:hover{transform:translateY(-6px);box-shadow:var(--sombra);border-color:rgba(180,113,46,.34)}
+.plato .ico{width:44px;height:44px;border-radius:12px;background:rgba(180,113,46,.12);
+  display:grid;place-items:center;margin-bottom:16px}
+.plato .ico svg{width:22px;height:22px;stroke:var(--acento);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.plato h3{font-size:1.13rem;letter-spacing:-.01em;color:var(--primario)}
+.plato p{color:var(--gris);font-size:.94rem;margin-top:9px}
+
+/* confianza */
+.confianza{background:#fff}
+.granrating{display:grid;gap:22px;margin-top:44px;align-items:center}
+@media(min-width:820px){.granrating{grid-template-columns:auto 1fr;gap:52px}}
+.num-grande{text-align:center;background:var(--secundario);border:1px solid var(--linea);
+  border-radius:22px;padding:34px 40px}
+.num-grande b{display:block;font:800 clamp(3rem,10vw,4.4rem)/1 "Helvetica Neue",Arial,sans-serif;
+  color:var(--acento);letter-spacing:-.03em}
+.num-grande .estrellas{font-size:1.15rem;margin-top:8px}
+.num-grande span{display:block;margin-top:8px;font:600 .72rem/1.4 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.12em;color:var(--gris)}
+.puntos{list-style:none;display:grid;gap:16px}
+.puntos li{display:flex;gap:14px;align-items:flex-start;font-size:1rem;color:var(--tinta)}
+.puntos li svg{flex:none;width:22px;height:22px;stroke:var(--acento);fill:none;stroke-width:2;
+  stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.puntos li b{color:var(--primario)}
+
+/* contacto */
+.cont-grid{display:grid;gap:34px}
+@media(min-width:900px){.cont-grid{grid-template-columns:1fr 1fr;gap:60px}}
+.datos{list-style:none;margin-top:30px}
+.datos li{display:flex;gap:16px;padding:19px 0;border-bottom:1px solid var(--linea)}
+.datos li:last-child{border-bottom:0}
+.datos .k{font:600 .68rem/1.7 "Helvetica Neue",Arial,sans-serif;letter-spacing:.14em;
+  color:var(--gris);min-width:96px}
+.datos .v{font-weight:600;color:var(--primario)}
+.datos .v a{text-decoration:none;color:var(--acento)}
+.datos .v small{display:block;font-weight:400;color:var(--gris);font-size:.85rem;margin-top:3px}
+.mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);background:var(--secundario);
+  min-height:280px;display:grid;place-items:center;text-align:center;padding:36px}
+.mapa svg{width:52px;height:52px;stroke:var(--acento);fill:none;stroke-width:1.4;
+  stroke-linecap:round;stroke-linejoin:round}
+.mapa p{margin:16px 0 20px;color:var(--gris);font-size:.95rem}
+
+/* pie */
+footer{background:var(--tinta);color:rgba(241,233,220,.68);padding:56px 0 96px;
+  font:400 .88rem/1.7 "Helvetica Neue",Arial,sans-serif}
+.aviso{background:rgba(180,113,46,.24);border:1px solid rgba(180,113,46,.46);border-radius:16px;
+  padding:24px 26px;margin-bottom:32px;color:var(--secundario)}
+.aviso b{color:#fff}
+.pie-fin{display:flex;flex-wrap:wrap;gap:10px 26px;justify-content:space-between;
+  padding-top:26px;border-top:1px solid rgba(241,233,220,.14);font-size:.8rem}
+
+/* barra fija móvil */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:1fr 1fr;
+  gap:1px;background:rgba(42,29,18,.16);backdrop-filter:blur(10px);border-top:1px solid var(--linea)}
+.barra a{display:flex;align-items:center;justify-content:center;gap:9px;padding:15px 8px;
+  text-decoration:none;background:rgba(241,233,220,.96);
+  font:600 .84rem/1 "Helvetica Neue",Arial,sans-serif;color:var(--tinta)}
+.barra a.p{background:var(--acento);color:#fff}
+.barra svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:900px){.barra{display:none}footer{padding-bottom:56px}.sello{bottom:22px}}
+
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;
+    transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .rv{opacity:1;transform:none}
+  .hero h1 .word i{transform:none}
+  #load{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- MOMENTO FIRMA: se abre la boca de la cueva y la roca se ilumina, revelando el nombre -->
+<div id="load"><div class="esc">
+  <svg viewBox="0 0 320 200" aria-hidden="true">
+    <defs>
+      <radialGradient id="luzint" cx="50%" cy="52%" r="55%">
+        <stop offset="0%" stop-color="#F4B860" stop-opacity=".95"/>
+        <stop offset="45%" stop-color="#B4712E" stop-opacity=".5"/>
+        <stop offset="100%" stop-color="#B4712E" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+    <circle class="luz" cx="160" cy="104" r="92" fill="url(#luzint)"></circle>
+    <path class="jaw jaw-arriba" d="M0 0 L0 96 L18 76 L34 100 L52 72 L70 98 L90 68 L112 96 L134 64 L158 94 L182 62 L206 96 L230 68 L252 98 L272 74 L292 100 L320 78 L320 0 Z" fill="#170E06"></path>
+    <path class="jaw jaw-abajo" d="M0 200 L0 116 L20 138 L38 110 L58 140 L78 112 L100 142 L124 108 L150 140 L174 110 L198 142 L222 114 L246 144 L268 116 L292 140 L320 114 L320 200 Z" fill="#100A04"></path>
+  </svg>
+  <div class="nombre">LA CUEVA</div>
+  <div class="lema">COCINA CANARIA EN CUEVA NATURAL</div>
+  <div class="skip">Toca para entrar</div>
+</div></div>
+
+<div class="cinta">Demo · Eleven AI</div>
+<div class="sello">DEMO</div>
+
+<header id="cab"><nav class="wrap nav">
+  <a href="#" class="brand">LA <span>CUEVA</span></a>
+  <div class="menu">
+    <a href="#cueva">La cueva</a>
+    <a href="#carta">La carta</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Cómo llegar</a>
+  </div>
+  <a class="tel-top" href="tel:+34928127300">928 12 73 00</a>
+</nav></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="est">● HOYA DE TUNTE, SAN BARTOLOMÉ DE TIRAJANA</div>
+  <h1>
+    <span class="word"><i style="animation-delay:.25s">Se come dentro</i></span><br>
+    <span class="word"><i style="animation-delay:.37s">de una <em>cueva</em></i></span><br>
+    <span class="word"><i style="animation-delay:.49s">de verdad.</i></span>
+  </h1>
+  <p class="lead">
+    La Cueva es un restaurante de cocina canaria con los salones excavados en roca natural,
+    en la calle Tamarán, en Tunte. Ropa vieja, papas arrugadas con mojo y postres caseros
+    artesanales, con precios ajustados y trato cercano.
+  </p>
+  <div class="hero-acts">
+    <a class="btn btn-p" href="tel:+34928127300">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Llamar y reservar mesa
+    </a>
+    <a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=La+Cueva,+C.+Tamar%C3%A1n+15,+35290+Hoya+de+Tunte,+San+Bartolom%C3%A9+de+Tirajana" target="_blank" rel="noopener">Cómo llegar</a>
+  </div>
+
+  <div class="confia">
+    <div class="conf">
+      <b><span class="count" data-to="44" data-dec="1">0</span></b>
+      <div class="estrellas">★★★★☆</div>
+      <span>EN GOOGLE</span>
+    </div>
+    <div class="conf"><b><span class="count" data-to="739">0</span></b><span>RESEÑAS</span></div>
+    <div class="conf"><b>TAMARÁN, 15</b><span>HOYA DE TUNTE</span></div>
+    <div class="conf"><b>★</b><span>CUEVA NATURAL</span></div>
+  </div>
+</div></section>
+
+<section class="cueva" id="cueva"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">LA CUEVA</div>
+    <h2 class="tit">No es un nombre. Es literal.</h2>
+    <p>
+      El restaurante está dentro de una cueva natural, en pleno Hoya de Tunte. <b>Se come entre
+      paredes de roca viva</b>, un comedor que no se puede copiar ni encontrar en ningún otro
+      sitio de la isla.
+    </p>
+    <p>
+      Cocina tradicional canaria de siempre, <b>precios ajustados y servicio muy cercano</b>,
+      tal y como lo cuentan cientos de comensales en Google. Sin web ni redes propias — hasta hoy.
+    </p>
+  </div>
+  <div class="roca rv">
+    <svg viewBox="0 0 1200 320" preserveAspectRatio="none" aria-hidden="true">
+      <circle cx="600" cy="150" r="120" fill="#B4712E" opacity=".25"></circle>
+      <path d="M0 40 L60 90 L110 30 L170 96 L230 34 L290 100 L350 38 L410 94 L470 32 L540 98 L600 36 L670 96 L730 32 L800 100 L860 36 L930 96 L1000 30 L1070 98 L1140 32 L1200 90 L1200 0 L0 0 Z" fill="#20140A"></path>
+      <path d="M0 320 L50 250 L100 300 L160 240 L220 296 L280 236 L350 300 L420 240 L490 298 L560 238 L630 300 L700 236 L780 298 L850 238 L930 300 L1010 240 L1090 298 L1160 236 L1200 280 L1200 320 Z" fill="#150C05"></path>
+    </svg>
+    <div class="cap">El comedor de La Cueva — roca natural, C. Tamarán 15, Hoya de Tunte</div>
+  </div>
+</div></section>
+
+<section id="carta"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">LA CARTA</div>
+    <h2 class="tit">Cocina canaria de siempre</h2>
+    <p class="sub">Los platos que definen la casa. La carta completa está en el restaurante.</p>
+  </div>
+  <div class="platos">
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 18h14M7 18c0-4 2-7 5-7s5 3 5 7"/><path d="M9 8V4M13 8V4M17 8V4"/></svg></div>
+      <h3>Ropa vieja</h3>
+      <p>El guiso canario de toda la vida: garbanzos y carne desmechada, a fuego lento.</p>
+    </div>
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="14" r="3"/><circle cx="16" cy="10" r="3"/><path d="M4 20h16"/></svg></div>
+      <h3>Papas arrugadas con mojo</h3>
+      <p>La papa canaria con piel, cocida en agua con sal, con mojo rojo y mojo verde caseros.</p>
+    </div>
+    <div class="plato rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h13v7a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4z"/><path d="M17 9h2a2 2 0 0 1 0 4h-2"/></svg></div>
+      <h3>Postres caseros artesanales</h3>
+      <p>Repostería hecha en casa, para cerrar la comida como en Canarias se hace siempre.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="confianza" id="opiniones"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">CONFIANZA</div>
+    <h2 class="tit">739 reseñas y 4,4 en Google</h2>
+    <p class="sub">Valorado por cientos de comensales en Google. La cifra que ves es la real, sin filtros.</p>
+  </div>
+  <div class="granrating rv">
+    <div class="num-grande">
+      <b><span class="count" data-to="44" data-dec="1">0</span></b>
+      <div class="estrellas">★★★★☆</div>
+      <span><span class="count" data-to="739">0</span> RESEÑAS EN GOOGLE</span>
+    </div>
+    <ul class="puntos">
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Cocina tradicional canaria</b>, sin atajos: ropa vieja, papas con mojo y postres caseros.</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Precios ajustados y trato cercano</b>, según lo que se refleja en las reseñas de Google.</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Un sitio único</b>: comedor dentro de una cueva natural, en Hoya de Tunte.</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="contacto"><div class="wrap cont-grid">
+  <div class="rv">
+    <div class="eyebrow">CÓMO LLEGAR</div>
+    <h2 class="tit">C. Tamarán, 15 — Hoya de Tunte</h2>
+    <p class="sub">San Bartolomé de Tirajana, Las Palmas (Gran Canaria).</p>
+    <ul class="datos">
+      <li><span class="k">DIRECCIÓN</span><span class="v">C. Tamarán, 15<small>35290 Hoya de Tunte, San Bartolomé de Tirajana (Gran Canaria)</small></span></li>
+      <li><span class="k">TELÉFONO</span><span class="v"><a href="tel:+34928127300">928 12 73 00</a></span></li>
+      <li><span class="k">VALORACIÓN</span><span class="v">4,4 ★ en Google<small>739 reseñas</small></span></li>
+      <li><span class="k">AMBIENTE</span><span class="v">Cueva natural<small>Mejor llamar antes para reservar mesa</small></span></li>
+    </ul>
+  </div>
+  <div class="mapa rv">
+    <div>
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <p>C. Tamarán, 15 — Hoya de Tunte<br>San Bartolomé de Tirajana, Las Palmas</p>
+      <a class="btn btn-p" href="https://www.google.com/maps/search/?api=1&query=La+Cueva,+C.+Tamar%C3%A1n+15,+35290+Hoya+de+Tunte,+San+Bartolom%C3%A9+de+Tirajana" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="aviso">
+    <b>Esto es una DEMO</b> creada por Eleven AI con los datos públicos reales de La Cueva.
+    Esta web puede ser vuestra: <b>490 €</b> — landing a medida, entrega en 7 días.
+  </div>
+  <div class="pie-fin">
+    <span>La Cueva · C. Tamarán, 15 · Hoya de Tunte · San Bartolomé de Tirajana · 928 12 73 00</span>
+    <span>Demo de Eleven AI · elevenprime.es</span>
+  </div>
+</div></footer>
+
+<nav class="barra">
+  <a class="p" href="tel:+34928127300">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Llamar
+  </a>
+  <a href="https://www.google.com/maps/search/?api=1&query=La+Cueva,+C.+Tamar%C3%A1n+15,+35290+Hoya+de+Tunte,+San+Bartolom%C3%A9+de+Tirajana" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Cómo llegar
+  </a>
+</nav>
+
+<script>
+(function(){
+  var load=document.getElementById('load');
+  function fuera(){ if(load) load.style.setProperty('display','none','important'); }
+  if(load){
+    load.addEventListener('click',fuera);
+    document.addEventListener('keydown',fuera,{once:true});
+    setTimeout(fuera,2700);
+  }
+
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('ver'); obs.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(e,i){
+    e.style.transitionDelay=(Math.min(i,5)*70)+'ms';
+    obs.observe(e);
+  });
+
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1250;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), e=1-Math.pow(1-p,3), v=to*e;
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',')
+                           : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var oc=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); oc.unobserve(e.target); } });
+  },{threshold:.4});
+  document.querySelectorAll('.count').forEach(function(e){ oc.observe(e); });
+})();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.confia{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
