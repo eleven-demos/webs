@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Health Club Maspalomas · Gimnasio al aire libre con rocódromo y tatami</title>
+<meta name="description" content="Health Club Maspalomas, Av. Touroperador Neckermann 24, Maspalomas. Gimnasio open air con rocódromo, tatami de boxeo, clases dirigidas y entrenadores personales. Además peluquería, uñas, masaje y tatuajes. 4,6★ en Google con 94 reseñas.">
+<meta name="theme-color" content="#0E3B4C">
+<style>
+:root{
+  --primario:#0E3B4C; --primario-osc:#072530; --secundario:#F2F5F3; --acento:#E8A33D;
+  --acento-osc:#C4832A; --agua:#12A5A5; --tinta:#0F2029; --gris:#5C7280;
+  --linea:rgba(15,32,41,.13);
+  --sombra:0 2px 8px rgba(15,32,41,.07), 0 14px 34px rgba(15,32,41,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Helvetica Neue",Arial,sans-serif;
+  background:var(--secundario); color:var(--tinta); line-height:1.6; overflow-x:hidden;
+}
+h1,h2,h3{font-weight:800;letter-spacing:-.018em}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: los discos entran en la barra y montan el nombre ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 48%,#14556E 0%,#0C3B4D 55%,#061C25 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.15s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(340px,76vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.barra-p{transform-box:fill-box;transform-origin:center;opacity:0;transform:scaleX(.2);
+  animation:tender .55s cubic-bezier(.25,.85,.3,1) .1s both;will-change:opacity,transform}
+@keyframes tender{to{opacity:1;transform:none}}
+.disco-i{transform-box:fill-box;will-change:transform;
+  animation:montar-i .55s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes montar-i{from{transform:translateX(-130px)}to{transform:none}}
+.disco-d{transform-box:fill-box;will-change:transform;
+  animation:montar-d .55s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes montar-d{from{transform:translateX(130px)}to{transform:none}}
+.golpe{transform-box:fill-box;transform-origin:center;opacity:0;
+  animation:impacto .45s ease 1.02s both;will-change:opacity,transform}
+@keyframes impacto{0%{opacity:0;transform:scale(.4)}45%{opacity:.85;transform:scale(1.05)}100%{opacity:0;transform:scale(1.35)}}
+#load .nombre{
+  color:var(--secundario);font-size:clamp(1.3rem,4.9vw,2.25rem);letter-spacing:.13em;font-weight:800;
+  margin-top:22px;opacity:0;text-transform:uppercase;text-shadow:0 0 26px rgba(232,163,61,.45);
+  animation:surgir .7s ease 1.12s both;
+}
+#load .nombre b{color:var(--acento)}
+#load .lema{color:rgba(242,245,243,.6);font-size:.7rem;letter-spacing:.3em;margin-top:11px;
+  opacity:0;animation:surgir .7s ease 1.36s both}
+@keyframes surgir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#load .skip{position:absolute;bottom:-50px;left:0;right:0;text-align:center;
+  color:rgba(242,245,243,.32);font-size:.68rem;letter-spacing:.22em;opacity:0;
+  animation:surgir .7s ease 1.68s both}
+
+/* ---------- marca de agua ---------- */
+.cinta{position:fixed;top:15px;left:-46px;z-index:60;transform:rotate(-45deg);
+  background:var(--acento);color:var(--primario-osc);font:800 .62rem/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.16em;padding:6px 52px;box-shadow:0 2px 10px rgba(0,0,0,.2)}
+.sello{position:fixed;right:14px;bottom:74px;z-index:60;pointer-events:none;
+  font:800 .66rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.24em;
+  color:rgba(14,59,76,.34);border:1.5px solid rgba(14,59,76,.26);
+  padding:7px 11px;border-radius:4px;transform:rotate(-8deg)}
+
+/* ---------- cabecera ---------- */
+#cab{position:sticky;top:0;z-index:50;background:rgba(242,245,243,.9);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--linea)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+.brand{font:800 .98rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.11em;
+  text-decoration:none;color:var(--primario)}
+.brand span{color:var(--acento-osc)}
+.menu{display:none;gap:28px}
+.menu a{text-decoration:none;font:600 .84rem/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.04em;color:var(--gris);transition:color .2s}
+.menu a:hover{color:var(--primario)}
+.tel-top{display:none;background:var(--primario);color:#fff;text-decoration:none;
+  font:700 .8rem/1 "Helvetica Neue",Arial,sans-serif;padding:11px 20px;border-radius:100px;
+  transition:transform .2s,background .2s}
+.tel-top:hover{transform:translateY(-2px);background:var(--primario-osc)}
+@media(min-width:900px){.menu{display:flex}.tel-top{display:inline-block}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:62px 0 74px;overflow:hidden;
+  background:
+    radial-gradient(66% 55% at 84% 4%,rgba(232,163,61,.22) 0%,rgba(232,163,61,0) 62%),
+    radial-gradient(60% 50% at 4% 96%,rgba(18,165,165,.16) 0%,rgba(18,165,165,0) 62%),
+    var(--secundario);
+}
+.est{display:inline-block;font-size:.68rem;letter-spacing:.22em;color:var(--primario);
+  font-weight:800;margin-bottom:20px;opacity:0;animation:surgir .7s ease .1s both}
+.hero h1{font-size:clamp(2.2rem,7.6vw,4.25rem);line-height:1.02;margin-bottom:22px;text-transform:uppercase}
+.hero h1 em{font-style:normal;color:var(--primario);
+  background:linear-gradient(transparent 62%,rgba(232,163,61,.8) 62%)}
+.hero h1 .word{display:block;overflow:hidden}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);
+  animation:subir .85s cubic-bezier(.22,.8,.28,1) both}
+@keyframes subir{to{transform:none}}
+.lead{max-width:60ch;color:var(--gris);font-size:1.03rem;margin-bottom:30px;font-weight:400;
+  opacity:0;animation:surgir .7s ease .72s both}
+.hero-acts{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:44px;
+  opacity:0;animation:surgir .7s ease .84s both}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:100px;
+  font:700 .88rem/1 "Helvetica Neue",Arial,sans-serif;padding:15px 26px;
+  transition:transform .22s cubic-bezier(.22,.8,.28,1),box-shadow .22s,background .22s}
+.btn-p{background:var(--acento);color:var(--primario-osc);box-shadow:0 8px 22px rgba(232,163,61,.36)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(232,163,61,.48)}
+.btn-s{background:transparent;color:var(--primario);border:1.5px solid var(--linea)}
+.btn-s:hover{transform:translateY(-2px);border-color:var(--primario);background:rgba(232,163,61,.14)}
+.confia{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--linea);
+  border:1px solid var(--linea);border-radius:14px;overflow:hidden;max-width:680px;
+  opacity:0;animation:surgir .7s ease .96s both}
+@media(min-width:700px){.confia{grid-template-columns:repeat(4,1fr)}}
+.conf{background:var(--secundario);padding:20px 14px;text-align:center}
+.conf b{display:block;font:800 1.5rem/1 "Helvetica Neue",Arial,sans-serif;color:var(--primario)}
+.conf span{display:block;font-size:.62rem;letter-spacing:.15em;color:var(--gris);margin-top:7px}
+.estrellas{color:var(--acento-osc);font-size:.82rem;letter-spacing:.13em;margin-top:5px}
+
+/* ---------- revelado ---------- */
+.rv{opacity:0;transform:translateY(26px);
+  transition:opacity .7s cubic-bezier(.22,.8,.28,1),transform .7s cubic-bezier(.22,.8,.28,1)}
+.rv.ver{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important}
+  #load{display:none!important}
+}
+
+section{padding:70px 0}
+.eyebrow{font-size:.66rem;letter-spacing:.22em;color:var(--acento-osc);font-weight:800;margin-bottom:14px}
+.tit{font-size:clamp(1.7rem,4.6vw,2.75rem);line-height:1.08;margin-bottom:16px;text-transform:uppercase}
+.sub{color:var(--gris);max-width:62ch;margin-bottom:34px;font-weight:400}
+
+/* ---------- open air ---------- */
+.openair{background:var(--primario);color:var(--secundario)}
+.openair .tit,.openair p{color:var(--secundario)}
+.openair .eyebrow{color:var(--acento)}
+.oa-grid{display:grid;gap:38px}
+@media(min-width:900px){.oa-grid{grid-template-columns:1.05fr .95fr;align-items:center;gap:56px}}
+.openair p{color:rgba(242,245,243,.8);margin-bottom:16px;max-width:56ch;font-weight:400}
+.openair p b{color:var(--acento);font-weight:700}
+.sol{border:1px solid rgba(232,163,61,.32);border-radius:16px;padding:32px 28px;
+  background:rgba(255,255,255,.04);text-align:center}
+.sol svg{width:78px;height:78px;margin-bottom:16px}
+.sol .st{font:800 1.18rem/1.2 "Helvetica Neue",Arial,sans-serif;color:#fff;
+  text-transform:uppercase;letter-spacing:.04em;margin-bottom:10px}
+.sol .sd{color:rgba(242,245,243,.68);font-size:.92rem;font-weight:400}
+
+/* ---------- instalaciones ---------- */
+.instal{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:640px){.instal{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:980px){.instal{grid-template-columns:repeat(3,1fr)}}
+.ins{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:28px 24px;
+  box-shadow:var(--sombra);transition:transform .28s cubic-bezier(.22,.8,.28,1),box-shadow .28s;
+  border-top:3px solid var(--acento)}
+.ins:hover{transform:translateY(-5px) scale(1.014);box-shadow:0 4px 12px rgba(15,32,41,.09),0 20px 44px rgba(15,32,41,.16)}
+.ico{width:46px;height:46px;border-radius:12px;background:rgba(232,163,61,.2);display:grid;place-items:center;margin-bottom:16px}
+.ico svg{width:22px;height:22px;stroke:var(--primario);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round}
+.ins h3{font-size:1.06rem;margin-bottom:8px;text-transform:uppercase}
+.ins p{color:var(--gris);font-size:.91rem;font-weight:400}
+
+/* ---------- estudios ---------- */
+.estudios{background:#E4EAE8}
+.est-grid{display:grid;gap:14px;grid-template-columns:repeat(2,1fr)}
+@media(min-width:900px){.est-grid{grid-template-columns:repeat(4,1fr)}}
+.estd{background:var(--secundario);border:1px solid var(--linea);border-radius:14px;
+  padding:26px 20px;text-align:center;
+  transition:transform .28s cubic-bezier(.22,.8,.28,1),box-shadow .28s}
+.estd:hover{transform:translateY(-4px);box-shadow:var(--sombra)}
+.estd svg{width:28px;height:28px;stroke:var(--acento-osc);fill:none;stroke-width:1.7;
+  stroke-linecap:round;stroke-linejoin:round;margin-bottom:12px}
+.estd h3{font-size:.95rem;text-transform:uppercase;letter-spacing:.02em}
+.estd p{color:var(--gris);font-size:.84rem;font-weight:400;margin-top:6px}
+
+/* ---------- confianza ---------- */
+.confianza{background:var(--secundario)}
+.granrating{display:grid;gap:34px;align-items:center}
+@media(min-width:900px){.granrating{grid-template-columns:.8fr 1.2fr;gap:56px}}
+.num-grande{text-align:center;background:#E4EAE8;border-radius:20px;padding:38px 26px;
+  border:1px solid var(--linea);box-shadow:var(--sombra)}
+.num-grande b{font:800 4.4rem/1 "Helvetica Neue",Arial,sans-serif;color:var(--primario);display:block}
+.num-grande .estrellas{font-size:1.3rem;margin:10px 0 8px}
+.num-grande span{font-size:.68rem;letter-spacing:.16em;color:var(--gris);font-weight:600}
+.puntos{list-style:none;display:grid;gap:16px}
+.puntos li{display:flex;gap:14px;align-items:flex-start}
+.puntos svg{flex:0 0 22px;width:22px;height:22px;stroke:var(--acento-osc);fill:none;stroke-width:2.5;
+  stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
+.puntos span{color:var(--tinta);font-size:.98rem;font-weight:400}
+.puntos b{font-weight:700}
+
+/* ---------- contacto ---------- */
+.cont-grid{display:grid;gap:36px}
+@media(min-width:900px){.cont-grid{grid-template-columns:1fr 1fr;gap:52px;align-items:center}}
+.datos{list-style:none;display:grid;gap:2px;background:var(--linea);
+  border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+.datos li{background:var(--secundario);display:flex;gap:16px;padding:17px 20px;align-items:flex-start}
+.datos .k{flex:0 0 108px;font-size:.63rem;letter-spacing:.15em;color:var(--gris);
+  font-weight:800;padding-top:4px}
+.datos .v{font-size:.98rem;font-weight:400}
+.datos .v a{color:var(--primario);text-decoration:none;font-weight:700}
+.datos .v small{display:block;color:var(--gris);font-size:.82rem;margin-top:3px}
+.mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);min-height:280px;
+  display:grid;place-items:center;text-align:center;padding:36px 26px;
+  background:
+    radial-gradient(60% 60% at 50% 40%,rgba(232,163,61,.22) 0%,rgba(232,163,61,0) 70%),
+    #E4EAE8;
+}
+.mapa svg{width:40px;height:40px;stroke:var(--primario);fill:none;stroke-width:1.6;margin-bottom:14px}
+.mapa p{color:var(--gris);margin-bottom:20px;font-size:.95rem}
+
+/* ---------- pie ---------- */
+footer{background:var(--primario-osc);color:rgba(242,245,243,.66);padding:44px 0 78px;font-size:.85rem}
+.aviso{background:rgba(232,163,61,.14);border:1px solid rgba(232,163,61,.3);border-radius:14px;
+  padding:20px 22px;margin-bottom:26px;color:rgba(242,245,243,.88)}
+.aviso b{color:var(--acento)}
+.pie-fin{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+  border-top:1px solid rgba(242,245,243,.13);padding-top:20px}
+
+/* barra fija móvil */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:1fr 1fr;
+  background:rgba(7,37,48,.97);backdrop-filter:blur(8px)}
+.barra a{display:flex;align-items:center;justify-content:center;gap:9px;padding:15px 8px;
+  text-decoration:none;color:var(--secundario);font:700 .82rem/1 "Helvetica Neue",Arial,sans-serif;
+  border-right:1px solid rgba(242,245,243,.12)}
+.barra a.p{background:var(--acento);color:var(--primario-osc)}
+.barra svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:900px){.barra{display:none}footer{padding-bottom:44px}.sello{bottom:22px}}
+</style>
+</head>
+<body>
+
+<!-- MOMENTO FIRMA: los discos entran por la barra, golpean y monta el nombre -->
+<div id="load"><div class="esc">
+  <svg viewBox="0 0 320 200" aria-hidden="true">
+    <rect class="barra-p" x="46" y="94" width="228" height="12" rx="6" fill="#B9C6CC"></rect>
+    <g class="disco-i" style="animation-delay:.42s">
+      <rect x="74" y="62" width="19" height="76" rx="6" fill="#E8A33D"></rect>
+    </g>
+    <g class="disco-i" style="animation-delay:.56s">
+      <rect x="98" y="72" width="15" height="56" rx="5" fill="#F2F5F3"></rect>
+    </g>
+    <g class="disco-d" style="animation-delay:.42s">
+      <rect x="227" y="62" width="19" height="76" rx="6" fill="#E8A33D"></rect>
+    </g>
+    <g class="disco-d" style="animation-delay:.56s">
+      <rect x="207" y="72" width="15" height="56" rx="5" fill="#F2F5F3"></rect>
+    </g>
+    <circle class="golpe" cx="160" cy="100" r="66" fill="none" stroke="#E8A33D" stroke-width="3"></circle>
+  </svg>
+  <div class="nombre">HEALTH CLUB <b>MASPALOMAS</b></div>
+  <div class="lema">OPEN AIR GYM · A 200 M DE LA PLAYA</div>
+  <div class="skip">Toca para entrar</div>
+</div></div>
+
+<div class="cinta">Demo · Eleven AI</div>
+<div class="sello">DEMO</div>
+
+<header id="cab"><nav class="wrap nav">
+  <a href="#" class="brand">HEALTH CLUB <span>MASPALOMAS</span></a>
+  <div class="menu">
+    <a href="#openair">Open air</a>
+    <a href="#instalaciones">Instalaciones</a>
+    <a href="#estudios">Estudios</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Cómo llegar</a>
+  </div>
+  <a class="tel-top" href="tel:+34663500970">663 50 09 70</a>
+</nav></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="est">● AV. TOUROPERADOR NECKERMANN, 24 · MASPALOMAS</div>
+  <h1>
+    <span class="word"><i style="animation-delay:.25s">Se entrena</i></span>
+    <span class="word"><i style="animation-delay:.37s">al <em>aire libre</em>.</i></span>
+  </h1>
+  <p class="lead">
+    Health Club Maspalomas es un gimnasio open air en la avenida Touroperador Neckermann,
+    con rocódromo, tatami de boxeo, clases dirigidas incluidas y entrenadores personales.
+    Y en el mismo recinto: peluquería, uñas, masaje y estudio de tatuajes.
+  </p>
+  <div class="hero-acts">
+    <a class="btn btn-p" href="tel:+34663500970">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Llamar e informarse
+    </a>
+    <a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=Health+Club+Maspalomas,+Av.+Touroperador+Neckermann,+24,+35100+Maspalomas" target="_blank" rel="noopener">Cómo llegar</a>
+  </div>
+
+  <div class="confia">
+    <div class="conf">
+      <b><span class="count" data-to="46" data-dec="1">0</span></b>
+      <div class="estrellas">★★★★☆</div>
+      <span>EN GOOGLE</span>
+    </div>
+    <div class="conf"><b><span class="count" data-to="94">0</span></b><span>RESEÑAS</span></div>
+    <div class="conf"><b>OPEN AIR</b><span>ENTRENO AL SOL</span></div>
+    <div class="conf"><b>PLAYA</b><span>A POCOS METROS</span></div>
+  </div>
+</div></section>
+
+<section class="openair" id="openair"><div class="wrap oa-grid">
+  <div class="rv">
+    <div class="eyebrow">OPEN AIR</div>
+    <h2 class="tit">Un gimnasio sin techo, en Maspalomas</h2>
+    <p>
+      Aquí no se entrena mirando una pared: se entrena <b>al aire libre</b>, a pocos metros de la
+      playa y con aparcamiento fácil. Es lo que hace distinto a este sitio y no se puede copiar
+      en un local cerrado.
+    </p>
+    <p>
+      <b>Clases dirigidas incluidas</b>, entrenadores personales, wifi gratis y
+      <b>entrada accesible para sillas de ruedas</b>: se puede entrenar aquí venga como venga cada uno.
+    </p>
+  </div>
+  <div class="sol rv">
+    <svg viewBox="0 0 64 64" aria-hidden="true" fill="none">
+      <circle cx="32" cy="32" r="13" fill="#E8A33D" opacity=".28" stroke="#E8A33D" stroke-width="2.5"/>
+      <g stroke="#E8A33D" stroke-width="3" stroke-linecap="round">
+        <path d="M32 6v8M32 50v8M6 32h8M50 32h8M13.6 13.6l5.7 5.7M44.7 44.7l5.7 5.7M50.4 13.6l-5.7 5.7M19.3 44.7l-5.7 5.7"/>
+      </g>
+    </svg>
+    <div class="st">Todo el año al sol</div>
+    <div class="sd">
+      Maspalomas permite entrenar fuera los doce meses. El gimnasio está montado
+      para aprovecharlo, no para taparlo.
+    </div>
+  </div>
+</div></section>
+
+<section id="instalaciones"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">INSTALACIONES</div>
+    <h2 class="tit">Lo que hay dentro</h2>
+    <p class="sub">Las instalaciones y servicios del club. Para tarifas y horarios de clases, una llamada basta.</p>
+  </div>
+  <div class="instal">
+    <div class="ins rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 9v6M20 9v6M7 7v10M17 7v10M7 12h10"/></svg></div>
+      <h3>Sala open air</h3>
+      <p>Zona de entrenamiento al aire libre: fuerza y acondicionamiento, sin paredes de por medio.</p>
+    </div>
+    <div class="ins rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M7 5v14M17 5v14"/><path d="M7 9h10M7 15h10"/><circle cx="12" cy="12" r="1.3"/></svg></div>
+      <h3>Rocódromo</h3>
+      <p>Pared de escalada dentro del recinto: entrenar fuerza y cabeza al mismo tiempo.</p>
+    </div>
+    <div class="ins rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 8h4l1 4-1 4H6a2 2 0 0 1-2-2v-4a2 2 0 0 1 2-2z"/><path d="M14 6h4v12h-4"/></svg></div>
+      <h3>Tatami de boxeo</h3>
+      <p>Espacio propio para boxeo y trabajo de contacto, con suelo preparado.</p>
+    </div>
+    <div class="ins rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="9" cy="6" r="2.4"/><path d="M6 21l2-8 4-3 3 4 4 1"/><path d="M12 10l-2 5"/></svg></div>
+      <h3>Clases dirigidas</h3>
+      <p>Clases incluidas en la cuota, dirigidas por el equipo del club.</p>
+    </div>
+    <div class="ins rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg></div>
+      <h3>Entrenador personal</h3>
+      <p>Entrenamiento personal para quien quiera un plan hecho a su medida.</p>
+    </div>
+    <div class="ins rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.4"/><path d="M4 18a8 8 0 0 1 16 0"/><path d="M3 12h1M20 12h1"/></svg></div>
+      <h3>Accesible y con wifi</h3>
+      <p>Entrada habilitada para sillas de ruedas y wifi gratuito en el recinto.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="estudios" id="estudios"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">EN EL MISMO RECINTO</div>
+    <h2 class="tit">No solo se entrena</h2>
+    <p class="sub">Dentro del club conviven cuatro estudios más. Se entra a entrenar y se sale con todo hecho.</p>
+  </div>
+  <div class="est-grid">
+    <div class="estd rv">
+      <svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.6"/><circle cx="6" cy="18" r="2.6"/><path d="M8.2 7.6 20 19M8.2 16.4 20 5"/></svg>
+      <h3>Hair Studio</h3>
+      <p>Peluquería dentro del club.</p>
+    </div>
+    <div class="estd rv">
+      <svg viewBox="0 0 24 24"><path d="M8 20h8"/><path d="M10 20V9a2 2 0 0 1 4 0v11"/><path d="M12 9V5.5a1.5 1.5 0 0 1 3 0V7"/></svg>
+      <h3>Nail Studio</h3>
+      <p>Estudio de uñas.</p>
+    </div>
+    <div class="estd rv">
+      <svg viewBox="0 0 24 24"><path d="M4 16c2-4 6-6 8-6s6 2 8 6"/><circle cx="12" cy="7" r="2.4"/></svg>
+      <h3>Massage</h3>
+      <p>Servicio de masaje.</p>
+    </div>
+    <div class="estd rv">
+      <svg viewBox="0 0 24 24"><path d="M5 19 17 7l3 3L8 22H5z"/><path d="M14 4l3 3"/></svg>
+      <h3>Tattoo Studio</h3>
+      <p>Estudio de tatuajes.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="confianza" id="opiniones"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">CONFIANZA</div>
+    <h2 class="tit">4,6 en Google con 94 reseñas</h2>
+    <p class="sub">La valoración real del club en Google, sin retocar. Esto es lo que se repite entre quienes entrenan aquí.</p>
+  </div>
+  <div class="granrating rv">
+    <div class="num-grande">
+      <b><span class="count" data-to="46" data-dec="1">0</span></b>
+      <div class="estrellas">★★★★☆</div>
+      <span><span class="count" data-to="94">0</span> RESEÑAS EN GOOGLE</span>
+    </div>
+    <ul class="puntos">
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Entreno al aire libre</b> con rocódromo y tatami de boxeo: no es un gimnasio más.</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Clases dirigidas incluidas</b> y entrenadores personales para quien los quiera.</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Cuatro estudios más en el recinto</b>: peluquería, uñas, masaje y tatuajes.</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Junto a la playa</b>, con aparcamiento fácil y acceso para sillas de ruedas.</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="contacto"><div class="wrap cont-grid">
+  <div class="rv">
+    <div class="eyebrow">CÓMO LLEGAR</div>
+    <h2 class="tit">Av. Touroperador Neckermann, 24</h2>
+    <p class="sub">35100 Maspalomas, San Bartolomé de Tirajana (Gran Canaria).</p>
+    <ul class="datos">
+      <li><span class="k">DIRECCIÓN</span><span class="v">Av. Touroperador Neckermann, 24<small>35100 Maspalomas, San Bartolomé de Tirajana</small></span></li>
+      <li><span class="k">TELÉFONO</span><span class="v"><a href="tel:+34663500970">663 50 09 70</a></span></li>
+      <li><span class="k">VALORACIÓN</span><span class="v">4,6 ★ en Google<small>94 reseñas</small></span></li>
+      <li><span class="k">ACCESO</span><span class="v">Aparcamiento fácil<small>Entrada habilitada para sillas de ruedas</small></span></li>
+    </ul>
+  </div>
+  <div class="mapa rv">
+    <div>
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <p>Av. Touroperador Neckermann, 24<br>35100 Maspalomas · Gran Canaria</p>
+      <a class="btn btn-p" href="https://www.google.com/maps/search/?api=1&query=Health+Club+Maspalomas,+Av.+Touroperador+Neckermann,+24,+35100+Maspalomas" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="aviso">
+    <b>Esto es una DEMO</b> creada por Eleven AI con los datos públicos reales de Health Club Maspalomas.
+    Esta web puede ser vuestra: <b>490 €</b> — landing a medida, entrega en 7 días.
+  </div>
+  <div class="pie-fin">
+    <span>Health Club Maspalomas · Av. Touroperador Neckermann, 24 · Maspalomas · 663 50 09 70</span>
+    <span>Demo de Eleven AI · elevenprime.es</span>
+  </div>
+</div></footer>
+
+<nav class="barra">
+  <a class="p" href="tel:+34663500970">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Llamar
+  </a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Health+Club+Maspalomas,+Av.+Touroperador+Neckermann,+24,+35100+Maspalomas" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Cómo llegar
+  </a>
+</nav>
+
+<script>
+(function(){
+  var load=document.getElementById('load');
+  function fuera(){ if(load) load.style.setProperty('display','none','important'); }
+  if(load){
+    load.addEventListener('click',fuera);
+    document.addEventListener('keydown',fuera,{once:true});
+    setTimeout(fuera,2700);
+  }
+
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('ver'); obs.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(e,i){
+    e.style.transitionDelay=(Math.min(i,5)*70)+'ms';
+    obs.observe(e);
+  });
+
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1250;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), e=1-Math.pow(1-p,3), v=to*e;
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',')
+                           : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var oc=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); oc.unobserve(e.target); } });
+  },{threshold:.4});
+  document.querySelectorAll('.count').forEach(function(e){ oc.observe(e); });
+})();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.confia{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
