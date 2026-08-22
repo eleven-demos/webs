@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ROUTE 69 Barber & Tattoo · Hotel Abora Buenaventura, Maspalomas</title>
+<meta name="description" content="Barbería y estudio de tatuaje dentro del Hotel Abora Buenaventura, Pl. Ansite 1, Maspalomas (San Bartolomé de Tirajana). 4,7★ en Google con 206 reseñas. Reservas: 611 56 28 48.">
+<meta name="theme-color" content="#141414">
+<style>
+:root{
+  --primario:#141414; --primario-osc:#0A0A0A; --secundario:#EFEDE9; --acento:#B4442F;
+  --acento-clar:#D97A57; --arena:#E4DFD6; --tinta:#1C1A18; --gris:#6D6862;
+  --linea:rgba(28,26,24,.12);
+  --sombra:0 2px 8px rgba(20,20,20,.07), 0 16px 36px rgba(20,20,20,.12);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Helvetica Neue",Arial,sans-serif;
+  background:var(--secundario); color:var(--tinta); line-height:1.62; overflow-x:hidden;
+}
+h1,h2,h3{font-family:"Helvetica Neue",Arial,sans-serif;font-weight:700;letter-spacing:-.01em}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: tijera + aguja que abren y descubren el nombre ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 40%,#232019 0%,#171512 55%,#0A0A0A 100%);
+  display:grid;place-items:center;transition:opacity .6s ease,visibility .6s ease;
+}
+#load.off{opacity:0;visibility:hidden}
+#load .esc{text-align:center;position:relative;padding:1.5rem}
+#load svg{width:min(210px,54vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.hoja{transform-box:fill-box;transform-origin:130px 130px;
+  animation:abreA 1s .2s cubic-bezier(.5,0,.2,1) both;will-change:transform}
+.hojaB{animation-name:abreB}
+@keyframes abreA{from{transform:rotate(16deg)}to{transform:rotate(-10deg)}}
+@keyframes abreB{from{transform:rotate(-16deg)}to{transform:rotate(10deg)}}
+.brillo{transform-box:fill-box;transform-origin:center;opacity:0;
+  animation:destello .55s 1.05s both;will-change:opacity}
+@keyframes destello{0%{opacity:0;transform:scale(.4)}45%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(1.15)}}
+.aguja{transform-box:fill-box;transform-origin:38px 34px;opacity:0;
+  animation:buzz .5s 1.15s both;will-change:transform,opacity}
+@keyframes buzz{
+  0%{opacity:0;transform:translate(0,0) rotate(0)}
+  8%{opacity:1}
+  20%{transform:translate(-1.4px,.6px) rotate(-2deg)}
+  35%{transform:translate(1.3px,-.5px) rotate(2deg)}
+  50%{transform:translate(-1.2px,.5px) rotate(-2deg)}
+  65%{transform:translate(1.1px,-.4px) rotate(2deg)}
+  80%{transform:translate(-.6px,.3px) rotate(-1deg)}
+  100%{opacity:1;transform:translate(0,0) rotate(0)}
+}
+.tinta-pt{transform-box:fill-box;transform-origin:center;opacity:0;
+  animation:mancha .4s 1.55s both;will-change:opacity,transform}
+@keyframes mancha{0%{opacity:0;transform:scale(0)}100%{opacity:1;transform:scale(1)}}
+#load .nombre{position:relative;overflow:hidden;margin-top:1.5rem;display:inline-block}
+#load .nombre b{display:block;color:var(--secundario);font-weight:700;
+  font-size:clamp(1.1rem,4.6vw,1.6rem);letter-spacing:.14em;padding:0 .25em}
+#load .nombre small{display:block;color:var(--acento-clar);font-size:.62rem;letter-spacing:.32em;
+  margin-top:6px;font-weight:600}
+#load .nombre .cort{position:fixed-not;position:absolute;top:0;bottom:0;width:50.5%;
+  background:#0A0A0A}
+#load .nombre .cI{left:0;transform-origin:left;animation:cortI .8s 1.35s cubic-bezier(.6,0,.2,1) forwards}
+#load .nombre .cD{right:0;transform-origin:right;animation:cortI .8s 1.35s cubic-bezier(.6,0,.2,1) forwards}
+@keyframes cortI{to{transform:scaleX(0)}}
+#load .skip{color:rgba(239,237,233,.35);font-size:.64rem;letter-spacing:.24em;text-transform:uppercase;
+  margin-top:2rem;opacity:0;animation:surgir .6s 2s forwards}
+@keyframes surgir{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* ---------- marca de agua ---------- */
+.cinta{position:fixed;top:15px;left:-46px;z-index:60;transform:rotate(-45deg);
+  background:var(--acento);color:#fff;font:700 .62rem/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.16em;padding:6px 52px;box-shadow:0 2px 10px rgba(0,0,0,.22)}
+.sello{position:fixed;right:14px;bottom:74px;z-index:60;pointer-events:none;
+  font:700 .66rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.24em;
+  color:rgba(20,20,20,.34);border:1.5px solid rgba(20,20,20,.26);
+  padding:7px 11px;border-radius:4px;transform:rotate(-8deg)}
+
+/* ---------- cabecera ---------- */
+#cab{position:sticky;top:0;z-index:50;background:rgba(20,20,20,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid rgba(239,237,233,.1)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:15px 0}
+.brand{font:800 1rem/1 "Helvetica Neue",Arial,sans-serif;letter-spacing:.12em;
+  text-decoration:none;color:var(--secundario)}
+.brand span{color:var(--acento-clar);font-weight:400}
+.menu{display:none;gap:30px}
+.menu a{text-decoration:none;font:600 .82rem/1 "Helvetica Neue",Arial,sans-serif;
+  letter-spacing:.03em;color:rgba(239,237,233,.72);transition:color .2s}
+.menu a:hover{color:var(--acento-clar)}
+.tel-top{display:none;background:var(--acento);color:#fff;text-decoration:none;
+  font:700 .8rem/1 "Helvetica Neue",Arial,sans-serif;padding:11px 20px;border-radius:100px;
+  transition:transform .2s,background .2s}
+.tel-top:hover{transform:translateY(-2px);background:var(--acento-clar)}
+@media(min-width:900px){.menu{display:flex}.tel-top{display:inline-block}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;padding:60px 0 74px;overflow:hidden;background:var(--primario);color:var(--secundario)}
+.hero::before{content:"";position:absolute;inset:0;
+  background:radial-gradient(65% 55% at 86% 4%,rgba(180,68,47,.24) 0%,rgba(180,68,47,0) 60%),
+             radial-gradient(55% 46% at 4% 96%,rgba(239,237,233,.06) 0%,rgba(239,237,233,0) 60%)}
+.hero .wrap{position:relative;z-index:2}
+.est{display:inline-block;font-size:.68rem;letter-spacing:.2em;color:var(--acento-clar);
+  font-weight:700;margin-bottom:20px;opacity:0;animation:surgir .7s ease .1s both}
+.hero h1{font-size:clamp(2.15rem,7vw,3.9rem);line-height:1.06;letter-spacing:-.015em;margin-bottom:22px}
+.hero h1 .word{display:block;overflow:hidden}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);
+  animation:subir .85s cubic-bezier(.22,.8,.28,1) both}
+.hero h1 em{font-style:normal;color:var(--acento-clar)}
+@keyframes subir{to{transform:none}}
+.lead{max-width:58ch;color:rgba(239,237,233,.72);font-size:1.03rem;margin-bottom:30px;
+  opacity:0;animation:surgir .7s ease .72s both}
+.hero-acts{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:44px;
+  opacity:0;animation:surgir .7s ease .84s both}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:100px;
+  font:700 .88rem/1 "Helvetica Neue",Arial,sans-serif;padding:15px 26px;
+  transition:transform .22s cubic-bezier(.22,.8,.28,1),box-shadow .22s,background .22s,border-color .22s}
+.btn-p{background:var(--acento);color:#fff;box-shadow:0 8px 22px rgba(180,68,47,.38)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(180,68,47,.5);background:var(--acento-clar)}
+.btn-s{background:transparent;color:var(--secundario);border:1.5px solid rgba(239,237,233,.28)}
+.btn-s:hover{transform:translateY(-2px);border-color:var(--acento-clar);color:var(--acento-clar)}
+.confia{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:rgba(239,237,233,.12);
+  border:1px solid rgba(239,237,233,.12);border-radius:14px;overflow:hidden;max-width:680px;
+  opacity:0;animation:surgir .7s ease .96s both}
+@media(min-width:700px){.confia{grid-template-columns:repeat(4,1fr)}}
+.conf{background:rgba(20,20,20,.5);padding:20px 14px;text-align:center}
+.conf b{display:block;font:800 1.5rem/1 "Helvetica Neue",Arial,sans-serif;color:var(--secundario)}
+.conf span{display:block;font-size:.6rem;letter-spacing:.14em;color:rgba(239,237,233,.55);margin-top:7px}
+.estrellas{color:var(--acento-clar);font-size:.82rem;letter-spacing:.13em;margin-top:5px}
+
+/* ---------- revelado ---------- */
+.rv{opacity:0;transform:translateY(26px);
+  transition:opacity .7s cubic-bezier(.22,.8,.28,1),transform .7s cubic-bezier(.22,.8,.28,1)}
+.rv.ver{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important}
+  #load{display:none!important}
+}
+
+section{padding:70px 0}
+.eyebrow{font-size:.66rem;letter-spacing:.22em;color:var(--acento);font-weight:700;margin-bottom:14px}
+.tit{font-size:clamp(1.65rem,4.4vw,2.6rem);line-height:1.14;letter-spacing:-.01em;margin-bottom:16px}
+.sub{color:var(--gris);max-width:62ch;margin-bottom:34px}
+
+/* ---------- sobre nosotros ---------- */
+.nosotros{background:var(--primario);color:var(--secundario)}
+.nosotros .tit,.nosotros p{color:var(--secundario)}
+.nosotros .eyebrow{color:var(--acento-clar)}
+.nos-grid{display:grid;gap:38px}
+@media(min-width:900px){.nos-grid{grid-template-columns:1.05fr .95fr;align-items:center;gap:56px}}
+.nosotros p{color:rgba(239,237,233,.72);margin-bottom:16px;max-width:56ch}
+.nosotros p b{color:#fff;font-weight:700}
+.credencial{border:1px solid rgba(217,122,87,.28);border-radius:16px;padding:28px 26px;
+  background:rgba(255,255,255,.03)}
+.credencial+.credencial{margin-top:16px}
+.credencial .ck{font-size:.63rem;letter-spacing:.2em;color:var(--acento-clar);font-weight:700}
+.credencial .cn{font:700 1.28rem/1.28 "Helvetica Neue",Arial,sans-serif;color:#fff;margin:10px 0 8px}
+.credencial .cd{color:rgba(239,237,233,.62);font-size:.9rem}
+
+/* ---------- servicios ---------- */
+.servicios{display:grid;gap:16px;grid-template-columns:1fr}
+@media(min-width:640px){.servicios{grid-template-columns:repeat(3,1fr)}}
+.srv{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:28px 24px;
+  box-shadow:var(--sombra);transition:transform .28s cubic-bezier(.22,.8,.28,1),box-shadow .28s}
+.srv:hover{transform:translateY(-5px) scale(1.014);box-shadow:0 4px 12px rgba(20,20,20,.09),0 20px 44px rgba(20,20,20,.16)}
+.ico{width:44px;height:44px;border-radius:12px;background:var(--arena);display:grid;place-items:center;margin-bottom:16px}
+.ico svg{width:21px;height:21px;stroke:var(--primario);fill:none;stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round}
+.srv h3{font-size:1.06rem;margin-bottom:8px}
+.srv p{color:var(--gris);font-size:.9rem}
+
+/* ---------- confianza ---------- */
+.confianza{background:var(--arena)}
+.granrating{display:grid;gap:34px;align-items:center}
+@media(min-width:900px){.granrating{grid-template-columns:.8fr 1.2fr;gap:56px}}
+.num-grande{text-align:center;background:var(--secundario);border-radius:20px;padding:38px 26px;
+  border:1px solid var(--linea);box-shadow:var(--sombra)}
+.num-grande b{font:800 4.2rem/1 "Helvetica Neue",Arial,sans-serif;color:var(--primario);display:block}
+.num-grande .estrellas{color:var(--acento);font-size:1.3rem;margin:10px 0 8px}
+.num-grande span{font-size:.68rem;letter-spacing:.16em;color:var(--gris)}
+.puntos{list-style:none;display:grid;gap:16px}
+.puntos li{display:flex;gap:14px;align-items:flex-start}
+.puntos svg{flex:0 0 22px;width:22px;height:22px;stroke:var(--acento);fill:none;stroke-width:2.4;
+  stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
+.puntos span{color:var(--tinta);font-size:.98rem}
+.puntos b{font-weight:700}
+
+/* ---------- contacto ---------- */
+.cont-grid{display:grid;gap:36px}
+@media(min-width:900px){.cont-grid{grid-template-columns:1fr 1fr;gap:52px;align-items:center}}
+.datos{list-style:none;display:grid;gap:2px;background:var(--linea);
+  border:1px solid var(--linea);border-radius:14px;overflow:hidden}
+.datos li{background:var(--secundario);display:flex;gap:16px;padding:17px 20px;align-items:flex-start}
+.datos .k{flex:0 0 108px;font-size:.63rem;letter-spacing:.15em;color:var(--gris);
+  font-weight:700;padding-top:4px}
+.datos .v{font-size:.98rem}
+.datos .v a{color:var(--acento);text-decoration:none;font-weight:700}
+.datos .v small{display:block;color:var(--gris);font-size:.82rem;margin-top:3px}
+.mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);min-height:280px;
+  display:grid;place-items:center;text-align:center;padding:36px 26px;
+  background:radial-gradient(60% 60% at 50% 40%,rgba(180,68,47,.14) 0%,rgba(180,68,47,0) 70%),var(--arena);
+}
+.mapa svg{width:40px;height:40px;stroke:var(--acento);fill:none;stroke-width:1.5;margin-bottom:14px}
+.mapa p{color:var(--gris);margin-bottom:20px;font-size:.95rem}
+
+/* ---------- pie ---------- */
+footer{background:var(--primario);color:rgba(239,237,233,.62);padding:44px 0 78px;font-size:.85rem}
+.aviso{background:rgba(180,68,47,.14);border:1px solid rgba(180,68,47,.32);border-radius:14px;
+  padding:20px 22px;margin-bottom:26px;color:rgba(239,237,233,.86)}
+.aviso b{color:#fff}
+.pie-fin{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;
+  border-top:1px solid rgba(239,237,233,.12);padding-top:20px}
+
+/* barra fija móvil */
+.barra{position:fixed;left:0;right:0;bottom:0;z-index:70;display:grid;grid-template-columns:1fr 1fr;
+  background:rgba(10,10,10,.97);backdrop-filter:blur(8px)}
+.barra a{display:flex;align-items:center;justify-content:center;gap:9px;padding:15px 8px;
+  text-decoration:none;color:var(--secundario);font:700 .82rem/1 "Helvetica Neue",Arial,sans-serif;
+  border-right:1px solid rgba(239,237,233,.12)}
+.barra a.p{background:var(--acento);color:#fff}
+.barra svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.9;
+  stroke-linecap:round;stroke-linejoin:round}
+@media(min-width:900px){.barra{display:none}footer{padding-bottom:44px}.sello{bottom:22px}}
+</style>
+</head>
+<body>
+
+<!-- MOMENTO FIRMA: la tijera se abre, la aguja vibra y deja una gota de tinta; el nombre queda al descubierto -->
+<div id="load"><div class="esc">
+  <svg viewBox="0 0 160 160" aria-hidden="true">
+    <g stroke="#D97A57" stroke-width="4" stroke-linecap="round" fill="none">
+      <g class="hoja">
+        <line x1="130" y1="130" x2="98" y2="30"></line>
+        <circle cx="90" cy="144" r="13" stroke="#EFEDE9"></circle>
+        <line x1="130" y1="130" x2="99" y2="138" stroke="#EFEDE9"></line>
+      </g>
+      <g class="hoja hojaB">
+        <line x1="130" y1="130" x2="162" y2="30"></line>
+        <circle cx="170" cy="144" r="13" stroke="#EFEDE9"></circle>
+        <line x1="130" y1="130" x2="161" y2="138" stroke="#EFEDE9"></line>
+      </g>
+      <circle cx="130" cy="130" r="5" fill="#D97A57" stroke="none"></circle>
+    </g>
+    <circle class="brillo" cx="130" cy="60" r="8" fill="#fff"></circle>
+    <g class="aguja">
+      <line x1="30" y1="20" x2="44" y2="48" stroke="#EFEDE9" stroke-width="3" stroke-linecap="round"></line>
+      <line x1="26" y1="14" x2="34" y2="26" stroke="#EFEDE9" stroke-width="5" stroke-linecap="round"></line>
+    </g>
+    <circle class="tinta-pt" cx="45" cy="50" r="3.6" fill="#B4442F"></circle>
+  </svg>
+  <div class="nombre">
+    <b>ROUTE 69</b>
+    <small>BARBER &amp; TATTOO</small>
+    <span class="cort cI"></span><span class="cort cD"></span>
+  </div>
+  <div class="skip">Toca para entrar</div>
+</div></div>
+
+<div class="cinta">Demo · Eleven AI</div>
+<div class="sello">DEMO</div>
+
+<header id="cab"><nav class="wrap nav">
+  <a href="#" class="brand">ROUTE 69 <span>BARBER &amp; TATTOO</span></a>
+  <div class="menu">
+    <a href="#nosotros">Nosotros</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#resenas">Reseñas</a>
+    <a href="#contacto">Cómo llegar</a>
+  </div>
+  <a class="tel-top" href="tel:+34611562848">611 56 28 48</a>
+</nav></header>
+
+<main>
+<section class="hero"><div class="wrap">
+  <div class="est">● HOTEL ABORA BUENAVENTURA · PL. ANSITE, 1 · MASPALOMAS</div>
+  <h1>
+    <span class="word"><i style="animation-delay:.25s">Barbería y tatuaje,</i></span>
+    <span class="word"><i style="animation-delay:.37s">bajo <em>el mismo techo</em>.</i></span>
+  </h1>
+  <p class="lead">
+    Dentro del Hotel Abora Buenaventura, en Maspalomas: un mismo local para cortarte el pelo,
+    arreglarte la barba o hacerte un tatuaje. Pensado para quien está de paso por la isla y no
+    quiere perder tiempo buscando dónde ir.
+  </p>
+  <div class="hero-acts">
+    <a class="btn btn-p" href="tel:+34611562848">
+      <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Llamar y pedir cita
+    </a>
+    <a class="btn btn-s" href="https://www.google.com/maps/search/?api=1&query=ROUTE+69+Barber+%26+Tattoo,+Hotel+Abora+Buenaventura,+Pl.+Ansite+1,+35100+Maspalomas" target="_blank" rel="noopener">Cómo llegar</a>
+  </div>
+
+  <div class="confia">
+    <div class="conf">
+      <b><span class="count" data-to="47" data-dec="1">0</span></b>
+      <div class="estrellas">★★★★★</div>
+      <span>EN GOOGLE</span>
+    </div>
+    <div class="conf"><b><span class="count" data-to="206">0</span></b><span>RESEÑAS</span></div>
+    <div class="conf"><b>BARBERÍA</b><span>+ ESTUDIO DE TATUAJE</span></div>
+    <div class="conf"><b>EN EL HOTEL</b><span>ABORA BUENAVENTURA</span></div>
+  </div>
+</div></section>
+
+<section class="nosotros" id="nosotros"><div class="wrap nos-grid">
+  <div class="rv">
+    <div class="eyebrow">SOBRE ROUTE 69</div>
+    <h2 class="tit">Dos oficios, un mismo local</h2>
+    <p>
+      Route 69 Barber & Tattoo funciona dentro del <b>Hotel Abora Buenaventura</b>, en la
+      plaza Ansite de Maspalomas: barbería y estudio de tatuaje compartiendo el mismo espacio,
+      algo poco habitual incluso dentro de un complejo turístico.
+    </p>
+    <p>
+      Su clientela es, en su mayoría, <b>turística</b>: gente alojada en el hotel o cerca, de
+      paso por la isla. Sin una web propia, hoy no hay dónde ver trabajos de tatuaje antes de
+      llegar, ni una forma de preguntar por disponibilidad antes de hacer la maleta.
+    </p>
+  </div>
+  <div class="rv">
+    <div class="credencial">
+      <div class="ck">UBICACIÓN</div>
+      <div class="cn">Hotel Abora Buenaventura · Pl. Ansite, 1</div>
+      <div class="cd">35100 Maspalomas, San Bartolomé de Tirajana.</div>
+    </div>
+    <div class="credencial">
+      <div class="ck">VALORACIÓN</div>
+      <div class="cn">4,7 sobre 5 con 206 reseñas</div>
+      <div class="cd">La puntuación real del negocio en Google, sin retocar.</div>
+    </div>
+  </div>
+</div></section>
+
+<section id="servicios"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">SERVICIOS</div>
+    <h2 class="tit">Lo que se hace en Route 69</h2>
+    <p class="sub">Barbería y tatuaje en un mismo local, dentro del hotel. Para precios y disponibilidad, una llamada basta.</p>
+  </div>
+  <div class="servicios">
+    <div class="srv rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg></div>
+      <h3>Corte</h3>
+      <p>Corte de caballero adaptado a cada cliente, con el trato propio de una barbería y no de una peluquería exprés de complejo.</p>
+    </div>
+    <div class="srv rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3v6a6 6 0 0 0 12 0V3"/><line x1="12" y1="9" x2="12" y2="21"/></svg></div>
+      <h3>Barba</h3>
+      <p>Perfilado y arreglo de barba, para salir listo aunque solo se esté de paso por la isla unos días.</p>
+    </div>
+    <div class="srv rv">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M8 21c1.5-4 4-8 10-14"/><circle cx="19.5" cy="4.5" r="1.6"/><path d="M8 21l-4-4"/><path d="M6 15l3 3"/></svg></div>
+      <h3>Tatuaje</h3>
+      <p>Estudio de tatuaje en el mismo local que la barbería, sin salir del hotel ni buscar otra dirección.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="confianza" id="resenas"><div class="wrap">
+  <div class="rv">
+    <div class="eyebrow">CONFIANZA</div>
+    <h2 class="tit">4,7 en Google con 206 reseñas</h2>
+    <p class="sub">La valoración real del negocio en Google, sin retocar. Estos son los hechos comprobables detrás de esa cifra.</p>
+  </div>
+  <div class="granrating rv">
+    <div class="num-grande">
+      <b><span class="count" data-to="47" data-dec="1">0</span></b>
+      <div class="estrellas">★★★★★</div>
+      <span><span class="count" data-to="206">0</span> RESEÑAS EN GOOGLE</span>
+    </div>
+    <ul class="puntos">
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Dentro del Hotel Abora Buenaventura</b>, en pleno Maspalomas.</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Barbería y estudio de tatuaje</b> en el mismo local.</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Clientela mayoritariamente turística</b>, alojada en el hotel o cerca.</span></li>
+      <li><svg viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></svg><span><b>Presencia activa en Instagram</b>: @route69barbertattoograncanaria.</span></li>
+    </ul>
+  </div>
+</div></section>
+
+<section id="contacto"><div class="wrap cont-grid">
+  <div class="rv">
+    <div class="eyebrow">CÓMO LLEGAR</div>
+    <h2 class="tit">Hotel Abora Buenaventura</h2>
+    <p class="sub">Pl. Ansite, 1 · 35100 Maspalomas, San Bartolomé de Tirajana.</p>
+    <ul class="datos">
+      <li><span class="k">DIRECCIÓN</span><span class="v">Hotel Abora Buenaventura, Pl. Ansite, 1<small>35100 Maspalomas (San Bartolomé de Tirajana)</small></span></li>
+      <li><span class="k">TELÉFONO</span><span class="v"><a href="tel:+34611562848">611 56 28 48</a></span></li>
+      <li><span class="k">VALORACIÓN</span><span class="v">4,7 ★ en Google<small>206 reseñas</small></span></li>
+      <li><span class="k">INSTAGRAM</span><span class="v"><a href="https://www.instagram.com/route69barbertattoograncanaria/" target="_blank" rel="noopener">@route69barbertattoograncanaria</a></span></li>
+    </ul>
+  </div>
+  <div class="mapa rv">
+    <div>
+      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      <p>Hotel Abora Buenaventura, Pl. Ansite, 1<br>35100 Maspalomas, San Bartolomé de Tirajana</p>
+      <a class="btn btn-p" href="https://www.google.com/maps/search/?api=1&query=ROUTE+69+Barber+%26+Tattoo,+Hotel+Abora+Buenaventura,+Pl.+Ansite+1,+35100+Maspalomas" target="_blank" rel="noopener">Abrir en Google Maps</a>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <div class="aviso">
+    <b>Esto es una DEMO</b> creada por Eleven AI con los datos públicos reales de Route 69 Barber & Tattoo.
+    Esta web puede ser vuestra: <b>490 €</b> — landing a medida, entrega en 7 días.
+  </div>
+  <div class="pie-fin">
+    <span>Route 69 Barber &amp; Tattoo · Hotel Abora Buenaventura, Pl. Ansite 1 · Maspalomas · 611 56 28 48</span>
+    <span>Demo de Eleven AI · elevenprime.es</span>
+  </div>
+</div></footer>
+
+<nav class="barra">
+  <a class="p" href="tel:+34611562848">
+    <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Llamar
+  </a>
+  <a href="https://www.google.com/maps/search/?api=1&query=ROUTE+69+Barber+%26+Tattoo,+Hotel+Abora+Buenaventura,+Pl.+Ansite+1,+35100+Maspalomas" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Cómo llegar
+  </a>
+</nav>
+
+<script>
+(function(){
+  var load=document.getElementById('load');
+  function fuera(){ if(load) load.classList.add('off'); }
+  if(load){
+    load.addEventListener('click',fuera);
+    document.addEventListener('keydown',fuera,{once:true});
+    setTimeout(fuera,2600);
+  }
+
+  var obs=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('ver'); obs.unobserve(e.target); } });
+  },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+  document.querySelectorAll('.rv').forEach(function(e,i){
+    e.style.transitionDelay=(Math.min(i,5)*70)+'ms';
+    obs.observe(e);
+  });
+
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1250;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), e=1-Math.pow(1-p,3), v=to*e;
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',')
+                           : Math.round(v).toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var oc=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); oc.unobserve(e.target); } });
+  },{threshold:.4});
+  document.querySelectorAll('.count').forEach(function(e){ oc.observe(e); });
+})();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.confia{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
