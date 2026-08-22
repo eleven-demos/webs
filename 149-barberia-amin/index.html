@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Barbería Amin · Corte y barba en San Fernando de Maspalomas</title>
+<meta name="description" content="Barbería Amin, C. Partera Leonorita 302 (Parque Sur III), San Fernando de Maspalomas. Corte de caballero y arreglo de barba con cita previa. 4,6★ con 170 reseñas en Google.">
+<meta name="theme-color" content="#1C1C1C">
+<style>
+:root{
+  --primario:#1C1C1C; --primario-osc:#0E0E0E; --secundario:#F2EFE9; --acento:#B08D57;
+  --acento-cl:#D8BA85; --crema-2:#E4DFD4; --tinta:#17150F; --gris:#736C60;
+  --linea:rgba(23,21,15,.14);
+  --sombra:0 2px 8px rgba(23,21,15,.08), 0 16px 38px rgba(23,21,15,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Helvetica Neue",Arial,sans-serif;background:var(--secundario);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: las tijeras se abren y entre las hojas aparece el nombre ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 42%,#2A2A2A 0%,#161616 56%,#080808 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.2s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(230px,58vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.hoja{fill:none;stroke:#E9E4DA;stroke-width:4;stroke-linecap:round;stroke-linejoin:round;
+  transform-box:fill-box;transform-origin:50% 88%;will-change:transform}
+.hoja-i{animation:abrir-i .75s cubic-bezier(.3,1.2,.4,1) .25s forwards;transform:rotate(0deg)}
+.hoja-d{animation:abrir-d .75s cubic-bezier(.3,1.2,.4,1) .25s forwards;transform:rotate(0deg)}
+@keyframes abrir-i{to{transform:rotate(-19deg)}}
+@keyframes abrir-d{to{transform:rotate(19deg)}}
+.eje{fill:var(--acento)}
+.filo{fill:none;stroke:#fff;stroke-width:2.4;stroke-linecap:round;opacity:0;
+  animation:destello .5s ease .95s forwards}
+@keyframes destello{35%{opacity:1}100%{opacity:0}}
+.pelo{fill:none;stroke:var(--acento);stroke-width:2.2;stroke-linecap:round;opacity:0;
+  transform-box:fill-box;transform-origin:50% 0;
+  animation:caer-pelo .9s ease forwards}
+.p1{animation-delay:1.02s}.p2{animation-delay:1.12s}.p3{animation-delay:1.2s}
+@keyframes caer-pelo{0%{opacity:0;transform:translateY(-6px) rotate(0deg)}
+  30%{opacity:1}100%{opacity:0;transform:translateY(30px) rotate(22deg)}}
+#load .nombre{
+  color:#F6F2EA;font:400 clamp(1.35rem,4.9vw,2.25rem)/1.2 Georgia,serif;letter-spacing:.14em;
+  margin-top:18px;opacity:0;text-shadow:0 0 24px rgba(176,141,87,.5);
+  animation:surgir .7s ease 1.15s both;
+}
+#load .lema{color:rgba(246,242,234,.55);font-size:.7rem;letter-spacing:.3em;margin-top:12px;
+  opacity:0;animation:surgir .7s ease 1.4s both}
+@keyframes surgir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#load .skip{position:absolute;bottom:-52px;left:0;right:0;text-align:center;
+  color:rgba(246,242,234,.3);font-size:.68rem;letter-spacing:.22em;opacity:0;
+  animation:surgir .7s ease 1.68s both}
+
+.cinta{position:fixed;top:15px;left:-46px;z-index:60;transform:rotate(-45deg);
+  background:var(--acento);color:#17150F;font-size:.62rem;letter-spacing:.28em;font-weight:700;
+  padding:6px 56px;box-shadow:0 6px 18px rgba(0,0,0,.28);pointer-events:none}
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acento),var(--acento-cl));z-index:70;will-change:transform}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;
+  background:rgba(14,14,14,.84);backdrop-filter:blur(10px);transition:padding .3s ease}
+nav.min{padding:8px 0}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav .marca{font:400 1.05rem/1 Georgia,serif;letter-spacing:.1em;color:#F2EFE9}
+nav .marca span{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:.56rem;
+  letter-spacing:.26em;color:rgba(242,239,233,.5);margin-top:4px}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.83rem;letter-spacing:.06em}
+nav ul a{text-decoration:none;color:rgba(242,239,233,.72);transition:color .25s ease}
+nav ul a:hover{color:var(--acento-cl)}
+nav .cta{display:inline-block;text-decoration:none;background:var(--acento);color:#17150F;font-weight:600;
+  padding:10px 20px;border-radius:999px;font-size:.8rem;letter-spacing:.05em;transition:transform .25s ease}
+nav .cta:hover{transform:translateY(-2px)}
+@media(max-width:860px){nav ul{display:none}}
+
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:130px 0 130px;overflow:hidden;color:#F2EFE9;
+  background:
+    radial-gradient(56% 42% at 22% 24%,rgba(176,141,87,.22),transparent 64%),
+    radial-gradient(50% 42% at 80% 76%,rgba(176,141,87,.13),transparent 64%),
+    linear-gradient(168deg,#2A2A2A 0%,#171717 52%,#0B0B0B 100%);
+}
+.hero .capa{position:absolute;inset:-12% -6%;opacity:.6;will-change:transform;
+  background:radial-gradient(34% 26% at 70% 32%,rgba(176,141,87,.16),transparent 70%)}
+.hero .wrap{position:relative;z-index:2}
+.hero .antes{font-size:.7rem;letter-spacing:.32em;color:var(--acento-cl);opacity:0;animation:surgir .8s ease .15s both}
+.hero h1{font-size:clamp(2.6rem,9vw,5.2rem);line-height:1.02;margin:20px 0 6px;color:#FFFDF8;letter-spacing:.02em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(104%);
+  animation:subir .85s cubic-bezier(.2,.8,.25,1) forwards}
+@keyframes subir{to{transform:none}}
+.hero h1 em{font-style:italic;color:var(--acento-cl)}
+.lead{max-width:600px;margin:20px auto 0;color:rgba(242,239,233,.74);font-size:1.06rem;opacity:0;animation:surgir .8s ease .95s both}
+.hero-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;opacity:0;animation:surgir .8s ease 1.15s both}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:999px;
+  padding:15px 30px;font-size:.93rem;letter-spacing:.03em;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.btn-p{background:var(--acento);color:#17150F;font-weight:600;box-shadow:0 10px 28px rgba(176,141,87,.3)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(176,141,87,.4)}
+.btn-s{background:transparent;color:#F2EFE9;border:1px solid rgba(242,239,233,.34)}
+.btn-s:hover{transform:translateY(-3px);background:rgba(242,239,233,.08)}
+.confia{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:52px;opacity:0;animation:surgir .8s ease 1.35s both}
+.confia .b{text-align:center}
+.confia .n{font:400 clamp(1.9rem,5.5vw,2.7rem)/1 Georgia,serif;color:var(--acento-cl)}
+.confia .t{font-size:.66rem;letter-spacing:.2em;color:rgba(242,239,233,.55);margin-top:6px}
+.estrellas{color:var(--acento-cl);letter-spacing:.14em;font-size:1.05rem}
+.abierto{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:.83rem;
+  color:rgba(242,239,233,.8);background:rgba(242,239,233,.08);border:1px solid rgba(242,239,233,.16);
+  padding:9px 18px;border-radius:999px;opacity:0;animation:surgir .8s ease 1.5s both}
+.punto{width:8px;height:8px;border-radius:50%;background:var(--acento-cl);animation:latir 2.4s ease-out infinite}
+@keyframes latir{0%{box-shadow:0 0 0 0 rgba(216,186,133,.5)}70%{box-shadow:0 0 0 11px rgba(216,186,133,0)}100%{box-shadow:0 0 0 0 rgba(216,186,133,0)}}
+.baja{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:.64rem;letter-spacing:.24em;color:rgba(242,239,233,.48);opacity:0;animation:surgir .8s ease 1.8s both}
+.baja span{display:block;width:1px;height:34px;margin:10px auto 0;
+  background:linear-gradient(rgba(242,239,233,.6),transparent);animation:caer 2s ease-in-out infinite}
+@keyframes caer{0%,100%{transform:scaleY(.4);opacity:.3}50%{transform:scaleY(1);opacity:.9}}
+
+section{padding:96px 0;position:relative}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.25,1)}
+.rev.on{opacity:1;transform:none}
+.eyebrow{font-size:.66rem;letter-spacing:.32em;color:#9A7A45;margin-bottom:14px}
+h2{font-size:clamp(1.9rem,5.2vw,3rem);line-height:1.12;color:var(--primario)}
+.sub{color:var(--gris);margin-top:16px;max-width:620px}
+
+.franja{background:var(--primario);color:#F2EFE9;padding:60px 0}
+.franja .fl{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:34px;text-align:center}
+.franja .n{font:400 clamp(2.2rem,6vw,3.2rem)/1 Georgia,serif;color:var(--acento-cl)}
+.franja .t{font-size:.66rem;letter-spacing:.22em;color:rgba(242,239,233,.55);margin-top:8px}
+
+.sobre .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media(max-width:860px){.sobre .grid{grid-template-columns:1fr;gap:36px}}
+.sobre p{color:var(--gris);margin-top:18px;font-size:1.03rem}
+.tarjeta-nota{background:linear-gradient(160deg,#fff,var(--crema-2));border:1px solid var(--linea);
+  border-radius:22px;padding:40px 34px;text-align:center;box-shadow:var(--sombra)}
+.tarjeta-nota .g{font-size:.64rem;letter-spacing:.28em;color:var(--gris)}
+.tarjeta-nota .n{font:400 4.2rem/1 Georgia,serif;color:var(--primario);margin:10px 0 4px}
+.tarjeta-nota .r{font-size:.86rem;color:var(--gris);margin-top:10px}
+.tarjeta-nota .barra{height:6px;border-radius:99px;background:var(--crema-2);margin-top:22px;overflow:hidden}
+.tarjeta-nota .barra i{display:block;height:100%;width:92%;border-radius:99px;
+  background:linear-gradient(90deg,var(--acento-cl),var(--acento));transform:scaleX(0);transform-origin:0 50%;
+  transition:transform 1.3s cubic-bezier(.2,.8,.25,1)}
+.tarjeta-nota.on .barra i{transform:scaleX(1)}
+
+.servicios{background:linear-gradient(180deg,var(--crema-2),var(--secundario))}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;margin-top:44px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 26px;
+  transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease}
+.card:hover{transform:translateY(-7px);box-shadow:var(--sombra)}
+.card .ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+  background:rgba(176,141,87,.18);margin-bottom:18px}
+.card .ico svg{width:22px;height:22px;fill:none;stroke:#9A7A45;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.16rem;color:var(--primario)}
+.card p{color:var(--gris);font-size:.93rem;margin-top:10px}
+
+.contacto .grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media(max-width:860px){.contacto .grid{grid-template-columns:1fr;gap:30px}}
+.dato{display:flex;gap:15px;padding:19px 0;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato svg{width:20px;height:20px;flex:0 0 20px;margin-top:3px;fill:none;stroke:#9A7A45;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dato .k{font-size:.64rem;letter-spacing:.22em;color:var(--gris)}
+.dato .v{margin-top:5px;font-size:1.01rem}
+.dato .v a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.horario{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 28px;box-shadow:var(--sombra)}
+.horario h3{font-size:1.16rem;color:var(--primario);margin-bottom:16px}
+.horario .fila{display:flex;justify-content:space-between;padding:9px 0;font-size:.94rem;color:var(--gris);
+  border-bottom:1px dashed var(--linea)}
+.horario .fila:last-child{border-bottom:0}
+.horario .fila.hoy{color:#9A7A45;font-weight:600}
+.mapa{display:inline-flex;align-items:center;gap:9px;margin-top:22px;text-decoration:none;
+  color:#9A7A45;font-size:.9rem;border-bottom:1px solid #9A7A45;padding-bottom:3px}
+
+footer{background:var(--primario-osc);color:rgba(242,239,233,.6);padding:60px 0 110px;text-align:center;font-size:.86rem}
+footer .m{font:400 1.35rem/1 Georgia,serif;color:#fff;margin-bottom:12px;letter-spacing:.12em}
+footer .agencia{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.11);font-size:.79rem}
+footer .agencia b{color:var(--acento-cl)}
+
+.barra-fija{position:fixed;bottom:0;left:0;right:0;z-index:55;display:flex;gap:10px;padding:11px 14px;
+  background:rgba(14,14,14,.95);backdrop-filter:blur(9px)}
+.barra-fija a{flex:1;text-align:center;text-decoration:none;border-radius:12px;padding:13px 8px;font-size:.88rem;transition:transform .2s ease}
+.barra-fija a:active{transform:scale(.97)}
+.barra-fija .l{background:var(--acento);color:#17150F;font-weight:600}
+.barra-fija .m{background:rgba(255,255,255,.11);color:#fff}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .rev{opacity:1;transform:none}
+  #load{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="load" onclick="this.style.display='none'">
+  <div class="esc">
+    <svg viewBox="0 0 200 150" aria-hidden="true">
+      <g class="hoja hoja-i">
+        <path d="M100 96 L62 26"/>
+        <circle cx="58" cy="18" r="11"/>
+      </g>
+      <g class="hoja hoja-d">
+        <path d="M100 96 L138 26"/>
+        <circle cx="142" cy="18" r="11"/>
+      </g>
+      <circle class="eje" cx="100" cy="98" r="7"/>
+      <path class="filo" d="M74 54 L86 40"/>
+      <path class="pelo p1" d="M74 108 q6 8 0 16"/>
+      <path class="pelo p2" d="M100 114 q6 8 0 16"/>
+      <path class="pelo p3" d="M126 108 q-6 8 0 16"/>
+    </svg>
+    <div class="nombre">BARBERÍA AMIN</div>
+    <div class="lema">CORTE · BARBA · SAN FERNANDO</div>
+    <div class="skip">TOCA PARA ENTRAR</div>
+  </div>
+</div>
+
+<div class="cinta">DEMO</div>
+<div id="prog"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <div class="marca">BARBERÍA AMIN<span>SAN FERNANDO · MASPALOMAS</span></div>
+    <ul>
+      <li><a href="#sobre">La barbería</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Cita</a></li>
+    </ul>
+    <a class="cta" href="tel:+34632695145">Pedir cita</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="capa" id="capa"></div>
+  <div class="wrap">
+    <div class="antes">C. PARTERA LEONORITA, 302 · EDIFICIO PARQUE SUR III · SAN FERNANDO</div>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">Barbería</i></span><br>
+      <span class="word"><i style="animation-delay:.48s"><em>Amin</em></i></span>
+    </h1>
+    <p class="lead">Corte de caballero y arreglo de barba en San Fernando de Maspalomas. Se trabaja con cita previa, para que nadie espere de pie.</p>
+    <div class="hero-acts">
+      <a class="btn btn-p" href="tel:+34632695145">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        632 69 51 45
+      </a>
+      <a class="btn btn-s" href="#servicios">Ver servicios</a>
+    </div>
+    <div class="confia">
+      <div class="b">
+        <div class="n"><span class="count" data-to="46" data-dec="1">0</span></div>
+        <div class="estrellas">★★★★★</div>
+        <div class="t">EN GOOGLE</div>
+      </div>
+      <div class="b">
+        <div class="n"><span class="count" data-to="170">0</span></div>
+        <div class="t">RESEÑAS REALES</div>
+      </div>
+      <div class="b">
+        <div class="n">Cita</div>
+        <div class="t">SIN COLAS NI ESPERAS</div>
+      </div>
+    </div>
+    <div class="abierto"><span class="punto"></span><span id="abierto-txt">Consulta el horario</span></div>
+  </div>
+  <div class="baja">DESLIZA<span></span></div>
+</header>
+
+<main>
+<section class="franja">
+  <div class="wrap fl">
+    <div class="rev"><div class="n"><span class="count" data-to="46" data-dec="1">0</span></div><div class="t">VALORACIÓN EN GOOGLE</div></div>
+    <div class="rev"><div class="n"><span class="count" data-to="170">0</span></div><div class="t">RESEÑAS DE CLIENTES</div></div>
+    <div class="rev"><div class="n">35100</div><div class="t">SAN FERNANDO DE MASPALOMAS</div></div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap grid">
+    <div class="rev">
+      <div class="eyebrow">LA BARBERÍA</div>
+      <h2>Barbería de barrio<br>en San Fernando</h2>
+      <p>Barbería Amin está en la calle Partera Leonorita, en el edificio Parque Sur III de San Fernando de Maspalomas. Corte de caballero y arreglo de barba, con cita previa.</p>
+      <p>170 clientes la han valorado en Google con un 4,6 de media. En una zona con mucho residente y mucho visitante, esa nota es la mejor carta de presentación que hay.</p>
+      <p>El trabajo del día a día se enseña en Instagram (@aminbarbershop13), pero hasta ahora no había ninguna página donde ver de un vistazo servicios, horario y cómo pedir cita.</p>
+    </div>
+    <div class="tarjeta-nota rev" id="tarjeta-nota">
+      <div class="g">VALORACIÓN EN GOOGLE</div>
+      <div class="n"><span class="count" data-to="46" data-dec="1">0</span></div>
+      <div class="estrellas">★★★★★</div>
+      <div class="r"><span class="count" data-to="170">0</span> reseñas de clientes reales</div>
+      <div class="barra"><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">SERVICIOS</div>
+      <h2>Corte y barba,<br>bien hechos</h2>
+      <p class="sub">Servicios tomados de su información pública. En la web definitiva irían con sus precios y con el tiempo de cada uno.</p>
+    </div>
+    <div class="cards">
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.1 15.9M14.5 14.5 20 20M8.1 8.1 12 12"/></svg></div>
+        <h3>Corte de caballero</h3>
+        <p>Corte a máquina, a tijera o combinado, acabado al gusto de cada cliente.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 4c4 0 7 2.4 7 6 0 4.4-3.2 10-7 10S5 14.4 5 10c0-3.6 3-6 7-6Z"/><path d="M9 9h.01M15 9h.01"/></svg></div>
+        <h3>Arreglo de barba</h3>
+        <p>Perfilado y arreglo de barba, con el mismo cuidado que el corte.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h16v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 3v5M16 3v5M4 11h16"/><path d="M9 15h6"/></svg></div>
+        <h3>Con cita previa</h3>
+        <p>Se atiende con cita para no hacer esperar. Con web propia, el cliente ve el horario y llama en un toque, sin escribir por privado.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg></div>
+        <h3>En Parque Sur III</h3>
+        <p>Calle Partera Leonorita, 302. Bien situada en San Fernando, con aparcamiento en la zona.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></div>
+        <h3>El trabajo, a la vista</h3>
+        <p>Los cortes se publican en Instagram. En la web definitiva esa galería se puede traer aquí, ordenada y sin salir de la página.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="m12 3 2.2 5.6L20 10l-4.4 3.4L17 20l-5-3.2L7 20l1.4-6.6L4 10l5.8-1.4Z"/></svg></div>
+        <h3>4,6 en Google</h3>
+        <p>Con 170 reseñas. Es el argumento que hoy no aparece cuando alguien busca «barbería San Fernando» en el móvil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">CÓMO PEDIR CITA</div>
+      <h2>Partera Leonorita, 302</h2>
+      <p class="sub">Edificio Parque Sur III, San Fernando · 35100 San Bartolomé de Tirajana. Datos reales tomados de su ficha de Google.</p>
+    </div>
+    <div class="grid" style="margin-top:40px">
+      <div class="rev">
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+          <div><div class="k">DIRECCIÓN</div><div class="v">C. Partera Leonorita, 302 · Edificio Parque Sur III · 35100 San Bartolomé de Tirajana</div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <div><div class="k">TELÉFONO</div><div class="v"><a href="tel:+34632695145">632 69 51 45</a></div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="m3.4 6.6 8.6 6 8.6-6"/></svg>
+          <div><div class="k">CORREO</div><div class="v"><a href="mailto:elaminekhadija@hotmail.com">elaminekhadija@hotmail.com</a></div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+          <div><div class="k">INSTAGRAM</div><div class="v"><a href="https://www.instagram.com/aminbarbershop13" target="_blank" rel="noopener">@aminbarbershop13</a></div></div>
+        </div>
+      </div>
+      <div class="horario rev">
+        <h3>Horario</h3>
+        <div class="fila" data-dia="1"><span>Lunes</span><span>Consultar</span></div>
+        <div class="fila" data-dia="2"><span>Martes</span><span>Consultar</span></div>
+        <div class="fila" data-dia="3"><span>Miércoles</span><span>Consultar</span></div>
+        <div class="fila" data-dia="4"><span>Jueves</span><span>Consultar</span></div>
+        <div class="fila" data-dia="5"><span>Viernes</span><span>Consultar</span></div>
+        <div class="fila" data-dia="6"><span>Sábado</span><span>Consultar</span></div>
+        <div class="fila" data-dia="0"><span>Domingo</span><span>Consultar</span></div>
+        <p style="color:var(--gris);font-size:.83rem;margin-top:16px">
+          En la web definitiva el horario va tal y como ustedes lo tengan, y la web dice sola si está abierto ahora mismo.
+        </p>
+        <a class="mapa" href="https://maps.google.com/?q=Barberia+Amin+Calle+Partera+Leonorita+302+San+Fernando+Maspalomas" target="_blank" rel="noopener">
+          Cómo llegar en Google Maps →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="m">BARBERÍA AMIN</div>
+    <div>C. Partera Leonorita, 302 · Parque Sur III · San Fernando de Maspalomas · 632 69 51 45</div>
+    <div class="agencia">
+      Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> para Barbería Amin, con sus datos públicos de Google.
+      Esta web puede ser suya. · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · elevenprime.es
+    </div>
+  </div>
+</footer>
+
+<div class="barra-fija">
+  <a class="l" href="tel:+34632695145">Pedir cita</a>
+  <a class="m" href="https://maps.google.com/?q=Barberia+Amin+Calle+Partera+Leonorita+302+San+Fernando+Maspalomas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<noscript><style>
+  .rev{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .lead,.hero-acts,.confia,.abierto,.baja,.antes{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog'), capa=document.getElementById('capa'), pend=false;
+  function pinta(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('min', y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(prog) prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    if(capa && y<window.innerHeight) capa.style.transform='translate3d(0,'+(y*0.14)+'px,0)';
+    pend=false;
+  }
+  window.addEventListener('scroll',function(){ if(!pend){pend=true;requestAnimationFrame(pinta);} },{passive:true});
+  pinta();
+})();
+
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(e,i){ e.style.transitionDelay=(i%3*90)+'ms'; io.observe(e); });
+})();
+
+(function(){
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1300;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), v=Math.round(to*(1-Math.pow(1-p,3)));
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',') : v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); io.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(function(e){ io.observe(e); });
+})();
+
+(function(){
+  var hoy=new Date().getDay();
+  var f=document.querySelector('.fila[data-dia="'+hoy+'"]');
+  if(f) f.classList.add('hoy');
+  var t=document.getElementById('abierto-txt');
+  var dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  if(t) t.textContent='Hoy es '+dias[hoy]+' · pide tu cita llamando';
+})();
+
+document.addEventListener('keydown',function(){ var l=document.getElementById('load'); if(l) l.style.display='none'; });
+
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>El Rincón de Pepa · Desayunos, brunch y meriendas en Las Palmas</title>
+<meta name="description" content="El Rincón de Pepa, C. Italia 16, Las Palmas de Gran Canaria. Desayunos, brunch y meriendas con 4,4★ y 204 reseñas en Google. Tostas, croasanes y repostería casera.">
+<meta name="theme-color" content="#7A3B3B">
+<style>
+:root{
+  --primario:#7A3B3B; --primario-osc:#54262A; --secundario:#FAF3EA; --acento:#D9A441;
+  --acento-osc:#B07F22; --verde:#6E7F5B; --crema-2:#F1E4D2; --tinta:#2C1D18; --gris:#7C6A61;
+  --linea:rgba(44,29,24,.13);
+  --sombra:0 2px 8px rgba(44,29,24,.06), 0 14px 34px rgba(44,29,24,.10);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Helvetica Neue",Arial,sans-serif;background:var(--secundario);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: dos ramas dibujan el rincón y el nombre aparece dentro ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 40%,#7A3B3B 0%,#54262A 58%,#33161A 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.15s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(260px,64vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.rama{fill:none;stroke:var(--acento);stroke-width:3.2;stroke-linecap:round;
+  stroke-dasharray:210;stroke-dashoffset:210;animation:trazar 1s cubic-bezier(.55,0,.2,1) forwards}
+.r2{animation-delay:.22s;stroke:#8FA377}
+@keyframes trazar{to{stroke-dashoffset:0}}
+.hoja{fill:#8FA377;opacity:0;transform-box:fill-box;transform-origin:0% 50%;transform:scale(.2);
+  animation:brotar .5s cubic-bezier(.3,1.5,.5,1) forwards}
+.h1x{animation-delay:.62s} .h2x{animation-delay:.72s} .h3x{animation-delay:.82s}
+.h4x{animation-delay:.9s;fill:var(--acento)} .h5x{animation-delay:.98s;fill:var(--acento)}
+@keyframes brotar{to{opacity:1;transform:scale(1)}}
+#load .nombre{
+  color:var(--secundario);font:400 clamp(1.3rem,4.7vw,2.2rem)/1.2 Georgia,serif;letter-spacing:.07em;
+  margin-top:16px;opacity:0;text-shadow:0 0 26px rgba(217,164,65,.45);
+  animation:surgir .7s ease 1.15s both;
+}
+#load .lema{color:rgba(250,243,234,.6);font-size:.7rem;letter-spacing:.3em;margin-top:12px;
+  opacity:0;animation:surgir .7s ease 1.38s both}
+@keyframes surgir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#load .skip{position:absolute;bottom:-52px;left:0;right:0;text-align:center;
+  color:rgba(250,243,234,.32);font-size:.68rem;letter-spacing:.22em;opacity:0;
+  animation:surgir .7s ease 1.65s both}
+
+/* ---------- marca de agua ---------- */
+.cinta{position:fixed;top:15px;left:-46px;z-index:60;transform:rotate(-45deg);
+  background:var(--primario);color:#fff;font-size:.62rem;letter-spacing:.28em;
+  padding:6px 56px;box-shadow:0 6px 18px rgba(0,0,0,.22);pointer-events:none}
+
+/* ---------- barra de progreso ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acento),var(--primario));z-index:70;will-change:transform}
+
+/* ---------- navegación ---------- */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;
+  background:rgba(250,243,234,.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid transparent;transition:padding .3s ease,border-color .3s ease}
+nav.min{padding:8px 0;border-bottom-color:var(--linea)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav .marca{font:400 1.05rem/1 Georgia,serif;letter-spacing:.04em;color:var(--primario-osc)}
+nav .marca span{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:.56rem;
+  letter-spacing:.26em;color:var(--gris);margin-top:4px}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.83rem;letter-spacing:.06em}
+nav ul a{text-decoration:none;color:var(--gris);transition:color .25s ease}
+nav ul a:hover{color:var(--primario)}
+nav .cta{display:inline-block;text-decoration:none;background:var(--primario);color:#fff;
+  padding:10px 20px;border-radius:999px;font-size:.8rem;letter-spacing:.05em;
+  transition:transform .25s ease,background .25s ease}
+nav .cta:hover{transform:translateY(-2px);background:var(--primario-osc)}
+@media(max-width:860px){nav ul{display:none}}
+
+/* ---------- hero ---------- */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:120px 0 130px;overflow:hidden;
+  background:
+    radial-gradient(60% 45% at 18% 22%,rgba(217,164,65,.16),transparent 62%),
+    radial-gradient(55% 45% at 82% 78%,rgba(110,127,91,.16),transparent 62%),
+    linear-gradient(170deg,#FFFBF4 0%,var(--secundario) 48%,var(--crema-2) 100%);
+}
+.hero .capa{position:absolute;inset:-12% -6%;opacity:.5;will-change:transform;
+  background:radial-gradient(38% 30% at 25% 30%,rgba(122,59,59,.10),transparent 70%)}
+.hero .wrap{position:relative;z-index:2}
+.hero .antes{font-size:.7rem;letter-spacing:.34em;color:var(--acento-osc);
+  opacity:0;animation:surgir .8s ease .15s both}
+.hero h1{font-size:clamp(2.6rem,9vw,5.1rem);line-height:1.02;margin:20px 0 6px;color:var(--primario-osc)}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(104%);
+  animation:subir .85s cubic-bezier(.2,.8,.25,1) forwards}
+@keyframes subir{to{transform:none}}
+.hero h1 em{font-style:italic;color:var(--acento-osc)}
+.lead{max-width:620px;margin:20px auto 0;color:var(--gris);font-size:1.06rem;
+  opacity:0;animation:surgir .8s ease .95s both}
+.hero-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;
+  opacity:0;animation:surgir .8s ease 1.15s both}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:999px;
+  padding:15px 30px;font-size:.93rem;letter-spacing:.03em;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.btn-p{background:var(--primario);color:#fff;box-shadow:0 10px 26px rgba(122,59,59,.28)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(122,59,59,.34)}
+.btn-s{background:transparent;color:var(--primario-osc);border:1px solid var(--primario)}
+.btn-s:hover{transform:translateY(-3px);background:rgba(122,59,59,.07)}
+.confia{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:52px;
+  opacity:0;animation:surgir .8s ease 1.35s both}
+.confia .b{text-align:center}
+.confia .n{font:400 clamp(1.9rem,5.5vw,2.7rem)/1 Georgia,serif;color:var(--primario)}
+.confia .t{font-size:.66rem;letter-spacing:.2em;color:var(--gris);margin-top:6px}
+.estrellas{color:var(--acento);letter-spacing:.14em;font-size:1.05rem}
+.abierto{display:inline-flex;align-items:center;gap:8px;margin-top:26px;font-size:.82rem;
+  color:var(--gris);background:rgba(255,255,255,.7);border:1px solid var(--linea);
+  padding:9px 18px;border-radius:999px;opacity:0;animation:surgir .8s ease 1.5s both}
+.punto{width:8px;height:8px;border-radius:50%;background:#6E7F5B;box-shadow:0 0 0 0 rgba(110,127,91,.55);
+  animation:latir 2.4s ease-out infinite}
+.punto.cerrado{background:#B4544B;animation:none}
+@keyframes latir{0%{box-shadow:0 0 0 0 rgba(110,127,91,.5)}70%{box-shadow:0 0 0 11px rgba(110,127,91,0)}100%{box-shadow:0 0 0 0 rgba(110,127,91,0)}}
+.baja{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:.64rem;letter-spacing:.24em;color:var(--gris);opacity:0;
+  animation:surgir .8s ease 1.8s both}
+.baja span{display:block;width:1px;height:34px;margin:10px auto 0;
+  background:linear-gradient(var(--gris),transparent);animation:caer 2s ease-in-out infinite}
+@keyframes caer{0%,100%{transform:scaleY(.4);opacity:.3}50%{transform:scaleY(1);opacity:.9}}
+
+/* ---------- secciones ---------- */
+section{padding:96px 0;position:relative}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.25,1)}
+.rev.on{opacity:1;transform:none}
+.eyebrow{font-size:.66rem;letter-spacing:.32em;color:var(--acento-osc);margin-bottom:14px}
+h2{font-size:clamp(1.9rem,5.2vw,3rem);line-height:1.12;color:var(--primario-osc)}
+.sub{color:var(--gris);margin-top:16px;max-width:600px}
+
+.sobre{background:var(--secundario)}
+.sobre .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media(max-width:860px){.sobre .grid{grid-template-columns:1fr;gap:36px}}
+.sobre p{color:var(--gris);margin-top:18px;font-size:1.03rem}
+.tarjeta-nota{background:linear-gradient(160deg,#fff,var(--crema-2));border:1px solid var(--linea);
+  border-radius:22px;padding:40px 34px;text-align:center;box-shadow:var(--sombra)}
+.tarjeta-nota .g{font-size:.64rem;letter-spacing:.28em;color:var(--gris)}
+.tarjeta-nota .n{font:400 4.2rem/1 Georgia,serif;color:var(--primario);margin:10px 0 4px}
+.tarjeta-nota .r{font-size:.86rem;color:var(--gris);margin-top:10px}
+.tarjeta-nota .barra{height:6px;border-radius:99px;background:var(--crema-2);margin-top:22px;overflow:hidden}
+.tarjeta-nota .barra i{display:block;height:100%;width:88%;border-radius:99px;
+  background:linear-gradient(90deg,var(--acento),var(--primario));transform:scaleX(0);transform-origin:0 50%;
+  transition:transform 1.3s cubic-bezier(.2,.8,.25,1)}
+.tarjeta-nota.on .barra i{transform:scaleX(1)}
+
+.carta{background:linear-gradient(180deg,var(--crema-2),var(--secundario))}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;margin-top:44px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 26px;
+  transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease}
+.card:hover{transform:translateY(-7px);box-shadow:var(--sombra)}
+.card .ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+  background:rgba(217,164,65,.16);margin-bottom:18px}
+.card .ico svg{width:22px;height:22px;fill:none;stroke:var(--acento-osc);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.16rem;color:var(--primario-osc)}
+.card p{color:var(--gris);font-size:.93rem;margin-top:10px}
+
+.prueba{background:var(--primario-osc);color:#fff}
+.prueba h2{color:#fff}
+.prueba .sub{color:rgba(255,255,255,.68)}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:44px}
+.q{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:20px;padding:28px 26px}
+.q .st{color:var(--acento);letter-spacing:.13em;font-size:.95rem}
+.q .big{font:400 2.5rem/1 Georgia,serif;margin:14px 0 6px}
+.q p{color:rgba(255,255,255,.72);font-size:.93rem}
+
+.contacto .grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media(max-width:860px){.contacto .grid{grid-template-columns:1fr;gap:30px}}
+.dato{display:flex;gap:15px;padding:19px 0;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato svg{width:20px;height:20px;flex:0 0 20px;margin-top:3px;fill:none;stroke:var(--primario);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dato .k{font-size:.64rem;letter-spacing:.22em;color:var(--gris)}
+.dato .v{margin-top:5px;font-size:1.01rem}
+.dato .v a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.horario{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 28px;box-shadow:var(--sombra)}
+.horario h3{font-size:1.16rem;color:var(--primario-osc);margin-bottom:16px}
+.horario .fila{display:flex;justify-content:space-between;padding:9px 0;font-size:.94rem;color:var(--gris);
+  border-bottom:1px dashed var(--linea)}
+.horario .fila:last-child{border-bottom:0}
+.horario .fila.hoy{color:var(--primario);font-weight:600}
+.mapa{display:inline-flex;align-items:center;gap:9px;margin-top:22px;text-decoration:none;
+  color:var(--primario);font-size:.9rem;border-bottom:1px solid var(--primario);padding-bottom:3px}
+
+footer{background:var(--tinta);color:rgba(250,243,234,.62);padding:60px 0 110px;text-align:center;font-size:.86rem}
+footer .m{font:400 1.35rem/1 Georgia,serif;color:#fff;margin-bottom:12px}
+footer .agencia{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.11);font-size:.79rem}
+footer .agencia b{color:var(--acento)}
+
+.barra-fija{position:fixed;bottom:0;left:0;right:0;z-index:55;display:flex;gap:10px;padding:11px 14px;
+  background:rgba(44,29,24,.93);backdrop-filter:blur(9px)}
+.barra-fija a{flex:1;text-align:center;text-decoration:none;border-radius:12px;padding:13px 8px;
+  font-size:.88rem;letter-spacing:.03em;transition:transform .2s ease}
+.barra-fija a:active{transform:scale(.97)}
+.barra-fija .l{background:var(--acento);color:#3A2408;font-weight:600}
+.barra-fija .m{background:rgba(255,255,255,.11);color:#fff}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .rev{opacity:1;transform:none}
+  #load{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="load" onclick="this.style.display='none'">
+  <div class="esc">
+    <svg viewBox="0 0 240 120" aria-hidden="true">
+      <path class="rama" d="M18 104 C 52 96, 74 74, 88 40"/>
+      <path class="rama r2" d="M222 104 C 188 96, 166 74, 152 40"/>
+      <ellipse class="hoja h1x" cx="52" cy="92" rx="13" ry="6" transform="rotate(-24 52 92)"/>
+      <ellipse class="hoja h2x" cx="74" cy="70" rx="12" ry="5.5" transform="rotate(-42 74 70)"/>
+      <ellipse class="hoja h3x" cx="86" cy="48" rx="10" ry="5" transform="rotate(-62 86 48)"/>
+      <ellipse class="hoja h4x" cx="188" cy="92" rx="13" ry="6" transform="rotate(24 188 92)"/>
+      <ellipse class="hoja h5x" cx="166" cy="70" rx="12" ry="5.5" transform="rotate(42 166 70)"/>
+    </svg>
+    <div class="nombre">El Rincón de Pepa</div>
+    <div class="lema">DESAYUNOS · BRUNCH · MERIENDAS</div>
+    <div class="skip">TOCA PARA ENTRAR</div>
+  </div>
+</div>
+
+<div class="cinta">DEMO</div>
+<div id="prog"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <div class="marca">El Rincón de Pepa<span>LAS PALMAS DE GRAN CANARIA</span></div>
+    <ul>
+      <li><a href="#sobre">El rincón</a></li>
+      <li><a href="#carta">Carta</a></li>
+      <li><a href="#opiniones">Opiniones</a></li>
+      <li><a href="#contacto">Dónde estamos</a></li>
+    </ul>
+    <a class="cta" href="tel:+34608867656">Llamar</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="capa" id="capa"></div>
+  <div class="wrap">
+    <div class="antes">CALLE ITALIA, 16 · LAS PALMAS DE GRAN CANARIA</div>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">El Rincón</i></span><br>
+      <span class="word"><i style="animation-delay:.48s">de <em>Pepa</em></i></span>
+    </h1>
+    <p class="lead">Desayunos, brunch y meriendas en un local pensado como un rincón: tostas, repostería casera y buen café, a un paso de la calle Italia.</p>
+    <div class="hero-acts">
+      <a class="btn btn-p" href="tel:+34608867656">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        608 86 76 56
+      </a>
+      <a class="btn btn-s" href="#carta">Ver la carta</a>
+    </div>
+    <div class="confia">
+      <div class="b">
+        <div class="n"><span class="count" data-to="44" data-dec="1">0</span></div>
+        <div class="estrellas">★★★★★</div>
+        <div class="t">EN GOOGLE</div>
+      </div>
+      <div class="b">
+        <div class="n"><span class="count" data-to="204">0</span></div>
+        <div class="t">RESEÑAS REALES</div>
+      </div>
+      <div class="b">
+        <div class="n">100%</div>
+        <div class="t">REPOSTERÍA CASERA</div>
+      </div>
+    </div>
+    <div class="abierto" id="abierto"><span class="punto"></span><span id="abierto-txt">Consulta nuestro horario</span></div>
+  </div>
+  <div class="baja">DESLIZA<span></span></div>
+</header>
+
+<main>
+<section class="sobre" id="sobre">
+  <div class="wrap grid">
+    <div class="rev">
+      <div class="eyebrow">EL RINCÓN</div>
+      <h2>Un sitio pequeño<br>con muchos detalles</h2>
+      <p>El Rincón de Pepa nació como lo que dice su nombre: un rincón para desayunar sin prisa en Las Palmas. Decoración inspirada en la naturaleza, mesas para quedarse un rato y una carta que se mueve entre lo dulce y lo salado.</p>
+      <p>Las tostas y la repostería salen de aquí: croasanes, tartas y galletas de elaboración propia, acompañadas de un café que las reseñas mencionan una y otra vez.</p>
+      <p>204 personas han dejado su opinión en Google. La nota, 4,4 sobre 5.</p>
+    </div>
+    <div class="tarjeta-nota rev" id="tarjeta-nota">
+      <div class="g">VALORACIÓN EN GOOGLE</div>
+      <div class="n"><span class="count" data-to="44" data-dec="1">0</span></div>
+      <div class="estrellas">★★★★★</div>
+      <div class="r"><span class="count" data-to="204">0</span> reseñas de clientes reales</div>
+      <div class="barra"><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">LA CARTA</div>
+      <h2>Para desayunar, para merendar<br>y para lo de media mañana</h2>
+      <p class="sub">Esto es una muestra de lo que se sirve en el local. La carta completa, con precios y alérgenos, iría aquí en la web definitiva.</p>
+    </div>
+    <div class="cards">
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 15h13a4 4 0 0 0 0-8H4v8Z"/><path d="M17 9h2a2 2 0 0 1 0 4h-2"/><path d="M4 19h13"/></svg></div>
+        <h3>Café de verdad</h3>
+        <p>El café es de lo que más se repite en las reseñas. Solo, cortado, con leche o para llevar mientras bajas por Italia.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 8h18l-1.5 11a2 2 0 0 1-2 1.7H6.5a2 2 0 0 1-2-1.7Z"/><path d="M8 8V6a4 4 0 0 1 8 0v2"/></svg></div>
+        <h3>Tostas con nombre propio</h3>
+        <p>La Maldivas y la Mykonos son las que más salen. Pan tostado, ingredientes frescos y un plato que se aguanta solo en la foto.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M5 20h14"/><path d="M6 20v-6a6 6 0 0 1 12 0v6"/><path d="M9 8a3 3 0 0 1 6 0"/></svg></div>
+        <h3>Croasanes y bollería</h3>
+        <p>Elaboración casera, hecha en el propio local. Recién hechos por la mañana, que es cuando hay que pillarlos.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 17h16"/><path d="M5 17a7 7 0 0 1 14 0"/><path d="M12 10V6"/><path d="M9 6h6"/></svg></div>
+        <h3>Tartas y galletas caseras</h3>
+        <p>La parte dulce de la carta, también de elaboración propia. Ideal para la merienda o para llevarse la tarde entera.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg></div>
+        <h3>En pleno barrio</h3>
+        <p>Calle Italia, 16. Zona tranquila, fácil de encontrar y perfecta para sentarse sin prisa.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 6h16v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z"/><path d="M8 3v5M16 3v5M4 11h16"/></svg></div>
+        <h3>Un rincón con encanto</h3>
+        <p>Decoración inspirada en la naturaleza y rincones pensados con detalle: es de las cosas que más se comentan del local.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prueba" id="opiniones">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow" style="color:var(--acento)">LO QUE DICEN EN GOOGLE</div>
+      <h2>204 reseñas y un 4,4</h2>
+      <p class="sub">No inventamos frases: estas son las cifras reales de su ficha de Google a día de hoy. En la web definitiva se pueden traer las reseñas literales y actualizarlas solas.</p>
+    </div>
+    <div class="quotes">
+      <div class="q rev">
+        <div class="st">★★★★★</div>
+        <div class="big"><span class="count" data-to="44" data-dec="1">0</span></div>
+        <p>Valoración media en Google, con más de doscientas opiniones acumuladas.</p>
+      </div>
+      <div class="q rev">
+        <div class="st">★★★★★</div>
+        <div class="big"><span class="count" data-to="204">0</span></div>
+        <p>Reseñas de clientes reales. En hostelería de barrio, ese volumen es difícil de conseguir.</p>
+      </div>
+      <div class="q rev">
+        <div class="st">★★★★★</div>
+        <div class="big">Casero</div>
+        <p>Croasanes, tartas y galletas de elaboración propia: el argumento que hoy no se ve en ninguna búsqueda de Google.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">DÓNDE ESTAMOS</div>
+      <h2>Calle Italia, 16</h2>
+      <p class="sub">Las Palmas de Gran Canaria (35006). Datos reales tomados de su ficha de Google.</p>
+    </div>
+    <div class="grid" style="margin-top:40px">
+      <div class="rev">
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+          <div><div class="k">DIRECCIÓN</div><div class="v">C. Italia, 16 · 35006 Las Palmas de Gran Canaria</div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <div><div class="k">TELÉFONO</div><div class="v"><a href="tel:+34608867656">608 86 76 56</a></div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M4 5h16a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1Z"/><path d="m3.4 6.6 8.6 6 8.6-6"/></svg>
+          <div><div class="k">CORREO</div><div class="v"><a href="mailto:elrincondepepagc@gmail.com">elrincondepepagc@gmail.com</a></div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg>
+          <div><div class="k">INSTAGRAM</div><div class="v"><a href="https://www.instagram.com/elrincondepepalp" target="_blank" rel="noopener">@elrincondepepalp</a></div></div>
+        </div>
+      </div>
+      <div class="horario rev">
+        <h3>Horario</h3>
+        <div class="fila" data-dia="1"><span>Lunes</span><span>Consultar</span></div>
+        <div class="fila" data-dia="2"><span>Martes</span><span>Consultar</span></div>
+        <div class="fila" data-dia="3"><span>Miércoles</span><span>Consultar</span></div>
+        <div class="fila" data-dia="4"><span>Jueves</span><span>Consultar</span></div>
+        <div class="fila" data-dia="5"><span>Viernes</span><span>Consultar</span></div>
+        <div class="fila" data-dia="6"><span>Sábado</span><span>Consultar</span></div>
+        <div class="fila" data-dia="0"><span>Domingo</span><span>Consultar</span></div>
+        <p style="color:var(--gris);font-size:.83rem;margin-top:16px">
+          En la web definitiva el horario se pone tal y como ustedes lo tengan, y la web dice sola si está abierto en este momento.
+        </p>
+        <a class="mapa" href="https://maps.google.com/?q=El+Rinc%C3%B3n+de+Pepa+Calle+Italia+16+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          Cómo llegar en Google Maps →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="m">El Rincón de Pepa</div>
+    <div>C. Italia, 16 · 35006 Las Palmas de Gran Canaria · 608 86 76 56</div>
+    <div class="agencia">
+      Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> para El Rincón de Pepa, con sus datos públicos de Google.
+      Esta web puede ser suya. · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · elevenprime.es
+    </div>
+  </div>
+</footer>
+
+<div class="barra-fija">
+  <a class="l" href="tel:+34608867656">Llamar ahora</a>
+  <a class="m" href="https://maps.google.com/?q=El+Rinc%C3%B3n+de+Pepa+Calle+Italia+16+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<noscript><style>
+  .rev{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.confia,.abierto,.baja,.antes{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+
+<script>
+/* ------- navegación compacta + barra de progreso ------- */
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog'), capa=document.getElementById('capa'), pend=false;
+  function pinta(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('min', y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(prog) prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    if(capa && y<window.innerHeight) capa.style.transform='translate3d(0,'+(y*0.14)+'px,0)';
+    pend=false;
+  }
+  window.addEventListener('scroll',function(){ if(!pend){pend=true;requestAnimationFrame(pinta);} },{passive:true});
+  pinta();
+})();
+
+/* ------- revelado por secciones ------- */
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(e,i){ e.style.transitionDelay=(i%3*90)+'ms'; io.observe(e); });
+})();
+
+/* ------- contadores ------- */
+(function(){
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1300;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), v=Math.round(to*(1-Math.pow(1-p,3)));
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',') : v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); io.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(function(e){ io.observe(e); });
+})();
+
+/* ------- horario en vivo (marca el día de hoy) ------- */
+(function(){
+  var hoy=new Date().getDay();
+  var f=document.querySelector('.fila[data-dia="'+hoy+'"]');
+  if(f) f.classList.add('hoy');
+  var t=document.getElementById('abierto-txt');
+  var dias=['domingo','lunes','martes','miércoles','jueves','viernes','sábado'];
+  if(t) t.textContent='Hoy es '+dias[hoy]+' · consulta el horario más abajo';
+})();
+
+/* ------- saltar la animación de entrada con una tecla ------- */
+document.addEventListener('keydown',function(){ var l=document.getElementById('load'); if(l) l.style.display='none'; });
+
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
