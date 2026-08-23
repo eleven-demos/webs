@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Churrería Guanarteme by La Chocolatada de Papá · Las Palmas de Gran Canaria</title>
+<meta name="description" content="Churrería Guanarteme by La Chocolatada de Papá, C. Fernando Guanarteme 38, Las Palmas de Gran Canaria. Churros crujientes y chocolate espeso a la taza. 4,1★ y 1.143 reseñas en Google.">
+<meta name="theme-color" content="#6B3410">
+<style>
+:root{
+  --primario:#6B3410; --primario-osc:#3F1E08; --secundario:#FFF4E0; --acento:#E8A33D;
+  --acento-osc:#C97F1D; --crema-2:#F7E3BD; --choco-liq:#3A1706; --tinta:#2B1706; --gris:#7A6650;
+  --linea:rgba(43,23,6,.13);
+  --sombra:0 2px 8px rgba(43,23,6,.07), 0 14px 34px rgba(43,23,6,.11);
+  --sombra-alta:0 6px 18px rgba(43,23,6,.11), 0 28px 60px rgba(43,23,6,.18);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Helvetica Neue",Arial,sans-serif;background:var(--secundario);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400}
+a{color:inherit}
+img{max-width:100%}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: el churro se moja en la taza de chocolate y, al levantarlo, el chocolate gotea ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 40%,#6B3410 0%,#4A2309 58%,#2B1305 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.3s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(240px,60vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.plato{fill:none;stroke:var(--acento);stroke-width:2.6;stroke-linecap:round;opacity:.55}
+.taza-cuerpo{fill:none;stroke:var(--acento);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:230;stroke-dashoffset:230;animation:trazar .8s cubic-bezier(.5,0,.2,1) forwards}
+.asa{fill:none;stroke:var(--acento);stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:100;stroke-dashoffset:100;animation:trazar .6s cubic-bezier(.5,0,.2,1) .2s forwards}
+@keyframes trazar{to{stroke-dashoffset:0}}
+.choco-superficie{fill:var(--choco-liq);opacity:0;animation:aparecer .4s ease .35s forwards}
+@keyframes aparecer{to{opacity:1}}
+.churro-grupo{transform-box:fill-box;transform-origin:50% 0%;
+  animation:mojar-y-levantar 1.35s cubic-bezier(.5,0,.2,1) .25s both;will-change:transform}
+@keyframes mojar-y-levantar{
+  0%{transform:translateY(-52px) rotate(9deg)}
+  38%{transform:translateY(6px) rotate(9deg)}
+  58%{transform:translateY(6px) rotate(9deg)}
+  100%{transform:translateY(-52px) rotate(9deg)}
+}
+.churro{fill:var(--crema-2);stroke:var(--acento-osc);stroke-width:1.4}
+.churro-linea{stroke:var(--acento-osc);stroke-width:1.1;opacity:.8}
+.punta-choco{fill:var(--choco-liq);opacity:0;transform-box:fill-box;transform-origin:50% 0%;
+  animation:cubrir .3s ease .65s forwards}
+@keyframes cubrir{to{opacity:1}}
+.gota{fill:var(--choco-liq);opacity:0;transform-box:fill-box;transform-origin:50% 0%;
+  animation:caer .6s cubic-bezier(.4,0,.6,1) forwards}
+.g1{animation-delay:1.65s}.g2{animation-delay:1.78s}.g3{animation-delay:1.91s}
+@keyframes caer{0%{opacity:0;transform:translateY(0) scale(1)}18%{opacity:1}100%{opacity:0;transform:translateY(28px) scale(.7)}}
+.garabato{fill:none;stroke:var(--acento);stroke-width:2.2;stroke-linecap:round;
+  stroke-dasharray:96;stroke-dashoffset:96;opacity:.85;animation:trazar-g .55s ease 1.7s forwards}
+@keyframes trazar-g{to{stroke-dashoffset:0}}
+#load .nom{
+  margin-top:.9rem;font-family:Georgia,serif;color:var(--secundario);letter-spacing:.03em;
+  font-size:clamp(1.25rem,4.8vw,1.9rem);opacity:0;transform:translate3d(0,10px,0);
+  animation:brota .6s cubic-bezier(.22,1,.36,1) 1.95s forwards;
+}
+#load .sub2{
+  margin-top:.35rem;color:var(--acento);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  opacity:0;animation:brota .6s ease 2.15s forwards;
+}
+@keyframes brota{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  #load{animation:irse .3s ease .2s forwards}
+  #load *{animation-duration:.01ms!important;animation-delay:0s!important}
+}
+
+/* ---------- barra de progreso y navegacion ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acento),var(--acento-osc));z-index:60;will-change:transform}
+nav{position:fixed;top:0;left:0;right:0;z-index:55;padding:1.15rem 0;transition:padding .3s ease,background .3s ease;
+  background:rgba(255,244,224,0);}
+nav.min{padding:.6rem 0;background:rgba(255,244,224,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--linea)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+nav .marca{font-family:Georgia,serif;font-size:1.02rem;letter-spacing:.02em;color:var(--secundario);transition:color .3s}
+nav.min .marca{color:var(--primario)}
+nav .enl{display:flex;gap:1.5rem;font-size:.78rem;letter-spacing:.13em;text-transform:uppercase}
+nav .enl a{text-decoration:none;color:rgba(255,244,224,.88);transition:color .25s}
+nav.min .enl a{color:var(--gris)}
+nav .enl a:hover{color:var(--acento)}
+@media(max-width:780px){nav .enl{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:7rem 0 8rem;overflow:hidden;color:var(--secundario)}
+.hero .capa{position:absolute;inset:-8% 0 0;z-index:0;will-change:transform;
+  background:
+    radial-gradient(70% 50% at 20% 16%,rgba(232,163,61,.3) 0%,transparent 62%),
+    radial-gradient(60% 45% at 84% 80%,rgba(201,127,29,.22) 0%,transparent 60%),
+    linear-gradient(168deg,#6B3410 0%,#4A2309 46%,#2B1305 100%);
+}
+.hero .grano{position:absolute;inset:0;z-index:1;opacity:.5;
+  background-image:radial-gradient(rgba(255,244,224,.09) 1px,transparent 1px);
+  background-size:26px 26px}
+.hero .wrap{position:relative;z-index:2}
+.hero .antes{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--acento);
+  opacity:0;animation:brota .7s ease 2.6s forwards}
+.hero h1{font-size:clamp(2.35rem,8.6vw,4.9rem);line-height:1.04;margin:1.1rem 0 .2rem;letter-spacing:-.01em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translate3d(0,105%,0);
+  animation:palabra .8s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes palabra{to{transform:none}}
+.hero .marca-hija{display:block;font-size:clamp(1rem,2.6vw,1.3rem);color:var(--acento);letter-spacing:.04em;margin-top:.5rem;
+  opacity:0;animation:brota .8s ease 2.95s forwards}
+.hero .lead{max-width:39rem;margin:1.3rem auto 0;color:rgba(255,244,224,.86);font-size:clamp(1rem,2.3vw,1.15rem);
+  opacity:0;animation:brota .8s ease 3.1s forwards}
+.hero-acts{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.1rem;
+  opacity:0;animation:brota .8s ease 3.3s forwards}
+.btn{display:inline-block;padding:.95rem 1.9rem;border-radius:40px;text-decoration:none;font-weight:700;
+  font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;transition:transform .25s cubic-bezier(.22,1,.36,1),background .25s,color .25s,box-shadow .25s}
+.btn-1{background:var(--acento);color:#2B1305;box-shadow:0 8px 24px rgba(232,163,61,.36)}
+.btn-1:hover{transform:translateY(-3px);background:#F0B458;box-shadow:0 14px 32px rgba(232,163,61,.46)}
+.btn-2{border:1px solid rgba(255,244,224,.4);color:var(--secundario)}
+.btn-2:hover{transform:translateY(-3px);background:rgba(255,244,224,.12);border-color:var(--secundario)}
+.est{display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;
+  opacity:0;animation:brota .8s ease 3.5s forwards}
+.est .u{text-align:center}
+.est .n{font-family:Georgia,serif;font-size:clamp(1.9rem,5.5vw,2.7rem);color:var(--acento);line-height:1}
+.est .e{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,244,224,.62);margin-top:.45rem}
+.estrellas{color:var(--acento);letter-spacing:.14em;font-size:1.05rem}
+.abierto{display:inline-flex;align-items:center;gap:.55rem;margin-top:2.4rem;padding:.55rem 1.2rem;
+  border:1px solid rgba(255,244,224,.22);border-radius:40px;font-size:.8rem;color:rgba(255,244,224,.9);
+  background:rgba(0,0,0,.16);opacity:0;animation:brota .8s ease 3.65s forwards}
+.punto{width:9px;height:9px;border-radius:50%;background:var(--acento);box-shadow:0 0 0 0 rgba(232,163,61,.6)}
+
+/* ---------- secciones ---------- */
+section{padding:clamp(4.2rem,10vw,7.5rem) 0;position:relative}
+.t{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--acento-osc);margin-bottom:1rem}
+h2{font-size:clamp(1.85rem,5.1vw,3rem);line-height:1.1;letter-spacing:-.01em}
+.sub{color:var(--gris);max-width:44rem;margin-top:1.1rem;font-size:1.03rem}
+.rev{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rev.on{opacity:1;transform:none}
+
+.sobre{background:var(--crema-2)}
+.sobre .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;margin-top:2.6rem}
+@media(max-width:880px){.sobre .cols{grid-template-columns:1fr}}
+.sobre p{color:var(--gris);font-size:1.05rem;margin-top:1.1rem}
+.tarjeta-cifra{background:var(--primario);color:var(--secundario);border-radius:20px;padding:2.4rem 2rem;text-align:center;
+  box-shadow:var(--sombra-alta)}
+.tarjeta-cifra .g{font-family:Georgia,serif;font-size:clamp(3rem,9vw,4.2rem);line-height:1;color:var(--acento)}
+.tarjeta-cifra .r{margin-top:.7rem;font-size:.85rem;color:rgba(255,244,224,.72)}
+
+.carta .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1.1rem;margin-top:3rem}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:2rem 1.7rem;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;box-shadow:var(--sombra)}
+.card:hover{transform:translateY(-6px) scale(1.012);box-shadow:var(--sombra-alta)}
+.card .ico{width:46px;height:46px;border-radius:13px;background:var(--crema-2);display:grid;place-items:center;margin-bottom:1.1rem}
+.card .ico svg{width:24px;height:24px;stroke:var(--primario);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.2rem;margin-bottom:.5rem}
+.card p{color:var(--gris);font-size:.95rem}
+
+.confianza{background:var(--primario);color:var(--secundario)}
+.confianza h2{color:var(--secundario)}
+.confianza .sub{color:rgba(255,244,224,.72)}
+.confianza .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:3rem}
+.bloque{background:rgba(255,244,224,.07);border:1px solid rgba(255,244,224,.14);border-radius:18px;padding:2rem 1.7rem;text-align:center}
+.bloque .st{color:var(--acento);letter-spacing:.16em;font-size:1.1rem}
+.bloque .gd{font-family:Georgia,serif;font-size:clamp(2.2rem,6.5vw,3rem);line-height:1;margin:.7rem 0 .3rem;color:var(--secundario)}
+.bloque p{color:rgba(255,244,224,.7);font-size:.92rem;margin-top:.5rem}
+.honesto{margin-top:2.6rem;padding:1.3rem 1.5rem;border-left:2px solid var(--acento);
+  color:rgba(255,244,224,.8);font-size:.93rem;background:rgba(0,0,0,.14);border-radius:0 12px 12px 0}
+.honesto b{color:var(--acento)}
+
+.contacto .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);margin-top:3rem}
+@media(max-width:880px){.contacto .cols{grid-template-columns:1fr}}
+.dato{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato .k{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acento-osc);min-width:96px;padding-top:.28rem}
+.dato .v{font-size:1.02rem}
+.dato .v a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.dato .v small{display:block;color:var(--gris);font-size:.86rem;margin-top:.2rem}
+.mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);box-shadow:var(--sombra);
+  background:linear-gradient(150deg,#F7E3BD 0%,#EBC98D 100%);min-height:280px;display:grid;place-items:center;text-align:center;padding:2.2rem}
+.mapa .p{font-family:Georgia,serif;font-size:1.5rem;margin-bottom:.6rem}
+.mapa p{color:var(--gris);font-size:.95rem;margin-bottom:1.4rem}
+.btn-3{background:var(--primario);color:var(--secundario);box-shadow:0 8px 22px rgba(107,52,16,.3)}
+.btn-3:hover{transform:translateY(-3px);background:var(--primario-osc)}
+
+.cierre{background:var(--crema-2);text-align:center}
+.cierre h2{max-width:26rem;margin-inline:auto}
+.cierre .sub{margin-inline:auto}
+.cierre .acts{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
+
+footer{background:var(--primario-osc);color:rgba(255,244,224,.72);padding:3.4rem 0 6.5rem;text-align:center;font-size:.9rem}
+footer .m{font-family:Georgia,serif;font-size:1.3rem;color:var(--secundario);margin-bottom:.5rem}
+footer .agencia{margin-top:1.8rem;padding-top:1.6rem;border-top:1px solid rgba(255,244,224,.14);
+  font-size:.82rem;color:rgba(255,244,224,.55);max-width:46rem;margin-inline:auto}
+footer .agencia b{color:var(--acento)}
+
+.sello{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);z-index:3;pointer-events:none;
+  font-family:Georgia,serif;font-size:clamp(5rem,20vw,11rem);color:rgba(43,23,6,.055);letter-spacing:.2em}
+.barra-fija{position:fixed;left:0;right:0;bottom:0;z-index:58;display:flex;gap:.5rem;padding:.6rem clamp(.7rem,3vw,1.2rem);
+  background:rgba(74,35,9,.96);backdrop-filter:blur(8px);box-shadow:0 -6px 24px rgba(43,23,6,.28)}
+.barra-fija a{flex:1;text-align:center;padding:.85rem;border-radius:30px;text-decoration:none;font-weight:700;
+  font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;transition:transform .22s,background .22s}
+.barra-fija a:active{transform:scale(.97)}
+.barra-fija .l{background:var(--acento);color:#2B1305}
+.barra-fija .m{border:1px solid rgba(255,244,224,.34);color:var(--secundario)}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="load" title="Pulsa para entrar">
+  <div class="esc">
+    <svg viewBox="0 0 200 170" aria-hidden="true">
+      <line class="plato" x1="34" y1="152" x2="166" y2="152"/>
+      <path class="taza-cuerpo" d="M56 82 H150 V118 Q150 142 126 142 H80 Q56 142 56 118 Z"/>
+      <path class="asa" d="M150 92 Q178 92 178 108 Q178 124 150 124"/>
+      <path class="choco-superficie" d="M61 86 H145 V116 Q145 137 124 137 H82 Q61 137 61 116 Z" />
+      <g class="churro-grupo">
+        <rect class="churro" x="94" y="6" width="16" height="72" rx="7"/>
+        <line class="churro-linea" x1="97" y1="16" x2="107" y2="16"/>
+        <line class="churro-linea" x1="97" y1="30" x2="107" y2="30"/>
+        <line class="churro-linea" x1="97" y1="44" x2="107" y2="44"/>
+        <line class="churro-linea" x1="97" y1="58" x2="107" y2="58"/>
+        <ellipse class="punta-choco" cx="102" cy="76" rx="10" ry="7"/>
+        <ellipse class="gota g1" cx="99" cy="86" rx="3" ry="3.4"/>
+        <ellipse class="gota g2" cx="104" cy="90" rx="2.6" ry="3"/>
+        <ellipse class="gota g3" cx="107" cy="84" rx="2.2" ry="2.6"/>
+      </g>
+      <path class="garabato" d="M70 100 Q88 84 106 100 T142 100"/>
+    </svg>
+    <div class="nom">Churrería Guanarteme</div>
+    <div class="sub2">by La Chocolatada de Papá · Las Palmas</div>
+  </div>
+</div>
+
+<div id="prog"></div>
+<div class="sello">DEMO</div>
+
+<nav id="nav">
+  <div class="wrap">
+    <span class="marca">Churrería Guanarteme</span>
+    <span class="enl">
+      <a href="#sobre">La casa</a>
+      <a href="#carta">Carta</a>
+      <a href="#confianza">Reseñas</a>
+      <a href="#contacto">Dónde estamos</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="capa" id="capa"></div>
+  <div class="grano"></div>
+  <div class="wrap">
+    <div class="antes">C. Fernando Guanarteme, 38 · Las Palmas de Gran Canaria</div>
+    <h1>
+      <span class="word"><i style="animation-delay:2.65s">Churrería</i></span>
+      <span class="word"><i style="animation-delay:2.78s">Guanarteme</i></span>
+    </h1>
+    <span class="marca-hija">by La Chocolatada de Papá</span>
+    <p class="lead">Churros crujientes recién hechos y chocolate espeso a la taza, en pleno barrio de Guanarteme. Ya lo dicen sus 1.143 reseñas en Google.</p>
+    <div class="hero-acts">
+      <a class="btn btn-1" href="tel:+34687844477">Llamar al 687 84 44 77</a>
+      <a class="btn btn-2" href="#carta">Ver la carta</a>
+    </div>
+    <div class="est">
+      <div class="u">
+        <div class="estrellas">★★★★☆</div>
+        <div class="n"><span class="count" data-to="41" data-dec="1">0</span></div>
+        <div class="e">Valoración en Google</div>
+      </div>
+      <div class="u">
+        <div class="n"><span class="count" data-to="1143">0</span></div>
+        <div class="e">Reseñas de clientes</div>
+      </div>
+      <div class="u">
+        <div class="n">Guanarteme</div>
+        <div class="e">Las Palmas de G.C.</div>
+      </div>
+    </div>
+    <div class="abierto"><span class="punto"></span><span>Llama y te decimos si estamos abiertos</span></div>
+  </div>
+</header>
+
+<main>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">La casa</div>
+      <h2>La churrería de Guanarteme,<br>con el chocolate hecho aquí</h2>
+    </div>
+    <div class="cols">
+      <div class="rev">
+        <p>Churrería Guanarteme by La Chocolatada de Papá está en la calle Fernando Guanarteme, en el barrio del mismo nombre: una de las zonas con más movimiento de Las Palmas de Gran Canaria, entre vecinos de siempre y gente que pasa camino de la playa.</p>
+        <p>Con 1.143 reseñas en Google —más que ningún otro negocio de esta lista— y un 4,1 sobre 5, la reputación ya está hecha a base de churros crujientes y chocolate espeso, servido en su punto para mojar.</p>
+        <p>Lo único que le falta a ese volumen de clientela es un sitio propio en internet donde encontrarla, en vez de depender de una plataforma ajena.</p>
+      </div>
+      <div class="rev">
+        <div class="tarjeta-cifra">
+          <div class="estrellas">★★★★☆</div>
+          <div class="g"><span class="count" data-to="41" data-dec="1">0</span></div>
+          <div class="r"><span class="count" data-to="1143">0</span> reseñas en Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Lo que se sirve</div>
+      <h2>Carta</h2>
+      <p class="sub">Churrería tradicional: churros y chocolate, con opción de llevar. Esta es la estructura de la carta; en la web definitiva se publican los productos y precios actualizados, y se cambian cuando ustedes quieran.</p>
+    </div>
+    <div class="rejilla">
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8c3-2 5 2 8 0s5-2 8 0"/><path d="M4 14c3-2 5 2 8 0s5-2 8 0"/><path d="M4 20c3-2 5 2 8 0s5-2 8 0"/></svg></div>
+        <h3>Churros crujientes</h3>
+        <p>Recién hechos, el clásico de toda la vida que trae a la gente de vuelta una y otra vez.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z"/><path d="M17 9h1.6a2.4 2.4 0 0 1 0 4.8H17"/><path d="M7 4.5V3M11 4.5V3"/></svg></div>
+        <h3>Chocolate espeso a la taza</h3>
+        <p>El compañero natural del churro: chocolate caliente y espeso, en su punto justo para mojar.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5 13.9 9l4.6.4-3.5 3 1.1 4.5L12 14.6 7.9 16.9 9 12.4l-3.5-3L10.1 9Z"/></svg></div>
+        <h3>Desayunos y meriendas</h3>
+        <p>El motivo por el que el barrio para aquí a media mañana o a la salida del cole.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 8h12l-1.2 11a2 2 0 0 1-2 1.8H9.2a2 2 0 0 1-2-1.8Z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg></div>
+        <h3>Para llevar</h3>
+        <p>Churros y chocolate para casa, la oficina o el coche, sin perder ni el crujiente ni la temperatura.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="confianza" id="confianza">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Reseñas reales</div>
+      <h2>1.143 reseñas y un 4,1</h2>
+      <p class="sub">Estas son las cifras reales de su ficha de Google a día de hoy: el negocio con más reseñas de todo el barrio. En la web definitiva se traen las reseñas literales de Google y se actualizan solas.</p>
+    </div>
+    <div class="rejilla">
+      <div class="bloque rev">
+        <div class="st">★★★★☆</div>
+        <div class="gd"><span class="count" data-to="41" data-dec="1">0</span></div>
+        <p>Valoración media sobre 5 en Google, sostenida sobre más de mil reseñas.</p>
+      </div>
+      <div class="bloque rev">
+        <div class="st">★★★★☆</div>
+        <div class="gd"><span class="count" data-to="1143">0</span></div>
+        <p>Reseñas de clientes reales. Para una churrería de barrio, ese volumen es una carta de presentación por sí sola.</p>
+      </div>
+      <div class="bloque rev">
+        <div class="st">★★★★☆</div>
+        <div class="gd">Guanarteme</div>
+        <p>Trabajando en el corazón del barrio, en la calle Fernando Guanarteme.</p>
+      </div>
+    </div>
+    <div class="honesto rev">
+      <b>Una cosa que conviene saber:</b> hoy, la única presencia de la churrería en internet, aparte de la ficha de Google, es un subdominio gratuito de la plataforma EATBU (<em>churreria-guanarteme.eatbu.com</em>). Funciona, pero el diseño, el dominio y hasta la marca que se ve arriba son de la plataforma, no suyos. Con 1.143 reseñas y casi ningún competidor local con web propia, tener una web con su propio nombre es la diferencia entre depender de otro o ser dueños de su presencia online.
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Dónde estamos</div>
+      <h2>Fernando Guanarteme, 38</h2>
+    </div>
+    <div class="cols">
+      <div class="rev">
+        <div class="dato">
+          <div class="k">Dirección</div>
+          <div class="v">C. Fernando Guanarteme, 38<small>35010 Las Palmas de Gran Canaria</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Teléfono</div>
+          <div class="v"><a href="tel:+34687844477">687 84 44 77</a><small>Para pedidos y consultas</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Email</div>
+          <div class="v"><a href="mailto:cmontelongo77@hotmail.com">cmontelongo77@hotmail.com</a><small>Escriban cuando quieran, se responde a la vuelta</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Horario</div>
+          <div class="v">Llama y te decimos si estamos abiertos<small>El horario exacto y en vivo se activa en la web definitiva</small></div>
+        </div>
+      </div>
+      <div class="rev">
+        <div class="mapa">
+          <div>
+            <div class="p">En pleno barrio de Guanarteme</div>
+            <p>A un paso de las playas y de la avenida marítima, en una de las calles con más paso de Las Palmas de Gran Canaria.</p>
+            <a class="btn btn-3" href="https://maps.google.com/?q=Churrer%C3%ADa+Guanarteme+C.+Fernando+Guanarteme+38+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Churrería Guanarteme</div>
+      <h2>La chocolatada está lista</h2>
+      <p class="sub">En Fernando Guanarteme 38, con 1.143 reseñas que ya lo avalan. Llame o pásese cuando le apetezca un churro.</p>
+      <div class="acts">
+        <a class="btn btn-1" href="tel:+34687844477">Llamar al 687 84 44 77</a>
+        <a class="btn btn-3" href="https://maps.google.com/?q=Churrer%C3%ADa+Guanarteme+C.+Fernando+Guanarteme+38+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="m">Churrería Guanarteme</div>
+    <div>C. Fernando Guanarteme, 38 · 35010 Las Palmas de Gran Canaria · 687 84 44 77</div>
+    <div class="agencia">
+      Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> para Churrería Guanarteme, con sus datos públicos de Google.
+      Esta web puede ser suya. · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · elevenprime.es
+    </div>
+  </div>
+</footer>
+
+<div class="barra-fija">
+  <a class="l" href="tel:+34687844477">Llamar ahora</a>
+  <a class="m" href="https://maps.google.com/?q=Churrer%C3%ADa+Guanarteme+C.+Fernando+Guanarteme+38+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<noscript><style>
+  .rev{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.abierto,.antes,.marca-hija{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+
+<script>
+/* ------- el momento firma se salta con clic o tecla ------- */
+(function(){
+  var l=document.getElementById('load');
+  if(!l) return;
+  function fuera(){ l.style.setProperty('opacity','0','important'); l.style.setProperty('visibility','hidden','important'); }
+  l.addEventListener('click',fuera);
+  window.addEventListener('keydown',fuera,{once:true});
+  setTimeout(fuera,3100);
+})();
+
+/* ------- navegación compacta, barra de progreso y parallax ------- */
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog'), capa=document.getElementById('capa'), pend=false;
+  function pinta(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('min', y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(prog) prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    if(capa && y<window.innerHeight) capa.style.transform='translate3d(0,'+(y*0.13)+'px,0)';
+    pend=false;
+  }
+  window.addEventListener('scroll',function(){ if(!pend){pend=true;requestAnimationFrame(pinta);} },{passive:true});
+  pinta();
+})();
+
+/* ------- revelado por secciones ------- */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(e,i){ e.style.transitionDelay=(i%3*90)+'ms'; io.observe(e); });
+})();
+
+/* ------- contadores ------- */
+(function(){
+  function formatea(v){ return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1300;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), v=Math.round(to*(1-Math.pow(1-p,3)));
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',') : formatea(v);
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.count').forEach(anima); return;
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); io.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(function(e){ io.observe(e); });
+})();
+
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

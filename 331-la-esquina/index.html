@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Esquina · Cafetería en Cirilo Moreno, Las Palmas de Gran Canaria</title>
+<meta name="description" content="La Esquina, C. Cirilo Moreno 6, esquina con Presidente Alvear, Las Palmas de Gran Canaria. Desayunos y cocina española de mediodía, con opciones sin lactosa y local accesible. 4,7★ y 66 reseñas en Google.">
+<meta name="theme-color" content="#4A2C1A">
+<style>
+:root{
+  --primario:#4A2C1A; --primario-osc:#2E1B10; --secundario:#F7F1E6; --acento:#C8842D;
+  --acento-cla:#E0AE64; --crema-2:#EFE3CD; --terracota:#B5592E; --verde:#6B7A4F;
+  --tinta:#2A1810; --gris:#79644F;
+  --linea:rgba(42,24,16,.13);
+  --sombra:0 2px 8px rgba(42,24,16,.06), 0 14px 34px rgba(42,24,16,.10);
+  --sombra-alta:0 6px 18px rgba(42,24,16,.10), 0 28px 60px rgba(42,24,16,.16);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Helvetica Neue",Arial,sans-serif;background:var(--secundario);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400}
+a{color:inherit}
+img{max-width:100%}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: dos calles se cruzan y forman la esquina; en el vértice nace un café ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 42%,#4A2C1A 0%,#33200F 58%,#1E1209 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.35s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(250px,62vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.calle{fill:none;stroke:var(--acento-cla);stroke-width:3;stroke-linecap:round;opacity:.85}
+.c1{stroke-dasharray:118;stroke-dashoffset:118;animation:trazar .8s cubic-bezier(.55,0,.2,1) .1s forwards}
+.c2{stroke-dasharray:98;stroke-dashoffset:98;animation:trazar .7s cubic-bezier(.55,0,.2,1) .55s forwards}
+@keyframes trazar{to{stroke-dashoffset:0}}
+.placa{opacity:0;transform-box:fill-box;transform-origin:50% 50%;animation:placa-in .5s ease forwards}
+.p1{transform:translate3d(-6px,0,0);animation-delay:.15s}
+.p2{transform:translate3d(0,-6px,0);animation-delay:.6s}
+@keyframes placa-in{to{opacity:1;transform:none}}
+.taza2{transform-box:fill-box;transform-origin:50% 100%;transform:scale(.4);opacity:0;
+  animation:brotar-taza .5s cubic-bezier(.3,1.5,.4,1) 1.15s forwards}
+@keyframes brotar-taza{to{transform:scale(1);opacity:1}}
+.vapor2{fill:none;stroke:#EAD9BC;stroke-width:2.2;stroke-linecap:round;opacity:0;
+  stroke-dasharray:46;stroke-dashoffset:46;animation:subir2 1s ease-out forwards}
+.w1{animation-delay:1.5s} .w2{animation-delay:1.65s} .w3{animation-delay:1.8s}
+@keyframes subir2{
+  0%{opacity:0;transform:translate3d(0,6px,0)}
+  35%{opacity:.9}
+  100%{opacity:.35;stroke-dashoffset:0;transform:translate3d(0,-9px,0)}
+}
+#load .nom{
+  margin-top:1.05rem;font-family:Georgia,serif;color:var(--secundario);letter-spacing:.05em;
+  font-size:clamp(1.35rem,5.2vw,2rem);opacity:0;transform:translate3d(0,10px,0);
+  animation:brota .6s cubic-bezier(.22,1,.36,1) 1.65s forwards;
+}
+#load .sub2{
+  margin-top:.35rem;color:var(--acento-cla);font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;
+  opacity:0;animation:brota .6s ease 1.9s forwards;
+}
+@keyframes brota{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  #load{animation:irse .3s ease .2s forwards}
+  #load *{animation-duration:.01ms!important;animation-delay:0s!important}
+}
+
+/* ---------- barra de progreso y navegación ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acento),var(--acento-cla));z-index:60;will-change:transform}
+nav{position:fixed;top:0;left:0;right:0;z-index:55;padding:1.15rem 0;transition:padding .3s ease,background .3s ease;
+  background:rgba(247,241,230,0);}
+nav.min{padding:.6rem 0;background:rgba(247,241,230,.94);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--linea)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+nav .marca{font-family:Georgia,serif;font-size:1.05rem;letter-spacing:.02em;color:var(--secundario);transition:color .3s}
+nav.min .marca{color:var(--primario)}
+nav .enl{display:flex;gap:1.5rem;font-size:.78rem;letter-spacing:.13em;text-transform:uppercase}
+nav .enl a{text-decoration:none;color:rgba(247,241,230,.85);transition:color .25s}
+nav.min .enl a{color:var(--gris)}
+nav .enl a:hover{color:var(--acento)}
+@media(max-width:780px){nav .enl{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:7rem 0 8rem;overflow:hidden;color:var(--secundario)}
+.hero .capa{position:absolute;inset:-8% 0 0;z-index:0;will-change:transform;
+  background:
+    radial-gradient(70% 50% at 20% 16%,rgba(200,132,45,.30) 0%,transparent 62%),
+    radial-gradient(60% 45% at 84% 80%,rgba(181,89,46,.22) 0%,transparent 60%),
+    linear-gradient(168deg,#4A2C1A 0%,#38200F 46%,#241408 100%);
+}
+.hero .esquinas{position:absolute;inset:0;z-index:1;opacity:.55;pointer-events:none}
+.hero .esquinas svg{width:100%;height:100%}
+.hero .wrap{position:relative;z-index:2}
+.hero .antes{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--acento-cla);
+  opacity:0;animation:brota .7s ease 2.6s forwards}
+.hero h1{font-size:clamp(2.7rem,10vw,5.6rem);line-height:1.02;margin:1.1rem 0 .2rem;letter-spacing:-.015em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translate3d(0,105%,0);
+  animation:palabra .8s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes palabra{to{transform:none}}
+.hero .lead{max-width:41rem;margin:1.3rem auto 0;color:rgba(247,241,230,.86);font-size:clamp(1rem,2.3vw,1.16rem);
+  opacity:0;animation:brota .8s ease 3.15s forwards}
+.hero-acts{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.1rem;
+  opacity:0;animation:brota .8s ease 3.35s forwards}
+.btn{display:inline-block;padding:.95rem 1.9rem;border-radius:40px;text-decoration:none;font-weight:700;
+  font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;transition:transform .25s cubic-bezier(.22,1,.36,1),background .25s,color .25s,box-shadow .25s}
+.btn-1{background:var(--acento);color:#241408;box-shadow:0 8px 24px rgba(200,132,45,.34)}
+.btn-1:hover{transform:translateY(-3px);background:var(--acento-cla);box-shadow:0 14px 32px rgba(200,132,45,.44)}
+.btn-2{border:1px solid rgba(247,241,230,.4);color:var(--secundario)}
+.btn-2:hover{transform:translateY(-3px);background:rgba(247,241,230,.12);border-color:var(--secundario)}
+.est{display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;
+  opacity:0;animation:brota .8s ease 3.55s forwards}
+.est .u{text-align:center}
+.est .n{font-family:Georgia,serif;font-size:clamp(1.9rem,5.5vw,2.7rem);color:var(--acento-cla);line-height:1}
+.est .e{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,241,230,.6);margin-top:.45rem}
+.estrellas{color:var(--acento);letter-spacing:.14em;font-size:1.05rem}
+.horario-gen{display:inline-flex;align-items:center;gap:.55rem;margin-top:2.4rem;padding:.55rem 1.2rem;
+  border:1px solid rgba(247,241,230,.22);border-radius:40px;font-size:.8rem;color:rgba(247,241,230,.9);
+  background:rgba(0,0,0,.16);opacity:0;animation:brota .8s ease 3.7s forwards}
+.punto{width:9px;height:9px;border-radius:50%;background:var(--acento-cla);flex:none}
+
+/* ---------- secciones ---------- */
+section{padding:clamp(4.2rem,10vw,7.5rem) 0;position:relative}
+.t{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--acento);margin-bottom:1rem}
+h2{font-size:clamp(1.9rem,5.3vw,3.1rem);line-height:1.1;letter-spacing:-.01em}
+.sub{color:var(--gris);max-width:44rem;margin-top:1.1rem;font-size:1.03rem}
+.rev{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rev.on{opacity:1;transform:none}
+
+.sobre{background:var(--crema-2)}
+.sobre .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;margin-top:2.6rem}
+@media(max-width:880px){.sobre .cols{grid-template-columns:1fr}}
+.sobre p{color:var(--gris);font-size:1.05rem;margin-top:1.1rem}
+.tarjeta-cifra{background:var(--primario);color:var(--secundario);border-radius:20px;padding:2.4rem 2rem;text-align:center;
+  box-shadow:var(--sombra-alta)}
+.tarjeta-cifra .g{font-family:Georgia,serif;font-size:clamp(3rem,9vw,4.2rem);line-height:1;color:var(--acento-cla)}
+.tarjeta-cifra .r{margin-top:.7rem;font-size:.85rem;color:rgba(247,241,230,.72)}
+
+.carta .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1.1rem;margin-top:3rem}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:2rem 1.7rem;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;box-shadow:var(--sombra)}
+.card:hover{transform:translateY(-6px) scale(1.012);box-shadow:var(--sombra-alta)}
+.card .ico{width:46px;height:46px;border-radius:13px;background:var(--crema-2);display:grid;place-items:center;margin-bottom:1.1rem}
+.card .ico svg{width:24px;height:24px;stroke:var(--primario);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.2rem;margin-bottom:.5rem}
+.card p{color:var(--gris);font-size:.95rem}
+.badge{display:inline-block;margin-top:.9rem;padding:.28rem .7rem;border-radius:30px;background:rgba(107,122,79,.13);
+  color:var(--verde);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+.badge.acc{background:rgba(200,132,45,.15);color:var(--terracota)}
+
+.confianza{background:var(--primario);color:var(--secundario)}
+.confianza h2{color:var(--secundario)}
+.confianza .sub{color:rgba(247,241,230,.72)}
+.confianza .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:3rem}
+.bloque{background:rgba(247,241,230,.07);border:1px solid rgba(247,241,230,.14);border-radius:18px;padding:2rem 1.7rem;text-align:center}
+.bloque .st{color:var(--acento-cla);letter-spacing:.16em;font-size:1.1rem}
+.bloque .gd{font-family:Georgia,serif;font-size:clamp(2.2rem,6.5vw,3rem);line-height:1;margin:.7rem 0 .3rem;color:var(--secundario)}
+.bloque p{color:rgba(247,241,230,.7);font-size:.92rem;margin-top:.5rem}
+.honesto{margin-top:2.6rem;padding:1.3rem 1.5rem;border-left:2px solid var(--acento);
+  color:rgba(247,241,230,.78);font-size:.93rem;background:rgba(0,0,0,.14);border-radius:0 12px 12px 0}
+.honesto b{color:var(--acento-cla)}
+
+.contacto .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);margin-top:3rem}
+@media(max-width:880px){.contacto .cols{grid-template-columns:1fr}}
+.dato{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato .k{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acento);min-width:96px;padding-top:.28rem}
+.dato .v{font-size:1.02rem}
+.dato .v a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.dato .v small{display:block;color:var(--gris);font-size:.86rem;margin-top:.2rem}
+.mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);box-shadow:var(--sombra);
+  background:linear-gradient(150deg,#EFE3CD 0%,#E1CFA9 100%);min-height:280px;display:grid;place-items:center;text-align:center;padding:2.2rem}
+.mapa .p{font-family:Georgia,serif;font-size:1.5rem;margin-bottom:.6rem}
+.mapa p{color:var(--gris);font-size:.95rem;margin-bottom:1.4rem}
+.btn-3{background:var(--primario);color:var(--secundario);box-shadow:0 8px 22px rgba(74,44,26,.28)}
+.btn-3:hover{transform:translateY(-3px);background:var(--primario-osc)}
+
+.cierre{background:var(--crema-2);text-align:center}
+.cierre h2{max-width:26rem;margin-inline:auto}
+.cierre .sub{margin-inline:auto}
+.cierre .acts{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
+
+footer{background:var(--primario-osc);color:rgba(247,241,230,.72);padding:3.4rem 0 6.5rem;text-align:center;font-size:.9rem}
+footer .m{font-family:Georgia,serif;font-size:1.3rem;color:var(--secundario);margin-bottom:.5rem}
+footer .agencia{margin-top:1.8rem;padding-top:1.6rem;border-top:1px solid rgba(247,241,230,.14);
+  font-size:.82rem;color:rgba(247,241,230,.55);max-width:46rem;margin-inline:auto}
+footer .agencia b{color:var(--acento-cla)}
+
+.sello{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);z-index:3;pointer-events:none;
+  font-family:Georgia,serif;font-size:clamp(5rem,20vw,11rem);color:rgba(42,24,16,.055);letter-spacing:.2em}
+.barra-fija{position:fixed;left:0;right:0;bottom:0;z-index:58;display:flex;gap:.5rem;padding:.6rem clamp(.7rem,3vw,1.2rem);
+  background:rgba(46,27,16,.96);backdrop-filter:blur(8px);box-shadow:0 -6px 24px rgba(42,24,16,.26)}
+.barra-fija a{flex:1;text-align:center;padding:.85rem;border-radius:30px;text-decoration:none;font-weight:700;
+  font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;transition:transform .22s,background .22s}
+.barra-fija a:active{transform:scale(.97)}
+.barra-fija .l{background:var(--acento);color:#241408}
+.barra-fija .m{border:1px solid rgba(247,241,230,.34);color:var(--secundario)}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="load" title="Pulsa para entrar">
+  <div class="esc">
+    <svg viewBox="0 0 200 160" aria-hidden="true">
+      <path class="calle c1" d="M10 100 H112"/>
+      <path class="calle c2" d="M112 20 V100"/>
+      <g class="placa p1">
+        <rect x="14" y="82" width="66" height="15" rx="3" fill="#2E1B10" stroke="var(--acento-cla)" stroke-width="1"/>
+        <text x="47" y="93" text-anchor="middle" font-size="7" fill="#F7F1E6" font-family="Georgia,serif">CIRILO MORENO</text>
+      </g>
+      <g class="placa p2">
+        <rect x="120" y="30" width="15" height="66" rx="3" fill="#2E1B10" stroke="var(--acento-cla)" stroke-width="1"/>
+        <text x="127.5" y="63" text-anchor="middle" font-size="6.4" fill="#F7F1E6" font-family="Georgia,serif" transform="rotate(-90 127.5 63)">PDTE. ALVEAR</text>
+      </g>
+      <g class="taza2">
+        <path d="M96 108 H130 V122 Q130 132 118 132 H108 Q96 132 96 122 Z" fill="none" stroke="var(--acento-cla)" stroke-width="2.6" stroke-linejoin="round"/>
+        <path d="M130 113 Q142 113 142 120 Q142 127 130 127" fill="none" stroke="var(--acento-cla)" stroke-width="2.6"/>
+      </g>
+      <path class="vapor2 w1" d="M104 100 Q110 92 104 84"/>
+      <path class="vapor2 w2" d="M113 98 Q119 89 113 80"/>
+      <path class="vapor2 w3" d="M122 100 Q128 92 122 84"/>
+    </svg>
+    <div class="nom">La Esquina</div>
+    <div class="sub2">Cirilo Moreno · Las Palmas</div>
+  </div>
+</div>
+
+<div id="prog"></div>
+<div class="sello">DEMO</div>
+
+<nav id="nav">
+  <div class="wrap">
+    <span class="marca">La Esquina</span>
+    <span class="enl">
+      <a href="#sobre">El local</a>
+      <a href="#carta">Carta</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#contacto">Cómo llegar</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="capa" id="capa"></div>
+  <div class="esquinas" aria-hidden="true">
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0 62 H38 V100" fill="none" stroke="#F7F1E6" stroke-width="0.3" opacity=".5"/></svg>
+  </div>
+  <div class="wrap">
+    <div class="antes">C. Cirilo Moreno, 6 · esquina con Presidente Alvear</div>
+    <h1>
+      <span class="word"><i style="animation-delay:2.65s">La</i></span>
+      <span class="word"><i style="animation-delay:2.78s">Esquina</i></span>
+    </h1>
+    <p class="lead">Desayunos y cocina española de mediodía en la esquina de Cirilo Moreno con Presidente Alvear. Con opciones sin lactosa en carta y un local pensado para que cualquiera entre sin barreras, sea cual sea su movilidad.</p>
+    <div class="hero-acts">
+      <a class="btn btn-1" href="tel:+34647744460">Llamar al 647 74 44 60</a>
+      <a class="btn btn-2" href="#carta">Ver la carta</a>
+    </div>
+    <div class="est">
+      <div class="u">
+        <div class="estrellas">★★★★★</div>
+        <div class="n"><span class="count" data-to="47" data-dec="1">0</span></div>
+        <div class="e">Valoración en Google</div>
+      </div>
+      <div class="u">
+        <div class="n"><span class="count" data-to="66">0</span></div>
+        <div class="e">Reseñas de clientes</div>
+      </div>
+      <div class="u">
+        <div class="n">Esquina</div>
+        <div class="e">Cirilo Moreno ∡ Pdte. Alvear</div>
+      </div>
+    </div>
+    <div class="horario-gen"><span class="punto"></span><span>Llama y te decimos si estamos abiertos ahora mismo</span></div>
+  </div>
+</header>
+
+<main>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">El local</div>
+      <h2>La cafetería que hace<br>esquina en el barrio</h2>
+    </div>
+    <div class="cols">
+      <div class="rev">
+        <p>La Esquina está donde dice su nombre: en el punto exacto donde la calle Cirilo Moreno se cruza con Presidente Alvear, en pleno barrio de Las Palmas de Gran Canaria. El sitio de siempre para desayunar antes de entrar a trabajar, o para resolver el mediodía con cocina española sin salir del barrio.</p>
+        <p>En la carta hay opciones sin lactosa, y el local está pensado para que se pueda entrar sin barreras, con acceso adaptado para personas con movilidad reducida. Son detalles que mucha gente busca antes de decidir dónde sentarse, y que hoy no aparecen escritos en ningún sitio con el nombre de La Esquina.</p>
+        <p>Con 4,7 sobre 5 y 66 reseñas en Google, la reputación del barrio ya está hecha. Lo que falta es un sitio propio en internet donde se pueda encontrar.</p>
+      </div>
+      <div class="rev">
+        <div class="tarjeta-cifra">
+          <div class="estrellas">★★★★★</div>
+          <div class="g"><span class="count" data-to="47" data-dec="1">0</span></div>
+          <div class="r"><span class="count" data-to="66">0</span> reseñas en Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Lo que se sirve</div>
+      <h2>Carta</h2>
+      <p class="sub">Desayunos y cocina española de mediodía, con opciones sin lactosa. Esta es la estructura de la carta: en la web definitiva se publican los platos y precios actualizados, y se cambian cuando ustedes quieran.</p>
+    </div>
+    <div class="rejilla">
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z"/><path d="M17 9h1.6a2.4 2.4 0 0 1 0 4.8H17"/><path d="M7 4.5V3M11 4.5V3"/></svg></div>
+        <h3>Desayunos</h3>
+        <p>El arranque del día del barrio. Café, tostado y una mesa junto a la ventana, en la esquina de siempre.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5 13.9 9l4.6.4-3.5 3 1.1 4.5L12 14.6 7.9 16.9 9 12.4l-3.5-3L10.1 9Z"/></svg></div>
+        <h3>Cocina española de mediodía</h3>
+        <p>Comida casera para resolver la jornada, sin salir de Cirilo Moreno.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c0-6 3-9 8-9 0 5-3 9-8 9Z"/><path d="M12 21c0-6-3-9-8-9 0 5 3 9 8 9Z"/><path d="M12 21v-6"/></svg></div>
+        <h3>Opciones sin lactosa</h3>
+        <p>En carta, no como excepción aparte. Quien no toma lactosa también tiene sitio en La Esquina.</p>
+        <span class="badge">Sin lactosa</span>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V10l7-6 7 6v10"/><path d="M9 20v-6h6v6"/></svg></div>
+        <h3>Local accesible</h3>
+        <p>Acceso adaptado para personas con movilidad reducida, sin escalones que resolver antes de sentarse.</p>
+        <span class="badge acc">Accesible</span>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17h16M6 17V9a6 6 0 0 1 12 0v8M9 6.5 12 3l3 3.5"/></svg></div>
+        <h3>Café y sobremesa</h3>
+        <p>El motivo por el que la gente se queda un rato más en la esquina, antes de volver a la calle.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18l-2 9a2 2 0 0 1-2 1.6H7A2 2 0 0 1 5 18Z"/><path d="M6 9V7a6 6 0 0 1 12 0v2"/></svg></div>
+        <h3>Para llevar</h3>
+        <p>Para quien va con prisa entre Cirilo Moreno y Presidente Alvear y necesita el café de pie.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="confianza" id="resenas">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Reseñas reales</div>
+      <h2>66 reseñas y un 4,7</h2>
+      <p class="sub">Estas son las cifras reales de su ficha de Google a día de hoy. No inventamos frases: en la web definitiva se traen las reseñas literales de Google y se actualizan solas.</p>
+    </div>
+    <div class="rejilla">
+      <div class="bloque rev">
+        <div class="st">★★★★★</div>
+        <div class="gd"><span class="count" data-to="47" data-dec="1">0</span></div>
+        <p>Valoración media sobre 5 en Google, en una cafetería de barrio con clientela de toda la vida.</p>
+      </div>
+      <div class="bloque rev">
+        <div class="st">★★★★★</div>
+        <div class="gd"><span class="count" data-to="66">0</span></div>
+        <p>Reseñas de clientes reales. Para una cafetería de esquina, ese volumen es una carta de presentación.</p>
+      </div>
+      <div class="bloque rev">
+        <div class="st">★★★★★</div>
+        <div class="gd">Barrio</div>
+        <p>Trabajando en Cirilo Moreno, esquina con Presidente Alvear, Las Palmas de Gran Canaria.</p>
+      </div>
+    </div>
+    <div class="honesto rev">
+      <b>Una cosa que conviene saber:</b> hoy, quien busca «La Esquina» en internet llega a <em>cafeteria-la-esquina.eatbu.com</em>, un subdominio gratuito de la plataforma EATBU. Esa página no es suya: el diseño, los datos y el propio dominio pertenecen a la plataforma, no a La Esquina. Ni la carta, ni el sin lactosa, ni la accesibilidad del local están contados con su propia voz en ningún sitio. Eso es exactamente lo que arregla una web propia.
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Cómo llegar</div>
+      <h2>Cirilo Moreno, 6 · esquina Pdte. Alvear</h2>
+    </div>
+    <div class="cols">
+      <div class="rev">
+        <div class="dato">
+          <div class="k">Dirección</div>
+          <div class="v">C. Cirilo Moreno, 6<small>35007 Las Palmas de Gran Canaria</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Teléfono</div>
+          <div class="v"><a href="tel:+34647744460">647 74 44 60</a><small>Para reservar mesa o preguntar por el horario de hoy</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Correo</div>
+          <div class="v"><a href="mailto:a-laesquina@hotmail.com">a-laesquina@hotmail.com</a><small>Para pedidos de grupo o cualquier consulta por escrito</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Acceso</div>
+          <div class="v">Local accesible<small>Entrada adaptada para movilidad reducida, sin escalones</small></div>
+        </div>
+      </div>
+      <div class="rev">
+        <div class="mapa">
+          <div>
+            <div class="p">La esquina exacta</div>
+            <p>Donde Cirilo Moreno cruza con Presidente Alvear, en pleno barrio de Las Palmas de Gran Canaria. Fácil de encontrar, fácil de recordar.</p>
+            <a class="btn btn-3" href="https://maps.google.com/?q=La+Esquina+Calle+Cirilo+Moreno+6+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">La Esquina</div>
+      <h2>El sitio de siempre, con web propia</h2>
+      <p class="sub">En Cirilo Moreno 6, esquina con Presidente Alvear. Llame y pregunte por el horario de hoy, o pásese sin más.</p>
+      <div class="acts">
+        <a class="btn btn-1" href="tel:+34647744460">Llamar al 647 74 44 60</a>
+        <a class="btn btn-3" href="https://maps.google.com/?q=La+Esquina+Calle+Cirilo+Moreno+6+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="m">La Esquina</div>
+    <div>C. Cirilo Moreno, 6 · esquina Pdte. Alvear · 35007 Las Palmas de Gran Canaria · 647 74 44 60</div>
+    <div class="agencia">
+      Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> para La Esquina, con sus datos públicos de Google.
+      Esta web puede ser suya. · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · elevenprime.es
+    </div>
+  </div>
+</footer>
+
+<div class="barra-fija">
+  <a class="l" href="tel:+34647744460">Llamar ahora</a>
+  <a class="m" href="https://maps.google.com/?q=La+Esquina+Calle+Cirilo+Moreno+6+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<noscript><style>
+  .rev{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.horario-gen,.antes{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+
+<script>
+/* ------- el momento firma se salta con clic o tecla ------- */
+(function(){
+  var l=document.getElementById('load');
+  if(!l) return;
+  function fuera(){ l.style.setProperty('opacity','0','important'); l.style.setProperty('visibility','hidden','important'); }
+  l.addEventListener('click',fuera);
+  window.addEventListener('keydown',fuera,{once:true});
+  setTimeout(fuera,3100);
+})();
+
+/* ------- navegación compacta, barra de progreso y parallax ------- */
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog'), capa=document.getElementById('capa'), pend=false;
+  function pinta(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('min', y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(prog) prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    if(capa && y<window.innerHeight) capa.style.transform='translate3d(0,'+(y*0.13)+'px,0)';
+    pend=false;
+  }
+  window.addEventListener('scroll',function(){ if(!pend){pend=true;requestAnimationFrame(pinta);} },{passive:true});
+  pinta();
+})();
+
+/* ------- revelado por secciones ------- */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(e,i){ e.style.transitionDelay=(i%3*90)+'ms'; io.observe(e); });
+})();
+
+/* ------- contadores ------- */
+(function(){
+  function formatea(v){ return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1300;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), v=Math.round(to*(1-Math.pow(1-p,3)));
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',') : formatea(v);
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.count').forEach(anima); return;
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); io.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(function(e){ io.observe(e); });
+})();
+
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
