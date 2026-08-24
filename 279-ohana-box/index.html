@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ohana Box · Crosstraining en Maspalomas, San Agustín</title>
+<meta name="description" content="Ohana Box, C. los Jazmines 4, Maspalomas (San Agustín). Crosstraining y entrenamiento funcional en grupo, a 200 m de la playa. 4,9 en Google con 72 reseñas.">
+<meta name="theme-color" content="#14202B">
+<style>
+:root{
+  --primario:#14202B; --primario-2:#0A1017; --secundario:#F1F3F4; --secundario-2:#E3E7E8;
+  --acento:#D64933; --acento-2:#B33A24; --gris:#5B6570; --gris-claro:rgba(241,243,244,.68);
+  --linea:rgba(20,32,43,.12); --linea-clara:rgba(241,243,244,.16);
+  --sombra:0 2px 10px rgba(10,16,23,.08), 0 16px 36px rgba(10,16,23,.12);
+  --sombra-alta:0 8px 22px rgba(10,16,23,.16), 0 30px 64px rgba(10,16,23,.24);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;background:var(--secundario);color:var(--primario);line-height:1.65;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-weight:800;line-height:1.04;letter-spacing:-.03em}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{width:min(1160px,91vw);margin-inline:auto}
+.eyebrow{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--acento);font-weight:700}
+
+/* ================= MOMENTO FIRMA: la barra se carga con discos y late como un pulso, el nombre queda montado ================= */
+#load{position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;display:grid;place-items:center;
+  background:radial-gradient(120% 90% at 50% 38%,#1D2E3D 0%,#14202B 55%,#080D12 100%);
+  transition:opacity .55s ease,visibility .55s ease}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem;position:relative}
+.firma svg{width:min(260px,64vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.barra-svg{fill:var(--secundario);opacity:0;transform-box:fill-box;transform-origin:50% 50%;
+  animation:barraE .35s ease .05s forwards}
+@keyframes barraE{to{opacity:1}}
+.disco{fill:var(--acento);stroke:var(--acento-2);stroke-width:1.2;transform-box:fill-box;transform-origin:50% 50%}
+.dI1{animation:entraI .55s cubic-bezier(.34,1.4,.4,1) .18s both}
+.dI2{fill:var(--secundario);stroke:var(--linea);animation:entraI .5s cubic-bezier(.34,1.4,.4,1) .4s both}
+.dD1{animation:entraD .55s cubic-bezier(.34,1.4,.4,1) .18s both}
+.dD2{fill:var(--secundario);stroke:var(--linea);animation:entraD .5s cubic-bezier(.34,1.4,.4,1) .4s both}
+@keyframes entraI{0%{transform:translateX(-180px);opacity:0}60%{opacity:1}100%{transform:translateX(0);opacity:1}}
+@keyframes entraD{0%{transform:translateX(180px);opacity:0}60%{opacity:1}100%{transform:translateX(0);opacity:1}}
+.pulso{fill:none;stroke:var(--acento);stroke-width:2;opacity:0;transform-box:fill-box;transform-origin:50% 50%;
+  animation:latir 1s cubic-bezier(.2,.7,.4,1) .78s 2}
+@keyframes latir{0%{transform:scale(.4);opacity:.85}100%{transform:scale(3.4);opacity:0}}
+.firma .nom{margin-top:1.15rem;font-weight:800;letter-spacing:.06em;color:var(--secundario);
+  font-size:clamp(1.5rem,5.4vw,2.35rem);opacity:0;transform:translate3d(0,12px,0);
+  animation:brota .55s cubic-bezier(.22,1,.36,1) 1.15s forwards}
+.firma .sub2{margin-top:.4rem;color:var(--acento);font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;
+  opacity:0;animation:brota .55s ease 1.32s forwards}
+.firma .skip{margin-top:1.9rem;font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;
+  color:rgba(241,243,244,.4);opacity:0;animation:brota .5s ease 1.6s forwards}
+@keyframes brota{to{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){
+  #load{transition:opacity .2s ease}
+  #load *{animation-duration:.01ms!important;animation-delay:0s!important}
+}
+
+/* ================= progreso + nav ================= */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acento),var(--acento-2));z-index:60;will-change:transform}
+nav{position:fixed;top:0;left:0;right:0;z-index:55;padding:1.2rem 0;transition:padding .3s ease,background .3s ease,box-shadow .3s ease}
+nav.min{padding:.65rem 0;background:rgba(20,32,43,.95);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--linea-clara)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+nav .marca{font-size:1.02rem;letter-spacing:.05em;color:var(--secundario);font-weight:800}
+nav .marca span{color:var(--acento)}
+nav .enl{display:flex;gap:1.6rem;font-size:.76rem;letter-spacing:.12em;text-transform:uppercase}
+nav .enl a{color:rgba(241,243,244,.82);transition:color .25s}
+nav .enl a:hover{color:var(--acento)}
+@media(max-width:780px){nav .enl{display:none}}
+
+/* ================= HERO ================= */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:7rem 0 8rem;overflow:hidden;color:var(--secundario);background:var(--primario)}
+.hero .capa{position:absolute;inset:-8% 0 0;z-index:0;will-change:transform;
+  background:
+    radial-gradient(65% 48% at 18% 14%,rgba(214,73,51,.28) 0%,transparent 62%),
+    radial-gradient(58% 42% at 86% 82%,rgba(214,73,51,.16) 0%,transparent 60%),
+    linear-gradient(165deg,#1B2A38 0%,#14202B 46%,#080D12 100%)}
+.hero .grano{position:absolute;inset:0;z-index:1;opacity:.5;
+  background-image:radial-gradient(rgba(241,243,244,.07) 1px,transparent 1px);background-size:26px 26px}
+.hero .wrap{position:relative;z-index:2}
+.hero .antes{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--acento);
+  opacity:0;animation:llega .7s ease 1.75s forwards}
+.hero h1{font-size:clamp(2.5rem,9vw,5.4rem);line-height:1;margin:1.05rem 0 .2rem;letter-spacing:-.02em;text-transform:uppercase}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translate3d(0,105%,0);
+  animation:palabra .85s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes palabra{to{transform:none}}
+.hero h1 em{font-style:normal;color:var(--acento)}
+.hero .marca-hija{display:block;font-size:clamp(1rem,2.6vw,1.28rem);color:var(--acento);letter-spacing:.03em;margin-top:.6rem;
+  opacity:0;animation:llega .8s ease 2.1s forwards}
+.hero .lead{max-width:41rem;margin:1.35rem auto 0;color:rgba(241,243,244,.85);font-size:clamp(1rem,2.3vw,1.14rem);
+  opacity:0;animation:llega .8s ease 2.28s forwards}
+.hero-acts{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.1rem;
+  opacity:0;animation:llega .8s ease 2.46s forwards}
+@keyframes llega{to{opacity:1}}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:1rem 2rem;border-radius:40px;font-weight:700;
+  font-size:.76rem;letter-spacing:.14em;text-transform:uppercase;transition:transform .25s cubic-bezier(.22,1,.36,1),background .25s,color .25s,box-shadow .25s,border-color .25s}
+.btn-1{background:var(--acento);color:#fff;box-shadow:0 8px 24px rgba(214,73,51,.36)}
+.btn-1:hover{transform:translateY(-3px);background:#E3573C;box-shadow:0 14px 32px rgba(214,73,51,.46)}
+.btn-2{border:1px solid rgba(241,243,244,.35);color:var(--secundario)}
+.btn-2:hover{transform:translateY(-3px);background:rgba(241,243,244,.1);border-color:var(--secundario)}
+.btn-3{background:var(--primario);color:var(--secundario);box-shadow:0 8px 22px rgba(20,32,43,.3)}
+.btn-3:hover{transform:translateY(-3px);background:var(--primario-2)}
+.est{display:flex;gap:2.3rem;justify-content:center;flex-wrap:wrap;margin-top:2.9rem;
+  opacity:0;animation:llega .8s ease 2.64s forwards}
+.est .u{text-align:center}
+.est .n{font-size:clamp(1.9rem,5.5vw,2.7rem);font-weight:800;color:var(--acento);line-height:1}
+.est .e{font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(241,243,244,.62);margin-top:.45rem}
+.estrellas{color:var(--acento);letter-spacing:.14em;font-size:1.05rem}
+.chip{display:inline-flex;align-items:center;gap:.55rem;margin-top:2.3rem;padding:.55rem 1.2rem;
+  border:1px solid rgba(241,243,244,.22);border-radius:40px;font-size:.8rem;color:rgba(241,243,244,.9);
+  background:rgba(0,0,0,.16);opacity:0;animation:llega .8s ease 2.8s forwards}
+.chip .p{width:8px;height:8px;border-radius:50%;background:var(--acento)}
+
+/* ================= secciones ================= */
+section{padding:clamp(4.2rem,10vw,7.5rem) 0;position:relative}
+.t{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--acento-2);margin-bottom:1rem}
+h2{font-size:clamp(1.85rem,5.1vw,3rem);line-height:1.08;letter-spacing:-.02em;text-transform:uppercase}
+.sub{color:var(--gris);max-width:44rem;margin-top:1.1rem;font-size:1.03rem}
+.rev{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rev.on{opacity:1;transform:none}
+
+.sobre .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;margin-top:2.6rem}
+@media(max-width:880px){.sobre .cols{grid-template-columns:1fr}}
+.sobre p{color:var(--gris);font-size:1.05rem;margin-top:1.1rem}
+.sobre .nota-ohana{margin-top:1.6rem;padding:1.1rem 1.4rem;border-left:3px solid var(--acento);
+  background:var(--secundario-2);border-radius:0 12px 12px 0;font-size:.92rem;color:var(--primario)}
+.sobre .nota-ohana b{color:var(--acento-2)}
+.tarjeta-cifra{background:var(--primario);color:var(--secundario);border-radius:20px;padding:2.4rem 2rem;text-align:center;
+  box-shadow:var(--sombra-alta)}
+.tarjeta-cifra .g{font-size:clamp(2.6rem,8vw,3.7rem);font-weight:800;line-height:1;color:var(--acento)}
+.tarjeta-cifra .r{margin-top:.7rem;font-size:.85rem;color:rgba(241,243,244,.72)}
+
+.entrenamiento{background:var(--secundario-2)}
+.entrenamiento .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(258px,1fr));gap:1.1rem;margin-top:3rem}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:2rem 1.7rem;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;box-shadow:var(--sombra)}
+.card:hover{transform:translateY(-6px) scale(1.012);box-shadow:var(--sombra-alta)}
+.card .ico{width:46px;height:46px;border-radius:13px;background:var(--secundario-2);display:grid;place-items:center;margin-bottom:1.1rem}
+.card .ico svg{width:24px;height:24px;stroke:var(--primario);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.15rem;margin-bottom:.5rem;text-transform:none;letter-spacing:0}
+.card p{color:var(--gris);font-size:.95rem}
+.entrenamiento .nota{margin-top:2.4rem;font-size:.85rem;color:var(--gris)}
+
+.confianza{background:var(--primario);color:var(--secundario)}
+.confianza h2{color:var(--secundario)}
+.confianza .sub{color:rgba(241,243,244,.72)}
+.confianza .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:3rem}
+.bloque{background:rgba(241,243,244,.06);border:1px solid rgba(241,243,244,.14);border-radius:18px;padding:2rem 1.7rem;text-align:center}
+.bloque .st{color:var(--acento);letter-spacing:.16em;font-size:1.1rem}
+.bloque .gd{font-size:clamp(2.1rem,6.5vw,3rem);font-weight:800;line-height:1;margin:.7rem 0 .3rem;color:var(--secundario)}
+.bloque p{color:rgba(241,243,244,.7);font-size:.92rem;margin-top:.5rem}
+.honesto{margin-top:2.6rem;padding:1.5rem 1.6rem;border-left:3px solid var(--acento);
+  color:rgba(241,243,244,.85);font-size:.94rem;background:rgba(0,0,0,.18);border-radius:0 12px 12px 0}
+.honesto b{color:var(--acento)}
+
+.contacto .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);margin-top:3rem}
+@media(max-width:880px){.contacto .cols{grid-template-columns:1fr}}
+.dato{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato .k{font-size:.66rem;letter-spacing:.18em;text-transform:uppercase;color:var(--acento-2);min-width:96px;padding-top:.28rem}
+.dato .v{font-size:1.02rem}
+.dato .v a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.dato .v small{display:block;color:var(--gris);font-size:.86rem;margin-top:.2rem}
+.mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);box-shadow:var(--sombra);
+  background:linear-gradient(150deg,#1B2A38,#14202B);color:var(--secundario);min-height:280px;display:grid;place-items:center;text-align:center;padding:2.2rem;transition:transform .4s}
+.mapa:hover{transform:scale(1.012)}
+.mapa .p{font-size:1.5rem;font-weight:800;margin-bottom:.6rem}
+.mapa p{color:rgba(241,243,244,.75);font-size:.95rem;margin-bottom:1.4rem}
+
+.cierre{background:var(--secundario-2);text-align:center}
+.cierre h2{max-width:28rem;margin-inline:auto}
+.cierre .sub{margin-inline:auto}
+.cierre .acts{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
+
+footer{background:var(--primario-2);color:rgba(241,243,244,.72);padding:3.4rem 0 6.5rem;text-align:center;font-size:.9rem}
+footer .m{font-size:1.3rem;font-weight:800;color:var(--secundario);margin-bottom:.5rem}
+footer .agencia{margin-top:1.8rem;padding-top:1.6rem;border-top:1px solid rgba(241,243,244,.14);
+  font-size:.82rem;color:rgba(241,243,244,.55);max-width:46rem;margin-inline:auto}
+footer .agencia b{color:var(--acento)}
+
+.sello{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);z-index:3;pointer-events:none;
+  font-weight:800;font-size:clamp(5rem,20vw,11rem);color:rgba(20,32,43,.045);letter-spacing:.2em}
+.barra-fija{position:fixed;left:0;right:0;bottom:0;z-index:58;display:flex;gap:.5rem;padding:.6rem clamp(.7rem,3vw,1.2rem);
+  background:rgba(10,16,23,.96);backdrop-filter:blur(8px);box-shadow:0 -6px 24px rgba(10,16,23,.28)}
+.barra-fija a{flex:1;text-align:center;padding:.85rem;border-radius:30px;font-weight:700;
+  font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;transition:transform .22s,background .22s}
+.barra-fija a:active{transform:scale(.97)}
+.barra-fija .l{background:var(--acento);color:#fff}
+.barra-fija .m{border:1px solid rgba(241,243,244,.34);color:var(--secundario)}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="load" title="Pulsa para entrar">
+  <div class="firma">
+    <svg viewBox="0 0 220 90" aria-hidden="true">
+      <rect class="barra-svg" x="46" y="39" width="128" height="12" rx="6"/>
+      <circle class="disco dI1" cx="34" cy="45" r="27"/>
+      <circle class="disco dI2" cx="34" cy="45" r="15"/>
+      <circle class="disco dD1" cx="186" cy="45" r="27"/>
+      <circle class="disco dD2" cx="186" cy="45" r="15"/>
+      <circle class="pulso" cx="110" cy="45" r="8"/>
+    </svg>
+    <div class="nom">OHANA BOX</div>
+    <div class="sub2">Crosstraining · Maspalomas</div>
+    <div class="skip">Toca para entrar</div>
+  </div>
+</div>
+
+<div id="prog"></div>
+<div class="sello">DEMO</div>
+
+<nav id="nav">
+  <div class="wrap">
+    <span class="marca">OHANA<span>BOX</span></span>
+    <span class="enl">
+      <a href="#sobre">El box</a>
+      <a href="#entrenamiento">Entrenamiento</a>
+      <a href="#confianza">Reseñas</a>
+      <a href="#contacto">Cómo llegar</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="capa" id="capa"></div>
+  <div class="grano"></div>
+  <div class="wrap">
+    <div class="antes">C. los Jazmines, 4 · Maspalomas (San Agustín)</div>
+    <h1>
+      <span class="word"><i style="animation-delay:1.85s">Ohana</i></span>
+      <span class="word"><i style="animation-delay:1.98s"><em>Box</em></i></span>
+    </h1>
+    <span class="marca-hija">«Ohana» significa familia — así se entrena aquí</span>
+    <p class="lead">Crosstraining y entrenamiento funcional en grupo, a unos 200&nbsp;m de la playa y 80&nbsp;m del parque de la Dama de Elche. 4,9 en Google con 72 reseñas.</p>
+    <div class="hero-acts">
+      <a class="btn btn-1" href="mailto:box.ohana@gmail.com">Escribirnos</a>
+      <a class="btn btn-2" href="#entrenamiento">Ver el box</a>
+    </div>
+    <div class="est">
+      <div class="u">
+        <div class="estrellas">★★★★★</div>
+        <div class="n"><span class="count" data-to="49" data-dec="1">0</span></div>
+        <div class="e">Valoración en Google</div>
+      </div>
+      <div class="u">
+        <div class="n"><span class="count" data-to="72">0</span></div>
+        <div class="e">Reseñas de socios</div>
+      </div>
+      <div class="u">
+        <div class="n">San Agustín</div>
+        <div class="e">Maspalomas</div>
+      </div>
+    </div>
+    <div class="chip"><span class="p"></span><span>Plazas limitadas · reserva obligatoria</span></div>
+  </div>
+</header>
+
+<main>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">El box</div>
+      <h2>Crosstraining junto al mar,<br>en San Agustín</h2>
+    </div>
+    <div class="cols">
+      <div class="rev">
+        <p>Ohana Box está en la calle los Jazmines, 4, en la zona de San Agustín, Maspalomas: a unos 200 metros de la playa y a 80 metros del parque de la Dama de Elche. Un sitio pensado para entrenar y salir directos a la costa.</p>
+        <p>Con 4,9 sobre 5 y 72 reseñas en Google, la reputación del box ya está hecha. Las clases funcionan con plazas limitadas y reserva obligatoria, así que cada sesión es en grupo reducido, no en una nave llena de gente entrenando cada uno a su aire.</p>
+        <div class="nota-ohana"><b>Ohana</b> es una palabra hawaiana que significa «familia»: nadie se queda fuera ni se entrena solo. El nombre ya lo dice todo sobre el espíritu del box.</div>
+      </div>
+      <div class="rev">
+        <div class="tarjeta-cifra">
+          <div class="estrellas">★★★★★</div>
+          <div class="g"><span class="count" data-to="49" data-dec="1">0</span></div>
+          <div class="r"><span class="count" data-to="72">0</span> reseñas en Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="entrenamiento" id="entrenamiento">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Cómo se entrena</div>
+      <h2>Entrenamiento funcional en grupo</h2>
+      <p class="sub">Lo que ya se sabe del box a partir de sus datos públicos. En la web definitiva se detalla el cuadro completo de actividades y el horario, tal como ya lo tenéis organizado.</p>
+    </div>
+    <div class="rejilla">
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h4M16 12h4M8 12h8"/><circle cx="5" cy="12" r="2"/><circle cx="19" cy="12" r="2"/></svg></div>
+        <h3>Crosstraining / strength &amp; conditioning</h3>
+        <p>Entrenamiento funcional en grupo, con sesiones guiadas para todos los niveles.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="M9 9h6v6H9Z"/></svg></div>
+        <h3>Plazas limitadas</h3>
+        <p>Reserva obligatoria antes de cada clase: aforo controlado, nunca masificado.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 19h16M6 19V9l6-4 6 4v10"/></svg></div>
+        <h3>Tarifas para residentes</h3>
+        <p>Tarifas especiales para residentes del municipio de San Bartolomé de Tirajana.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="M3 16l9 5 9-5M3 12l9 5 9-5"/></svg></div>
+        <h3>A pie de playa</h3>
+        <p>A 200 m de la playa y 80 m del parque de la Dama de Elche: se entrena y se sale directo a la costa.</p>
+      </article>
+    </div>
+    <p class="nota">Consulta horario y plazas disponibles por email.</p>
+  </div>
+</section>
+
+<section class="confianza" id="confianza">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Reseñas reales</div>
+      <h2>4,9 en Google con 72 reseñas</h2>
+      <p class="sub">Estas son las cifras reales de vuestra ficha de Google a día de hoy. En la web definitiva se integran las reseñas literales y se actualizan solas.</p>
+    </div>
+    <div class="rejilla">
+      <div class="bloque rev">
+        <div class="st">★★★★★</div>
+        <div class="gd"><span class="count" data-to="49" data-dec="1">0</span></div>
+        <p>Valoración media sobre 5 en Google, casi perfecta y sostenida en el tiempo.</p>
+      </div>
+      <div class="bloque rev">
+        <div class="st">★★★★★</div>
+        <div class="gd"><span class="count" data-to="72">0</span></div>
+        <p>Reseñas de socios reales. Para un box de barrio, esa nota con ese volumen no es casualidad.</p>
+      </div>
+      <div class="bloque rev">
+        <div class="st">★★★★★</div>
+        <div class="gd">San Agustín</div>
+        <p>Trabajando junto a la playa, en pleno San Agustín, Maspalomas.</p>
+      </div>
+    </div>
+    <div class="honesto rev">
+      <b>Una cosa que conviene saber:</b> hoy <em>ohanabox.es</em> existe y tiene buen contenido — El Box, el Coach, Actividades, Horario, Tarifas para residentes, Contacto, Localización y Zona de socios. Pero al entrar por https el navegador muestra el aviso de «Conexión no privada / Sitio no seguro»: el certificado instalado es de <em>*.interdominios.com</em> y no cubre vuestro dominio. La web solo carga sin cifrar, por http, y en su código todavía figura el año 2018. Con 4,9 y 72 reseñas, el contenido no es el problema: es que casi nadie llega a verlo antes de darse la vuelta.
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Cómo llegar</div>
+      <h2>C. los Jazmines, 4</h2>
+    </div>
+    <div class="cols">
+      <div class="rev">
+        <div class="dato">
+          <div class="k">Dirección</div>
+          <div class="v">C. los Jazmines, 4<small>35100 Maspalomas, San Bartolomé de Tirajana, Las Palmas</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Teléfono</div>
+          <div class="v"><a href="tel:+34633309305">633 30 93 05</a><small>Dato de contacto del box</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Email</div>
+          <div class="v"><a href="mailto:box.ohana@gmail.com">box.ohana@gmail.com</a><small>Escribid cuando queráis, se responde a la vuelta</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Horario</div>
+          <div class="v">Consulta horario y plazas por email<small>Reserva obligatoria antes de cada clase</small></div>
+        </div>
+      </div>
+      <div class="rev">
+        <div class="mapa">
+          <div>
+            <div class="p">A un paso de la playa</div>
+            <p>En San Agustín, Maspalomas, a 200 m de la costa y 80 m del parque de la Dama de Elche.</p>
+            <a class="btn btn-1" href="https://www.google.com/maps/search/?api=1&query=Ohana+Box+C.+los+Jazmines+4+Maspalomas+Las+Palmas" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Ohana Box</div>
+      <h2>La familia entrena aquí</h2>
+      <p class="sub">En C. los Jazmines 4, Maspalomas, con 4,9 en Google y 72 reseñas que ya lo avalan. Escribid y os contamos plazas.</p>
+      <div class="acts">
+        <a class="btn btn-1" href="mailto:box.ohana@gmail.com">Escribirnos</a>
+        <a class="btn btn-3" href="https://www.google.com/maps/search/?api=1&query=Ohana+Box+C.+los+Jazmines+4+Maspalomas+Las+Palmas" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="m">Ohana Box</div>
+    <div>C. los Jazmines, 4 · 35100 Maspalomas · 633 30 93 05</div>
+    <div class="agencia">
+      Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> para Ohana Box, con sus datos públicos de Google.
+      Esta web puede ser vuestra. · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · elevenprime.es
+    </div>
+  </div>
+</footer>
+
+<div class="barra-fija">
+  <a class="l" href="mailto:box.ohana@gmail.com">Escribirnos</a>
+  <a class="m" href="https://www.google.com/maps/search/?api=1&query=Ohana+Box+C.+los+Jazmines+4+Maspalomas+Las+Palmas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<noscript><style>
+  .rev{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.chip,.antes,.marca-hija{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+
+<script>
+/* ------- el momento firma se salta con clic o tecla ------- */
+(function(){
+  var l=document.getElementById('load');
+  if(!l) return;
+  function fuera(){ l.classList.add('off'); }
+  l.addEventListener('click',fuera);
+  window.addEventListener('keydown',fuera,{once:true});
+  setTimeout(fuera,2900);
+})();
+
+/* ------- navegación compacta, barra de progreso y parallax ------- */
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog'), capa=document.getElementById('capa'), pend=false;
+  function pinta(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('min', y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(prog) prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    if(capa && y<window.innerHeight) capa.style.transform='translate3d(0,'+(y*0.13)+'px,0)';
+    pend=false;
+  }
+  window.addEventListener('scroll',function(){ if(!pend){pend=true;requestAnimationFrame(pinta);} },{passive:true});
+  pinta();
+})();
+
+/* ------- revelado por secciones ------- */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(e,i){ e.style.transitionDelay=(i%3*90)+'ms'; io.observe(e); });
+})();
+
+/* ------- contadores ------- */
+(function(){
+  function formatea(v){ return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1300;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), v=Math.round(to*(1-Math.pow(1-p,3)));
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',') : formatea(v);
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.count').forEach(anima); return;
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); io.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(function(e){ io.observe(e); });
+})();
+
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
