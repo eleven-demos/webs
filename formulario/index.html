@@ -130,6 +130,18 @@
     document.getElementById('asunto').value = 'FORMULARIO decision — lead ' + p.get('id');
   }
   if (p.get('sede')) document.getElementById('sede').value = p.get('sede');
+
+  // (25/08/2026) Este formulario lo comparten todas las sedes y su action apuntaba siempre
+  // al correo de Isaac, asi que las respuestas de un lead de Gran Canaria acababan en un
+  // buzon que no es el de quien le escribio. Cada sede se enruta ahora por ?sede=; la que
+  // no este en la tabla se queda EXACTAMENTE como estaba, para no romper a las demas.
+  var BUZONES = {
+    grancanaria: 'rafa@elevenprime.es'
+  };
+  var buzon = BUZONES[(p.get('sede') || '').toLowerCase().trim()];
+  if (buzon) {
+    document.getElementById('formulario').action = 'https://formsubmit.co/' + buzon;
+  }
   if (p.get('negocio')) document.getElementById('negocio').value = p.get('negocio');
 
   // Mostrar bloques según decisión
