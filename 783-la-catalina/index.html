@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Catalina · Cafetería en Las Palmas de Gran Canaria</title>
+<meta name="description" content="La Catalina, C. Ripoche 1, Las Palmas de Gran Canaria. Cafetería de barrio con 3,7★ y 595 reseñas en Google, un volumen enorme para el sector. Desayunos, cafés, repostería y almuerzos.">
+<meta name="theme-color" content="#A64B2A">
+<style>
+:root{
+  --primario:#A64B2A; --primario-osc:#6E3018; --secundario:#FAF3E8;
+  --acento:#E8A33D; --acento-osc:#B97A1F; --crema-2:#F1E2C9;
+  --tinta:#3A2416; --gris:#7A6857; --cafe:#4A2712;
+  --linea:rgba(58,36,22,.14);
+  --sombra:0 2px 8px rgba(58,36,22,.08), 0 16px 38px rgba(58,36,22,.14);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Helvetica Neue",Arial,sans-serif;background:var(--secundario);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: una taza se llena de café y el vapor traza el nombre al subir ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 38%,#A64B2A 0%,#6E3018 58%,#3A2010 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.3s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(210px,58vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.platillo{fill:rgba(250,243,232,.16);opacity:0;transform-box:fill-box;transform-origin:50% 50%;
+  animation:aparece .5s ease .05s forwards}
+.asa{fill:none;stroke:#FBF6EC;stroke-width:5;stroke-linecap:round;opacity:0;transform-box:fill-box;transform-origin:50% 50%;
+  animation:aparece .5s ease .12s forwards}
+.cuerpo{fill:none;stroke:#FBF6EC;stroke-width:5;stroke-linejoin:round;opacity:0;transform-box:fill-box;transform-origin:50% 50%;
+  animation:aparece .5s ease .05s forwards}
+@keyframes aparece{0%{opacity:0;transform:scale(.92)}100%{opacity:1;transform:scale(1)}}
+.cafe{fill:var(--cafe);transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);
+  animation:llenar .9s cubic-bezier(.4,0,.2,1) .35s forwards;will-change:transform}
+@keyframes llenar{to{transform:scaleY(1)}}
+.vapor{fill:none;stroke:rgba(251,246,236,.85);stroke-width:3;stroke-linecap:round;
+  stroke-dasharray:100;stroke-dashoffset:100;opacity:0;transform-box:fill-box;transform-origin:50% 100%;
+  animation:trazar .8s cubic-bezier(.3,.7,.3,1) forwards, disipar .5s ease forwards;will-change:stroke-dashoffset,opacity}
+.v1{animation-delay:1.15s,1.75s}
+.v2{animation-delay:1.28s,1.9s}
+.v3{animation-delay:1.15s,1.75s}
+@keyframes trazar{0%{opacity:0;stroke-dashoffset:100}15%{opacity:1}100%{opacity:1;stroke-dashoffset:0}}
+@keyframes disipar{to{opacity:0}}
+#load .nombre{
+  color:#FBF6EC;font:400 clamp(1.7rem,6.4vw,2.7rem)/1.16 Georgia,serif;letter-spacing:.02em;
+  margin-top:16px;opacity:0;text-shadow:0 0 30px rgba(232,163,61,.4);
+  animation:surgir .7s ease 1.55s both;
+}
+#load .nombre b{display:block;font-size:.38em;font-weight:400;letter-spacing:.26em;color:var(--acento);margin-top:8px}
+#load .lema{color:rgba(251,246,236,.6);font-size:.66rem;letter-spacing:.3em;margin-top:14px;
+  opacity:0;animation:surgir .7s ease 1.8s both}
+@keyframes surgir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#load .skip{position:absolute;bottom:-54px;left:0;right:0;text-align:center;
+  color:rgba(251,246,236,.32);font-size:.64rem;letter-spacing:.24em;opacity:0;
+  animation:surgir .7s ease 2.05s both}
+
+.cinta{position:fixed;top:15px;left:-46px;z-index:60;transform:rotate(-45deg);
+  background:var(--primario);color:#fff;font-size:.62rem;letter-spacing:.28em;
+  padding:6px 56px;box-shadow:0 6px 18px rgba(0,0,0,.22);pointer-events:none}
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acento),var(--primario));z-index:70;will-change:transform}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;
+  background:rgba(250,243,232,.88);backdrop-filter:blur(10px);
+  border-bottom:1px solid transparent;transition:padding .3s ease,border-color .3s ease}
+nav.min{padding:8px 0;border-bottom-color:var(--linea)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav .marca{font:400 1.05rem/1 Georgia,serif;letter-spacing:.03em;color:var(--primario-osc)}
+nav .marca span{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:.52rem;
+  letter-spacing:.24em;color:var(--gris);margin-top:4px}
+nav ul{display:flex;gap:24px;list-style:none;font-size:.82rem;letter-spacing:.05em}
+nav ul a{text-decoration:none;color:var(--gris);transition:color .25s ease}
+nav ul a:hover{color:var(--primario)}
+nav .cta{display:inline-flex;align-items:center;gap:8px;text-decoration:none;background:var(--primario);color:#fff;
+  padding:10px 20px;border-radius:999px;font-size:.8rem;letter-spacing:.05em;transition:transform .25s ease,background .25s ease}
+nav .cta:hover{transform:translateY(-2px);background:var(--primario-osc)}
+nav .cta svg{width:15px;height:15px}
+@media(max-width:900px){nav ul{display:none}}
+
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:126px 0 130px;overflow:hidden;
+  background:
+    radial-gradient(58% 44% at 18% 22%,rgba(232,163,61,.24),transparent 64%),
+    radial-gradient(52% 44% at 84% 78%,rgba(166,75,42,.20),transparent 64%),
+    linear-gradient(170deg,#FEFAF3 0%,var(--secundario) 48%,var(--crema-2) 100%);
+}
+.hero .capa{position:absolute;inset:-12% -6%;opacity:.5;will-change:transform;
+  background:radial-gradient(34% 28% at 72% 30%,rgba(166,75,42,.14),transparent 70%)}
+.hero .wrap{position:relative;z-index:2}
+.hero .antes{font-size:.66rem;letter-spacing:.3em;color:var(--acento-osc);opacity:0;animation:surgir2 .8s ease .15s both}
+.hero h1{font-size:clamp(2.1rem,7.6vw,4.3rem);line-height:1.08;margin:20px 0 6px;color:var(--primario-osc)}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(104%);
+  animation:subir .85s cubic-bezier(.2,.8,.25,1) forwards}
+@keyframes subir{to{transform:none}}
+.hero h1 em{font-style:italic;color:var(--acento-osc)}
+.lead{max-width:640px;margin:20px auto 0;color:var(--gris);font-size:1.05rem;opacity:0;animation:surgir2 .8s ease .95s both}
+.hero-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;opacity:0;animation:surgir2 .8s ease 1.15s both}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:999px;
+  padding:15px 30px;font-size:.92rem;letter-spacing:.03em;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.btn-p{background:var(--primario);color:#fff;box-shadow:0 10px 26px rgba(166,75,42,.32)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(166,75,42,.38)}
+.btn-s{background:transparent;color:var(--primario-osc);border:1px solid var(--primario)}
+.btn-s:hover{transform:translateY(-3px);background:rgba(166,75,42,.08)}
+.dupla{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:38px;opacity:0;animation:surgir2 .8s ease 1.32s both}
+.pill{display:inline-flex;align-items:center;gap:8px;font-size:.76rem;letter-spacing:.14em;
+  padding:9px 18px;border-radius:999px;background:rgba(255,255,255,.7);border:1px solid var(--linea);color:var(--tinta)}
+.pill i{width:7px;height:7px;border-radius:50%;display:inline-block}
+.pill.p1 i{background:var(--acento)}
+.pill.p2 i{background:var(--primario)}
+.confia{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:44px;opacity:0;animation:surgir2 .8s ease 1.5s both}
+.confia .b{text-align:center}
+.confia .n{font:400 clamp(1.9rem,5.5vw,2.7rem)/1 Georgia,serif;color:var(--primario)}
+.confia .t{font-size:.62rem;letter-spacing:.2em;color:var(--gris);margin-top:6px}
+.estrellas{color:var(--acento-osc);letter-spacing:.14em;font-size:1.05rem}
+.baja{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:.64rem;letter-spacing:.24em;color:var(--gris);opacity:0;animation:surgir2 .8s ease 1.8s both}
+.baja span{display:block;width:1px;height:34px;margin:10px auto 0;
+  background:linear-gradient(var(--gris),transparent);animation:caer2 2s ease-in-out infinite}
+@keyframes caer2{0%,100%{transform:scaleY(.4);opacity:.3}50%{transform:scaleY(1);opacity:.9}}
+@keyframes surgir2{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+section{padding:92px 0;position:relative}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.25,1)}
+.rev.on{opacity:1;transform:none}
+.eyebrow{font-size:.65rem;letter-spacing:.3em;color:var(--acento-osc);margin-bottom:14px}
+h2{font-size:clamp(1.8rem,5vw,2.85rem);line-height:1.14;color:var(--primario-osc)}
+.sub{color:var(--gris);margin-top:16px;max-width:620px}
+
+.sobre .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;margin-top:44px;align-items:start}
+@media(max-width:860px){.sobre .grid{grid-template-columns:1fr}}
+.sobre p.texto{color:var(--gris);font-size:1rem}
+.sobre p.texto+p.texto{margin-top:14px}
+.destaca{border-radius:22px;padding:32px 28px;background:linear-gradient(160deg,#fff,var(--crema-2));
+  border:1px solid var(--linea);box-shadow:var(--sombra)}
+.destaca .tag{display:inline-block;font-size:.62rem;letter-spacing:.22em;color:#fff;background:var(--acento-osc);
+  padding:5px 12px;border-radius:999px;margin-bottom:14px}
+.destaca h3{font-size:1.24rem;color:var(--primario-osc)}
+.destaca p{color:var(--gris);margin-top:12px;font-size:.93rem}
+.aviso-web{margin-top:36px;padding:22px 26px;border-radius:18px;background:var(--primario-osc);color:#fff;
+  display:flex;gap:16px;align-items:flex-start;box-shadow:var(--sombra)}
+.aviso-web svg{width:22px;height:22px;flex:0 0 22px;stroke:var(--acento);fill:none;stroke-width:1.7;margin-top:2px}
+.aviso-web p{color:rgba(255,255,255,.84);font-size:.92rem}
+.aviso-web b{color:var(--acento)}
+
+.servicios{background:linear-gradient(180deg,var(--crema-2),var(--secundario))}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:22px;margin-top:44px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 26px;position:relative;
+  transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease}
+.card:hover{transform:translateY(-7px);box-shadow:var(--sombra)}
+.card.top{border:1px solid var(--acento);background:linear-gradient(160deg,#fff,rgba(232,163,61,.09))}
+.card .badge{position:absolute;top:-11px;right:20px;background:var(--acento);color:#3A2708;
+  font-size:.6rem;letter-spacing:.14em;padding:5px 12px;border-radius:999px;box-shadow:0 6px 14px rgba(232,163,61,.35)}
+.card .ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;margin-bottom:18px;background:rgba(166,75,42,.13)}
+.card.top .ico{background:rgba(232,163,61,.22)}
+.card .ico svg{width:22px;height:22px;fill:none;stroke:var(--primario);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card.top .ico svg{stroke:var(--acento-osc)}
+.card h3{font-size:1.08rem;color:var(--primario-osc)}
+.card p{color:var(--gris);font-size:.92rem;margin-top:10px}
+
+.prueba{background:var(--primario-osc);color:#fff}
+.prueba h2{color:#fff}
+.prueba .sub{color:rgba(255,255,255,.68)}
+.quotes{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:22px;margin-top:44px}
+.q{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);border-radius:20px;padding:28px 26px}
+.q .st{color:var(--acento);letter-spacing:.13em;font-size:.95rem}
+.q .big{font:400 2.4rem/1 Georgia,serif;margin:14px 0 6px}
+.q p{color:rgba(255,255,255,.72);font-size:.92rem}
+.q a{color:var(--acento);text-decoration:none;border-bottom:1px solid rgba(232,163,61,.5)}
+
+.contacto .grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media(max-width:860px){.contacto .grid{grid-template-columns:1fr;gap:30px}}
+.dato{display:flex;gap:15px;padding:19px 0;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato svg{width:20px;height:20px;flex:0 0 20px;margin-top:3px;fill:none;stroke:var(--primario);stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dato .k{font-size:.64rem;letter-spacing:.22em;color:var(--gris)}
+.dato .v{margin-top:5px;font-size:1rem}
+.dato .v a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.cita-info{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 28px;box-shadow:var(--sombra)}
+.cita-info h3{font-size:1.14rem;color:var(--primario-osc);margin-bottom:14px}
+.cita-info p{color:var(--gris);font-size:.94rem;margin-top:10px}
+.mapa{display:inline-flex;align-items:center;gap:9px;margin-top:22px;text-decoration:none;
+  color:var(--primario);font-size:.9rem;border-bottom:1px solid var(--primario);padding-bottom:3px}
+
+footer{background:var(--tinta);color:rgba(250,243,232,.62);padding:60px 0 110px;text-align:center;font-size:.86rem}
+footer .m{font:400 1.3rem/1.3 Georgia,serif;color:#fff;margin-bottom:12px}
+footer .agencia{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.11);font-size:.79rem}
+footer .agencia b{color:var(--acento)}
+
+.barra-fija{position:fixed;bottom:0;left:0;right:0;z-index:55;display:flex;gap:10px;padding:11px 14px;
+  background:rgba(58,36,22,.94);backdrop-filter:blur(9px)}
+.barra-fija a{flex:1;text-align:center;text-decoration:none;border-radius:12px;padding:13px 8px;font-size:.88rem;transition:transform .2s ease}
+.barra-fija a:active{transform:scale(.97)}
+.barra-fija .l{background:var(--acento);color:#3A2708;font-weight:600}
+.barra-fija .m{background:rgba(255,255,255,.14);color:#fff}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .rev{opacity:1;transform:none}
+  #load{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="load" onclick="this.style.display='none'">
+  <div class="esc">
+    <svg viewBox="0 0 192 150" aria-hidden="true">
+      <path class="vapor v1" d="M66 46 q-9 -14 0 -26 q9 -12 0 -24"/>
+      <path class="vapor v2" d="M96 46 q9 -14 0 -26 q-9 -12 0 -24"/>
+      <path class="vapor v3" d="M126 46 q-9 -14 0 -26 q9 -12 0 -24"/>
+      <ellipse class="platillo" cx="96" cy="128" rx="66" ry="8"/>
+      <path class="asa" d="M146 60 q30 3 30 27 q0 24 -30 27"/>
+      <defs>
+        <clipPath id="tazaClip"><path d="M46 46 h100 v44 a50 50 0 0 1 -100 0 Z"/></clipPath>
+      </defs>
+      <g clip-path="url(#tazaClip)"><rect class="cafe" x="40" y="46" width="112" height="66"/></g>
+      <path class="cuerpo" d="M46 46 h100 v44 a50 50 0 0 1 -100 0 Z"/>
+    </svg>
+    <div class="nombre">La Catalina<b>CAFETERÍA</b></div>
+    <div class="lema">LAS PALMAS DE GRAN CANARIA</div>
+    <div class="skip">TOCA PARA ENTRAR</div>
+  </div>
+</div>
+
+<div class="cinta">DEMO</div>
+<div id="prog"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <div class="marca">La Catalina<span>CAFETERÍA</span></div>
+    <ul>
+      <li><a href="#sobre">La cafetería</a></li>
+      <li><a href="#servicios">La carta</a></li>
+      <li><a href="#contacto">Cómo llegar</a></li>
+    </ul>
+    <a class="cta" href="tel:+34608405581">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+      Llamar
+    </a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="capa" id="capa"></div>
+  <div class="wrap">
+    <div class="antes">C. RIPOCHE, 1 · LAS PALMAS DE GRAN CANARIA</div>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">La</i></span>
+      <span class="word"><i style="animation-delay:.44s"><em>Catalina</em></i></span>
+    </h1>
+    <p class="lead">Cafetería de barrio en C. Ripoche, 1. 595 reseñas en Google es un volumen enorme para el sector: mucha gente entra cada semana. Una web con carta, fotos reales y ubicación clara ayuda a que quien llega por primera vez sepa qué esperar.</p>
+    <div class="hero-acts">
+      <a class="btn btn-p" href="tel:+34608405581">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        Llamar ahora
+      </a>
+      <a class="btn btn-s" href="#servicios">Ver la carta</a>
+    </div>
+    <div class="dupla">
+      <span class="pill p1"><i></i>595 reseñas en Google</span>
+      <span class="pill p2"><i></i>Cafetería de barrio</span>
+    </div>
+    <div class="confia">
+      <div class="b">
+        <div class="n"><span class="count" data-to="37" data-dec="1">0</span></div>
+        <div class="estrellas">★★★★☆</div>
+        <div class="t">EN GOOGLE</div>
+      </div>
+      <div class="b">
+        <div class="n"><span class="count" data-to="595">0</span></div>
+        <div class="t">RESEÑAS REALES</div>
+      </div>
+      <div class="b">
+        <div class="n">0</div>
+        <div class="t">WEB PROPIA HOY</div>
+      </div>
+    </div>
+  </div>
+  <div class="baja">DESLIZA<span></span></div>
+</header>
+
+<main>
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">LA CAFETERÍA</div>
+      <h2>Mucho movimiento,<br>ninguna web que lo cuente</h2>
+    </div>
+    <div class="grid">
+      <div class="rev">
+        <p class="texto">La Catalina, en C. Ripoche 1, Las Palmas de Gran Canaria, es una cafetería de barrio con 595 reseñas en Google: un volumen muy por encima de lo habitual para el sector, señal de que pasa mucha gente por su puerta cada semana.</p>
+        <p class="texto">La nota media, 3,7, no es la más alta de la zona. Es un dato real y no lo escondemos: con tanto tráfico, seguramente parte de esa nota viene de clientela que llega sin saber bien qué encontrará dentro. Una web sencilla con la carta, el horario y fotos reales del local fija esa expectativa antes de que alguien cruce la puerta, y eso normalmente se nota en la valoración.</p>
+      </div>
+      <div class="destaca rev">
+        <div class="tag">VOLUMEN REAL</div>
+        <h3>595 reseñas en Google</h3>
+        <p>Muy pocas cafeterías de barrio llegan a esta cifra. Es la mejor prueba de que el negocio funciona y de que hoy toda esa demanda pasa sin una web propia que la recoja.</p>
+      </div>
+    </div>
+    <div class="aviso-web rev">
+      <svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 8 10 6 10-6"/></svg>
+      <p><b>Sin web propia:</b> no hay ningún dominio localizado a nombre de La Catalina en ninguna fuente pública. Hoy quien busca el negocio solo encuentra la ficha de Google. Una web propia explica qué es el local, muestra fotos reales y deja claro qué esperar, antes de entrar.</p>
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">LA CARTA</div>
+      <h2>Cafetería de barrio,<br>de toda la vida</h2>
+      <p class="sub">Categorías generales propias de una cafetería. En la web definitiva irían con los nombres y precios reales de su carta, confirmados con el negocio.</p>
+    </div>
+    <div class="cards">
+      <div class="card top rev">
+        <div class="badge">EL CLÁSICO</div>
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 8h13a3 3 0 0 1 0 6h-1"/><path d="M4 8v7a4 4 0 0 0 4 4h5a4 4 0 0 0 4-4v-1"/><path d="M7 2c0 1.5-1.5 1.5-1.5 3M11 2c0 1.5-1.5 1.5-1.5 3"/></svg></div>
+        <h3>Desayunos</h3>
+        <p>El primer café del día, en el barrio de siempre.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 3c3 2.5 5 5.5 5 9a5 5 0 0 1-10 0c0-3.5 2-6.5 5-9Z"/><path d="M12 8.5v6"/></svg></div>
+        <h3>Cafés</h3>
+        <p>De máquina, cortado, con leche o solo, al gusto de cada cual.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 20h16M6 20V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v11"/><path d="M9 7V4M15 7V4"/></svg></div>
+        <h3>Repostería</h3>
+        <p>Dulces de vitrina para acompañar el café o llevar para casa.</p>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M6 3v6a3 3 0 0 0 3 3v9M6 3v6M9 3v6M18 3v18M18 3a3 3 0 0 0-3 3v3a3 3 0 0 0 3 3"/></svg></div>
+        <h3>Almuerzos</h3>
+        <p>Comida sencilla para el que trabaja cerca y necesita parar un rato.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="prueba" id="confianza">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow" style="color:var(--acento)">LO QUE DICE GOOGLE</div>
+      <h2>3,7 con 595 reseñas</h2>
+      <p class="sub">Sin frases inventadas: estas son las cifras reales de su ficha. 595 opiniones es un volumen enorme para una cafetería de barrio — la nota es mejorable, y una web propia es la forma más directa de trabajarla desde fuera de Google.</p>
+    </div>
+    <div class="quotes">
+      <div class="q rev">
+        <div class="st">★★★★☆</div>
+        <div class="big"><span class="count" data-to="37" data-dec="1">0</span></div>
+        <p>Valoración media en Google. Un dato real, y también el mejor motivo para invertir en cómo se presenta el negocio antes de que el cliente cruce la puerta.</p>
+      </div>
+      <div class="q rev">
+        <div class="st">★★★★☆</div>
+        <div class="big"><span class="count" data-to="595">0</span></div>
+        <p>Reseñas reales acumuladas en Google. Muy pocos negocios del sector mueven tanto tráfico como La Catalina.</p>
+      </div>
+      <div class="q rev">
+        <div class="st">★★★★☆</div>
+        <div class="big">0</div>
+        <p>Dominios propios encontrados a día de hoy. Todo ese volumen de clientela llega hoy sin ninguna web que lo reciba.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">CÓMO LLEGAR</div>
+      <h2>C. Ripoche, 1<br>Las Palmas de Gran Canaria</h2>
+      <p class="sub">35007 Las Palmas de Gran Canaria, Las Palmas. Dato tomado de su ficha oficial de Google.</p>
+    </div>
+    <div class="grid" style="margin-top:40px">
+      <div class="rev">
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+          <div><div class="k">DIRECCIÓN</div><div class="v">C. Ripoche, 1 · 35007 Las Palmas de Gran Canaria</div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <div><div class="k">TELÉFONO</div><div class="v"><a href="tel:+34608405581">608 40 55 81</a></div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg>
+          <div><div class="k">HORARIO</div><div class="v">Consulta el horario al llamar</div></div>
+        </div>
+      </div>
+      <div class="cita-info rev">
+        <h3>Ven a tomar algo</h3>
+        <p>Llama al local para confirmar horario o simplemente acércate: en C. Ripoche, 1, en pleno barrio de Las Palmas de Gran Canaria.</p>
+        <p style="color:var(--gris);font-size:.83rem;margin-top:16px">
+          El horario no aparece confirmado en fuentes públicas fiables, así que no lo mostramos aquí para no dar un dato equivocado. En la web definitiva se puede publicar en cuanto se confirme con el negocio.
+        </p>
+        <a class="mapa" href="https://maps.google.com/?q=La+Catalina+C.+Ripoche+1+35007+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          Cómo llegar en Google Maps →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="m">La Catalina</div>
+    <div>C. Ripoche, 1 · 35007 Las Palmas de Gran Canaria · 608 40 55 81</div>
+    <div class="agencia">
+      Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> para La Catalina, con sus datos públicos.
+      Esta web puede ser suya. · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · elevenprime.es
+    </div>
+  </div>
+</footer>
+
+<div class="barra-fija">
+  <a class="l" href="tel:+34608405581">Llamar</a>
+  <a class="m" href="https://maps.google.com/?q=La+Catalina+C.+Ripoche+1+35007+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<noscript><style>
+  .rev{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .lead,.hero-acts,.dupla,.confia,.baja,.antes{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog'), capa=document.getElementById('capa'), pend=false;
+  function pinta(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('min', y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(prog) prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    if(capa && y<window.innerHeight) capa.style.transform='translate3d(0,'+(y*0.14)+'px,0)';
+    pend=false;
+  }
+  window.addEventListener('scroll',function(){ if(!pend){pend=true;requestAnimationFrame(pinta);} },{passive:true});
+  pinta();
+})();
+
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(e,i){ e.style.transitionDelay=(i%3*90)+'ms'; io.observe(e); });
+})();
+
+(function(){
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1300;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), v=Math.round(to*(1-Math.pow(1-p,3)));
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',') : v.toString();
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); io.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(function(e){ io.observe(e); });
+})();
+
+document.addEventListener('keydown',function(){ var l=document.getElementById('load'); if(l) l.style.display='none'; });
+
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toString();
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
