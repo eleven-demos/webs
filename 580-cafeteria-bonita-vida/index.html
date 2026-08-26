@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cafetería Bonita Vida · Fusión marroquí-canaria en Las Palmas</title>
+<meta name="description" content="Café, té moruno, dulces árabes artesanales y pastela de pollo en C. Núñez de Balboa 5, frente al Parque Don Benito, Las Palmas de Gran Canaria. 4,9★ con 179 reseñas en Google. Reserva: 619 86 54 56.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --terra:#B5651D; --terra-d:#8C4E16; --terra-l:#D98A44;
+  --crema:#FAF3E7; --crema-2:#F0E2CC;
+  --salvia:#3C7A6E; --salvia-d:#2A5951;
+  --tinta:#2B1B10; --mut:#7B6653;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,'Segoe UI',Arial,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.75;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;display:block}
+.wrap{width:min(1160px,90vw);margin-inline:auto}
+.eyebrow{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--salvia-d);font-weight:700}
+
+/* ===== LOADER / MOMENTO FIRMA: taza que se llena y el vapor dibuja el nombre ===== */
+#load{position:fixed;inset:0;z-index:999;background:radial-gradient(circle at 50% 38%,var(--terra-l),var(--terra) 62%,var(--terra-d));display:grid;place-items:center;cursor:pointer;animation:loadOut .6s ease 2s forwards}
+#load .lin{display:flex;flex-direction:column;align-items:center;gap:1.3rem}
+#load svg{width:150px;height:150px}
+.cupfill{transform-origin:bottom;animation:fillup 1s cubic-bezier(.5,0,.3,1) .25s forwards;transform:scaleY(0)}
+@keyframes fillup{to{transform:scaleY(1)}}
+.steam path{stroke-dasharray:60;stroke-dashoffset:60;animation:steamdraw 1.1s ease forwards}
+.steam path:nth-child(2){animation-delay:.15s}
+.steam path:nth-child(3){animation-delay:.3s}
+@keyframes steamdraw{to{stroke-dashoffset:0}}
+#load .brandline{overflow:hidden;padding-bottom:.2rem}
+#load .brandline b{display:inline-block;font-family:'Fraunces',Georgia,serif;font-weight:600;color:var(--crema);font-size:1.55rem;letter-spacing:.02em;transform:translateY(115%);opacity:0;animation:steamup .7s cubic-bezier(.2,1,.3,1) 1.05s forwards}
+@keyframes steamup{to{transform:translateY(0);opacity:1}}
+#load .tag{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(250,243,231,.75);opacity:0;animation:steamup .6s ease 1.6s forwards}
+#load .skip{position:absolute;bottom:1.6rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(250,243,231,.55)}
+@keyframes loadOut{to{opacity:0;visibility:hidden}}
+#load.off{opacity:0!important;visibility:hidden!important;transition:opacity .35s}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.3rem 0;transition:.4s}
+header.stuck{background:rgba(250,243,231,.96);padding:.7rem 0;box-shadow:0 2px 20px rgba(43,27,16,.08)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:'Fraunces',Georgia,serif;font-size:1.5rem;color:#fff;transition:.4s}
+.brand span{color:var(--terra-l)}
+header.stuck .brand span{color:var(--terra)}
+.menu{display:flex;gap:2rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600;transition:.4s}
+.menu a{position:relative;padding-bottom:4px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--terra-l);transition:width .35s}
+.menu a:hover::after{width:100%}
+.cta-nav{background:var(--terra);color:#fff;padding:.75rem 1.6rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border-radius:99px;transition:.35s;display:inline-flex;align-items:center;gap:.5rem}
+.cta-nav:hover{background:var(--salvia);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:linear-gradient(155deg,var(--terra-d),var(--terra) 55%,#A85D1E);color:#fff;padding:9rem 0 7rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,rgba(60,122,110,.35),transparent 46%),radial-gradient(circle at 6% 90%,rgba(250,243,231,.14),transparent 50%)}
+.arch{position:absolute;border:1.5px solid rgba(250,243,231,.14);border-radius:50% 50% 6% 6%/60% 60% 4% 4%;animation:sway 11s ease-in-out infinite}
+.a1{width:220px;height:340px;top:-4%;right:8%}
+.a2{width:140px;height:220px;bottom:-6%;right:26%;animation-delay:1.4s}
+.a3{width:90px;height:150px;top:18%;left:4%;animation-delay:2.8s}
+@keyframes sway{50%{transform:translateY(-18px)}}
+.hero-in{position:relative;z-index:2;max-width:840px}
+.hero .est{opacity:0;animation:fade .85s .1s forwards}
+.hero h1{font-size:clamp(2.7rem,8vw,5.6rem);margin:1.2rem 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:italic;color:var(--crema)}
+.hero p.lead{max-width:560px;margin-top:1.7rem;color:rgba(250,243,231,.92);font-size:1.06rem;opacity:0;animation:fade .85s 1s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.4rem;opacity:0;animation:fade .85s 1.2s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:.35s;border-radius:99px}
+.btn-c{background:var(--salvia);color:#fff}
+.btn-c:hover{background:#fff;color:var(--salvia-d);transform:translateY(-3px)}
+.btn-o{border:1.5px solid rgba(255,255,255,.7);color:#fff}
+.btn-o:hover{background:#fff;color:var(--terra-d);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(250,243,231,.2);z-index:2;opacity:0;animation:fade .85s 1.45s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.3rem 0;font-size:.76rem;letter-spacing:.08em;color:rgba(250,243,231,.9);font-weight:600}
+.hf b{color:var(--crema)}
+
+section{padding:6.8rem 0;position:relative}
+.rv{opacity:0;transform:translateY(30px);transition:.9s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}
+.rv[data-d="3"]{transition-delay:.3s}.rv[data-d="4"]{transition-delay:.4s}
+.sec-head{max-width:660px;margin-bottom:3.4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(1.9rem,5vw,3.1rem);margin-top:.85rem}
+.sec-head p{color:var(--mut);margin-top:1rem}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.7rem}
+.p{padding:2.3rem 1.9rem;background:#fff;border-radius:14px;transition:.4s;box-shadow:0 10px 28px -24px rgba(43,27,16,.55)}
+.p:hover{transform:translateY(-8px);box-shadow:0 26px 48px -30px rgba(43,27,16,.5)}
+.p .ico{font-size:2rem;line-height:1}
+.p h3{font-size:1.24rem;margin:.8rem 0 .55rem}
+.p p{font-size:.94rem;color:var(--mut)}
+
+.carta{background:var(--salvia-d);color:#fff}
+.carta .sec-head p{color:rgba(250,243,231,.85)}
+.cgrid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:1.4rem}
+.d{background:rgba(250,243,231,.08);border:1px solid rgba(250,243,231,.18);padding:1.8rem;border-radius:12px;transition:.4s}
+.d:hover{background:rgba(250,243,231,.14);transform:translateY(-6px)}
+.d .ico{font-size:1.7rem}
+.d h3{font-size:1.2rem;margin:.65rem 0 .5rem}
+.d p{font-size:.92rem;color:rgba(250,243,231,.85)}
+.tags{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:2.5rem}
+.tag{font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;border:1px solid rgba(250,243,231,.32);padding:.5rem 1.1rem;border-radius:99px;color:rgba(250,243,231,.92)}
+.carta .note{margin-top:2rem;font-size:.85rem;color:rgba(250,243,231,.66);text-align:center}
+
+.nums{background:var(--crema-2)}
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.1rem,5.6vw,3.4rem);color:var(--terra-d);display:block;line-height:1;font-family:'Fraunces',Georgia,serif;font-weight:600}
+.n span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.6rem;font-weight:600}
+.stars-big{color:var(--terra);letter-spacing:.14em;font-size:1.1rem;margin-top:.4rem;display:block}
+
+.trust{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.6rem;margin-top:2.5rem}
+.t{background:#fff;padding:1.9rem;border-radius:12px;box-shadow:0 10px 26px -24px rgba(43,27,16,.5)}
+.t .ico{font-size:1.5rem}
+.t h4{font-size:1.02rem;margin:.6rem 0 .4rem}
+.t p{font-size:.9rem;color:var(--mut)}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.dt{padding:1.3rem 0;border-bottom:1px solid rgba(43,27,16,.12)}
+.dt h4{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--salvia-d);margin-bottom:.4rem;font-weight:700}
+.dt p,.dt a{font-size:1.02rem}
+.dt a:hover{color:var(--terra)}
+.map{min-height:320px;display:grid;place-items:center;text-align:center;padding:2.3rem;border-radius:14px;transition:.4s;color:#fff;background:linear-gradient(150deg,var(--terra),var(--terra-d))}
+.map:hover{transform:scale(1.012)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+
+footer.foot{background:var(--tinta);color:rgba(250,243,231,.8);padding:2.6rem 0;font-size:.85rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--terra-l)}
+.fin small{display:block;margin-top:.4rem;color:rgba(250,243,231,.5);font-size:.76rem}
+.fab{position:fixed;right:1.2rem;bottom:1.2rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;background:var(--terra);color:#fff;box-shadow:0 14px 30px -12px rgba(43,27,16,.6);transition:.3s}
+.fab a.maps{background:var(--salvia)}
+.fab a:hover{transform:scale(1.1)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(43,27,16,.92);color:#fff;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--terra-d);padding:2rem;gap:1.2rem;color:#fff}
+  .pillars,.cont{grid-template-columns:1fr;gap:1.4rem}
+  .ngrid{grid-template-columns:1fr;gap:2rem}
+  section{padding:4.4rem 0}
+  .hero{padding-bottom:9.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  #load{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="load" role="button" tabindex="0" aria-label="Saltar animación de bienvenida">
+  <div class="lin">
+    <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <g class="steam" stroke="rgba(250,243,231,.85)" stroke-width="3" stroke-linecap="round">
+        <path d="M45 30 C 40 22, 50 16, 45 8"/>
+        <path d="M60 30 C 55 20, 66 14, 60 4"/>
+        <path d="M75 30 C 70 22, 80 16, 75 8"/>
+      </g>
+      <g class="cupfill">
+        <path d="M28 46 h58 l-6 44 a10 10 0 0 1-10 9 H54 a10 10 0 0 1-10-9 Z" fill="#FAF3E7"/>
+        <path d="M32 52 h50 l-4.5 36 a7 7 0 0 1-7 6 H43.5 a7 7 0 0 1-7-6 Z" fill="#8C4E16"/>
+      </g>
+      <path d="M28 46 h58 l-6 44 a10 10 0 0 1-10 9 H54 a10 10 0 0 1-10-9 Z" stroke="rgba(250,243,231,.85)" stroke-width="2.5"/>
+      <path d="M86 54 c12-4 12 16 0 14" stroke="rgba(250,243,231,.85)" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <ellipse cx="57" cy="46" rx="29" ry="5.5" fill="none" stroke="rgba(250,243,231,.85)" stroke-width="2.5"/>
+    </svg>
+    <p class="brandline"><b>Cafetería Bonita Vida</b></p>
+    <p class="tag">Las Palmas de Gran Canaria</p>
+  </div>
+  <span class="skip">Toca para continuar</span>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">Bonita<span>&nbsp;Vida</span></a>
+    <nav class="menu" id="menu">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#carta">Carta</a>
+      <a href="#confianza">Google</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="tel:+34619865456" class="cta-nav">✆ Llamar ahora</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="arch a1"></span><span class="arch a2"></span><span class="arch a3"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Frente al Parque Don Benito · Las Palmas de Gran Canaria</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.15s">Fusión</i></span>
+      <span class="word"><i style="animation-delay:.3s">marroquí</i></span><br>
+      <span class="word"><i style="animation-delay:.45s"><em>y canaria</em></i></span>
+    </h1>
+    <p class="lead">Café, té moruno y dulces árabes hechos a mano en un local abierto en diciembre de 2025. En pocos meses, el barrio ya la ha convertido en su sitio de siempre.</p>
+    <div class="hero-acts">
+      <a href="tel:+34619865456" class="btn btn-c">✆ Llamar ahora</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Cafeter%C3%ADa+Bonita+Vida+Calle+N%C3%BA%C3%B1ez+de+Balboa+5+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener" class="btn btn-o">📍 Cómo llegar</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 4,9</b> · 179 reseñas en Google</span>
+      <span>C. Núñez de Balboa, 5 · Las Palmas</span>
+      <span>Abierta desde diciembre de 2025</span>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2>179 reseñas y un 4,9<br>en solo unos meses</h2>
+      <p>La lleva María, que abrió Bonita Vida en diciembre de 2025 frente al Parque Don Benito con una idea clara: juntar la tradición del té moruno y los dulces árabes con el café de todos los días en Las Palmas. La carta tiene sitio para quien come de todo y para quien elige vegetariano o vegano.</p>
+    </div>
+    <div class="pillars">
+      <div class="p rv"><div class="ico">🫖</div><h3>Raíces marroquíes</h3><p>Té moruno, msemen y dulces árabes artesanales, hechos como se hacen de verdad.</p></div>
+      <div class="p rv" data-d="1"><div class="ico">🇮🇨</div><h3>Cotidianidad canaria</h3><p>Café, tostas y bocadillos para el día a día del barrio, en el mismo local.</p></div>
+      <div class="p rv" data-d="2"><div class="ico">🌱</div><h3>Para todos</h3><p>Opciones vegetarianas y veganas en la carta, no como algo aparte.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">La carta</p>
+      <h2>Lo que se sirve en Bonita Vida</h2>
+      <p>Cocina propia, sin nada de plástico ni bandeja congelada: cada dulce se hace en el local.</p>
+    </div>
+    <div class="cgrid2">
+      <div class="d rv"><span class="ico">☕</span><h3>Café</h3><p>El de cada día, para tomar en la mesa o para llevar.</p></div>
+      <div class="d rv" data-d="1"><span class="ico">🍵</span><h3>Té moruno</h3><p>Té a la menta preparado como en Marruecos, con su punto de dulzor.</p></div>
+      <div class="d rv" data-d="2"><span class="ico">🍞</span><h3>Tostas</h3><p>Para desayunar o merendar, sencillas y recién hechas.</p></div>
+      <div class="d rv"><span class="ico">🥪</span><h3>Bocadillos</h3><p>La opción salada de siempre, para media mañana o para comer.</p></div>
+      <div class="d rv" data-d="1"><span class="ico">🥮</span><h3>Dulces árabes y msemen</h3><p>Repostería árabe artesanal y msemen, el pan plano marroquí, hechos a mano.</p></div>
+      <div class="d rv" data-d="2"><span class="ico">🥧</span><h3>Pastela de pollo</h3><p>La pastela marroquí de pollo, la propuesta salada más especial de la carta.</p></div>
+    </div>
+    <div class="tags">
+      <span class="tag">Opciones vegetarianas</span><span class="tag">Opciones veganas</span>
+    </div>
+    <p class="note">Carta tomada de vuestra oferta real. En la web final se actualiza cuando queráis, sin depender de nadie.</p>
+  </div>
+</section>
+
+<section class="nums" id="confianza">
+  <div class="wrap ngrid">
+    <div class="n rv">
+      <b><span class="count" data-to="49" data-dec="1">0</span></b>
+      <span class="stars-big">★★★★★</span>
+      <span>Valoración en Google</span>
+    </div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="179">0</span></b><span>Reseñas en Google</span></div>
+    <div class="n rv" data-d="2"><b>Dic. 2025</b><span>Fecha de apertura</span></div>
+  </div>
+  <div class="wrap">
+    <div class="trust">
+      <div class="t rv"><div class="ico">⭐</div><h4>Nota altísima, y rápido</h4><p>4,9 sobre 5 con 179 reseñas conseguidas en pocos meses de vida del negocio.</p></div>
+      <div class="t rv" data-d="1"><div class="ico">👐</div><h4>Todo hecho a mano</h4><p>Dulces árabes y msemen artesanales, no de fábrica ni de bandeja.</p></div>
+      <div class="t rv" data-d="2"><div class="ico">📍</div><h4>Un sitio con nombre propio</h4><p>Justo frente al Parque Don Benito, fácil de encontrar y de recomendar.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En la calle Núñez de Balboa, justo frente al Parque Don Benito, en Las Palmas de Gran Canaria.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C. Núñez de Balboa, 5<br>35012 Las Palmas de Gran Canaria<br>Frente al Parque Don Benito</p></div>
+        <div class="dt"><h4>Teléfono</h4><p><a href="tel:+34619865456">619 86 54 56</a></p></div>
+        <div class="dt"><h4>Valoración</h4><p>★ 4,9 · 179 reseñas en Google</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Cafeter%C3%ADa+Bonita+Vida+Calle+N%C3%BA%C3%B1ez+de+Balboa+5+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.5rem;margin-top:.7rem;font-weight:700;font-family:'Fraunces',Georgia,serif">C. Núñez de Balboa, 5</p>
+            <p style="color:rgba(250,243,231,.88);margin-top:.4rem">Frente al Parque Don Benito · Las Palmas</p>
+            <span class="btn btn-o" style="margin-top:1.5rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Cafetería Bonita Vida · Las Palmas de Gran Canaria
+      <small>Demo creada por Eleven AI — esta web puede ser tuya · <a href="https://elevenprime.es" target="_blank" rel="noopener">elevenprime.es</a> · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · CIF B56862691</small>
+    </span>
+    <span><a href="tel:+34619865456">619 86 54 56</a> · C. Núñez de Balboa, 5</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Cafeter%C3%ADa+Bonita+Vida+Calle+N%C3%BA%C3%B1ez+de+Balboa+5+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener" aria-label="Cómo llegar">📍</a>
+  <a href="tel:+34619865456" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+var load=document.getElementById('load');
+function skipLoad(){load.classList.add('off')}
+load.addEventListener('click',skipLoad);
+load.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')skipLoad()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='Enter'||e.key===' ')skipLoad()});
+setTimeout(skipLoad,2400);
+
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){
+  requestAnimationFrame(function(){hd.classList.toggle('stuck',scrollY>70)});
+},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
