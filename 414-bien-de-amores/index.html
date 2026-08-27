@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bien de Amores · Cafetería de especialidad en San Telmo, Las Palmas</title>
+<meta name="description" content="Bien de Amores, C. Perojo 2, San Telmo, Las Palmas de Gran Canaria. Café de especialidad, desayunos y meriendas creativas de Dano y Fredi. 4,1★ y 152 reseñas en Google. Pet friendly y con rincón infantil.">
+<meta name="theme-color" content="#7A2E3B">
+<style>
+:root{
+  --primario:#7A2E3B; --primario-osc:#4E1C25; --secundario:#F7F1E6; --acento:#D98E4A;
+  --acento-cla:#EAB57E; --crema-2:#EFE2CC; --tinta:#2B1712; --gris:#7C6A5E;
+  --linea:rgba(43,23,18,.13);
+  --sombra:0 2px 8px rgba(43,23,18,.06), 0 14px 34px rgba(43,23,18,.10);
+  --sombra-alta:0 6px 18px rgba(43,23,18,.10), 0 28px 60px rgba(43,23,18,.17);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Helvetica Neue",Arial,sans-serif;background:var(--secundario);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400}
+a{color:inherit}
+img{max-width:100%}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: el grano cae, salpica, y el vapor descubre el nombre ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 40%,#7A2E3B 0%,#4E1C25 58%,#2A0F13 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.15s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{text-align:center;position:relative}
+#load svg{width:min(230px,58vw);height:auto;overflow:visible;display:block;margin-inline:auto}
+.taza{fill:none;stroke:var(--acento);stroke-width:3.4;stroke-linecap:round;stroke-linejoin:round;
+  stroke-dasharray:300;stroke-dashoffset:300;animation:trazar .6s cubic-bezier(.55,0,.2,1) forwards}
+.plato{animation-delay:.12s;stroke-dasharray:150;stroke-dashoffset:150}
+@keyframes trazar{to{stroke-dashoffset:0}}
+.grano-cae{fill:#3B1A17;transform-box:fill-box;transform-origin:50% 50%;
+  transform:translate3d(0,-90px,0) rotate(-40deg);opacity:0;
+  animation:caer .55s cubic-bezier(.6,0,.85,.35) .2s forwards}
+@keyframes caer{
+  0%{opacity:0;transform:translate3d(0,-90px,0) rotate(-40deg)}
+  12%{opacity:1}
+  100%{opacity:0;transform:translate3d(0,0,0) rotate(10deg)}
+}
+/* el cafe sube dentro de la taza al recibir el grano: solo transform, nada de height */
+.cafe{fill:#3B1A17;transform-box:fill-box;transform-origin:50% 100%;transform:scaleY(0);
+  animation:llenar .32s cubic-bezier(.3,1.3,.4,1) .72s forwards}
+@keyframes llenar{to{transform:scaleY(1)}}
+.salpica{fill:#C89A63;transform-box:fill-box;transform-origin:50% 50%;opacity:0;transform:scale(0);
+  animation:salpicon .5s cubic-bezier(.2,1,.4,1) .68s forwards}
+.s2{animation-delay:.71s} .s3{animation-delay:.74s} .s4{animation-delay:.69s}
+@keyframes salpicon{
+  0%{opacity:0;transform:scale(0)}
+  30%{opacity:1;transform:scale(1)}
+  100%{opacity:0;transform:scale(1) translateY(-14px)}
+}
+.vapor{fill:none;stroke:#E7D3B4;stroke-width:2.4;stroke-linecap:round;opacity:0;
+  stroke-dasharray:60;stroke-dashoffset:60;animation:subir 1.05s ease-out forwards}
+.v1{animation-delay:.95s} .v2{animation-delay:1.08s} .v3{animation-delay:1.21s}
+@keyframes subir{
+  0%{opacity:0;transform:translate3d(0,6px,0)}
+  35%{opacity:.85}
+  100%{opacity:.35;stroke-dashoffset:0;transform:translate3d(0,-10px,0)}
+}
+#load .nom{
+  margin-top:1.1rem;font-family:Georgia,serif;color:var(--secundario);letter-spacing:.05em;
+  font-size:clamp(1.35rem,5.2vw,2rem);opacity:0;transform:translate3d(0,10px,0);
+  animation:brota .6s cubic-bezier(.22,1,.36,1) 1.05s forwards;
+}
+#load .sub2{
+  margin-top:.35rem;color:var(--acento-cla);font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;
+  opacity:0;animation:brota .6s ease 1.3s forwards;
+}
+@keyframes brota{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){
+  #load{animation:irse .3s ease .2s forwards}
+  #load *{animation-duration:.01ms!important;animation-delay:0s!important}
+}
+
+/* ---------- barra de progreso y navegacion ---------- */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acento),var(--acento-cla));z-index:60;will-change:transform}
+nav{position:fixed;top:0;left:0;right:0;z-index:55;padding:1.15rem 0;transition:padding .3s ease,background .3s ease;
+  background:rgba(247,241,230,0);}
+nav.min{padding:.6rem 0;background:rgba(247,241,230,.93);backdrop-filter:blur(10px);box-shadow:0 1px 0 var(--linea)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+nav .marca{font-family:Georgia,serif;font-size:1.05rem;letter-spacing:.02em;color:var(--secundario);transition:color .3s}
+nav.min .marca{color:var(--primario)}
+nav .enl{display:flex;gap:1.5rem;font-size:.78rem;letter-spacing:.13em;text-transform:uppercase}
+nav .enl a{text-decoration:none;color:rgba(247,241,230,.85);transition:color .25s}
+nav.min .enl a{color:var(--gris)}
+nav .enl a:hover{color:var(--acento)}
+@media(max-width:780px){nav .enl{display:none}}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:7rem 0 8rem;overflow:hidden;color:var(--secundario)}
+.hero .capa{position:absolute;inset:-8% 0 0;z-index:0;will-change:transform;
+  background:
+    radial-gradient(70% 50% at 22% 18%,rgba(217,142,74,.28) 0%,transparent 62%),
+    radial-gradient(60% 45% at 82% 78%,rgba(217,142,74,.14) 0%,transparent 60%),
+    linear-gradient(168deg,#7A2E3B 0%,#5C232C 46%,#38131A 100%);
+}
+.hero .grano-bg{position:absolute;inset:0;z-index:1;opacity:.5;
+  background-image:radial-gradient(rgba(247,241,230,.10) 1px,transparent 1px);
+  background-size:26px 26px}
+.hero .wrap{position:relative;z-index:2}
+.hero .antes{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--acento-cla);
+  opacity:0;animation:brota .7s ease 2.45s forwards}
+.hero h1{font-size:clamp(2.6rem,10vw,5.4rem);line-height:1.02;margin:1.1rem 0 .2rem;letter-spacing:-.015em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translate3d(0,105%,0);
+  animation:palabra .8s cubic-bezier(.22,1,.36,1) forwards}
+@keyframes palabra{to{transform:none}}
+.hero .lead{max-width:41rem;margin:1.3rem auto 0;color:rgba(247,241,230,.86);font-size:clamp(1rem,2.3vw,1.16rem);
+  opacity:0;animation:brota .8s ease 2.95s forwards}
+.hero-acts{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.1rem;
+  opacity:0;animation:brota .8s ease 3.15s forwards}
+.btn{display:inline-block;padding:.95rem 1.9rem;border-radius:40px;text-decoration:none;font-weight:700;
+  font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;transition:transform .25s cubic-bezier(.22,1,.36,1),background .25s,color .25s,box-shadow .25s}
+.btn-1{background:var(--acento);color:#2A1A16;box-shadow:0 8px 24px rgba(217,142,74,.36)}
+.btn-1:hover{transform:translateY(-3px);background:var(--acento-cla);box-shadow:0 14px 32px rgba(217,142,74,.46)}
+.btn-2{border:1px solid rgba(247,241,230,.4);color:var(--secundario)}
+.btn-2:hover{transform:translateY(-3px);background:rgba(247,241,230,.12);border-color:var(--secundario)}
+.est{display:flex;gap:2.4rem;justify-content:center;flex-wrap:wrap;margin-top:3rem;
+  opacity:0;animation:brota .8s ease 3.35s forwards}
+.est .u{text-align:center}
+.est .n{font-family:Georgia,serif;font-size:clamp(1.9rem,5.5vw,2.7rem);color:var(--acento-cla);line-height:1}
+.est .e{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(247,241,230,.6);margin-top:.45rem}
+.estrellas{color:var(--acento);letter-spacing:.14em;font-size:1.05rem}
+.insignia{display:inline-flex;align-items:center;gap:.55rem;margin-top:2.4rem;padding:.55rem 1.2rem;
+  border:1px solid rgba(247,241,230,.22);border-radius:40px;font-size:.8rem;color:rgba(247,241,230,.9);
+  background:rgba(0,0,0,.16);opacity:0;animation:brota .8s ease 3.5s forwards}
+.insignia .punto{width:9px;height:9px;border-radius:50%;background:var(--acento);display:inline-block}
+
+/* ---------- secciones ---------- */
+section{padding:clamp(4.2rem,10vw,7.5rem) 0;position:relative}
+.t{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--acento);margin-bottom:1rem}
+h2{font-size:clamp(1.9rem,5.3vw,3.1rem);line-height:1.1;letter-spacing:-.01em}
+.sub{color:var(--gris);max-width:44rem;margin-top:1.1rem;font-size:1.03rem}
+.rev{opacity:0;transform:translate3d(0,26px,0);transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+.rev.on{opacity:1;transform:none}
+
+.sobre{background:var(--crema-2)}
+.sobre .cols{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2rem,5vw,4.5rem);align-items:center;margin-top:2.6rem}
+@media(max-width:880px){.sobre .cols{grid-template-columns:1fr}}
+.sobre p{color:var(--gris);font-size:1.05rem;margin-top:1.1rem}
+.tarjeta-cifra{background:var(--primario);color:var(--secundario);border-radius:20px;padding:2.4rem 2rem;text-align:center;
+  box-shadow:var(--sombra-alta)}
+.tarjeta-cifra .g{font-family:Georgia,serif;font-size:clamp(3rem,9vw,4.2rem);line-height:1;color:var(--acento-cla)}
+.tarjeta-cifra .r{margin-top:.7rem;font-size:.85rem;color:rgba(247,241,230,.72)}
+
+.carta .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(268px,1fr));gap:1.1rem;margin-top:3rem}
+.card{background:#fff;border:1px solid var(--linea);border-radius:18px;padding:2rem 1.7rem;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),box-shadow .35s;box-shadow:var(--sombra)}
+.card:hover{transform:translateY(-6px) scale(1.012);box-shadow:var(--sombra-alta)}
+.card .ico{width:46px;height:46px;border-radius:13px;background:var(--crema-2);display:grid;place-items:center;margin-bottom:1.1rem}
+.card .ico svg{width:24px;height:24px;stroke:var(--primario);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.2rem;margin-bottom:.5rem}
+.card p{color:var(--gris);font-size:.95rem}
+.etiqueta{display:inline-block;margin-top:.9rem;padding:.28rem .7rem;border-radius:30px;background:rgba(217,142,74,.15);
+  color:#9A5B22;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}
+
+.confianza{background:var(--primario);color:var(--secundario)}
+.confianza h2{color:var(--secundario)}
+.confianza .sub{color:rgba(247,241,230,.72)}
+.confianza .rejilla{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.1rem;margin-top:3rem}
+.bloque{background:rgba(247,241,230,.07);border:1px solid rgba(247,241,230,.14);border-radius:18px;padding:2rem 1.7rem;text-align:center}
+.bloque .st{color:var(--acento-cla);letter-spacing:.16em;font-size:1.1rem}
+.bloque .gd{font-family:Georgia,serif;font-size:clamp(2.2rem,6.5vw,3rem);line-height:1;margin:.7rem 0 .3rem;color:var(--secundario)}
+.bloque p{color:rgba(247,241,230,.7);font-size:.92rem;margin-top:.5rem}
+.honesto{margin-top:2.6rem;padding:1.3rem 1.5rem;border-left:2px solid var(--acento);
+  color:rgba(247,241,230,.78);font-size:.93rem;background:rgba(0,0,0,.14);border-radius:0 12px 12px 0}
+
+.contacto .cols{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);margin-top:3rem}
+@media(max-width:880px){.contacto .cols{grid-template-columns:1fr}}
+.dato{display:flex;gap:1rem;padding:1.3rem 0;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato .k{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--acento);min-width:96px;padding-top:.28rem}
+.dato .v{font-size:1.02rem}
+.dato .v a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.dato .v small{display:block;color:var(--gris);font-size:.86rem;margin-top:.2rem}
+.mapa{border-radius:20px;overflow:hidden;border:1px solid var(--linea);box-shadow:var(--sombra);
+  background:linear-gradient(150deg,#EFE2CC 0%,#E3CFAE 100%);min-height:280px;display:grid;place-items:center;text-align:center;padding:2.2rem}
+.mapa .p{font-family:Georgia,serif;font-size:1.5rem;margin-bottom:.6rem}
+.mapa p{color:var(--gris);font-size:.95rem;margin-bottom:1.4rem}
+.btn-3{background:var(--primario);color:var(--secundario);box-shadow:0 8px 22px rgba(122,46,59,.28)}
+.btn-3:hover{transform:translateY(-3px);background:var(--primario-osc)}
+
+.cierre{background:var(--crema-2);text-align:center}
+.cierre h2{max-width:26rem;margin-inline:auto}
+.cierre .sub{margin-inline:auto}
+.cierre .acts{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap;margin-top:2.2rem}
+
+footer{background:var(--primario-osc);color:rgba(247,241,230,.72);padding:3.4rem 0 6.5rem;text-align:center;font-size:.9rem}
+footer .m{font-family:Georgia,serif;font-size:1.3rem;color:var(--secundario);margin-bottom:.5rem}
+footer .agencia{margin-top:1.8rem;padding-top:1.6rem;border-top:1px solid rgba(247,241,230,.14);
+  font-size:.82rem;color:rgba(247,241,230,.55);max-width:46rem;margin-inline:auto}
+footer .agencia b{color:var(--acento-cla)}
+
+.sello{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%) rotate(-24deg);z-index:3;pointer-events:none;
+  font-family:Georgia,serif;font-size:clamp(5rem,20vw,11rem);color:rgba(43,23,18,.055);letter-spacing:.2em}
+.barra-fija{position:fixed;left:0;right:0;bottom:0;z-index:58;display:flex;gap:.5rem;padding:.6rem clamp(.7rem,3vw,1.2rem);
+  background:rgba(78,28,37,.96);backdrop-filter:blur(8px);box-shadow:0 -6px 24px rgba(43,23,18,.26)}
+.barra-fija a{flex:1;text-align:center;padding:.85rem;border-radius:30px;text-decoration:none;font-weight:700;
+  font-size:.74rem;letter-spacing:.13em;text-transform:uppercase;transition:transform .22s,background .22s}
+.barra-fija a:active{transform:scale(.97)}
+.barra-fija .l{background:var(--acento);color:#2A1A16}
+.barra-fija .m{border:1px solid rgba(247,241,230,.34);color:var(--secundario)}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rev{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<div id="load" title="Pulsa para entrar">
+  <div class="esc">
+    <svg viewBox="0 0 200 150" aria-hidden="true">
+      <clipPath id="dentro"><path d="M46 44 H140 V88 Q140 112 116 112 H70 Q46 112 46 88 Z"/></clipPath>
+      <g clip-path="url(#dentro)">
+        <rect class="cafe" x="46" y="52" width="94" height="60"/>
+      </g>
+      <path class="taza" d="M46 44 H140 V88 Q140 112 116 112 H70 Q46 112 46 88 Z"/>
+      <path class="taza" d="M140 56 Q168 56 168 74 Q168 92 140 92"/>
+      <path class="plato taza" d="M30 124 H156"/>
+      <ellipse class="grano-cae" cx="94" cy="46" rx="6" ry="8"/>
+      <circle class="salpica" cx="80" cy="48" r="3"/>
+      <circle class="salpica s2" cx="94" cy="42" r="2.4"/>
+      <circle class="salpica s3" cx="106" cy="48" r="2.8"/>
+      <circle class="salpica s4" cx="94" cy="52" r="2"/>
+      <path class="vapor v1" d="M78 34 Q86 24 78 14"/>
+      <path class="vapor v2" d="M100 30 Q108 19 100 8"/>
+      <path class="vapor v3" d="M122 34 Q130 24 122 14"/>
+    </svg>
+    <div class="nom">Bien de Amores</div>
+    <div class="sub2">San Telmo · Las Palmas</div>
+  </div>
+</div>
+
+<div id="prog"></div>
+<div class="sello">DEMO</div>
+
+<nav id="nav">
+  <div class="wrap">
+    <span class="marca">Bien de Amores</span>
+    <span class="enl">
+      <a href="#sobre">La casa</a>
+      <a href="#carta">Qué se vive aquí</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#contacto">Dónde estamos</a>
+    </span>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="capa" id="capa"></div>
+  <div class="grano-bg"></div>
+  <div class="wrap">
+    <div class="antes">C. Perojo, 2 · San Telmo</div>
+    <h1>
+      <span class="word"><i style="animation-delay:2.5s">Bien</i></span>
+      <span class="word"><i style="animation-delay:2.62s">de</i></span>
+      <span class="word"><i style="animation-delay:2.74s">Amores</i></span>
+    </h1>
+    <p class="lead">Café de especialidad, desayunos y meriendas creativas en un local luminoso de techos altos, a un paso del parque de San Telmo y de Triana.</p>
+    <div class="hero-acts">
+      <a class="btn btn-1" href="tel:+34640856359">Llamar al 640 85 63 59</a>
+      <a class="btn btn-2" href="#carta">Ver qué se vive aquí</a>
+    </div>
+    <div class="est">
+      <div class="u">
+        <div class="estrellas">★★★★☆</div>
+        <div class="n"><span class="count" data-to="41" data-dec="1">0</span></div>
+        <div class="e">Valoración en Google</div>
+      </div>
+      <div class="u">
+        <div class="n"><span class="count" data-to="152">0</span></div>
+        <div class="e">Reseñas de clientes</div>
+      </div>
+      <div class="u">
+        <div class="n">San Telmo</div>
+        <div class="e">A un paso de Triana</div>
+      </div>
+    </div>
+    <div class="insignia"><span class="punto"></span><span>Pet friendly · rincón infantil</span></div>
+  </div>
+</header>
+
+<main>
+
+<section class="sobre" id="sobre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">La casa</div>
+      <h2>Dos grancanarios que volvieron<br>de Ibiza con una idea</h2>
+    </div>
+    <div class="cols">
+      <div class="rev">
+        <p>Bien de Amores lo llevan Dano y Fredi, dos grancanarios que después de una temporada en Ibiza volvieron a su isla con la idea de montar un café de especialidad distinto. Abrieron el 14 de febrero de 2026, en la calle Perojo, a un paso del parque de San Telmo y del barrio de Triana.</p>
+        <p>El local apuesta por materiales naturales, techos altos y mucha luz, con especial cuidado en las bebidas sin alcohol más allá del café. Es un sitio pet friendly, con su rincón pensado para los peques, y organiza eventos temáticos para quien busca algo más que tomarse un café.</p>
+        <p>Con 4,1 sobre 5 y 152 reseñas en Google en pocos meses de vida, el boca a boca ya funciona. Lo único que falta es un sitio propio en internet donde se cuente todo esto.</p>
+      </div>
+      <div class="rev">
+        <div class="tarjeta-cifra">
+          <div class="estrellas">★★★★☆</div>
+          <div class="g"><span class="count" data-to="41" data-dec="1">0</span></div>
+          <div class="r"><span class="count" data-to="152">0</span> reseñas en Google</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Qué se vive aquí</div>
+      <h2>Café de especialidad,<br>a su manera</h2>
+      <p class="sub">Estas son las categorías reales de la casa. En la web definitiva se detalla la carta completa, con productos y precios actualizados cuando ustedes quieran.</p>
+    </div>
+    <div class="rejilla">
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4Z"/><path d="M17 9h1.6a2.4 2.4 0 0 1 0 4.8H17"/><path d="M7 4.5V3M11 4.5V3"/></svg></div>
+        <h3>Café de especialidad</h3>
+        <p>La base de la casa desde el primer día: una selección de café de especialidad cuidada al detalle.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 17h16M6 17V9a6 6 0 0 1 12 0v8M9 6.5 12 3l3 3.5"/></svg></div>
+        <h3>Desayunos</h3>
+        <p>Desayunos pensados para tomarse con calma, en un espacio luminoso y de techos altos.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9h18l-2 9a2 2 0 0 1-2 1.6H7A2 2 0 0 1 5 18Z"/><path d="M6 9V7a6 6 0 0 1 12 0v2"/></svg></div>
+        <h3>Sándwiches y meriendas creativas</h3>
+        <p>Propuestas para media mañana o la merienda, distintas a lo habitual.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21c0-6 3-9 8-9 0 5-3 9-8 9Z"/><path d="M12 21c0-6-3-9-8-9 0 5 3 9 8 9Z"/><path d="M12 21v-6"/></svg></div>
+        <h3>Bebidas sin alcohol cuidadas</h3>
+        <p>Un mimo especial en las bebidas sin alcohol, más allá del café de siempre.</p>
+        <span class="etiqueta">Sin alcohol</span>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4.5 13.9 9l4.6.4-3.5 3 1.1 4.5L12 14.6 7.9 16.9 9 12.4l-3.5-3L10.1 9Z"/></svg></div>
+        <h3>Eventos temáticos</h3>
+        <p>Veladas y eventos que convierten una tarde de café en otra cosa. Se anuncian por teléfono.</p>
+      </article>
+      <article class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20c2-5 4-7 8-7s6 2 8 7"/><circle cx="8" cy="8" r="2.4"/><circle cx="16" cy="8" r="2.4"/></svg></div>
+        <h3>Pet friendly y rincón infantil</h3>
+        <p>Un sitio donde entran las mascotas y hay un rincón pensado para los niños.</p>
+        <span class="etiqueta">Con mascotas</span>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="confianza" id="resenas">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Reseñas reales</div>
+      <h2>152 reseñas y un 4,1<br>en pocos meses</h2>
+      <p class="sub">Estas son las cifras reales de su ficha de Google a día de hoy. No inventamos frases: en la web definitiva se enlazan las reseñas literales de Google y se actualizan solas.</p>
+    </div>
+    <div class="rejilla">
+      <div class="bloque rev">
+        <div class="st">★★★★☆</div>
+        <div class="gd"><span class="count" data-to="41" data-dec="1">0</span></div>
+        <p>Valoración media sobre 5 en Google desde la apertura, en apenas unos meses de vida.</p>
+      </div>
+      <div class="bloque rev">
+        <div class="st">★★★★☆</div>
+        <div class="gd"><span class="count" data-to="152">0</span></div>
+        <p>Reseñas de clientes reales. Para un negocio recién abierto, ese volumen habla solo.</p>
+      </div>
+      <div class="bloque rev">
+        <div class="st">★★★★☆</div>
+        <div class="gd">2026</div>
+        <p>Abrieron el 14 de febrero, en pleno San Telmo, a un paso de Triana.</p>
+      </div>
+    </div>
+    <div class="honesto rev">
+      <b>Una cosa que conviene saber:</b> hoy, quien busca «Bien de Amores» en internet solo encuentra su ficha de Google. Ni la carta, ni los eventos temáticos, ni el ambiente del local están contados en ningún sitio propio. Eso es exactamente lo que resuelve una web propia.
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Dónde estamos</div>
+      <h2>C. Perojo, 2 · San Telmo</h2>
+    </div>
+    <div class="cols">
+      <div class="rev">
+        <div class="dato">
+          <div class="k">Dirección</div>
+          <div class="v">C. Perojo, 2<small>San Telmo · 35003 Las Palmas de Gran Canaria</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Teléfono</div>
+          <div class="v"><a href="tel:+34640856359">640 85 63 59</a><small>Para consultas y reservas de eventos</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Ambiente</div>
+          <div class="v">Pet friendly<small>Con rincón pensado para los niños</small></div>
+        </div>
+        <div class="dato">
+          <div class="k">Eventos</div>
+          <div class="v">Eventos temáticos<small>Consulte las próximas fechas por teléfono</small></div>
+        </div>
+      </div>
+      <div class="rev">
+        <div class="mapa">
+          <div>
+            <div class="p">A un paso de San Telmo y Triana</div>
+            <p>En la calle Perojo, junto al parque de San Telmo y muy cerca del barrio de Triana, en pleno centro de Las Palmas de Gran Canaria.</p>
+            <a class="btn btn-3" href="https://maps.google.com/?q=Bien+de+Amores+C.+Perojo+2+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Abrir en Google Maps</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cierre">
+  <div class="wrap">
+    <div class="rev">
+      <div class="t">Bien de Amores</div>
+      <h2>Café de especialidad en San Telmo</h2>
+      <p class="sub">En C. Perojo, 2, a un paso del parque de San Telmo. Llame y pregunte por los próximos eventos temáticos, o pásese cuando quiera.</p>
+      <div class="acts">
+        <a class="btn btn-1" href="tel:+34640856359">Llamar al 640 85 63 59</a>
+        <a class="btn btn-3" href="https://maps.google.com/?q=Bien+de+Amores+C.+Perojo+2+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="m">Bien de Amores</div>
+    <div>C. Perojo, 2 · 35003 Las Palmas de Gran Canaria · 640 85 63 59</div>
+    <div class="agencia">
+      Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> para Bien de Amores, con sus datos públicos de Google.
+      Esta web puede ser suya. · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · elevenprime.es
+    </div>
+  </div>
+</footer>
+
+<div class="barra-fija">
+  <a class="l" href="tel:+34640856359">Llamar ahora</a>
+  <a class="m" href="https://maps.google.com/?q=Bien+de+Amores+C.+Perojo+2+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<noscript><style>
+  .rev{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .est,.lead,.hero-acts,.insignia,.antes{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+
+<script>
+/* ------- el momento firma se salta con clic o tecla ------- */
+(function(){
+  var l=document.getElementById('load');
+  if(!l) return;
+  function fuera(){ l.style.setProperty('opacity','0','important'); l.style.setProperty('visibility','hidden','important'); }
+  l.addEventListener('click',fuera);
+  window.addEventListener('keydown',fuera,{once:true});
+  setTimeout(fuera,3000);
+})();
+
+/* ------- navegación compacta, barra de progreso y parallax ------- */
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog'), capa=document.getElementById('capa'), pend=false;
+  function pinta(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('min', y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(prog) prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    if(capa && y<window.innerHeight) capa.style.transform='translate3d(0,'+(y*0.13)+'px,0)';
+    pend=false;
+  }
+  window.addEventListener('scroll',function(){ if(!pend){pend=true;requestAnimationFrame(pinta);} },{passive:true});
+  pinta();
+})();
+
+/* ------- revelado por secciones ------- */
+(function(){
+  if(!('IntersectionObserver' in window)) return;
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(e,i){ e.style.transitionDelay=(i%3*90)+'ms'; io.observe(e); });
+})();
+
+/* ------- contadores ------- */
+(function(){
+  function formatea(v){ return v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.'); }
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1300;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), v=Math.round(to*(1-Math.pow(1-p,3)));
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',') : formatea(v);
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  if(!('IntersectionObserver' in window)){
+    document.querySelectorAll('.count').forEach(anima); return;
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); io.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(function(e){ io.observe(e); });
+})();
+
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

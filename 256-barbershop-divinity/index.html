@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Barbershop Divinity · Barbería en Las Palmas de Gran Canaria</title>
+<meta name="description" content="Barbershop Divinity, barbería en la esquina de C. República Dominicana con C. Costa Rica, Las Palmas de Gran Canaria. 4,7 en Google con 142 reseñas. Cita: 644 83 64 53.">
+<style>
+:root{
+  --tinta:#12161C; --tinta-2:#0A0D11; --hueso:#F5F2ED; --hueso-2:#E9E2D3;
+  --bronce:#B08D57; --bronce-2:#8C6D40; --mut:#6B6459;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;background:var(--hueso);color:var(--tinta);line-height:1.75;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-family:Georgia,'Times New Roman',serif;font-weight:400;line-height:1.08;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1180px,90vw);margin-inline:auto}
+.eyebrow{font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;color:var(--bronce-2);font-weight:700}
+
+/* ===== MOMENTO FIRMA: tijeras que se abren y revelan el nombre tras un iris de bronce ===== */
+#load{position:fixed;inset:0;z-index:999;background:var(--tinta-2);display:grid;place-items:center;transition:opacity .65s ease,visibility .65s ease;cursor:pointer}
+#load.off{opacity:0;visibility:hidden}
+.firma{text-align:center;padding:1.5rem}
+.tijeras{display:block;margin:0 auto 1.6rem;overflow:visible}
+.pivote{fill:var(--bronce)}
+.hojaA,.hojaB{transform-box:fill-box;transform-origin:center}
+.hojaA{fill:#EDE6D8;transform:rotate(24deg);animation:abreA 1.05s .45s cubic-bezier(.34,1.56,.64,1) forwards}
+.hojaB{fill:#EDE6D8;transform:rotate(-24deg);animation:abreB 1.05s .45s cubic-bezier(.34,1.56,.64,1) forwards}
+@keyframes abreA{to{transform:rotate(0deg)}}
+@keyframes abreB{to{transform:rotate(0deg)}}
+.mangoA,.mangoB{fill:none;stroke:var(--bronce);stroke-width:5;transform-box:fill-box;transform-origin:center}
+.mangoA{transform:rotate(24deg);animation:abreA 1.05s .45s cubic-bezier(.34,1.56,.64,1) forwards}
+.mangoB{transform:rotate(-24deg);animation:abreB 1.05s .45s cubic-bezier(.34,1.56,.64,1) forwards}
+.chispa{opacity:0;transform:scale(.3);transform-origin:center;transform-box:fill-box;fill:#fff;animation:brillo .7s 1.35s ease-out forwards}
+@keyframes brillo{0%{opacity:0;transform:scale(.3)}45%{opacity:1;transform:scale(1.5)}100%{opacity:0;transform:scale(.6)}}
+.nombre{position:relative;overflow:hidden;display:inline-block}
+.nombre b{display:block;color:var(--hueso);font-family:Georgia,serif;font-weight:400;font-size:clamp(1.05rem,4.3vw,1.7rem);letter-spacing:.34em;padding:0 .25em;line-height:1.5}
+.nombre b em{display:block;font-style:normal;color:var(--bronce)}
+.iris{position:absolute;inset:-60%;background:var(--tinta-2);transform:rotate(45deg) scale(2.6);transform-origin:center;animation:iris .85s 1.55s cubic-bezier(.7,0,.3,1) forwards}
+@keyframes iris{to{transform:rotate(45deg) scale(0)}}
+.skip{color:rgba(245,242,237,.4);font-size:.6rem;letter-spacing:.3em;text-transform:uppercase;margin-top:2.1rem;opacity:0;animation:fade .6s 2s forwards}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.5rem 0;transition:.45s}
+header.stuck{background:rgba(245,242,237,.97);padding:.7rem 0;box-shadow:0 1px 20px rgba(18,22,28,.12)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:Georgia,serif;font-size:1.3rem;letter-spacing:.28em;color:#fff;transition:.4s}
+.brand span{color:var(--bronce)}
+.menu{display:flex;gap:2.1rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:#fff;font-weight:600;transition:.4s}
+.menu a{position:relative;padding-bottom:5px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1px;width:0;background:var(--bronce);transition:width .45s}
+.menu a:hover::after{width:100%}
+.cta{background:var(--bronce);color:var(--tinta-2);padding:.8rem 1.7rem;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;transition:.35s}
+.cta:hover{background:#fff;transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:var(--tinta);color:#fff;padding:9rem 0 7.5rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 80% 22%,rgba(176,141,87,.28),transparent 46%),radial-gradient(circle at 6% 88%,rgba(255,255,255,.05),transparent 50%)}
+.hero .ring{position:absolute;border:1px solid rgba(176,141,87,.32);border-radius:50%;animation:pulse 8s ease-in-out infinite}
+.hero .r1{width:440px;height:440px;top:6%;right:-110px}
+.hero .r2{width:230px;height:230px;bottom:12%;right:20%;animation-delay:2.4s}
+@keyframes pulse{50%{transform:scale(1.06);opacity:.55}}
+.hero-in{position:relative;z-index:2;max-width:900px}
+.hero .est{opacity:0;animation:fade .9s .3s forwards}
+.hero h1{font-size:clamp(2.7rem,8.6vw,6.4rem);margin:1.4rem 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:up 1.05s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes up{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:normal;color:var(--bronce)}
+.hero p.lead{max-width:520px;margin-top:1.8rem;color:rgba(245,242,237,.82);font-size:1.05rem;font-family:-apple-system,sans-serif;opacity:0;animation:fade .9s 1.2s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.6rem;opacity:0;animation:fade .9s 1.4s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1.1rem 2.1rem;font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;transition:.38s}
+.btn-c{background:var(--bronce);color:var(--tinta-2)}
+.btn-c:hover{background:#fff;transform:translateY(-3px)}
+.btn-o{border:1px solid rgba(245,242,237,.45)}
+.btn-o:hover{background:#fff;color:var(--tinta);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(245,242,237,.15);z-index:2;opacity:0;animation:fade .9s 1.65s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.4rem 0;font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(245,242,237,.82);font-weight:600}
+.hf b{color:var(--bronce)}
+
+section{padding:7.2rem 0;position:relative}
+.rv{opacity:0;transform:translateY(32px);transition:1s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.12s}.rv[data-d="2"]{transition-delay:.24s}
+.rv[data-d="3"]{transition-delay:.36s}.rv[data-d="4"]{transition-delay:.48s}
+.sec-head{max-width:660px;margin-bottom:3.8rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(2rem,5.4vw,3.4rem);margin-top:1rem}
+.sec-head p{color:var(--mut);margin-top:1.1rem;font-family:-apple-system,sans-serif}
+
+.split{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
+.frame{aspect-ratio:4/5;background:linear-gradient(155deg,var(--tinta),#1c222b);position:relative;display:grid;place-items:center;overflow:hidden}
+.frame::after{content:"";position:absolute;inset:14px;border:1px solid rgba(176,141,87,.4)}
+.frame .k{color:#fff;text-align:center;padding:2rem;position:relative;z-index:2}
+.frame .k b{display:block;font-family:Georgia,serif;font-size:clamp(2.8rem,6.6vw,4.4rem);color:var(--bronce);font-weight:400;line-height:1}
+.frame .k span{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:rgba(245,242,237,.72);display:block;margin-top:1rem}
+
+.serv{background:var(--tinta);color:#fff}
+.serv .sec-head p{color:rgba(245,242,237,.75)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1px;background:rgba(245,242,237,.13)}
+.s{background:var(--tinta);padding:2.5rem 2rem;transition:.45s}
+.s:hover{background:#1a2029;transform:translateY(-6px)}
+.s .num{font-size:.66rem;letter-spacing:.3em;color:var(--bronce);font-weight:700}
+.s h3{font-family:Georgia,serif;font-size:1.36rem;margin:.85rem 0 .65rem;font-weight:400}
+.s p{font-size:.92rem;color:rgba(245,242,237,.72);font-family:-apple-system,sans-serif}
+
+.confi{background:var(--hueso-2)}
+.cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center;margin-bottom:3rem}
+.n b{font-family:Georgia,serif;font-size:clamp(2.2rem,5.8vw,3.4rem);color:var(--tinta);display:block;line-height:1;font-weight:400}
+.n span{font-size:.66rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.65rem;font-weight:700}
+.badges{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center}
+.badge{display:flex;align-items:center;gap:.6rem;background:#fff;border:1px solid rgba(18,22,28,.1);padding:1rem 1.4rem;font-size:.85rem;color:var(--tinta);font-family:-apple-system,sans-serif}
+.badge .ic{font-size:1.15rem}
+
+.aviso{background:#F2E7D3;border-left:4px solid var(--bronce);padding:1.5rem 1.8rem;font-size:.92rem;color:#5A4622;font-family:-apple-system,sans-serif}
+.aviso b{font-weight:700}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4.4rem}
+.dt{padding:1.4rem 0;border-bottom:1px solid var(--hueso-2)}
+.dt h4{font-size:.66rem;letter-spacing:.26em;text-transform:uppercase;color:var(--bronce-2);margin-bottom:.5rem;font-weight:700}
+.dt p,.dt a{font-size:1.03rem;font-family:-apple-system,sans-serif}
+.dt a:hover{color:var(--bronce-2)}
+.map{min-height:340px;display:grid;place-items:center;text-align:center;padding:2.3rem;transition:.45s;color:#fff;background:linear-gradient(155deg,var(--tinta),#1e242e)}
+.map:hover{transform:scale(1.014)}
+.map .pin{font-size:1.9rem;animation:bob 2.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+
+footer.foot{background:var(--tinta-2);color:rgba(245,242,237,.72);padding:2.8rem 0;font-size:.86rem;font-family:-apple-system,sans-serif}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--bronce)}
+.fab{position:fixed;right:1.3rem;bottom:1.3rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;background:var(--tinta);color:#fff;box-shadow:0 14px 34px -12px rgba(0,0,0,.5);transition:.3s}
+.fab a.tel{background:var(--bronce);color:var(--tinta-2)}
+.fab a:hover{transform:scale(1.12)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(10,13,17,.93);color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--tinta);padding:2rem;gap:1.3rem;color:#fff}
+  .split,.cont{grid-template-columns:1fr;gap:2.4rem}
+  .cgrid{grid-template-columns:1fr;gap:2.1rem}
+  section{padding:4.6rem 0}
+  .hero{padding-bottom:10rem}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<div id="load">
+  <div class="firma">
+    <svg class="tijeras" viewBox="0 0 220 130" width="140" height="82" aria-hidden="true">
+      <g class="mangoA"><circle cx="176" cy="34" r="19"/></g>
+      <g class="mangoB"><circle cx="176" cy="96" r="19"/></g>
+      <path class="hojaA" d="M110,65 L18,20 Q6,14 12,26 L64,63 Z"/>
+      <path class="hojaB" d="M110,65 L18,110 Q6,116 12,104 L64,67 Z"/>
+      <circle class="pivote" cx="110" cy="65" r="7"/>
+      <circle class="chispa" cx="24" cy="21" r="6"/>
+    </svg>
+    <div class="nombre"><b>BARBERSHOP<em>DIVINITY</em></b><span class="iris"></span></div>
+    <p class="skip">Toca para entrar</p>
+  </div>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">DIVINITY<span>.</span></a>
+    <nav class="menu" id="menu">
+      <a href="#sobre">La barbería</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#confianza">Confianza</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="tel:+34644836453" class="cta">Reservar</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="ring r1"></span><span class="ring r2"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">Rep. Dominicana esq. Costa Rica · Las Palmas de Gran Canaria</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">Ciento cuarenta</i></span><br>
+      <span class="word"><i style="animation-delay:.5s">y dos reseñas.</i></span>
+      <span class="word"><i style="animation-delay:.65s"><em>Un solo criterio.</em></i></span>
+    </h1>
+    <p class="lead">Barbershop Divinity, en la esquina de la calle República Dominicana con Costa Rica. 4,7 sobre 5 en Google, con 142 reseñas detrás.</p>
+    <div class="hero-acts">
+      <a href="tel:+34644836453" class="btn btn-c">Llamar para reservar</a>
+      <a href="#servicios" class="btn btn-o">Ver servicios</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 4,7</b> · 142 reseñas en Google</span>
+      <span>C. República Dominicana, 33</span>
+      <span>644 83 64 53</span>
+    </div>
+  </div>
+</section>
+
+<section id="sobre">
+  <div class="wrap split">
+    <div class="rv">
+      <p class="eyebrow">La barbería</p>
+      <h2 style="font-size:clamp(2rem,5.4vw,3.4rem);margin-top:1rem">Un 4,7 con<br>142 opiniones</h2>
+      <p style="color:var(--mut);margin-top:1.3rem;font-family:-apple-system,sans-serif">En Barbershop Divinity el corte se cuida al detalle, sillón a sillón — es lo que más se repite entre quienes ya han pasado por aquí, y se nota en un 4,7 sobre 5 sostenido por 142 reseñas en Google.</p>
+      <p style="color:var(--mut);margin-top:1.05rem;font-family:-apple-system,sans-serif">Estamos en la esquina de la calle República Dominicana con la calle Costa Rica, en Las Palmas de Gran Canaria. Entrada accesible en silla de ruedas y pago con tarjeta.</p>
+      <a href="#contacto" class="btn btn-c" style="margin-top:2.1rem">Cómo llegar</a>
+    </div>
+    <div class="frame rv" data-d="1">
+      <div class="k">
+        <b><span class="count" data-to="47" data-dec="1">0</span></b>
+        <span>Valoración media en Google</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="serv" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo que se trabaja aquí</h2>
+      <p>Los servicios que aparecen en su ficha pública, tal y como los tienen hoy. En la web final van con precios si así lo deciden.</p>
+    </div>
+    <div class="sgrid">
+      <div class="s rv"><span class="num">01</span><h3>Corte personalizado</h3><p>Corte pensado según cómo llevas el pelo cada día, no según una plantilla.</p></div>
+      <div class="s rv" data-d="1"><span class="num">02</span><h3>Coloración</h3><p>Tratamiento de color para cubrir canas o cambiar de tono con acabado natural.</p></div>
+      <div class="s rv" data-d="2"><span class="num">03</span><h3>Afeitado clásico</h3><p>Afeitado a navaja, con toalla caliente y el ritual de siempre.</p></div>
+      <div class="s rv" data-d="3"><span class="num">04</span><h3>Tratamientos faciales de caballero</h3><p>Cuidado facial pensado para el cliente que también cuida su piel.</p></div>
+      <div class="s rv" data-d="4"><span class="num">05</span><h3>Manicura y pedicura</h3><p>El servicio completo, de la cabeza a las manos, en una sola visita.</p></div>
+    </div>
+    <p style="text-align:center;color:rgba(245,242,237,.6);font-size:.84rem;margin-top:2.3rem;font-family:-apple-system,sans-serif">Servicios verificados en su ficha pública. Si falta u os sobra alguno, se ajusta en la web final.</p>
+  </div>
+</section>
+
+<section class="confi" id="confianza">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Confianza</p>
+      <h2>Los números hablan</h2>
+      <p>Sin reseñas inventadas: solo la valoración real que ya tenéis en Google.</p>
+    </div>
+    <div class="cgrid">
+      <div class="n rv"><b><span class="count" data-to="47" data-dec="1">0</span></b><span>Valoración en Google</span></div>
+      <div class="n rv" data-d="1"><b><span class="count" data-to="142">0</span></b><span>Reseñas</span></div>
+      <div class="n rv" data-d="2"><b>5</b><span>Servicios verificados</span></div>
+    </div>
+    <div class="badges rv" data-d="1">
+      <div class="badge"><span class="ic">♿</span> Entrada accesible en silla de ruedas</div>
+      <div class="badge"><span class="ic">💳</span> Pago con tarjeta</div>
+    </div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Reserva tu cita</h2>
+      <p>Esquina de C. República Dominicana con C. Costa Rica · Las Palmas de Gran Canaria.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>Esquina C. República Dominicana, 33 con C. Costa Rica, 35<br>35010 Las Palmas de Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono</h4><p><a href="tel:+34644836453">644 83 64 53</a></p></div>
+        <div class="dt"><h4>Valoración</h4><p>4,7 sobre 5 con 142 reseñas en Google</p></div>
+        <div class="dt"><h4>Accesibilidad</h4><p>Entrada accesible en silla de ruedas · pago con tarjeta</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Barbershop+Divinity+Calle+Republica+Dominicana+33+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.45rem;margin-top:.85rem;font-family:Georgia,serif">C. República Dominicana, 33</p>
+            <p style="color:rgba(245,242,237,.8);margin-top:.5rem;font-family:-apple-system,sans-serif">esquina C. Costa Rica</p>
+            <span class="btn btn-o" style="margin-top:1.6rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Barbershop Divinity · Las Palmas de Gran Canaria</span>
+    <span><a href="tel:+34644836453">644 83 64 53</a> · C. República Dominicana, 33</span>
+  </div>
+  <div class="wrap" style="margin-top:1rem">
+    <div class="aviso">Demo creada por Eleven AI — <b>esta web puede ser tuya.</b></div>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="tel" href="tel:+34644836453" aria-label="Llamar">☎</a>
+  <a href="https://www.google.com/maps/search/?api=1&query=Barbershop+Divinity+Calle+Republica+Dominicana+33+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener" aria-label="Cómo llegar">📍</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+(function(){
+  var l=document.getElementById('load');
+  function cerrar(){l.classList.add('off')}
+  window.addEventListener('load',function(){setTimeout(cerrar,2000)});
+  setTimeout(cerrar,2600);
+  l.addEventListener('click',cerrar);
+  addEventListener('keydown',cerrar,{once:true});
+})();
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){hd.classList.toggle('stuck',scrollY>70)},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  .iris,.chispa{display:none!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
