@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Presupuesto PRE-2026-0002 de Eleven AI para Gym Good Training.">
+<title>Presupuesto Gym Good Training</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Libre+Franklin:wght@400;500;600;700&display=swap">
+<style>
+  :root{
+    --ground:#EEF1F7;
+    --paper:#FFFFFF;
+    --ink:#10151C;
+    --muted:#5A6472;
+    --faint:#8A93A2;
+    --line:#E1E6EF;
+    --rule:#10151C;
+    --accent:#1B3DE8;
+    --sobre-accent:#FFFFFF;
+    --accent-soft:#EDF0FE;
+    --shadow:0 1px 2px rgba(16,21,28,.05), 0 12px 32px rgba(16,21,28,.07);
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --ground:#0B0F15;
+      --paper:#151B24;
+      --ink:#E9EEF6;
+      --muted:#98A3B3;
+      --faint:#6D7788;
+      --line:#242D3A;
+      --rule:#E9EEF6;
+      --accent:#8AA4FF;
+      --sobre-accent:#0B0F15;
+      --accent-soft:#1B2436;
+      --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.45);
+    }
+  }
+  :root[data-theme="dark"]{
+    --ground:#0B0F15;
+    --paper:#151B24;
+    --ink:#E9EEF6;
+    --muted:#98A3B3;
+    --faint:#6D7788;
+    --line:#242D3A;
+    --rule:#E9EEF6;
+    --accent:#8AA4FF;
+    --sobre-accent:#0B0F15;
+    --accent-soft:#1B2436;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.45);
+  }
+
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:var(--ground);
+    color:var(--ink);
+    font-family:"Libre Franklin",system-ui,-apple-system,sans-serif;
+    font-size:15px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    padding:clamp(16px,4vw,56px) clamp(12px,4vw,24px);
+  }
+  .hoja{
+    max-width:760px;margin:0 auto;background:var(--paper);
+    border:1px solid var(--line);border-radius:4px;box-shadow:var(--shadow);
+    padding:clamp(24px,5vw,52px);
+  }
+
+  /* ---- membrete ---- */
+  .membrete{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between;align-items:flex-start}
+  .marca{font-size:1.4rem;font-weight:700;letter-spacing:-.025em;line-height:1.1}
+  .marca em{font-style:normal;color:var(--accent)}
+  .marca span{display:block;font-size:.78rem;font-weight:400;color:var(--muted);letter-spacing:0;margin-top:5px}
+  .tipo{text-align:right;min-width:190px}
+  .tipo h1{
+    font-family:Fraunces,Georgia,serif;font-optical-sizing:auto;
+    font-size:1.6rem;font-weight:600;margin:0 0 6px;letter-spacing:-.015em;line-height:1;
+  }
+  .tipo dl{margin:0;font-size:.82rem;color:var(--muted);
+    display:grid;grid-template-columns:auto auto;gap:2px 10px;justify-content:end}
+  .tipo dt{color:var(--faint)}
+  .tipo dd{margin:0;font-variant-numeric:tabular-nums;color:var(--ink)}
+  .barra{height:2px;background:var(--rule);margin:20px 0 28px;border-radius:2px}
+
+  /* ---- partes ---- */
+  .partes{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-bottom:32px}
+  .parte{border:1px solid var(--line);border-radius:4px;padding:16px 18px}
+  .parte.emisor{background:var(--accent-soft);border-color:transparent}
+  .rotulo{font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);margin:0 0 8px}
+  .parte p{margin:0;font-size:.85rem;color:var(--muted);line-height:1.65}
+  .parte .nombre{font-size:.98rem;font-weight:600;color:var(--ink);margin-bottom:3px;line-height:1.35}
+  .pendiente{color:var(--faint);font-style:italic}
+
+  /* ---- detalle ---- */
+  .tabla{width:100%;border-collapse:collapse;margin-bottom:4px}
+  .tabla th{
+    font-size:.66rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--faint);
+    text-align:left;padding:0 0 10px;border-bottom:1px solid var(--line)
+  }
+  .tabla th.num,.tabla td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .tabla td{padding:18px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  .tabla .que{font-weight:500}
+  .tabla .detalle{display:block;color:var(--muted);font-size:.85rem;margin-top:5px;max-width:52ch}
+  .tabla a{color:var(--accent);text-decoration:none;border-bottom:1px solid color-mix(in srgb,var(--accent) 35%,transparent)}
+  .tabla a:hover{border-bottom-color:var(--accent)}
+  .tabla .demo{display:inline-block;font-size:.82rem;margin-top:8px;word-break:break-all}
+
+  /* ---- totales ---- */
+  .totales{margin:18px 0 0 auto;width:min(300px,100%)}
+  .totales div{display:flex;justify-content:space-between;gap:20px;padding:5px 0;font-size:.88rem;color:var(--muted)}
+  .totales div span:last-child{font-variant-numeric:tabular-nums;color:var(--ink)}
+  .totales .total{
+    border-top:2px solid var(--rule);margin-top:8px;padding-top:12px;
+    font-family:Fraunces,Georgia,serif;font-size:1.5rem;font-weight:600;color:var(--ink);align-items:baseline
+  }
+  .totales .total span:first-child{font-size:.9rem;font-family:"Libre Franklin",sans-serif;font-weight:600}
+  .nota-igic{text-align:right;font-size:.78rem;color:var(--faint);margin:8px 0 0}
+
+  /* ---- pago ---- */
+  .pago{margin-top:34px;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .pago .cuerpo{padding:20px 22px}
+  .plazos{list-style:none;margin:0 0 18px;padding:0;display:grid;gap:9px}
+  .plazos li{display:flex;justify-content:space-between;gap:16px;font-size:.88rem;color:var(--muted);
+    padding-bottom:9px;border-bottom:1px dotted var(--line)}
+  .plazos li:last-child{border-bottom:0;padding-bottom:0}
+  .plazos b{color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+  .boton{
+    display:block;text-align:center;background:var(--accent);color:var(--sobre-accent);text-decoration:none;
+    padding:15px 20px;border-radius:3px;font-weight:600;font-size:.95rem;letter-spacing:.01em;
+    transition:filter .15s ease
+  }
+  .boton:hover{filter:brightness(1.08)}
+  .boton:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
+  .pago .pie{font-size:.78rem;color:var(--faint);text-align:center;margin:10px 0 0}
+
+  /* ---- condiciones ---- */
+  .condiciones{margin-top:36px}
+  .condiciones ol{margin:0;padding-left:1.3em;font-size:.85rem;color:var(--muted)}
+  .condiciones li{padding:4px 0}
+  .condiciones li::marker{color:var(--faint);font-variant-numeric:tabular-nums}
+
+  .cierre{margin-top:34px;padding-top:18px;border-top:1px solid var(--line);
+    text-align:center;font-size:.76rem;color:var(--faint);line-height:1.7}
+  .cierre b{color:var(--muted);font-weight:600}
+
+  @media (max-width:520px){
+    .tipo{text-align:left;min-width:0}
+    .tipo dl{justify-content:start}
+  }
+  @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="hoja">
+
+  <header class="membrete">
+    <div class="marca">
+      Eleven <em>AI</em>
+      <span>Webs para negocios de Canarias</span>
+    </div>
+    <div class="tipo">
+      <h1>Presupuesto</h1>
+      <dl>
+        <dt>Nº</dt><dd>PRE-2026-0002</dd>
+        <dt>Fecha</dt><dd>28 agosto 2026</dd>
+        <dt>Válido hasta</dt><dd>12 septiembre 2026</dd>
+      </dl>
+    </div>
+  </header>
+
+  <div class="barra"></div>
+
+  <section class="partes">
+    <div class="parte emisor">
+      <p class="rotulo">Emisor</p>
+      <p class="nombre">Eleven Agencia de Marketing Digital, S.L.</p>
+      <p>
+        CIF B56862691<br>
+        +34 610 10 22 79 · rafa@elevenprime.es<br>
+        elevenprime.es
+      </p>
+    </div>
+    <div class="parte">
+      <p class="rotulo">Cliente</p>
+      <p class="nombre">Gym Good Training</p>
+      <p>
+        C/ Perú, 14 · 35200 Telde<br>
+        +34 608 56 23 82<br>
+        <span class="pendiente">CIF/NIF pendiente de facilitar</span>
+      </p>
+    </div>
+  </section>
+
+  <table class="tabla">
+    <thead>
+      <tr><th scope="col">Concepto</th><th scope="col" class="num">Importe</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <span class="que">Diseño de página web para Gym Good Training</span>
+          <span class="detalle">Web a medida con los datos reales del gimnasio, adaptada a móvil y a buscadores. Entrega en 7 días desde el cobro de la señal.</span>
+          <a class="demo" href="https://eleven-demos.github.io/webs/07-gym-good-training/" target="_blank" rel="noopener">Ver la demo ya publicada →</a>
+        </td>
+        <td class="num">457,94 €</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="totales">
+    <div><span>Base imponible</span><span>457,94 €</span></div>
+    <div><span>IGIC (7 %)</span><span>32,06 €</span></div>
+    <div class="total"><span>Total</span><span>490,00 €</span></div>
+  </div>
+  <p class="nota-igic">IGIC incluido. El precio no lleva cargos añadidos.</p>
+
+  <section class="pago">
+    <div class="cuerpo">
+      <p class="rotulo">Forma de pago</p>
+      <ul class="plazos">
+        <li><span>Señal del 50 % al aceptar</span><b>245,00 €</b></li>
+        <li><span>Resto a la entrega</span><b>245,00 €</b></li>
+        <li><span>Entrega</span><b>7 días desde la señal</b></li>
+      </ul>
+      <a class="boton" href="https://buy.stripe.com/3cIfZ96hwg6a6gbfXDfjG0c" target="_blank" rel="noopener">Pagar la señal de 245,00 €</a>
+      <p class="pie">Pago con tarjeta a través de Stripe. Conexión segura.</p>
+    </div>
+  </section>
+
+  <section class="condiciones">
+    <p class="rotulo">Condiciones</p>
+    <ol>
+      <li>Este presupuesto es válido hasta el 12 de septiembre de 2026.</li>
+      <li>Incluye hasta 2 rondas de cambios sin coste sobre la propuesta entregada.</li>
+      <li>Los textos, fotografías y logotipos que aporte el cliente son responsabilidad suya. Si no los aporta, se usan los datos públicos de su ficha y fotografías con licencia de uso.</li>
+      <li>El dominio y el alojamiento no están incluidos salvo que se indique expresamente.</li>
+      <li>La aceptación de este presupuesto y el pago de la señal suponen la conformidad con estas condiciones.</li>
+    </ol>
+  </section>
+
+  <footer class="cierre">
+    <b>Eleven Agencia de Marketing Digital, S.L.</b> · CIF B56862691 · elevenprime.es<br>
+    Tratamos tus datos solo para gestionar este presupuesto (RGPD). Puedes ejercer tus derechos escribiendo a rafa@elevenprime.es.
+  </footer>
+
+</div>
+</body>
+</html>
