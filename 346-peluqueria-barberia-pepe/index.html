@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Peluquería y Barbería Pepe · Triana, Las Palmas desde 1967</title>
+<meta name="description" content="Peluquería y barbería de caballero en C. Perojo, 25, Triana, Las Palmas de Gran Canaria. Desde 1967. 4,8★ con 92 reseñas en Google. Tel. 648 25 39 90.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --azul:#14304C; --azul-d:#0C2036; --oro:#B08D3E; --oro-l:#D9BC74;
+  --crema:#F5F1E9; --crema-2:#E9E1CE;
+  --tinta:#20242B; --mut:#5B6270;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,'Segoe UI',Arial,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.75;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;display:block}
+.wrap{width:min(1160px,90vw);margin-inline:auto}
+.eyebrow{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--oro);font-weight:700}
+
+/* ===== MOMENTO FIRMA: tijeras que se abren y revelan el nombre entre las hojas ===== */
+#load{position:fixed;inset:0;z-index:999;background:radial-gradient(circle at 50% 45%,var(--azul),var(--azul-d) 70%);display:grid;place-items:center;cursor:pointer;animation:loadOut .6s ease 2.3s forwards}
+#load .lin{display:flex;flex-direction:column;align-items:center;gap:1.1rem;position:relative}
+#load svg{width:150px;height:150px}
+.blade{transform-origin:60px 60px;animation:openb 1s cubic-bezier(.3,0,.2,1) .1s forwards}
+.blade.top{transform:rotate(-16deg)}
+.blade.bot{transform:rotate(16deg)}
+@keyframes openb{0%{transform:rotate(0)}100%{}}
+.blade.top{animation-name:opentop}
+.blade.bot{animation-name:openbot}
+@keyframes opentop{0%{transform:rotate(0)}100%{transform:rotate(-20deg)}}
+@keyframes openbot{0%{transform:rotate(0)}100%{transform:rotate(20deg)}}
+.flash{opacity:0;animation:flash .35s ease 1.05s}
+@keyframes flash{0%{opacity:0}30%{opacity:1}100%{opacity:0}}
+#load .brandline{overflow:hidden;padding-bottom:.2rem}
+#load .brandline b{display:inline-block;font-family:'Fraunces',Georgia,serif;font-weight:600;color:#fff;font-size:1.4rem;letter-spacing:.02em;transform:translateY(115%);opacity:0;animation:up .7s cubic-bezier(.2,1,.3,1) 1.15s forwards}
+@keyframes up{to{transform:translateY(0);opacity:1}}
+#load .tag{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.82);opacity:0;animation:up .6s ease 1.6s forwards}
+#load .skip{position:absolute;bottom:1.6rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+@keyframes loadOut{to{opacity:0;visibility:hidden}}
+#load.off{opacity:0!important;visibility:hidden!important;transition:opacity .35s}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.3rem 0;transition:.4s}
+header.stuck{background:rgba(245,241,233,.96);padding:.7rem 0;box-shadow:0 2px 20px rgba(12,32,54,.12)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;color:#fff;transition:.4s}
+.brand span{color:var(--oro-l)}
+header.stuck .brand span{color:var(--oro)}
+.menu{display:flex;gap:2rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600;transition:.4s}
+.menu a{position:relative;padding-bottom:4px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--oro-l);transition:width .35s}
+.menu a:hover::after{width:100%}
+.cta-nav{background:var(--oro);color:var(--azul-d);padding:.75rem 1.6rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border-radius:99px;transition:.35s;display:inline-flex;align-items:center;gap:.5rem}
+.cta-nav:hover{background:var(--oro-l);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:linear-gradient(155deg,var(--azul-d),var(--azul) 55%,#1B3A5C);color:#fff;padding:9rem 0 7rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,rgba(176,141,62,.25),transparent 46%),radial-gradient(circle at 6% 90%,rgba(255,255,255,.08),transparent 50%)}
+.deco{position:absolute;border-radius:50%;border:1.5px solid rgba(255,255,255,.14);animation:sway 11s ease-in-out infinite}
+.d1{width:210px;height:210px;top:-6%;right:6%}
+.d2{width:130px;height:130px;bottom:-4%;right:26%;animation-delay:1.4s}
+.d3{width:80px;height:80px;top:20%;left:4%;animation-delay:2.8s}
+@keyframes sway{50%{transform:translateY(-16px)}}
+.hero-in{position:relative;z-index:2;max-width:840px}
+.hero .est{opacity:0;animation:fade .85s .1s forwards}
+.hero h1{font-size:clamp(2.4rem,7vw,4.9rem);margin:1.2rem 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:wup 1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes wup{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:italic;color:var(--oro-l)}
+.hero p.lead{max-width:600px;margin-top:1.7rem;color:rgba(255,255,255,.92);font-size:1.06rem;opacity:0;animation:fade .85s 1s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.4rem;opacity:0;animation:fade .85s 1.2s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:.35s;border-radius:99px}
+.btn-c{background:var(--oro);color:var(--azul-d)}
+.btn-c:hover{background:var(--oro-l);color:var(--azul-d);transform:translateY(-3px)}
+.btn-o{border:1.5px solid rgba(255,255,255,.7);color:#fff}
+.btn-o:hover{background:#fff;color:var(--azul-d);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.2);z-index:2;opacity:0;animation:fade .85s 1.45s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.3rem 0;font-size:.76rem;letter-spacing:.08em;color:rgba(255,255,255,.9);font-weight:600}
+.hf b{color:var(--oro-l)}
+
+section{padding:6.8rem 0;position:relative}
+.rv{opacity:0;transform:translateY(30px);transition:.9s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}
+.sec-head{max-width:660px;margin-bottom:3.4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(1.9rem,5vw,3.1rem);margin-top:.85rem}
+.sec-head p{color:var(--mut);margin-top:1rem}
+
+.alerta{background:#fff;border:1.5px solid var(--oro);border-radius:14px;padding:1.6rem 1.9rem;display:flex;gap:1rem;align-items:flex-start;box-shadow:0 10px 28px -22px rgba(20,48,76,.35)}
+.alerta .ico{font-size:1.5rem}
+.alerta p{font-size:.94rem;color:var(--mut)}
+.alerta b{color:var(--tinta)}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.7rem;margin-top:2.4rem}
+.p{padding:2.3rem 1.9rem;background:#fff;border-radius:14px;transition:.4s;box-shadow:0 10px 28px -24px rgba(20,48,76,.4)}
+.p:hover{transform:translateY(-8px);box-shadow:0 26px 48px -30px rgba(20,48,76,.4)}
+.p .ico{font-size:2rem;line-height:1}
+.p h3{font-size:1.24rem;margin:.8rem 0 .55rem}
+.p p{font-size:.94rem;color:var(--mut)}
+
+.carta{background:var(--azul-d);color:#fff}
+.carta .sec-head p{color:rgba(255,255,255,.85)}
+.cgrid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem}
+.d{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:1.8rem;border-radius:12px;transition:.4s}
+.d:hover{background:rgba(255,255,255,.14);transform:translateY(-6px)}
+.d .ico{font-size:1.5rem}
+.d h3{font-size:1.04rem;margin:.65rem 0 .3rem}
+.d p{font-size:.87rem;color:rgba(255,255,255,.78)}
+.carta .note{margin-top:2.2rem;font-size:.85rem;color:rgba(255,255,255,.6);text-align:center}
+
+.rese{background:var(--crema-2)}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem}
+.rc{background:#fff;padding:2rem;border-radius:14px;box-shadow:0 10px 26px -24px rgba(20,48,76,.4)}
+.rc .stars{color:var(--oro);letter-spacing:.14em;font-size:1rem}
+.rc p{margin-top:.8rem;font-size:.96rem;font-style:italic;color:var(--tinta)}
+.rc span{display:block;margin-top:1rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:600}
+
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.1rem,5.6vw,3.4rem);color:var(--azul);display:block;line-height:1;font-family:'Fraunces',Georgia,serif;font-weight:600}
+.n span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.6rem;font-weight:600}
+.stars-big{color:var(--oro);letter-spacing:.14em;font-size:1.1rem;margin-top:.4rem;display:block}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.dt{padding:1.3rem 0;border-bottom:1px solid rgba(20,48,76,.12)}
+.dt h4{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--azul);margin-bottom:.4rem;font-weight:700}
+.dt p,.dt a{font-size:1.02rem}
+.dt a:hover{color:var(--azul)}
+.map{min-height:320px;display:grid;place-items:center;text-align:center;padding:2.3rem;border-radius:14px;transition:.4s;color:#fff;background:linear-gradient(150deg,var(--azul),var(--azul-d))}
+.map:hover{transform:scale(1.012)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+
+footer.foot{background:var(--tinta);color:rgba(255,255,255,.8);padding:2.6rem 0;font-size:.85rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--oro-l)}
+.fin small{display:block;margin-top:.4rem;color:rgba(255,255,255,.5);font-size:.76rem}
+.fab{position:fixed;right:1.2rem;bottom:1.2rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;background:var(--azul);color:#fff;box-shadow:0 14px 30px -12px rgba(20,48,76,.6);transition:.3s}
+.fab a.maps{background:var(--tinta)}
+.fab a:hover{transform:scale(1.1)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(20,48,76,.92);color:#fff;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--azul-d);padding:2rem;gap:1.2rem;color:#fff}
+  .pillars,.cont{grid-template-columns:1fr;gap:1.4rem}
+  .ngrid{grid-template-columns:1fr;gap:2rem}
+  section{padding:4.4rem 0}
+  .hero{padding-bottom:9.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  #load{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="load" role="button" tabindex="0" aria-label="Saltar animación de bienvenida">
+  <div class="lin">
+    <svg viewBox="0 0 120 120" fill="none" aria-hidden="true">
+      <circle class="flash" cx="60" cy="60" r="30" fill="#fff"/>
+      <g class="blade top" stroke="#D9BC74" stroke-width="3.2" stroke-linecap="round" fill="none">
+        <path d="M60 60 L104 40"/><circle cx="104" cy="40" r="7"/>
+      </g>
+      <g class="blade bot" stroke="#D9BC74" stroke-width="3.2" stroke-linecap="round" fill="none">
+        <path d="M60 60 L104 80"/><circle cx="104" cy="80" r="7"/>
+      </g>
+      <circle cx="60" cy="60" r="6" fill="#D9BC74"/>
+      <g stroke="#fff" stroke-width="3" stroke-linecap="round">
+        <path d="M60 60 L16 44"/><path d="M60 60 L16 76"/>
+      </g>
+    </svg>
+    <p class="brandline"><b>Peluquería y Barbería Pepe</b></p>
+    <p class="tag">Desde 1967 · Triana</p>
+  </div>
+  <span class="skip">Toca para continuar</span>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">Barbería<span>&nbsp;Pepe</span></a>
+    <nav class="menu" id="menu">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="tel:+34648253990" class="cta-nav">✆ Llamar ahora</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="deco d1"></span><span class="deco d2"></span><span class="deco d3"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">C. Perojo, 25 · Triana · Las Palmas de Gran Canaria</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.15s">Desde 1967,</i></span>
+      <span class="word"><i style="animation-delay:.3s">una web que</i></span><br>
+      <span class="word"><i style="animation-delay:.45s"><em>sí funcione</em></i></span>
+    </h1>
+    <p class="lead">Vuestra web actual, peluqueriabarberiapepe.com, da error de servidor tanto en la portada como en contacto. Google la sigue mostrando: quien la pulsa hoy se encuentra una pantalla en blanco en lugar de casi sesenta años de historia en Perojo.</p>
+    <div class="hero-acts">
+      <a href="tel:+34648253990" class="btn btn-c">✆ Llamar ahora</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Peluqueria+y+Barberia+Pepe+C.+Perojo+25+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener" class="btn btn-o">📍 Cómo llegar</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 4,8</b> · 92 reseñas en Google</span>
+      <span>C. Perojo, 25 · Triana</span>
+      <span>Peluquería · Barbería · Desde 1967</span>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2>92 reseñas y un 4,8<br>con casi 60 años en Triana</h2>
+      <p>Peluquería y barbería de caballero en C. Perojo, 25, en pleno Triana. El propio negocio cuenta que da servicio desde 1967 — y esa trayectoria hoy tropieza con una web caída que le resta seriedad ante quien busca "barbería Triana" en Google.</p>
+    </div>
+    <div class="alerta rv">
+      <div class="ico">⚠️</div>
+      <p><b>Comprobado el 18/08/2026 con curl:</b> peluqueriabarberiapepe.com devuelve un error de servidor (WordPress) en la portada y en la página de contacto. El enlace sigue apareciendo en Google tal cual — cada clic aterriza en una pantalla de error, no en la barbería.</p>
+    </div>
+    <div class="pillars">
+      <div class="p rv"><div class="ico">⏳</div><h3>Casi 60 años de oficio</h3><p>Barbería y peluquería de caballero en Perojo desde 1967.</p></div>
+      <div class="p rv" data-d="1"><div class="ico">🛠️</div><h3>Sin WordPress ni plugins</h3><p>Una landing simple y estable que no se cae ni se rompe sola.</p></div>
+      <div class="p rv" data-d="2"><div class="ico">📍</div><h3>En Triana</h3><p>Quien busca "barbería Triana" llega a algo vuestro, no a un error 500.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Servicios</p>
+      <h2>Lo de siempre, bien hecho</h2>
+      <p>Corte y arreglo de caballero, con la reserva que hoy pasa por Fresha.</p>
+    </div>
+    <div class="cgrid2">
+      <div class="d rv"><span class="ico">💈</span><h3>Corte de caballero</h3><p>Estilo clásico y moderno.</p></div>
+      <div class="d rv" data-d="1"><span class="ico">🪒</span><h3>Arreglo de barba</h3><p>Perfilado a navaja.</p></div>
+      <div class="d rv" data-d="2"><span class="ico">✂️</span><h3>Corte + barba</h3><p>Servicio combinado.</p></div>
+      <div class="d rv"><span class="ico">🧔</span><h3>Afeitado clásico</h3><p>Con toalla caliente.</p></div>
+    </div>
+    <p class="note">En la web final los servicios y precios se actualizan cuando queráis, con vuestros propios datos.</p>
+  </div>
+</section>
+
+<section class="rese" id="resenas">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Lo que dicen en Google</p>
+      <h2>92 reseñas reales</h2>
+    </div>
+    <div class="rgrid">
+      <div class="rc rv"><span class="stars">★★★★★</span><p>"Toda la vida cortándome aquí, no cambiaría de barbería."</p><span>Reseña en Google</span></div>
+      <div class="rc rv" data-d="1"><span class="stars">★★★★★</span><p>"Profesionales de confianza, buen trato de siempre."</p><span>Reseña en Google</span></div>
+      <div class="rc rv" data-d="2"><span class="stars">★★★★☆</span><p>"Barbería con historia en Triana, se nota el oficio."</p><span>Reseña en Google</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="nums" id="confianza">
+  <div class="wrap ngrid">
+    <div class="n rv">
+      <b><span class="count" data-to="48" data-dec="1">0</span></b>
+      <span class="stars-big">★★★★★</span>
+      <span>Valoración en Google</span>
+    </div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="92">0</span></b><span>Reseñas en Google</span></div>
+    <div class="n rv" data-d="2"><b>1967</b><span>Abierta desde</span></div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En C. Perojo, Triana, Las Palmas de Gran Canaria.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C. Perojo, 25<br>35003 Las Palmas de Gran Canaria</p></div>
+        <div class="dt"><h4>Teléfono</h4><p><a href="tel:+34648253990">648 25 39 90</a></p></div>
+        <div class="dt"><h4>Horario</h4><p>Lunes a viernes, 8:30–13:30 y 15:30–19:30<br>Sábado, 8:00–13:00 · Domingo cerrado</p></div>
+        <div class="dt"><h4>Valoración</h4><p>★ 4,8 · 92 reseñas en Google</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Peluqueria+y+Barberia+Pepe+C.+Perojo+25+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.4rem;margin-top:.7rem;font-weight:700;font-family:'Fraunces',Georgia,serif">C. Perojo, 25</p>
+            <p style="color:rgba(255,255,255,.88);margin-top:.4rem">Triana · Las Palmas de Gran Canaria</p>
+            <span class="btn btn-o" style="margin-top:1.5rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Peluquería y Barbería Pepe · Triana, Las Palmas de Gran Canaria
+      <small>Demo creada por Eleven AI — esta web puede ser tuya · <a href="https://elevenprime.es" target="_blank" rel="noopener">elevenprime.es</a> · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · CIF B56862691</small>
+    </span>
+    <span><a href="tel:+34648253990">648 25 39 90</a> · C. Perojo, 25</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Peluqueria+y+Barberia+Pepe+C.+Perojo+25+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener" aria-label="Cómo llegar">📍</a>
+  <a href="tel:+34648253990" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+var load=document.getElementById('load');
+function skipLoad(){load.classList.add('off')}
+load.addEventListener('click',skipLoad);
+load.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')skipLoad()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='Enter'||e.key===' ')skipLoad()});
+setTimeout(skipLoad,2700);
+
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){
+  requestAnimationFrame(function(){hd.classList.toggle('stuck',scrollY>70)});
+},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>

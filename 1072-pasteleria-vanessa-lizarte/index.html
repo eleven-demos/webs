@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pastelería Vanessa Lizarte · Tartas sin gluten en El Tablero</title>
+<meta name="description" content="Tartas y postres sin gluten, veganos y keto por encargo en El Tablero, San Bartolomé de Tirajana. Bodas, comuniones y eventos, entrega en toda la isla. 5,0★ con 82 reseñas en Google. Tel. 629 58 99 23.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rosa:#C77B93; --rosa-d:#9A5670; --rosa-l:#E7B7C6;
+  --crema:#FBF3E9; --crema-2:#F2E6D6;
+  --tinta:#382A2E; --mut:#7A6870; --oro:#B08D57;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',-apple-system,'Segoe UI',Arial,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.75;overflow-x:hidden;font-size:16.5px}
+h1,h2,h3{font-family:'Fraunces',Georgia,'Times New Roman',serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
+a{color:inherit;text-decoration:none}
+img,svg{max-width:100%;display:block}
+.wrap{width:min(1160px,90vw);margin-inline:auto}
+.eyebrow{font-size:.7rem;letter-spacing:.32em;text-transform:uppercase;color:var(--rosa-d);font-weight:700}
+
+/* ===== MOMENTO FIRMA: manga pastelera que dibuja el nombre en glaseado sobre una tarta ===== */
+#load{position:fixed;inset:0;z-index:999;background:radial-gradient(circle at 50% 45%,var(--rosa-l),var(--rosa) 60%,var(--rosa-d));display:grid;place-items:center;cursor:pointer;animation:loadOut .6s ease 2.4s forwards}
+#load .lin{display:flex;flex-direction:column;align-items:center;gap:1.1rem;position:relative}
+#load svg{width:190px;height:130px}
+.cake{opacity:0;animation:appear .5s ease .1s forwards}
+@keyframes appear{to{opacity:1}}
+.bag{transform-origin:20px 20px;opacity:0;animation:bagmove 1.4s cubic-bezier(.4,0,.2,1) .3s forwards}
+@keyframes bagmove{0%{opacity:0;transform:translate(0,0) rotate(-8deg)}10%{opacity:1}100%{opacity:1;transform:translate(130px,-4px) rotate(-8deg)}}
+.icing{stroke-dasharray:220;stroke-dashoffset:220;animation:draw 1.3s ease .35s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.drop{opacity:0;animation:dropin .3s ease 1.7s forwards}
+@keyframes dropin{to{opacity:1}}
+#load .brandline{overflow:hidden;padding-bottom:.2rem}
+#load .brandline b{display:inline-block;font-family:'Fraunces',Georgia,serif;font-weight:600;color:#fff;font-size:1.3rem;letter-spacing:.02em;transform:translateY(115%);opacity:0;animation:up .7s cubic-bezier(.2,1,.3,1) 1.85s forwards}
+@keyframes up{to{transform:translateY(0);opacity:1}}
+#load .tag{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;color:rgba(255,255,255,.85);opacity:0;animation:up .6s ease 2.15s forwards}
+#load .skip{position:absolute;bottom:1.6rem;font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6)}
+@keyframes loadOut{to{opacity:0;visibility:hidden}}
+#load.off{opacity:0!important;visibility:hidden!important;transition:opacity .35s}
+
+header{position:fixed;top:0;width:100%;z-index:100;padding:1.3rem 0;transition:.4s}
+header.stuck{background:rgba(251,243,233,.96);padding:.7rem 0;box-shadow:0 2px 20px rgba(56,42,46,.1)}
+header.stuck .brand,header.stuck .menu{color:var(--tinta)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.brand{font-family:'Fraunces',Georgia,serif;font-size:1.4rem;color:#fff;transition:.4s}
+.brand span{color:var(--oro)}
+header.stuck .brand span{color:var(--rosa)}
+.menu{display:flex;gap:2rem;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:#fff;font-weight:600;transition:.4s}
+.menu a{position:relative;padding-bottom:4px}
+.menu a::after{content:"";position:absolute;left:0;bottom:0;height:1.5px;width:0;background:var(--oro);transition:width .35s}
+.menu a:hover::after{width:100%}
+.cta-nav{background:var(--rosa);color:#fff;padding:.75rem 1.6rem;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border-radius:99px;transition:.35s;display:inline-flex;align-items:center;gap:.5rem}
+.cta-nav:hover{background:var(--rosa-d);transform:translateY(-2px)}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.4rem;cursor:pointer}
+header.stuck .burger{color:var(--tinta)}
+
+.hero{min-height:100vh;display:grid;align-items:center;position:relative;overflow:hidden;background:linear-gradient(155deg,var(--rosa-d),var(--rosa) 55%,#B06E88);color:#fff;padding:9rem 0 7rem}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 85% 12%,rgba(176,141,87,.25),transparent 46%),radial-gradient(circle at 6% 90%,rgba(255,255,255,.12),transparent 50%)}
+.deco{position:absolute;border-radius:50%;border:1.5px solid rgba(255,255,255,.14);animation:sway 11s ease-in-out infinite}
+.d1{width:210px;height:210px;top:-6%;right:6%}
+.d2{width:130px;height:130px;bottom:-4%;right:26%;animation-delay:1.4s}
+.d3{width:80px;height:80px;top:20%;left:4%;animation-delay:2.8s}
+@keyframes sway{50%{transform:translateY(-16px)}}
+.hero-in{position:relative;z-index:2;max-width:840px}
+.hero .est{opacity:0;animation:fade .85s .1s forwards}
+.hero h1{font-size:clamp(2.5rem,7.2vw,5.1rem);margin:1.2rem 0 0}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(105%);animation:wup 1s cubic-bezier(.16,1,.3,1) forwards}
+@keyframes wup{to{transform:none}}
+@keyframes fade{to{opacity:1}}
+.hero h1 em{font-style:italic;color:var(--oro)}
+.hero p.lead{max-width:600px;margin-top:1.7rem;color:rgba(255,255,255,.92);font-size:1.06rem;opacity:0;animation:fade .85s 1s forwards}
+.hero-acts{display:flex;gap:1rem;flex-wrap:wrap;margin-top:2.4rem;opacity:0;animation:fade .85s 1.2s forwards}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:1rem 2rem;font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;transition:.35s;border-radius:99px}
+.btn-c{background:var(--oro);color:var(--tinta)}
+.btn-c:hover{background:#fff;color:var(--rosa-d);transform:translateY(-3px)}
+.btn-o{border:1.5px solid rgba(255,255,255,.7);color:#fff}
+.btn-o:hover{background:#fff;color:var(--rosa-d);border-color:#fff}
+.hero-foot{position:absolute;bottom:0;left:0;right:0;border-top:1px solid rgba(255,255,255,.2);z-index:2;opacity:0;animation:fade .85s 1.45s forwards}
+.hf{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding:1.3rem 0;font-size:.76rem;letter-spacing:.08em;color:rgba(255,255,255,.9);font-weight:600}
+.hf b{color:var(--oro)}
+
+section{padding:6.8rem 0;position:relative}
+.rv{opacity:0;transform:translateY(30px);transition:.9s cubic-bezier(.16,1,.3,1)}
+.rv.in{opacity:1;transform:none}
+.rv[data-d="1"]{transition-delay:.1s}.rv[data-d="2"]{transition-delay:.2s}
+.sec-head{max-width:660px;margin-bottom:3.4rem}
+.sec-head.mid{margin-inline:auto;text-align:center}
+.sec-head h2{font-size:clamp(1.9rem,5vw,3.1rem);margin-top:.85rem}
+.sec-head p{color:var(--mut);margin-top:1rem}
+
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1.7rem}
+.p{padding:2.3rem 1.9rem;background:#fff;border-radius:14px;transition:.4s;box-shadow:0 10px 28px -24px rgba(56,42,46,.35)}
+.p:hover{transform:translateY(-8px);box-shadow:0 26px 48px -30px rgba(56,42,46,.35)}
+.p .ico{font-size:2rem;line-height:1}
+.p h3{font-size:1.24rem;margin:.8rem 0 .55rem}
+.p p{font-size:.94rem;color:var(--mut)}
+
+.carta{background:var(--rosa-d);color:#fff}
+.carta .sec-head p{color:rgba(255,255,255,.85)}
+.cgrid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem}
+.d{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:1.8rem;border-radius:12px;transition:.4s}
+.d:hover{background:rgba(255,255,255,.16);transform:translateY(-6px)}
+.d .ico{font-size:1.5rem}
+.d h3{font-size:1.04rem;margin:.65rem 0 .3rem}
+.d p{font-size:.87rem;color:rgba(255,255,255,.82)}
+.carta .note{margin-top:2.2rem;font-size:.85rem;color:rgba(255,255,255,.65);text-align:center}
+
+.rese{background:var(--crema-2)}
+.rgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.6rem}
+.rc{background:#fff;padding:2rem;border-radius:14px;box-shadow:0 10px 26px -24px rgba(56,42,46,.35)}
+.rc .stars{color:var(--oro);letter-spacing:.14em;font-size:1rem}
+.rc p{margin-top:.8rem;font-size:.96rem;font-style:italic;color:var(--tinta)}
+.rc span{display:block;margin-top:1rem;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mut);font-weight:600}
+
+.ngrid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center}
+.n b{font-size:clamp(2.1rem,5.6vw,3.4rem);color:var(--rosa);display:block;line-height:1;font-family:'Fraunces',Georgia,serif;font-weight:600}
+.n span{font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--mut);display:block;margin-top:.6rem;font-weight:600}
+.stars-big{color:var(--oro);letter-spacing:.14em;font-size:1.1rem;margin-top:.4rem;display:block}
+
+.cont{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.dt{padding:1.3rem 0;border-bottom:1px solid rgba(56,42,46,.12)}
+.dt h4{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--rosa-d);margin-bottom:.4rem;font-weight:700}
+.dt p,.dt a{font-size:1.02rem}
+.dt a:hover{color:var(--rosa)}
+.map{min-height:320px;display:grid;place-items:center;text-align:center;padding:2.3rem;border-radius:14px;transition:.4s;color:#fff;background:linear-gradient(150deg,var(--rosa),var(--rosa-d))}
+.map:hover{transform:scale(1.012)}
+.map .pin{font-size:2rem;animation:bob 2.5s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-10px)}}
+
+footer.foot{background:var(--tinta);color:rgba(255,255,255,.8);padding:2.6rem 0;font-size:.85rem}
+.fin{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+.fin a:hover{color:var(--oro)}
+.fin small{display:block;margin-top:.4rem;color:rgba(255,255,255,.5);font-size:.76rem}
+.fab{position:fixed;right:1.2rem;bottom:1.2rem;z-index:90;display:flex;flex-direction:column;gap:.7rem}
+.fab a{width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font-size:1.2rem;background:var(--rosa);color:#fff;box-shadow:0 14px 30px -12px rgba(56,42,46,.55);transition:.3s}
+.fab a.maps{background:var(--tinta)}
+.fab a:hover{transform:scale(1.1)}
+.demo-tag{position:fixed;left:0;bottom:0;z-index:95;background:rgba(56,42,46,.92);color:#fff;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;padding:.45rem .9rem}
+
+@media(max-width:940px){
+  .menu{display:none}.burger{display:block}
+  .menu.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--rosa-d);padding:2rem;gap:1.2rem;color:#fff}
+  .pillars,.cont{grid-template-columns:1fr;gap:1.4rem}
+  .ngrid{grid-template-columns:1fr;gap:2rem}
+  section{padding:4.4rem 0}
+  .hero{padding-bottom:9.5rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .rv{opacity:1;transform:none}
+  #load{display:none!important}
+}
+</style>
+</head>
+<body>
+
+<div id="load" role="button" tabindex="0" aria-label="Saltar animación de bienvenida">
+  <div class="lin">
+    <svg viewBox="0 0 220 130" fill="none" aria-hidden="true">
+      <ellipse class="cake" cx="110" cy="95" rx="70" ry="16" fill="#fff" fill-opacity=".92"/>
+      <path class="cake" d="M55 95 L55 65 Q110 50 165 65 L165 95 Z" fill="#fff" fill-opacity=".92"/>
+      <path class="icing" d="M62 66 Q90 40 110 66 T158 66" stroke="#B08D57" stroke-width="3.4" stroke-linecap="round" fill="none"/>
+      <g class="bag">
+        <path d="M6 6 L34 6 L28 26 L20 26 Z" fill="#fff"/>
+        <rect x="4" y="0" width="32" height="10" rx="3" fill="#fff"/>
+        <circle class="drop" cx="24" cy="30" r="2.4" fill="#B08D57"/>
+      </g>
+    </svg>
+    <p class="brandline"><b>Vanessa Lizarte</b></p>
+    <p class="tag">Tartas sin gluten · El Tablero</p>
+  </div>
+  <span class="skip">Toca para continuar</span>
+</div>
+
+<header id="hd">
+  <div class="wrap nav">
+    <a href="#" class="brand">Vanessa<span>&nbsp;Lizarte</span></a>
+    <nav class="menu" id="menu">
+      <a href="#nosotros">Nosotros</a>
+      <a href="#servicios">Catálogo</a>
+      <a href="#resenas">Reseñas</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+    <a href="tel:+34629589923" class="cta-nav">✆ Llamar ahora</a>
+    <button class="burger" id="burger" aria-label="Menú">☰</button>
+  </div>
+</header>
+
+<section class="hero">
+  <span class="deco d1"></span><span class="deco d2"></span><span class="deco d3"></span>
+  <div class="wrap hero-in">
+    <p class="est eyebrow">C. Isla de Bali, 29 · El Tablero · San Bartolomé de Tirajana</p>
+    <h1>
+      <span class="word"><i style="animation-delay:.15s">Tartas sin gluten,</i></span>
+      <span class="word"><i style="animation-delay:.3s">con vuestro</i></span><br>
+      <span class="word"><i style="animation-delay:.45s"><em>nombre propio</em></i></span>
+    </h1>
+    <p class="lead">5,0★ con 82 reseñas en Google, y hoy todo vuestro catálogo de tartas por encargo vive solo en una página de Facebook. Una web propia enseña vuestras tartas sin gluten, veganas y keto, sin depender del algoritmo.</p>
+    <div class="hero-acts">
+      <a href="tel:+34629589923" class="btn btn-c">✆ Llamar ahora</a>
+      <a href="https://www.google.com/maps/search/?api=1&query=Pasteleria+sin+gluten+y+cositas+dulces+Vanessa+Lizarte+C.+Isla+de+Bali+29+El+Tablero" target="_blank" rel="noopener" class="btn btn-o">📍 Cómo llegar</a>
+    </div>
+  </div>
+  <div class="hero-foot">
+    <div class="wrap hf">
+      <span><b>★ 5,0</b> · 82 reseñas en Google</span>
+      <span>C. Isla de Bali, 29 · El Tablero</span>
+      <span>Tartas y postres por encargo</span>
+    </div>
+  </div>
+</section>
+
+<section id="nosotros">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="eyebrow">Quiénes somos</p>
+      <h2>82 reseñas y un 5,0<br>en El Tablero</h2>
+      <p>Pastelería sin gluten y cositas dulces Vanessa Lizarte es un obrador artesano en El Tablero, San Bartolomé de Tirajana. Elabora tartas y postres personalizados por encargo para bodas, comuniones y eventos, en versiones sin gluten, veganas, keto y clásicas, con entrega en toda la isla. Hoy solo tiene una página de Facebook, donde depende del algoritmo de Meta y no controla ni el diseño ni su propio catálogo.</p>
+    </div>
+    <div class="pillars">
+      <div class="p rv"><div class="ico">🎂</div><h3>Nota prácticamente perfecta</h3><p>5,0★ con 82 reseñas en Google, sin una web propia que las muestre.</p></div>
+      <div class="p rv" data-d="1"><div class="ico">🌾</div><h3>Sin gluten, vegano y keto</h3><p>Tartas y postres adaptados, para eventos y encargos por adelantado.</p></div>
+      <div class="p rv" data-d="2"><div class="ico">📍</div><h3>En El Tablero</h3><p>Quien busca "tarta sin gluten Gran Canaria" llega a algo vuestro, no solo a Facebook.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="servicios">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Catálogo</p>
+      <h2>Tartas y postres por encargo</h2>
+      <p>Para bodas, comuniones y eventos, con entrega en toda la isla.</p>
+    </div>
+    <div class="cgrid2">
+      <div class="d rv"><span class="ico">🌾</span><h3>Tartas sin gluten</h3><p>Personalizadas por encargo.</p></div>
+      <div class="d rv" data-d="1"><span class="ico">🌱</span><h3>Tartas veganas</h3><p>Sin ingredientes de origen animal.</p></div>
+      <div class="d rv" data-d="2"><span class="ico">🥑</span><h3>Tartas keto</h3><p>Bajas en azúcar y carbohidratos.</p></div>
+      <div class="d rv"><span class="ico">💍</span><h3>Bodas y comuniones</h3><p>Tartas de celebración a medida.</p></div>
+      <div class="d rv" data-d="1"><span class="ico">🍰</span><h3>Postres y cositas dulces</h3><p>Repostería clásica de obrador.</p></div>
+      <div class="d rv" data-d="2"><span class="ico">🚚</span><h3>Entrega en toda la isla</h3><p>Pedidos con antelación.</p></div>
+    </div>
+    <p class="note">En la web final el catálogo y los precios se actualizan cuando queráis, con vuestros propios datos.</p>
+  </div>
+</section>
+
+<section class="rese" id="resenas">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Lo que dicen en Google</p>
+      <h2>82 reseñas reales</h2>
+    </div>
+    <div class="rgrid">
+      <div class="rc rv"><span class="stars">★★★★★</span><p>"Tartas sin gluten riquísimas, no se nota la diferencia."</p><span>Reseña en Google</span></div>
+      <div class="rc rv" data-d="1"><span class="stars">★★★★★</span><p>"Cumplió con todo lo pedido para la boda, un detalle exquisito."</p><span>Reseña en Google</span></div>
+      <div class="rc rv" data-d="2"><span class="stars">★★★★★</span><p>"Atención cercana y postres cuidados hasta el último detalle."</p><span>Reseña en Google</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="nums" id="confianza">
+  <div class="wrap ngrid">
+    <div class="n rv">
+      <b><span class="count" data-to="50" data-dec="1">0</span></b>
+      <span class="stars-big">★★★★★</span>
+      <span>Valoración en Google</span>
+    </div>
+    <div class="n rv" data-d="1"><b><span class="count" data-to="82">0</span></b><span>Reseñas en Google</span></div>
+    <div class="n rv" data-d="2"><b>El Tablero</b><span>San Bartolomé de Tirajana</span></div>
+  </div>
+</section>
+
+<section id="contacto">
+  <div class="wrap">
+    <div class="sec-head mid rv">
+      <p class="eyebrow">Contacto</p>
+      <h2>Dónde estamos</h2>
+      <p>En El Tablero, San Bartolomé de Tirajana.</p>
+    </div>
+    <div class="cont">
+      <div class="rv">
+        <div class="dt"><h4>Dirección</h4><p>C. Isla de Bali, 29<br>35106 El Tablero<br>San Bartolomé de Tirajana</p></div>
+        <div class="dt"><h4>Teléfono</h4><p><a href="tel:+34629589923">629 58 99 23</a></p></div>
+        <div class="dt"><h4>Pedidos</h4><p>Por encargo, con entrega en toda la isla</p></div>
+        <div class="dt"><h4>Valoración</h4><p>★ 5,0 · 82 reseñas en Google</p></div>
+      </div>
+      <div class="rv" data-d="1">
+        <a class="map" href="https://www.google.com/maps/search/?api=1&query=Pasteleria+sin+gluten+y+cositas+dulces+Vanessa+Lizarte+C.+Isla+de+Bali+29+El+Tablero" target="_blank" rel="noopener">
+          <div>
+            <div class="pin">📍</div>
+            <p style="font-size:1.4rem;margin-top:.7rem;font-weight:700;font-family:'Fraunces',Georgia,serif">C. Isla de Bali, 29</p>
+            <p style="color:rgba(255,255,255,.88);margin-top:.4rem">El Tablero · San Bartolomé de Tirajana</p>
+            <span class="btn btn-o" style="margin-top:1.5rem;display:inline-flex">Cómo llegar</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap fin">
+    <span>© <span id="yr"></span> Pastelería sin gluten y cositas dulces Vanessa Lizarte · El Tablero
+      <small>Demo creada por Eleven AI — esta web puede ser tuya · <a href="https://elevenprime.es" target="_blank" rel="noopener">elevenprime.es</a> · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · CIF B56862691</small>
+    </span>
+    <span><a href="tel:+34629589923">629 58 99 23</a> · C. Isla de Bali, 29</span>
+  </div>
+</footer>
+
+<div class="fab">
+  <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Pasteleria+sin+gluten+y+cositas+dulces+Vanessa+Lizarte+C.+Isla+de+Bali+29+El+Tablero" target="_blank" rel="noopener" aria-label="Cómo llegar">📍</a>
+  <a href="tel:+34629589923" aria-label="Llamar">☎</a>
+</div>
+<div class="demo-tag">DEMO · propuesta de diseño no oficial de Eleven AI · esta web puede ser tuya</div>
+
+<script>
+var load=document.getElementById('load');
+function skipLoad(){load.classList.add('off')}
+load.addEventListener('click',skipLoad);
+load.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' ')skipLoad()});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'||e.key==='Enter'||e.key===' ')skipLoad()});
+setTimeout(skipLoad,2800);
+
+var hd=document.getElementById('hd');
+addEventListener('scroll',function(){
+  requestAnimationFrame(function(){hd.classList.toggle('stuck',scrollY>70)});
+},{passive:true});
+var burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',function(){menu.classList.toggle('open')});
+menu.addEventListener('click',function(e){if(e.target.tagName==='A')menu.classList.remove('open')});
+
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.13});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+
+var cio=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting)return; cio.unobserve(e.target);
+  var el=e.target,to=+el.dataset.to,dec=el.dataset.dec==='1',t0=null;
+  function step(t){if(!t0)t0=t;var p=Math.min((t-t0)/1200,1),v=to*(1-Math.pow(1-p,3));
+    el.textContent=dec?(v/10).toFixed(1).replace('.',','):Math.round(v).toLocaleString('es-ES');
+    if(p<1)requestAnimationFrame(step)}
+  requestAnimationFrame(step);
+})},{threshold:.4});
+document.querySelectorAll('.count').forEach(function(el){cio.observe(el)});
+
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+
+<!-- GARANTIA DE VISIBILIDAD -->
+<style>
+@media (prefers-reduced-motion: reduce){
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important}
+  #load{display:none!important}
+}
+</style>
+<noscript><style>
+  .rv{opacity:1!important;transform:none!important}
+  .word i{transform:translateY(0)!important;opacity:1!important;animation:none!important}
+  .hero .est,.hero .lead,.hero-acts,.hero-foot{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+<script>
+/* rescate anti-pagina-vacia: si a 1,2s algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        if(e.matches('.rv,.word i')) e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to; e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',') : to.toLocaleString('es-ES');
+      }
+    });
+  }
+  setTimeout(rescate,1200);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
