@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>River Nails Centro de Estética · Las Palmas de Gran Canaria</title>
+<meta name="description" content="River Nails Centro de Estética, C. Juan Manuel Durán González 22, Las Palmas de Gran Canaria. Manicura, pedicura, pestañas, facial y masaje. 4,8★ con 77 reseñas en Google.">
+<meta name="theme-color" content="#2C3B45">
+<style>
+:root{
+  --primario:#2C3B45; --primario-osc:#1B252C; --secundario:#F6F1EC; --acento:#C98F86;
+  --acento-cl:#E0B3A9; --crema-2:#EDE3DA; --tinta:#212B31; --gris:#6C6862;
+  --linea:rgba(44,59,69,.14);
+  --sombra:0 2px 8px rgba(0,0,0,.08), 0 16px 38px rgba(0,0,0,.13);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:"Helvetica Neue",Arial,sans-serif;background:var(--secundario);color:var(--tinta);line-height:1.6;overflow-x:hidden}
+h1,h2,h3,.serif{font-family:Georgia,"Iowan Old Style","Times New Roman",serif;font-weight:400}
+a{color:inherit}
+.wrap{width:min(1140px,92vw);margin-inline:auto}
+
+/* ---------- MOMENTO FIRMA: halo de luz que se expande y revela el nombre ---------- */
+#load{
+  position:fixed;inset:0;z-index:999;cursor:pointer;overflow:hidden;
+  background:radial-gradient(120% 90% at 50% 45%,#3A4B57 0%,#26333B 55%,#161E23 100%);
+  display:grid;place-items:center;animation:irse .55s ease 2.15s forwards;
+}
+@keyframes irse{to{opacity:0;visibility:hidden}}
+#load .esc{position:relative;width:min(320px,78vw);aspect-ratio:1/1;display:grid;place-items:center}
+#load .halo{position:absolute;inset:0;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,143,134,.55) 0%,rgba(201,143,134,.18) 45%,transparent 72%);
+  transform:scale(.15);opacity:0;animation:expandir 1.15s cubic-bezier(.25,.9,.3,1) .15s forwards}
+@keyframes expandir{0%{transform:scale(.15);opacity:0}30%{opacity:1}100%{transform:scale(1);opacity:1}}
+#load .anillo{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(224,179,169,.4);
+  transform:scale(.15);opacity:0;animation:expandir 1.15s cubic-bezier(.25,.9,.3,1) .28s forwards}
+#load .cortina{
+  position:relative;z-index:2;text-align:center;
+  clip-path:inset(50% 50% 50% 50% round 3px);
+  animation:revelar .7s cubic-bezier(.4,0,.2,1) .62s forwards;
+}
+@keyframes revelar{to{clip-path:inset(0% 0% 0% 0% round 3px)}}
+#load .nombre{
+  color:#F8F3EF;font:400 clamp(1.05rem,4.4vw,1.8rem)/1.2 Georgia,serif;letter-spacing:.06em;
+  text-shadow:0 0 26px rgba(201,143,134,.55);padding:0 8px;
+}
+#load .lema{color:rgba(248,243,239,.6);font-size:.62rem;letter-spacing:.3em;margin-top:12px}
+#load .skip{position:absolute;bottom:-50px;left:0;right:0;text-align:center;
+  color:rgba(248,243,239,.32);font-size:.64rem;letter-spacing:.22em;opacity:0;
+  animation:surgir .7s ease 1.6s both}
+@keyframes surgir{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+.cinta{position:fixed;top:15px;left:-46px;z-index:60;transform:rotate(-45deg);
+  background:var(--acento);color:#1B252C;font-size:.6rem;letter-spacing:.26em;font-weight:700;
+  padding:6px 56px;box-shadow:0 6px 18px rgba(0,0,0,.28);pointer-events:none}
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--acento),var(--acento-cl));z-index:70;will-change:transform}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:50;padding:14px 0;
+  background:rgba(27,37,44,.86);backdrop-filter:blur(10px);transition:padding .3s ease}
+nav.min{padding:8px 0}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+nav .marca{font:400 .96rem/1 Georgia,serif;letter-spacing:.05em;color:#F8F3EF}
+nav .marca span{display:block;font-family:"Helvetica Neue",Arial,sans-serif;font-size:.54rem;
+  letter-spacing:.2em;color:rgba(248,243,239,.5);margin-top:4px}
+nav ul{display:flex;gap:26px;list-style:none;font-size:.83rem;letter-spacing:.05em}
+nav ul a{text-decoration:none;color:rgba(248,243,239,.72);transition:color .25s ease}
+nav ul a:hover{color:var(--acento-cl)}
+nav .cta{display:inline-block;text-decoration:none;background:var(--acento);color:#1B252C;font-weight:600;
+  padding:10px 20px;border-radius:999px;font-size:.8rem;letter-spacing:.05em;transition:transform .25s ease}
+nav .cta:hover{transform:translateY(-2px)}
+@media(max-width:860px){nav ul{display:none}}
+
+.hero{position:relative;min-height:100svh;display:grid;place-items:center;text-align:center;
+  padding:130px 0 130px;overflow:hidden;color:#F8F3EF;
+  background:
+    radial-gradient(56% 42% at 22% 22%,rgba(201,143,134,.22),transparent 64%),
+    radial-gradient(50% 42% at 80% 78%,rgba(201,143,134,.13),transparent 64%),
+    linear-gradient(168deg,#38474F 0%,#26333B 52%,#161E23 100%);
+}
+.hero .capa{position:absolute;inset:-12% -6%;opacity:.6;will-change:transform;
+  background:radial-gradient(34% 26% at 70% 30%,rgba(201,143,134,.18),transparent 70%)}
+.hero .wrap{position:relative;z-index:2}
+.hero .antes{font-size:.68rem;letter-spacing:.3em;color:var(--acento-cl);opacity:0;animation:surgir .8s ease .15s both}
+.hero h1{font-size:clamp(2.1rem,7.4vw,4.3rem);line-height:1.05;margin:20px 0 6px;color:#FCF8F4;letter-spacing:.01em}
+.hero h1 .word{display:inline-block;overflow:hidden;vertical-align:bottom}
+.hero h1 .word i{display:inline-block;font-style:normal;transform:translateY(104%);
+  animation:subir .85s cubic-bezier(.2,.8,.25,1) forwards}
+@keyframes subir{to{transform:none}}
+.hero h1 em{font-style:italic;color:var(--acento-cl)}
+.lead{max-width:600px;margin:20px auto 0;color:rgba(248,243,239,.78);font-size:1.03rem;opacity:0;animation:surgir .8s ease .95s both}
+.hero-acts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap;margin-top:32px;opacity:0;animation:surgir .8s ease 1.15s both}
+.btn{display:inline-flex;align-items:center;gap:9px;text-decoration:none;border-radius:999px;
+  padding:15px 30px;font-size:.92rem;letter-spacing:.03em;transition:transform .25s ease,box-shadow .25s ease,background .25s ease}
+.btn-p{background:var(--acento);color:#1B252C;font-weight:600;box-shadow:0 10px 28px rgba(201,143,134,.32)}
+.btn-p:hover{transform:translateY(-3px);box-shadow:0 16px 36px rgba(201,143,134,.42)}
+.btn-s{background:transparent;color:#F8F3EF;border:1px solid rgba(248,243,239,.34)}
+.btn-s:hover{transform:translateY(-3px);background:rgba(248,243,239,.08)}
+.confia{display:flex;gap:34px;justify-content:center;flex-wrap:wrap;margin-top:52px;opacity:0;animation:surgir .8s ease 1.35s both}
+.confia .b{text-align:center}
+.confia .n{font:400 clamp(1.9rem,5.5vw,2.7rem)/1 Georgia,serif;color:var(--acento-cl)}
+.confia .t{font-size:.64rem;letter-spacing:.2em;color:rgba(248,243,239,.55);margin-top:6px}
+.estrellas{color:var(--acento-cl);letter-spacing:.14em;font-size:1.05rem}
+.baja{position:absolute;bottom:26px;left:50%;transform:translateX(-50%);z-index:2;
+  font-size:.62rem;letter-spacing:.22em;color:rgba(248,243,239,.48);opacity:0;animation:surgir .8s ease 1.8s both}
+.baja span{display:block;width:1px;height:34px;margin:10px auto 0;
+  background:linear-gradient(rgba(248,243,239,.6),transparent);animation:caer 2s ease-in-out infinite}
+@keyframes caer{0%,100%{transform:scaleY(.4);opacity:.3}50%{transform:scaleY(1);opacity:.9}}
+
+section{padding:96px 0;position:relative}
+.rev{opacity:0;transform:translateY(26px);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.8,.25,1)}
+.rev.on{opacity:1;transform:none}
+.eyebrow{font-size:.64rem;letter-spacing:.3em;color:#9C6259;margin-bottom:14px}
+h2{font-size:clamp(1.8rem,4.8vw,2.8rem);line-height:1.12;color:var(--primario)}
+.sub{color:var(--gris);margin-top:16px;max-width:620px}
+
+.franja{background:var(--primario);color:#F8F3EF;padding:60px 0}
+.franja .fl{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:34px;text-align:center}
+.franja .n{font:400 clamp(2.1rem,5.8vw,3.1rem)/1 Georgia,serif;color:var(--acento-cl)}
+.franja .t{font-size:.64rem;letter-spacing:.2em;color:rgba(248,243,239,.55);margin-top:8px}
+
+.sobre .grid{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center}
+@media(max-width:860px){.sobre .grid{grid-template-columns:1fr;gap:36px}}
+.sobre p{color:var(--gris);margin-top:18px;font-size:1.02rem}
+.chips{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--linea);
+  border-radius:999px;padding:9px 16px;font-size:.81rem;color:var(--gris);box-shadow:var(--sombra)}
+.chip svg{width:16px;height:16px;fill:none;stroke:#9C6259;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.tarjeta-nota{background:linear-gradient(160deg,#fff,var(--crema-2));border:1px solid var(--linea);
+  border-radius:22px;padding:40px 34px;text-align:center;box-shadow:var(--sombra)}
+.tarjeta-nota .g{font-size:.62rem;letter-spacing:.26em;color:var(--gris)}
+.tarjeta-nota .n{font:400 4.1rem/1 Georgia,serif;color:var(--primario);margin:10px 0 4px}
+.tarjeta-nota .r{font-size:.85rem;color:var(--gris);margin-top:10px}
+.tarjeta-nota .barra{height:6px;border-radius:99px;background:var(--crema-2);margin-top:22px;overflow:hidden}
+.tarjeta-nota .barra i{display:block;height:100%;width:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--acento-cl),var(--acento));transform:scaleX(0);transform-origin:0 50%;
+  transition:transform 1.3s cubic-bezier(.2,.8,.25,1)}
+.tarjeta-nota.on .barra i{transform:scaleX(1)}
+
+.servicios{background:linear-gradient(180deg,var(--crema-2),var(--secundario))}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:22px;margin-top:44px}
+.card{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 26px;position:relative;
+  transition:transform .35s cubic-bezier(.2,.8,.25,1),box-shadow .35s ease}
+.card:hover{transform:translateY(-7px);box-shadow:var(--sombra)}
+.card .ico{width:44px;height:44px;border-radius:13px;display:grid;place-items:center;
+  background:rgba(201,143,134,.18);margin-bottom:18px}
+.card .ico svg{width:22px;height:22px;fill:none;stroke:#9C6259;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.12rem;color:var(--primario)}
+.card p{color:var(--gris);font-size:.92rem;margin-top:10px}
+.card .precio{display:inline-block;margin-top:14px;font-size:.77rem;letter-spacing:.05em;font-weight:700;
+  color:#8A4A41;background:rgba(201,143,134,.16);padding:5px 12px;border-radius:999px}
+.nota-precio{color:var(--gris);font-size:.81rem;margin-top:26px;font-style:italic}
+
+.reseñas{text-align:center}
+.rescard{max-width:640px;margin:44px auto 0;background:#fff;border:1px solid var(--linea);
+  border-radius:24px;padding:48px 34px;box-shadow:var(--sombra)}
+.rescard .estrellas{font-size:1.7rem}
+.rescard .n{font:400 4.9rem/1 Georgia,serif;color:var(--primario);margin:14px 0 6px}
+.rescard .r{color:var(--gris);font-size:1rem}
+.rescard .barra{height:6px;border-radius:99px;background:var(--crema-2);margin-top:26px;overflow:hidden;max-width:280px;margin-inline:auto}
+.rescard .barra i{display:block;height:100%;width:100%;border-radius:99px;
+  background:linear-gradient(90deg,var(--acento-cl),var(--acento));transform:scaleX(0);transform-origin:0 50%;
+  transition:transform 1.3s cubic-bezier(.2,.8,.25,1)}
+.rescard.on .barra i{transform:scaleX(1)}
+.citas{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:36px;text-align:left}
+.cita{background:#fff;border:1px solid var(--linea);border-radius:16px;padding:22px;box-shadow:var(--sombra)}
+.cita p{color:var(--tinta);font-size:.92rem;font-style:italic}
+.cita span{display:block;margin-top:10px;color:var(--gris);font-size:.76rem;letter-spacing:.05em}
+
+.contacto .grid{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media(max-width:860px){.contacto .grid{grid-template-columns:1fr;gap:30px}}
+.dato{display:flex;gap:15px;padding:19px 0;border-bottom:1px solid var(--linea)}
+.dato:last-child{border-bottom:0}
+.dato svg{width:20px;height:20px;flex:0 0 20px;margin-top:3px;fill:none;stroke:#9C6259;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.dato .k{font-size:.62rem;letter-spacing:.2em;color:var(--gris)}
+.dato .v{margin-top:5px;font-size:1rem}
+.dato .v a{text-decoration:none;border-bottom:1px solid var(--linea)}
+.horario{background:#fff;border:1px solid var(--linea);border-radius:20px;padding:30px 28px;box-shadow:var(--sombra)}
+.horario h3{font-size:1.14rem;color:var(--primario);margin-bottom:16px}
+.horario p{color:var(--gris);font-size:.93rem}
+.mapa{display:inline-flex;align-items:center;gap:9px;margin-top:22px;text-decoration:none;
+  color:#9C6259;font-size:.89rem;border-bottom:1px solid #9C6259;padding-bottom:3px}
+
+footer{background:var(--primario-osc);color:rgba(248,243,239,.6);padding:60px 0 110px;text-align:center;font-size:.85rem}
+footer .m{font:400 1.32rem/1 Georgia,serif;color:#fff;margin-bottom:12px;letter-spacing:.1em}
+footer .agencia{margin-top:26px;padding-top:22px;border-top:1px solid rgba(255,255,255,.11);font-size:.78rem}
+footer .agencia b{color:var(--acento-cl)}
+
+.barra-fija{position:fixed;bottom:0;left:0;right:0;z-index:55;display:flex;gap:10px;padding:11px 14px;
+  background:rgba(27,37,44,.95);backdrop-filter:blur(9px)}
+.barra-fija a{flex:1;text-align:center;text-decoration:none;border-radius:12px;padding:13px 8px;font-size:.87rem;transition:transform .2s ease}
+.barra-fija a:active{transform:scale(.97)}
+.barra-fija .l{background:var(--acento);color:#1B252C;font-weight:600}
+.barra-fija .m{background:rgba(255,255,255,.11);color:#fff}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
+  .rev{opacity:1;transform:none}
+  #load{display:none}
+}
+</style>
+</head>
+<body>
+
+<div id="load" onclick="this.style.display='none'">
+  <div class="esc">
+    <div class="halo"></div>
+    <div class="anillo"></div>
+    <div class="cortina">
+      <div>
+        <div class="nombre">RIVER NAILS</div>
+        <div class="lema">CENTRO DE ESTÉTICA</div>
+      </div>
+    </div>
+  </div>
+  <div class="skip">TOCA PARA ENTRAR</div>
+</div>
+
+<div class="cinta">DEMO</div>
+<div id="prog"></div>
+
+<nav id="nav">
+  <div class="wrap">
+    <div class="marca">RIVER NAILS<span>CENTRO DE ESTÉTICA · LAS PALMAS</span></div>
+    <ul>
+      <li><a href="#sobre">El centro</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#contacto">Cita</a></li>
+    </ul>
+    <a class="cta" href="tel:+34672779275">Pedir cita</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="capa" id="capa"></div>
+  <div class="wrap">
+    <div class="antes">C. JUAN MANUEL DURÁN GONZÁLEZ, 22 · LAS PALMAS DE GRAN CANARIA</div>
+    <h1>
+      <span class="word"><i style="animation-delay:.35s">River</i></span><br>
+      <span class="word"><i style="animation-delay:.48s"><em>Nails</em></i></span>
+    </h1>
+    <p class="lead">Manicura, pedicura, pestañas, facial y masaje, con 4,8★ en Google y 150 reseñas más en Booksy. Hoy todo ese catálogo vive dentro de una plataforma que cobra comisión por cada reserva.</p>
+    <div class="hero-acts">
+      <a class="btn btn-p" href="tel:+34672779275">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+        672 77 92 75
+      </a>
+      <a class="btn btn-s" href="#servicios">Ver servicios</a>
+    </div>
+    <div class="confia">
+      <div class="b">
+        <div class="n"><span class="count" data-to="48" data-dec="1">0</span></div>
+        <div class="estrellas">★★★★★</div>
+        <div class="t">EN GOOGLE</div>
+      </div>
+      <div class="b">
+        <div class="n"><span class="count" data-to="77">0</span></div>
+        <div class="t">RESEÑAS EN GOOGLE</div>
+      </div>
+      <div class="b">
+        <div class="n"><span class="count" data-to="150">0</span></div>
+        <div class="t">RESEÑAS EN BOOKSY</div>
+      </div>
+    </div>
+  </div>
+  <div class="baja">DESLIZA<span></span></div>
+</header>
+
+<main>
+<section class="franja">
+  <div class="wrap fl">
+    <div class="rev"><div class="n"><span class="count" data-to="48" data-dec="1">0</span></div><div class="t">VALORACIÓN EN GOOGLE</div></div>
+    <div class="rev"><div class="n"><span class="count" data-to="227">0</span></div><div class="t">RESEÑAS EN TOTAL (GOOGLE + BOOKSY)</div></div>
+    <div class="rev"><div class="n">35007</div><div class="t">LAS PALMAS DE GRAN CANARIA</div></div>
+  </div>
+</section>
+
+<section class="sobre" id="sobre">
+  <div class="wrap grid">
+    <div class="rev">
+      <div class="eyebrow">EL CENTRO</div>
+      <h2>Mucho más que uñas,<br>todo escondido en Booksy</h2>
+      <p>River Nails Centro de Estética está en C. Juan Manuel Durán González, 22, local 17, en Las Palmas de Gran Canaria. Además de manicura y pedicura, el equipo (con Tysa y Edeiliys entre las profesionales que citan sus clientas) hace lifting de pestañas, higiene facial y masaje relajante.</p>
+      <p>Con 4,8★ en Google (77 reseñas) y otras 150 en Booksy, la reputación está clarísima. El problema es que todo ese catálogo — y esas reseñas — solo existe dentro de Booksy, que cobra comisión por cada cita y os enseña justo al lado de todos los demás salones de la zona.</p>
+      <div class="chips">
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="m12 3 2.2 5.6L20 10l-4.4 3.4L17 20l-5-3.2L7 20l1.4-6.6L4 10l5.8-1.4Z"/></svg>4,8★ en Google, 77 reseñas</div>
+        <div class="chip"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2.5"/><path d="M2 10h20"/></svg>150 reseñas más en Booksy</div>
+        <div class="chip"><svg viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 3l3 3-3 3M7 21l-3-3 3-3"/></svg>Reservas por Booksy, con comisión</div>
+      </div>
+    </div>
+    <div class="tarjeta-nota rev" id="tarjeta-nota">
+      <div class="g">VALORACIÓN EN GOOGLE</div>
+      <div class="n"><span class="count" data-to="48" data-dec="1">0</span></div>
+      <div class="estrellas">★★★★★</div>
+      <div class="r"><span class="count" data-to="77">0</span> reseñas en Google</div>
+      <div class="barra"><i></i></div>
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">SERVICIOS Y PRECIOS</div>
+      <h2>El catálogo real,<br>tal y como está en Booksy</h2>
+      <p class="sub">Precios y duraciones publicados hoy en su ficha de Booksy — en la web propia serían suyos, sin comisión por reserva.</p>
+    </div>
+    <div class="cards">
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3v6M15 3v6M12 9v12M6 9h12l-1 4H7Z"/></svg></div>
+        <h3>Manicura rusa semipermanente</h3>
+        <p>1 hora de duración.</p>
+        <div class="precio">22,95 €</div>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3v6M15 3v6M12 9v12M6 9h12l-1 4H7Z"/></svg></div>
+        <h3>Pedicura rusa semipermanente</h3>
+        <p>1 hora de duración.</p>
+        <div class="precio">25,50 €</div>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M9 3v6M15 3v6M12 9v12M6 9h12l-1 4H7Z"/></svg></div>
+        <h3>Manicura rusa + nivelación</h3>
+        <p>1 hora y 20 minutos.</p>
+        <div class="precio">29,75 €</div>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <h3>Lifting de pestañas</h3>
+        <p>1 hora de duración.</p>
+        <div class="precio">28,05 €</div>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Higiene facial hidra básica</h3>
+        <p>40 minutos.</p>
+        <div class="precio">34 €</div>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 21c4-1 6-4 6-8V7a4 4 0 0 1 8 0"/><path d="M12 3c3 0 5 2 5 5"/></svg></div>
+        <h3>Masaje relajante</h3>
+        <p>1 hora de duración.</p>
+        <div class="precio">46,75 €</div>
+      </div>
+      <div class="card rev">
+        <div class="ico"><svg viewBox="0 0 24 24"><path d="M20 7h-9M14 17H5M17 3l3 3-3 3M7 21l-3-3 3-3"/></svg></div>
+        <h3>Pack manicura + pedicura + cejas</h3>
+        <p>2 horas y 20 minutos, el pack más completo.</p>
+        <div class="precio">51 €</div>
+      </div>
+    </div>
+    <p class="nota-precio">*Precios y duraciones publicados por el propio centro en Booksy.</p>
+  </div>
+</section>
+
+<section class="reseñas" id="reseñas">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">OPINIÓN DE LAS CLIENTAS</div>
+      <h2>4,8 en Google,<br>y 150 reseñas más en Booksy</h2>
+      <p class="sub" style="margin-inline:auto">Estas tres son textuales, publicadas por clientas en Booksy.</p>
+    </div>
+    <div class="rescard rev" id="rescard">
+      <div class="estrellas">★★★★★</div>
+      <div class="n"><span class="count" data-to="48" data-dec="1">0</span></div>
+      <div class="r"><span class="count" data-to="77">0</span> reseñas en Google Maps</div>
+      <div class="barra"><i></i></div>
+    </div>
+    <div class="citas">
+      <div class="cita rev"><p>"Muy contenta y satisfecha con el trabajo realizado y la atención, volveré para el repaso."</p><span>— Laura, en Booksy</span></div>
+      <div class="cita rev"><p>"Estupenda la atención, Tysa una chica de 10. Las cejas y las pestañas me encantaron."</p><span>— Nayara, en Booksy</span></div>
+      <div class="cita rev"><p>"Las encontré de casualidad... Edeiliys es maravillosa."</p><span>— Guayarmina, en Booksy</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="wrap">
+    <div class="rev">
+      <div class="eyebrow">CÓMO PEDIR CITA</div>
+      <h2>C. Juan Manuel Durán González, 22</h2>
+      <p class="sub">Local 17 · Las Palmas de Gran Canaria. Datos reales tomados de su ficha de Google y Booksy.</p>
+    </div>
+    <div class="grid" style="margin-top:40px">
+      <div class="rev">
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M12 21s-7-4.4-7-10a7 7 0 0 1 14 0c0 5.6-7 10-7 10Z"/><circle cx="12" cy="11" r="2.4"/></svg>
+          <div><div class="k">DIRECCIÓN</div><div class="v">C. Juan Manuel Durán González, 22, local 17 · 35007 Las Palmas de Gran Canaria</div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg>
+          <div><div class="k">TELÉFONO</div><div class="v"><a href="tel:+34672779275">672 77 92 75</a></div></div>
+        </div>
+        <div class="dato">
+          <svg viewBox="0 0 24 24"><path d="m12 3 2.2 5.6L20 10l-4.4 3.4L17 20l-5-3.2L7 20l1.4-6.6L4 10l5.8-1.4Z"/></svg>
+          <div><div class="k">VALORACIÓN</div><div class="v">4,8★ · 77 reseñas en Google + 150 en Booksy</div></div>
+        </div>
+      </div>
+      <div class="horario rev">
+        <h3>Horario y reserva</h3>
+        <p>Las citas se gestionan hoy por Booksy. En la web definitiva se puede mostrar el horario real y dejar que reserven directamente, sin comisión de por medio.</p>
+        <a class="mapa" href="https://maps.google.com/?q=River+Nails+Centro+de+Estetica+C.+Juan+Manuel+Duran+Gonzalez+22+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">
+          Cómo llegar en Google Maps →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="m">RIVER NAILS</div>
+    <div>C. Juan Manuel Durán González, 22, local 17 · Las Palmas de Gran Canaria · 672 77 92 75</div>
+    <div class="agencia">
+      Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> para River Nails Centro de Estética, con sus datos públicos de Google y Booksy.
+      Esta web puede ser suya. · ELEVEN AGENCIA DE MARKETING DIGITAL, S.L. · elevenprime.es
+    </div>
+  </div>
+</footer>
+
+<div class="barra-fija">
+  <a class="l" href="tel:+34672779275">Pedir cita</a>
+  <a class="m" href="https://maps.google.com/?q=River+Nails+Centro+de+Estetica+C.+Juan+Manuel+Duran+Gonzalez+22+Las+Palmas+de+Gran+Canaria" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<noscript><style>
+  .rev{opacity:1!important;transform:none!important}
+  .hero h1 .word i{transform:none!important;animation:none!important}
+  .lead,.hero-acts,.confia,.baja,.antes{opacity:1!important;animation:none!important}
+  #load{display:none!important}
+</style></noscript>
+
+<script>
+(function(){
+  var nav=document.getElementById('nav'), prog=document.getElementById('prog'), capa=document.getElementById('capa'), pend=false;
+  function pinta(){
+    var y=window.pageYOffset||document.documentElement.scrollTop;
+    if(nav) nav.classList.toggle('min', y>40);
+    var h=document.documentElement.scrollHeight-window.innerHeight;
+    if(prog) prog.style.transform='scaleX('+(h>0?Math.min(y/h,1):0)+')';
+    if(capa && y<window.innerHeight) capa.style.transform='translate3d(0,'+(y*0.14)+'px,0)';
+    pend=false;
+  }
+  window.addEventListener('scroll',function(){ if(!pend){pend=true;requestAnimationFrame(pinta);} },{passive:true});
+  pinta();
+})();
+
+(function(){
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('on'); io.unobserve(e.target);} });
+  },{threshold:.14,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.rev').forEach(function(e,i){ e.style.transitionDelay=(i%3*90)+'ms'; io.observe(e); });
+})();
+
+(function(){
+  function anima(el){
+    var to=+el.dataset.to, dec=el.dataset.dec==='1', ini=null, dur=1300;
+    function paso(t){
+      if(!ini) ini=t;
+      var p=Math.min((t-ini)/dur,1), v=Math.round(to*(1-Math.pow(1-p,3)));
+      el.textContent = dec ? (v/10).toFixed(1).replace('.',',') : v.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(e){ if(e.isIntersecting){ anima(e.target); io.unobserve(e.target);} });
+  },{threshold:.5});
+  document.querySelectorAll('.count').forEach(function(e){ io.observe(e); });
+})();
+
+document.addEventListener('keydown',function(){ var l=document.getElementById('load'); if(l) l.style.display='none'; });
+
+/* rescate anti-pagina-vacia: si algo sigue invisible, se fuerza visible */
+(function(){
+  function rescate(){
+    var l=document.getElementById('load'); if(l) l.style.setProperty('display','none','important');
+    var n=document.querySelectorAll('body *');
+    for(var i=0;i<n.length;i++){
+      var e=n[i], cs=window.getComputedStyle(e);
+      if(cs.display==='none'||cs.visibility==='hidden') continue;
+      if(parseFloat(cs.opacity)<0.05){
+        e.style.setProperty('opacity','1','important');
+        e.style.setProperty('animation','none','important');
+        e.style.setProperty('transform','none','important');
+      }
+    }
+    document.querySelectorAll('.hero h1 .word i').forEach(function(e){
+      e.style.setProperty('transform','none','important'); e.style.setProperty('opacity','1','important');
+    });
+    document.querySelectorAll('.count').forEach(function(e){
+      if(e.textContent==='0'&&e.dataset.to){
+        var to=+e.dataset.to;
+        e.textContent = e.dataset.dec==='1' ? (to/10).toFixed(1).replace('.',',')
+                                            : to.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.');
+      }
+    });
+  }
+  setTimeout(rescate,2800);
+  window.addEventListener('error',function(){setTimeout(rescate,60)},true);
+})();
+</script>
+</body>
+</html>
