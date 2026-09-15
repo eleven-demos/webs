@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Vivi Alle Beauty Salon — San Bartolomé de Tirajana</title>
+<meta name="description" content="Vivi Alle Beauty Salon, salón de belleza en Jardín del Sol, Av. de Gran Canaria 24, San Bartolomé de Tirajana. Demo creada por Eleven AI.">
+<meta name="robots" content="noindex,nofollow">
+<style>
+  :root{
+    --primario:#C08497;
+    --secundario:#FBF6F3;
+    --acento:#B08D57;
+    --texto:#3a2b30;
+    --texto-suave:#6e5a60;
+    --blanco:#ffffff;
+    --sombra:0 20px 45px -20px rgba(58,43,48,.35);
+    --sombra-suave:0 10px 30px -18px rgba(58,43,48,.25);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:Georgia,'Iowan Old Style','Palatino Linotype',Palatino,serif;
+    background:var(--secundario);
+    color:var(--texto);
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img{max-width:100%}
+  a{color:inherit;text-decoration:none}
+  ul{list-style:none}
+  .sans{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif}
+  .contenedor{max-width:1120px;margin:0 auto;padding:0 24px}
+  .oculto-visual{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+
+  /* ---------- Barra de progreso de scroll ---------- */
+  #progreso{
+    position:fixed;top:0;left:0;height:3px;width:0%;
+    background:linear-gradient(90deg,var(--acento),var(--primario));
+    z-index:9999;will-change:transform;transform-origin:left;
+  }
+
+  /* ---------- Nav ---------- */
+  header.nav{
+    position:fixed;top:0;left:0;right:0;z-index:500;
+    padding:16px 0;
+    background:rgba(251,246,243,.78);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(176,141,87,.15);
+    transition:transform .4s cubic-bezier(.22,.61,.36,1);
+  }
+  header.nav .fila{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .logo{
+    font-size:1.15rem;letter-spacing:.06em;font-weight:700;color:var(--primario);
+  }
+  .logo b{color:var(--acento)}
+  .nav-cta{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--acento);color:#fff;
+    padding:10px 18px;border-radius:999px;
+    font-size:.85rem;font-weight:700;letter-spacing:.02em;
+    box-shadow:var(--sombra-suave);
+    transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s;
+    white-space:nowrap;
+  }
+  .nav-cta:hover{transform:translateY(-2px) scale(1.03)}
+  .nav-cta svg{width:15px;height:15px;flex:none}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100svh;
+    display:flex;align-items:center;justify-content:center;
+    padding:120px 24px 90px;
+    background:
+      radial-gradient(circle at 18% 22%, rgba(192,132,151,.35), transparent 55%),
+      radial-gradient(circle at 82% 78%, rgba(176,141,87,.25), transparent 50%),
+      linear-gradient(160deg, var(--secundario) 0%, #f3e3e8 60%, var(--secundario) 100%);
+    overflow:hidden;
+    text-align:center;
+  }
+  .hero::before{
+    content:'';position:absolute;inset:0;
+    background-image:
+      radial-gradient(1px 1px at 20% 30%, rgba(176,141,87,.5) 0, transparent 100%),
+      radial-gradient(1px 1px at 70% 60%, rgba(192,132,151,.5) 0, transparent 100%),
+      radial-gradient(1.5px 1.5px at 50% 80%, rgba(176,141,87,.4) 0, transparent 100%),
+      radial-gradient(1px 1px at 85% 20%, rgba(192,132,151,.4) 0, transparent 100%);
+    pointer-events:none;
+  }
+  .hero-interior{position:relative;z-index:2;max-width:760px}
+  .badge-nuevo{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.65);
+    border:1px solid rgba(176,141,87,.35);
+    color:var(--acento);
+    padding:8px 18px;border-radius:999px;
+    font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+    font-weight:700;
+    margin-bottom:26px;
+    box-shadow:var(--sombra-suave);
+  }
+  .badge-nuevo span.punto{
+    width:7px;height:7px;border-radius:50%;background:var(--primario);
+    display:inline-block;
+  }
+  h1.titulo-hero{
+    font-size:clamp(2.5rem,7vw,4.6rem);
+    line-height:1.05;
+    font-weight:400;
+    color:var(--texto);
+    margin-bottom:20px;
+    letter-spacing:.01em;
+  }
+  h1.titulo-hero em{
+    font-style:italic;color:var(--primario);
+  }
+  .palabra{display:inline-block;opacity:0;transform:translateY(18px);animation:apareceP .7s cubic-bezier(.22,.61,.36,1) forwards}
+  @keyframes apareceP{to{opacity:1;transform:translateY(0)}}
+  p.subtitulo{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:1.08rem;
+    color:var(--texto-suave);
+    max-width:520px;margin:0 auto 40px;
+    line-height:1.65;
+  }
+  .fila-botones{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:16px 30px;border-radius:999px;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-weight:700;font-size:.95rem;letter-spacing:.02em;
+    transition:transform .35s cubic-bezier(.22,.61,.36,1),box-shadow .35s;
+    will-change:transform;
+  }
+  .btn svg{width:18px;height:18px;flex:none}
+  .btn-primario{background:var(--acento);color:#fff;box-shadow:var(--sombra)}
+  .btn-primario:hover{transform:translateY(-3px) scale(1.02)}
+  .btn-secundario{background:transparent;color:var(--primario);border:1.5px solid var(--primario)}
+  .btn-secundario:hover{transform:translateY(-3px) scale(1.02);background:rgba(192,132,151,.08)}
+
+  /* ---------- Secciones genéricas ---------- */
+  section{padding:110px 0;position:relative}
+  .oculta-scroll{opacity:0;transform:translateY(38px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+  .oculta-scroll.visible{opacity:1;transform:translateY(0)}
+  .cabecera-seccion{text-align:center;max-width:640px;margin:0 auto 64px}
+  .kicker{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    text-transform:uppercase;letter-spacing:.2em;font-size:.78rem;font-weight:700;
+    color:var(--acento);margin-bottom:16px;display:block;
+  }
+  h2.titulo-seccion{
+    font-size:clamp(1.9rem,4vw,2.7rem);font-weight:400;color:var(--texto);line-height:1.2;
+  }
+  h2.titulo-seccion em{font-style:italic;color:var(--primario)}
+  p.texto-seccion{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    color:var(--texto-suave);font-size:1.05rem;line-height:1.75;margin-top:18px;
+  }
+
+  /* ---------- Nuevo en el barrio ---------- */
+  .nuevo{background:var(--blanco)}
+  .nuevo-grid{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+  }
+  .nuevo-visual{
+    aspect-ratio:4/5;border-radius:28px;
+    background:
+      radial-gradient(circle at 30% 25%, rgba(192,132,151,.5), transparent 60%),
+      radial-gradient(circle at 75% 75%, rgba(176,141,87,.45), transparent 55%),
+      linear-gradient(150deg,#eed7dd,#f7ece7);
+    position:relative;overflow:hidden;
+    box-shadow:var(--sombra);
+  }
+  .nuevo-visual::after{
+    content:'';position:absolute;inset:18px;border:1px solid rgba(255,255,255,.55);border-radius:20px;
+  }
+  .nuevo-visual .inicial{
+    position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+    font-size:7rem;color:rgba(255,255,255,.85);font-weight:400;letter-spacing:.02em;
+  }
+  .nuevo-texto p.texto-seccion{margin-top:14px}
+  .lista-check{margin-top:28px;display:flex;flex-direction:column;gap:14px}
+  .lista-check li{
+    display:flex;gap:12px;align-items:flex-start;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    color:var(--texto);font-size:.98rem;
+  }
+  .lista-check svg{width:20px;height:20px;flex:none;color:var(--acento);margin-top:2px}
+
+  /* ---------- Qué puedes esperar (servicios genéricos) ---------- */
+  .esperar{background:var(--secundario)}
+  .grid-servicios{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:26px;
+  }
+  .tarjeta-servicio{
+    background:var(--blanco);border-radius:22px;padding:34px 28px;
+    box-shadow:var(--sombra-suave);
+    transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s;
+    border:1px solid rgba(176,141,87,.12);
+  }
+  .tarjeta-servicio:hover{transform:translateY(-8px) scale(1.015);box-shadow:var(--sombra)}
+  .icono-servicio{
+    width:52px;height:52px;border-radius:16px;
+    background:linear-gradient(145deg,var(--primario),#d9a7b6);
+    display:flex;align-items:center;justify-content:center;margin-bottom:20px;
+    box-shadow:0 10px 22px -10px rgba(192,132,151,.55);
+  }
+  .icono-servicio svg{width:26px;height:26px;color:#fff}
+  .tarjeta-servicio h3{
+    font-size:1.15rem;font-weight:700;margin-bottom:10px;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  .tarjeta-servicio p{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    color:var(--texto-suave);font-size:.92rem;line-height:1.6;
+  }
+  .nota-generica{
+    margin-top:36px;text-align:center;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:.85rem;color:var(--texto-suave);font-style:italic;
+  }
+
+  /* ---------- Por qué ahora ---------- */
+  .porque{
+    background:linear-gradient(150deg,#2c2126,#4a343d 55%,#2c2126);
+    color:#fbf1f4;
+  }
+  .porque .kicker{color:var(--acento)}
+  .porque h2.titulo-seccion{color:#fbf1f4}
+  .porque h2.titulo-seccion em{color:#e3b6c3}
+  .porque .texto-seccion{color:#e6d4d9}
+  .grid-porque{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px;margin-top:56px;
+  }
+  .stat{
+    text-align:center;padding:34px 20px;border-radius:22px;
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .stat .num{
+    font-size:2.6rem;font-weight:700;color:var(--acento);display:block;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  .stat p{
+    margin-top:10px;font-size:.9rem;color:#e6d4d9;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+
+  /* ---------- Contacto ---------- */
+  .contacto{background:var(--blanco)}
+  .grid-contacto{
+    display:grid;grid-template-columns:1.1fr 1fr;gap:48px;
+    background:var(--secundario);border-radius:32px;padding:56px;
+    box-shadow:var(--sombra);
+  }
+  .lista-contacto{display:flex;flex-direction:column;gap:26px}
+  .item-contacto{display:flex;gap:16px;align-items:flex-start}
+  .item-contacto .icono{
+    width:46px;height:46px;border-radius:14px;flex:none;
+    background:var(--blanco);display:flex;align-items:center;justify-content:center;
+    box-shadow:var(--sombra-suave);
+  }
+  .item-contacto .icono svg{width:22px;height:22px;color:var(--acento)}
+  .item-contacto h4{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:.78rem;text-transform:uppercase;letter-spacing:.12em;color:var(--acento);margin-bottom:4px;font-weight:700;
+  }
+  .item-contacto p, .item-contacto a{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:1.02rem;color:var(--texto);line-height:1.5;
+  }
+  .item-contacto a:hover{color:var(--primario)}
+  .mapa-mini{
+    border-radius:22px;overflow:hidden;position:relative;min-height:260px;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(192,132,151,.4), transparent 60%),
+      radial-gradient(circle at 75% 70%, rgba(176,141,87,.4), transparent 55%),
+      linear-gradient(150deg,#eed7dd,#f3e6e0);
+    display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;
+    box-shadow:var(--sombra-suave);
+  }
+  .mapa-mini svg{width:44px;height:44px;color:var(--acento)}
+  .mapa-mini a.enlace-mapa{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-weight:700;color:#fff;background:var(--primario);
+    padding:12px 24px;border-radius:999px;font-size:.88rem;
+    box-shadow:var(--sombra-suave);
+    transition:transform .3s cubic-bezier(.22,.61,.36,1);
+  }
+  .mapa-mini a.enlace-mapa:hover{transform:translateY(-2px) scale(1.03)}
+  .contacto-cta-final{
+    margin-top:40px;text-align:center;
+  }
+
+  /* ---------- Footer ---------- */
+  footer{
+    background:#2c2126;color:#e6d4d9;padding:64px 0 calc(96px + env(safe-area-inset-bottom,0px));
+    text-align:center;
+  }
+  footer .logo-footer{font-size:1.3rem;color:#fff;letter-spacing:.06em;margin-bottom:10px}
+  footer .logo-footer b{color:var(--acento)}
+  footer p{
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:.88rem;color:#c3a9b1;line-height:1.7;max-width:480px;margin:0 auto;
+  }
+  .marca-demo{
+    display:inline-flex;align-items:center;gap:8px;
+    margin-top:28px;padding:10px 20px;border-radius:999px;
+    background:rgba(176,141,87,.16);border:1px solid rgba(176,141,87,.4);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--acento);
+  }
+  footer .aviso-agencia{
+    margin-top:22px;font-size:.82rem;color:#a98d95;
+  }
+
+  /* ---------- Barra fija inferior ---------- */
+  .barra-fija{
+    position:fixed;left:0;right:0;bottom:0;z-index:600;
+    display:flex;gap:10px;
+    padding:12px 16px calc(12px + env(safe-area-inset-bottom,0px));
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);
+    border-top:1px solid rgba(176,141,87,.2);
+    box-shadow:0 -10px 30px -18px rgba(58,43,48,.3);
+  }
+  .barra-fija a{
+    flex:1;display:flex;align-items:center;justify-content:center;gap:8px;
+    padding:14px 10px;border-radius:14px;
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-weight:700;font-size:.88rem;
+    transition:transform .3s cubic-bezier(.22,.61,.36,1);
+  }
+  .barra-fija a svg{width:17px;height:17px;flex:none}
+  .barra-fija a.llamar{background:var(--acento);color:#fff}
+  .barra-fija a.mapa{background:transparent;color:var(--primario);border:1.5px solid var(--primario)}
+  .barra-fija a:active{transform:scale(.96)}
+
+  /* ---------- Momento firma: halo que revela el nombre ---------- */
+  #momento-firma{
+    position:fixed;inset:0;z-index:10000;
+    background:linear-gradient(150deg,#2c2126,#4a343d 60%,#2c2126);
+    display:flex;align-items:center;justify-content:center;
+    cursor:pointer;
+    transition:opacity .55s ease, visibility 0s linear .55s;
+  }
+  #momento-firma.oculto{opacity:0;visibility:hidden;pointer-events:none}
+  .halo{
+    position:absolute;width:60vmax;height:60vmax;border-radius:50%;
+    background:radial-gradient(circle, rgba(192,132,151,.9) 0%, rgba(176,141,87,.55) 42%, rgba(44,33,38,0) 72%);
+    transform:scale(0);
+    animation:expandeHalo 1.5s cubic-bezier(.22,.61,.36,1) forwards;
+    will-change:transform;
+  }
+  @keyframes expandeHalo{
+    0%{transform:scale(0);opacity:.2}
+    55%{opacity:1}
+    100%{transform:scale(1);opacity:.9}
+  }
+  .firma-nombre{
+    position:relative;z-index:2;text-align:center;color:#fff;
+    opacity:0;transform:translateY(14px) scale(.94);
+    animation:apareceFirma .9s cubic-bezier(.22,.61,.36,1) forwards;
+    animation-delay:.55s;
+    padding:0 24px;
+  }
+  @keyframes apareceFirma{to{opacity:1;transform:translateY(0) scale(1)}}
+  .firma-nombre .linea{
+    width:52px;height:1px;background:var(--acento);margin:0 auto 18px;
+  }
+  .firma-nombre h2{
+    font-size:clamp(1.8rem,6vw,3.1rem);font-weight:400;letter-spacing:.02em;
+  }
+  .firma-nombre h2 em{font-style:italic;color:#e3b6c3}
+  .firma-nombre span.sub{
+    display:block;margin-top:14px;font-size:.82rem;letter-spacing:.24em;text-transform:uppercase;
+    color:#d8b9c2;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+  }
+  .firma-saltar{
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
+    font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:#c3a9b1;
+    opacity:0;animation:apareceFirma .6s ease forwards;animation-delay:1.1s;
+  }
+
+  @media (max-width:860px){
+    .nuevo-grid{grid-template-columns:1fr}
+    .nuevo-visual{order:-1;aspect-ratio:16/10}
+    .grid-contacto{grid-template-columns:1fr;padding:34px 24px;border-radius:24px}
+    section{padding:80px 0}
+  }
+  @media (max-width:480px){
+    .fila-botones{flex-direction:column;align-items:stretch}
+    .btn{justify-content:center}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.01ms !important;animation-iteration-count:1 !important;transition-duration:.01ms !important;scroll-behavior:auto !important}
+    .oculta-scroll{opacity:1;transform:none}
+    .halo{transform:scale(1)}
+  }
+
+  /* ---------- Garantía de visibilidad (lección 03/08/2026) ---------- */
+  noscript{display:block}
+  noscript .aviso-noscript{display:none}
+</style>
+</head>
+<body>
+
+<noscript>
+  <style>
+    .oculta-scroll{opacity:1!important;transform:none!important}
+    .palabra{opacity:1!important;transform:none!important;animation:none!important}
+    #momento-firma{display:none!important}
+    #progreso{display:none!important}
+  </style>
+</noscript>
+
+<div id="progreso"></div>
+
+<!-- MOMENTO FIRMA -->
+<div id="momento-firma" role="button" aria-label="Saltar animación de entrada" tabindex="0">
+  <div class="halo"></div>
+  <div class="firma-nombre">
+    <div class="linea"></div>
+    <h2>Vivi <em>Alle</em><br>Beauty Salon</h2>
+    <span class="sub">San Bartolomé de Tirajana</span>
+  </div>
+  <div class="firma-saltar">Toca para continuar</div>
+</div>
+
+<header class="nav" id="nav">
+  <div class="contenedor fila">
+    <div class="logo">Vivi Alle <b>Beauty</b> Salon</div>
+    <a class="nav-cta sans" href="tel:+34611832778" aria-label="Llamar a Vivi Alle Beauty Salon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      Llamar
+    </a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero" aria-label="Presentación">
+    <div class="hero-interior">
+      <span class="badge-nuevo"><span class="punto"></span>Recién llegadas a San Bartolomé de Tirajana</span>
+      <h1 class="titulo-hero" id="titulo-hero" aria-label="Vivi Alle Beauty Salon">
+        <span class="palabra" style="animation-delay:.05s">Vivi</span>
+        <span class="palabra" style="animation-delay:.15s"><em>Alle</em></span>
+        <span class="palabra" style="animation-delay:.25s">Beauty</span>
+        <span class="palabra" style="animation-delay:.35s">Salon</span>
+      </h1>
+      <p class="subtitulo">Un salón de belleza nuevo en el Centro Comercial Jardín del Sol, en plena Av. de Gran Canaria. Empezamos ahora — y queremos que nos conozcas desde el primer día.</p>
+      <div class="fila-botones">
+        <a class="btn btn-primario sans" href="tel:+34611832778">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          Llamar ahora
+        </a>
+        <a class="btn btn-secundario sans" href="https://www.google.com/maps/search/?api=1&query=jardim%20del%20Sol%2C%20Av.%20de%20Gran%20Canaria%2C%2024%2C%20Centro%20comercial%2C%2035100%20San%20Bartolom%C3%A9%20de%20Tirajana%2C%20Las%20Palmas%2C%20Espa%C3%B1a" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Cómo llegar
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- NUEVO EN EL BARRIO -->
+  <section class="nuevo" aria-label="Sobre el salón">
+    <div class="contenedor">
+      <div class="nuevo-grid">
+        <div class="nuevo-visual oculta-scroll">
+          <div class="inicial">VA</div>
+        </div>
+        <div class="nuevo-texto oculta-scroll">
+          <span class="kicker">Sobre nosotras</span>
+          <h2 class="titulo-seccion">Un salón <em>nuevo</em>, en el corazón de Tirajana</h2>
+          <p class="texto-seccion">Vivi Alle Beauty Salon acaba de abrir sus puertas en el Centro Comercial Jardín del Sol, en la Av. de Gran Canaria. Todavía no tenemos reseñas en Google — somos así de nuevas — pero sí tenemos ganas de que San Bartolomé de Tirajana nos conozca desde el primer corte, el primer color, el primer cliente.</p>
+          <ul class="lista-check">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              Ubicación cómoda en Centro Comercial Jardín del Sol
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              Salón recién estrenado en Av. de Gran Canaria
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg>
+              Atención cercana, directa y sin prisas
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- QUÉ PUEDES ESPERAR -->
+  <section class="esperar" aria-label="Tipo de servicios del sector">
+    <div class="contenedor">
+      <div class="cabecera-seccion oculta-scroll">
+        <span class="kicker">El oficio</span>
+        <h2 class="titulo-seccion">Qué puedes esperar de <em>un salón de belleza</em></h2>
+        <p class="texto-seccion">Estas son las categorías habituales de un salón de peluquería y estética. Consulta con Vivi Alle Beauty Salon qué tratamientos concretos tienen disponibles ahora mismo.</p>
+      </div>
+      <div class="grid-servicios">
+        <div class="tarjeta-servicio oculta-scroll">
+          <div class="icono-servicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4L8.12 15.88M14.47 14.48L20 20M8.12 8.12L12 12"/></svg>
+          </div>
+          <h3>Peluquería</h3>
+          <p>Corte, color y peinado: los servicios clásicos de cualquier salón de peluquería.</p>
+        </div>
+        <div class="tarjeta-servicio oculta-scroll">
+          <div class="icono-servicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 0 0-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 0 0-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h3>Estética facial</h3>
+          <p>Tratamientos de cuidado facial habituales en un salón de belleza.</p>
+        </div>
+        <div class="tarjeta-servicio oculta-scroll">
+          <div class="icono-servicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.35-10-9.5C-.5 6 3 2 7 3c2 .5 3.5 2 5 4 1.5-2 3-3.5 5-4 4-1 7.5 3 5 8.5-3 5.15-10 9.5-10 9.5z"/></svg>
+          </div>
+          <h3>Manicura y pedicura</h3>
+          <p>Cuidado de manos y pies, otra de las categorías propias del sector belleza.</p>
+        </div>
+        <div class="tarjeta-servicio oculta-scroll">
+          <div class="icono-servicio">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v18M5 8l7-5 7 5M5 16l7 5 7-5"/></svg>
+          </div>
+          <h3>Peinados de evento</h3>
+          <p>Recogidos y peinados para ocasiones especiales, típicos de este tipo de salón.</p>
+        </div>
+      </div>
+      <p class="nota-generica">* Categorías orientativas del sector belleza — pregunta directamente por el detalle y los precios de Vivi Alle Beauty Salon.</p>
+    </div>
+  </section>
+
+  <!-- POR QUÉ AHORA -->
+  <section class="porque" aria-label="Por qué tener web desde el inicio">
+    <div class="contenedor">
+      <div class="cabecera-seccion oculta-scroll">
+        <span class="kicker">Por qué ahora</span>
+        <h2 class="titulo-seccion">Empezar con <em>web propia</em>, no solo con la ficha</h2>
+        <p class="texto-seccion">Vivi Alle Beauty Salon todavía no tiene reseñas ni historial en Google: es un negocio recién llegado. Justo por eso, empezar con una web propia ayuda a construir reputación desde el primer día, en vez de depender solo de lo que Google decida mostrar.</p>
+      </div>
+      <div class="grid-porque">
+        <div class="stat oculta-scroll">
+          <span class="num" data-contador="0" data-hasta="1">Día 1</span>
+          <p>Desde el primer día se puede tener presencia propia en internet, no solo una ficha de terceros.</p>
+        </div>
+        <div class="stat oculta-scroll">
+          <span class="num">100%</span>
+          <p>El contenido y la imagen los controla el salón, no una plataforma externa.</p>
+        </div>
+        <div class="stat oculta-scroll">
+          <span class="num">24/7</span>
+          <p>Dirección, teléfono y ubicación siempre disponibles para quien busque un salón cerca.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="contacto" id="contacto" aria-label="Contacto">
+    <div class="contenedor">
+      <div class="cabecera-seccion oculta-scroll">
+        <span class="kicker">Contacto</span>
+        <h2 class="titulo-seccion">Reserva tu <em>cita</em></h2>
+      </div>
+      <div class="grid-contacto oculta-scroll">
+        <div class="lista-contacto">
+          <div class="item-contacto">
+            <div class="icono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <h4>Dirección</h4>
+              <p>Jardín del Sol, Av. de Gran Canaria, 24<br>Centro Comercial, 35100 San Bartolomé de Tirajana<br>Las Palmas, España</p>
+            </div>
+          </div>
+          <div class="item-contacto">
+            <div class="icono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div>
+              <h4>Teléfono</h4>
+              <a href="tel:+34611832778">611 83 27 78</a>
+            </div>
+          </div>
+          <div class="item-contacto">
+            <div class="icono">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <h4>Horario</h4>
+              <p>Consulta el horario actual llamando al salón.</p>
+            </div>
+          </div>
+          <div class="contacto-cta-final">
+            <a class="btn btn-primario sans" href="tel:+34611832778">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Llamar al 611 83 27 78
+            </a>
+          </div>
+        </div>
+        <div class="mapa-mini">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <a class="enlace-mapa sans" href="https://www.google.com/maps/search/?api=1&query=jardim%20del%20Sol%2C%20Av.%20de%20Gran%20Canaria%2C%2024%2C%20Centro%20comercial%2C%2035100%20San%20Bartolom%C3%A9%20de%20Tirajana%2C%20Las%20Palmas%2C%20Espa%C3%B1a" target="_blank" rel="noopener">Ver en Google Maps</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="contenedor">
+    <div class="logo-footer">Vivi Alle <b>Beauty</b> Salon</div>
+    <p>Jardín del Sol, Av. de Gran Canaria, 24, Centro Comercial<br>35100 San Bartolomé de Tirajana, Las Palmas · <a href="tel:+34611832778" style="color:#e3b6c3">611 83 27 78</a></p>
+    <div class="marca-demo">● DEMO</div>
+    <p class="aviso-agencia">Demo creada por Eleven AI — esta web puede ser tuya.</p>
+  </div>
+</footer>
+
+<!-- BARRA FIJA -->
+<nav class="barra-fija" aria-label="Acciones rápidas">
+  <a class="llamar" href="tel:+34611832778">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Llamar
+  </a>
+  <a class="mapa" href="https://www.google.com/maps/search/?api=1&query=jardim%20del%20Sol%2C%20Av.%20de%20Gran%20Canaria%2C%2024%2C%20Centro%20comercial%2C%2035100%20San%20Bartolom%C3%A9%20de%20Tirajana%2C%20Las%20Palmas%2C%20Espa%C3%B1a" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Cómo llegar
+  </a>
+</nav>
+
+<script>
+(function(){
+  "use strict";
+
+  // ---- Momento firma: saltable con clic o tecla ----
+  var firma = document.getElementById('momento-firma');
+  function cerrarFirma(){
+    if(!firma) return;
+    firma.classList.add('oculto');
+  }
+  if(firma){
+    firma.addEventListener('click', cerrarFirma);
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') cerrarFirma();
+    });
+    setTimeout(cerrarFirma, 2000);
+  }
+
+  // ---- Barra de progreso de scroll ----
+  var progreso = document.getElementById('progreso');
+  var ticking = false;
+  function actualizarProgreso(){
+    var alto = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = alto > 0 ? (window.scrollY / alto) * 100 : 0;
+    if(progreso) progreso.style.width = pct + '%';
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!ticking){
+      window.requestAnimationFrame(actualizarProgreso);
+      ticking = true;
+    }
+  }, {passive:true});
+
+  // ---- Nav que se oculta al bajar, aparece al subir ----
+  var nav = document.getElementById('nav');
+  var ultimoY = window.scrollY;
+  var tickingNav = false;
+  function actualizarNav(){
+    var actual = window.scrollY;
+    if(nav){
+      if(actual > ultimoY && actual > 120){
+        nav.style.transform = 'translateY(-110%)';
+      } else {
+        nav.style.transform = 'translateY(0)';
+      }
+    }
+    ultimoY = actual;
+    tickingNav = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!tickingNav){
+      window.requestAnimationFrame(actualizarNav);
+      tickingNav = true;
+    }
+  }, {passive:true});
+
+  // ---- Revelado en cascada con IntersectionObserver ----
+  if('IntersectionObserver' in window){
+    var elementos = document.querySelectorAll('.oculta-scroll');
+    var contador = 0;
+    var io = new IntersectionObserver(function(entradas){
+      entradas.forEach(function(entrada){
+        if(entrada.isIntersecting){
+          var el = entrada.target;
+          var retardo = (contador % 4) * 90;
+          contador++;
+          setTimeout(function(){ el.classList.add('visible'); }, retardo);
+          io.unobserve(el);
+        }
+      });
+    }, {threshold:0.12, rootMargin:'0px 0px -60px 0px'});
+    elementos.forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll('.oculta-scroll').forEach(function(el){ el.classList.add('visible'); });
+  }
+
+  // ---- Rescate anti-página-vacía (lección 03/08/2026) ----
+  // Si por lo que sea algo se queda con opacity:0 (fallo de IO, JS raro
+  // de un visor de correo, etc.), a los ~1.2s se fuerza visible.
+  function rescate(){
+    document.querySelectorAll('.oculta-scroll').forEach(function(el){
+      el.classList.add('visible');
+    });
+    document.querySelectorAll('.palabra').forEach(function(el){
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    });
+    var f = document.getElementById('momento-firma');
+    if(f) f.classList.add('oculto');
+  }
+  setTimeout(rescate, 1200);
+  window.addEventListener('error', function(){ setTimeout(rescate, 60); }, true);
+
+})();
+</script>
+
+</body>
+</html>
