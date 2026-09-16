@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>La Hija del Capitán · Bar y Cafetería · Mesa y López, Las Palmas</title>
+<meta name="description" content="Bar-cafetería en Mesa y López 85: desayunos, pulguitas de pata y queso tierno, comida cubana los viernes y música en vivo. 181 reseñas en Google.">
+<style>
+:root{
+  --mar:#1B4965;
+  --mar-osc:#0F2E42;
+  --crema:#FAF3E0;
+  --teja:#C1441E;
+  --teja-cl:#E0703F;
+  --tinta:#13212B;
+  --gris:#5F7385;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  background:var(--crema);color:var(--tinta);line-height:1.62;overflow-x:hidden;
+}
+a{color:inherit}
+
+/* ---------- momento firma: el timón gira y descubre el nombre ---------- */
+#firma{
+  position:fixed;inset:0;z-index:999;background:var(--mar-osc);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:opacity .55s ease,visibility .55s ease;
+}
+#firma.fuera{opacity:0;visibility:hidden}
+.timon{width:160px;height:160px;animation:girar 1.5s cubic-bezier(.16,.9,.3,1) both}
+.timon svg{width:100%;height:100%}
+@keyframes girar{
+  from{transform:rotate(-190deg) scale(.7);opacity:0}
+  60%{opacity:1}
+  to{transform:rotate(0) scale(1);opacity:1}
+}
+.timon circle,.timon path,.timon line{stroke:var(--teja-cl);fill:none;stroke-width:5;stroke-linecap:round}
+.timon .nucleo{fill:var(--crema);stroke:none}
+#firma .marca{
+  margin-top:28px;text-align:center;color:var(--crema);
+  font-size:clamp(25px,6.4vw,42px);font-weight:800;letter-spacing:.04em;
+  opacity:0;animation:aparece .75s ease-out 1.15s both;
+}
+#firma .marca small{
+  display:block;font-size:11.5px;letter-spacing:.34em;color:var(--teja-cl);
+  font-weight:700;margin-top:10px;text-transform:uppercase;
+}
+@keyframes aparece{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+#firma .saltar{
+  position:absolute;bottom:26px;color:#7e99ad;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:0;animation:aparece .5s ease-out 1.9s both;
+}
+
+/* ---------- cabecera ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:15px 22px;
+  transition:background .35s ease,padding .35s ease,box-shadow .35s ease;
+}
+header.pegada{background:rgba(15,46,66,.95);padding:10px 22px;box-shadow:0 6px 22px rgba(0,0,0,.2)}
+header .logo{color:var(--crema);font-weight:800;font-size:15px;letter-spacing:.06em}
+header nav{display:none;gap:24px}
+header nav a{color:var(--crema);text-decoration:none;font-size:14px;font-weight:600;opacity:.86;transition:opacity .2s,transform .2s}
+header nav a:hover{opacity:1;transform:translateY(-2px)}
+@media(min-width:840px){header nav{display:flex}}
+
+#progreso{
+  position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;
+  background:linear-gradient(90deg,var(--teja-cl),var(--teja));
+  transform:scaleX(0);transform-origin:left center;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:112px 22px 128px;color:var(--crema);overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 22%,rgba(224,112,63,.24),transparent 48%),
+    radial-gradient(circle at 8% 78%,rgba(250,243,224,.1),transparent 44%),
+    linear-gradient(155deg,var(--mar-osc) 0%,var(--mar) 68%,#276383 100%);
+}
+.hero .olas{
+  position:absolute;left:0;right:0;bottom:-2px;height:120px;opacity:.16;will-change:transform;
+  background:
+    radial-gradient(ellipse 60% 100% at 20% 100%,var(--crema),transparent 60%),
+    radial-gradient(ellipse 60% 100% at 60% 100%,var(--crema),transparent 60%),
+    radial-gradient(ellipse 60% 100% at 95% 100%,var(--crema),transparent 60%);
+}
+.hero .caja{position:relative;max-width:1080px;margin:0 auto;width:100%}
+.sello{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 17px;border-radius:999px;
+  background:rgba(224,112,63,.18);border:1px solid rgba(224,112,63,.5);
+  color:var(--teja-cl);font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+}
+h1{font-size:clamp(40px,9.6vw,92px);line-height:1;font-weight:800;letter-spacing:-.02em;margin:22px 0 0}
+h1 .pal{display:inline-block;opacity:0;transform:translateY(24px)}
+h1 .teja{color:var(--teja-cl)}
+.hero p.lema{font-size:clamp(17px,2.3vw,22px);max-width:610px;margin-top:22px;color:#dbe8f0}
+.botones{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:14px;
+  text-decoration:none;font-weight:700;font-size:15.5px;
+  transition:transform .25s cubic-bezier(.34,1.5,.64,1),box-shadow .25s ease;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn.principal{background:var(--teja);color:#fff;box-shadow:0 12px 30px rgba(193,68,30,.34)}
+.btn.borde{border:1.5px solid rgba(250,243,224,.5);color:var(--crema)}
+
+/* ---------- cifras ---------- */
+.cifras{
+  position:relative;max-width:1080px;margin:-70px auto 0;padding:0 22px;z-index:5;
+  display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));
+}
+.cifra{
+  background:#fff;border-radius:18px;padding:26px 20px;text-align:center;
+  box-shadow:0 14px 36px rgba(27,73,101,.13);border:1px solid rgba(27,73,101,.08);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.cifra:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(27,73,101,.2)}
+.cifra .num{font-size:clamp(32px,5.6vw,44px);font-weight:800;color:var(--mar);line-height:1}
+.cifra .et{font-size:12.5px;color:var(--gris);margin-top:8px;font-weight:600;letter-spacing:.05em}
+.estrellas{color:var(--teja);font-size:18px;letter-spacing:3px}
+
+/* ---------- secciones ---------- */
+section{padding:84px 22px}
+.centro{max-width:1080px;margin:0 auto}
+.titulillo{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--teja);font-weight:800;margin-bottom:12px}
+h2{font-size:clamp(29px,5.2vw,48px);line-height:1.1;font-weight:800;letter-spacing:-.015em}
+.entradilla{font-size:17px;color:var(--gris);max-width:640px;margin-top:18px}
+
+.sobre{background:#fff}
+.sobre .rejilla{display:grid;gap:42px;align-items:center}
+@media(min-width:900px){.sobre .rejilla{grid-template-columns:1.1fr .9fr}}
+.sobre p{margin-top:17px;font-size:17px;color:#3c5361}
+.cita-grande{
+  margin-top:28px;padding:26px 28px;background:var(--crema);border-radius:18px;
+  border-left:5px solid var(--teja);font-size:20px;font-style:italic;color:var(--mar);
+}
+.cita-grande span{display:block;margin-top:12px;font-size:13px;font-style:normal;color:var(--gris);font-weight:700;letter-spacing:.06em}
+
+/* ---------- carta ---------- */
+.carta{background:linear-gradient(180deg,var(--crema),#f2e6cd)}
+.tarjetas{display:grid;gap:19px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(262px,1fr))}
+.tarjeta{
+  background:#fff;border-radius:20px;padding:30px 26px;border:1px solid rgba(27,73,101,.09);
+  box-shadow:0 10px 28px rgba(27,73,101,.08);
+  transition:transform .3s cubic-bezier(.34,1.3,.64,1),box-shadow .3s ease;
+}
+.tarjeta:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgba(27,73,101,.16)}
+.tarjeta .icono{
+  width:50px;height:50px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--teja-cl),var(--teja));margin-bottom:18px;
+}
+.tarjeta .icono svg{width:25px;height:25px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tarjeta h3{font-size:20px;font-weight:800;margin-bottom:9px}
+.tarjeta p{color:var(--gris);font-size:15.5px}
+.etiqueta{
+  display:inline-block;margin-top:14px;padding:5px 12px;border-radius:999px;
+  background:rgba(193,68,30,.1);color:var(--teja);font-size:12px;font-weight:800;letter-spacing:.05em;
+}
+
+/* ---------- reseñas ---------- */
+.opiniones{background:var(--mar-osc);color:var(--crema)}
+.opiniones h2{color:#fff}
+.resenas{display:grid;gap:19px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.resena{
+  background:rgba(250,243,224,.07);border:1px solid rgba(224,112,63,.28);border-radius:20px;
+  padding:28px 26px;transition:transform .3s ease,border-color .3s ease;
+}
+.resena:hover{transform:translateY(-6px);border-color:var(--teja-cl)}
+.resena .est{color:var(--teja-cl);font-size:16px;letter-spacing:2px;margin-bottom:14px}
+.resena p{font-size:16.5px;font-style:italic;color:#eadfc7}
+.resena .quien{margin-top:16px;font-size:12.5px;color:#93aec0;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+
+/* ---------- contacto ---------- */
+.contacto{background:#fff}
+.datos{display:grid;gap:17px;margin-top:38px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.dato{
+  border:1px solid rgba(27,73,101,.12);border-radius:18px;padding:26px 22px;background:var(--crema);
+  transition:transform .3s ease,border-color .3s ease;
+}
+.dato:hover{transform:translateY(-5px);border-color:var(--teja)}
+.dato h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--teja);margin-bottom:11px;font-weight:800}
+.dato p,.dato a{font-size:16.5px;color:var(--tinta);text-decoration:none;font-weight:600}
+.dato a:hover{color:var(--teja)}
+.mapa{
+  display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:16px 28px;
+  background:var(--mar);color:var(--crema);border-radius:14px;text-decoration:none;font-weight:700;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.mapa:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(27,73,101,.3)}
+
+footer{background:var(--mar-osc);color:#9db6c6;padding:52px 22px 108px;text-align:center}
+footer .nombre{color:var(--crema);font-size:20px;font-weight:800;letter-spacing:.05em}
+footer .agencia{margin-top:20px;font-size:14.5px}
+footer .agencia b{color:var(--teja-cl)}
+
+.fija{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;display:flex;gap:10px;padding:11px 14px;
+  background:rgba(15,46,66,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(224,112,63,.32);
+}
+.fija a{flex:1;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:800;font-size:15px;transition:transform .2s ease}
+.fija a:active{transform:scale(.97)}
+.fija .llamar{background:var(--teja);color:#fff}
+.fija .ir{border:1.5px solid rgba(250,243,224,.45);color:var(--crema)}
+@media(min-width:840px){.fija{display:none}footer{padding-bottom:52px}}
+
+.agua{
+  position:fixed;right:-52px;top:76px;z-index:45;transform:rotate(45deg);
+  background:rgba(193,68,30,.95);color:#fff;font-weight:800;font-size:12.5px;
+  letter-spacing:.28em;padding:8px 62px;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.22);
+}
+
+.rev{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rev.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rev{opacity:1;transform:none}
+  h1 .pal{opacity:1;transform:none}
+  #firma{display:none}
+}
+</style>
+</head>
+<body>
+
+<noscript>
+<style>
+  #firma{display:none!important}
+  .rev{opacity:1!important;transform:none!important}
+  h1 .pal{opacity:1!important;transform:none!important}
+  #progreso{display:none}
+</style>
+</noscript>
+
+<div id="firma" aria-hidden="true">
+  <div class="timon">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <circle cx="60" cy="60" r="34"/>
+      <circle cx="60" cy="60" r="20"/>
+      <circle class="nucleo" cx="60" cy="60" r="7"/>
+      <line x1="60" y1="8" x2="60" y2="38"/>
+      <line x1="60" y1="82" x2="60" y2="112"/>
+      <line x1="8" y1="60" x2="38" y2="60"/>
+      <line x1="82" y1="60" x2="112" y2="60"/>
+      <line x1="23" y1="23" x2="45" y2="45"/>
+      <line x1="75" y1="75" x2="97" y2="97"/>
+      <line x1="97" y1="23" x2="75" y2="45"/>
+      <line x1="45" y1="75" x2="23" y2="97"/>
+    </svg>
+  </div>
+  <div class="marca">La Hija del Capitán<small>Mesa y López · Las Palmas</small></div>
+  <div class="saltar">Toca para entrar</div>
+</div>
+
+<div id="progreso"></div>
+<div class="agua">DEMO</div>
+
+<header id="cabecera">
+  <span class="logo">La Hija del Capitán</span>
+  <nav>
+    <a href="#sobre">El bar</a>
+    <a href="#carta">Qué hay</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Dónde estamos</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="olas" id="parallax"></div>
+  <div class="caja">
+    <span class="sello">● Mesa y López, 85 · Las Palmas</span>
+    <h1 id="titulo"><span class="pal">Desayunos,</span> <span class="pal">pata</span> <span class="pal teja">asada</span><br><span class="pal">y</span> <span class="pal">cubano</span> <span class="pal">los</span> <span class="pal">viernes.</span></h1>
+    <p class="lema">Bar y cafetería en plena Mesa y López. De los que abren temprano, te conocen por el nombre y los viernes huelen a comida cubana. Con música en vivo.</p>
+    <div class="botones">
+      <a class="btn principal" href="tel:+34671572588">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Llamar ahora
+      </a>
+      <a class="btn borde" href="#carta">Ver qué hay</a>
+    </div>
+  </div>
+</section>
+
+<div class="cifras">
+  <div class="cifra rev">
+    <div class="num"><span class="cuenta" data-fin="4.2" data-dec="1">0</span></div>
+    <div class="estrellas">★★★★★</div>
+    <div class="et">Valoración en Google</div>
+  </div>
+  <div class="cifra rev">
+    <div class="num"><span class="cuenta" data-fin="181">0</span></div>
+    <div class="et">Reseñas de clientes</div>
+  </div>
+  <div class="cifra rev">
+    <div class="num">V</div>
+    <div class="et">Cubano los viernes</div>
+  </div>
+</div>
+
+<section class="sobre" id="sobre">
+  <div class="centro rejilla">
+    <div class="rev">
+      <div class="titulillo">El bar</div>
+      <h2>El bar de Mesa y López al que se vuelve.</h2>
+      <p>La Hija del Capitán es de esos sitios que funcionan por lo de siempre: se desayuna bien, se come mejor y el trato hace el resto. Está en el local 3 del 85 de Mesa y López, a pie de calle.</p>
+      <p>Los viernes y el último sábado de cada mes la cocina se pone cubana. Y hay música en vivo, que en un bar de barrio no es poca cosa.</p>
+      <div class="cita-grande">
+        «La mejor pata de La Capital, si quieres sentirte como en casa»
+        <span>Reseña de un cliente</span>
+      </div>
+    </div>
+    <div class="rev">
+      <div style="background:linear-gradient(150deg,var(--mar),var(--mar-osc));border-radius:24px;padding:42px 30px;text-align:center;color:var(--crema)">
+        <div style="font-size:clamp(56px,12vw,88px);font-weight:800;color:var(--teja-cl);line-height:1">4,2</div>
+        <div class="estrellas" style="font-size:25px;letter-spacing:5px;color:var(--teja-cl)">★★★★★</div>
+        <div style="margin-top:12px;font-size:16.5px;color:#cfe0ea">181 reseñas en Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="carta" id="carta">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo">Qué hay</div>
+      <h2>Lo que más se pide.</h2>
+      <p class="entradilla">Una muestra de lo que sale de la cocina. La carta completa con precios se añade en la versión definitiva de la web.</p>
+    </div>
+    <div class="tarjetas">
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M3 11h18M4 11a8 8 0 0 1 16 0M6 15h12M7 19h10"/></svg></div>
+        <h3>Pulguitas de pata y queso tierno</h3>
+        <p>La especialidad de la casa, la que sale una y otra vez en las reseñas.</p>
+        <span class="etiqueta">La más pedida</span>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8 12a4 4 0 0 1 8 0"/></svg></div>
+        <h3>Tortilla</h3>
+        <p>De las que se acaban antes de media mañana. Sencilla y bien hecha.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M17 8h1a4 4 0 0 1 0 8h-1M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4zM6 2v3M10 2v3M14 2v3"/></svg></div>
+        <h3>Desayunos</h3>
+        <p>Café y algo salado desde primera hora, con el periódico si hace falta.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M4 20h16M7 20V9l5-5 5 5v11M10 20v-5h4v5"/></svg></div>
+        <h3>Comida cubana</h3>
+        <p>Los viernes y el último sábado de cada mes, la cocina cruza el charco.</p>
+        <span class="etiqueta">Viernes y último sábado</span>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg></div>
+        <h3>Música en vivo</h3>
+        <p>Días señalados con música de verdad, no un altavoz de fondo.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-10a7 7 0 0 1 14 0c0 4.8-7 10-7 10z"/><circle cx="12" cy="11" r="2.6"/></svg></div>
+        <h3>A pie de Mesa y López</h3>
+        <p>Local 3 del número 85, en una de las calles con más paso de la ciudad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="opiniones" id="opiniones">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo" style="color:var(--teja-cl)">Lo que dicen</div>
+      <h2>181 reseñas. Estas tres lo resumen.</h2>
+    </div>
+    <div class="resenas">
+      <div class="resena rev">
+        <div class="est">★★★★★</div>
+        <p>«La mejor pata de La Capital, si quieres sentirte como en casa»</p>
+        <div class="quien">Reseña de un cliente</div>
+      </div>
+      <div class="resena rev">
+        <div class="est">★★★★★</div>
+        <p>«El trato de la dueña es de lo mejor que he visto en mucho tiempo»</p>
+        <div class="quien">Reseña de un cliente</div>
+      </div>
+      <div class="resena rev">
+        <div class="est">★★★★★</div>
+        <p>«La comida cubana una delicia»</p>
+        <div class="quien">Reseña de un cliente</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo">Dónde estamos</div>
+      <h2>Av. José Mesa y López, 85.</h2>
+      <p class="entradilla">Local 3, a pie de calle, en Las Palmas de Gran Canaria.</p>
+    </div>
+    <div class="datos">
+      <div class="dato rev">
+        <h4>Dirección</h4>
+        <p>Av. José Mesa y López, 85, local 3<br>35010 Las Palmas de Gran Canaria</p>
+      </div>
+      <div class="dato rev">
+        <h4>Teléfono</h4>
+        <a href="tel:+34671572588">671 57 25 88</a>
+      </div>
+      <div class="dato rev">
+        <h4>Valoración</h4>
+        <p>4,2 ★ · 181 reseñas en Google</p>
+      </div>
+    </div>
+    <a class="mapa rev" href="https://www.google.com/maps/search/?api=1&query=Bar+Cafeteria+La+Hija+Del+Capitan+Mesa+y+Lopez+85+Las+Palmas" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Cómo llegar en Google Maps
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="nombre">Bar · Cafetería La Hija del Capitán</div>
+  <p style="margin-top:10px">Av. José Mesa y López, 85, local 3 · Las Palmas de Gran Canaria · <a href="tel:+34671572588" style="color:#E0703F;text-decoration:none">671 57 25 88</a></p>
+  <p class="agencia">Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> con datos públicos reales de vuestro negocio — esta web puede ser vuestra.<br>elevenprime.es</p>
+</footer>
+
+<div class="fija">
+  <a class="llamar" href="tel:+34671572588">Llamar</a>
+  <a class="ir" href="https://www.google.com/maps/search/?api=1&query=Bar+Cafeteria+La+Hija+Del+Capitan+Mesa+y+Lopez+85+Las+Palmas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var firma = document.getElementById('firma');
+  function cerrarFirma(){ if(firma){ firma.classList.add('fuera'); } }
+  if(firma){
+    setTimeout(cerrarFirma, reduce ? 0 : 2200);
+    firma.addEventListener('click', cerrarFirma);
+    document.addEventListener('keydown', cerrarFirma, {once:true});
+  }
+
+  var pals = document.querySelectorAll('#titulo .pal');
+  pals.forEach(function(p,i){
+    p.style.transition = 'opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1)';
+    setTimeout(function(){ p.style.opacity = 1; p.style.transform = 'none'; }, (reduce?0:2350) + i*80);
+  });
+
+  var revs = document.querySelectorAll('.rev');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    revs.forEach(function(r){ io.observe(r); });
+  } else {
+    revs.forEach(function(r){ r.classList.add('visible'); });
+  }
+
+  function contar(el){
+    var fin = parseFloat(el.dataset.fin), dec = parseInt(el.dataset.dec||0,10), ini = null, dur = 1200;
+    function paso(t){
+      if(!ini) ini = t;
+      var p = Math.min((t-ini)/dur,1), v = fin*(1-Math.pow(1-p,3));
+      el.textContent = dec ? v.toFixed(dec).replace('.',',') : Math.round(v).toLocaleString('es-ES');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var cuentas = document.querySelectorAll('.cuenta');
+  if('IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ contar(e.target); io2.unobserve(e.target); } });
+    },{threshold:.5});
+    cuentas.forEach(function(c){ io2.observe(c); });
+  } else {
+    cuentas.forEach(function(c){ c.textContent = c.dataset.fin; });
+  }
+
+  var cab = document.getElementById('cabecera'),
+      prog = document.getElementById('progreso'),
+      par = document.getElementById('parallax'),
+      pedido = false;
+  function pintar(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    if(cab) cab.classList.toggle('pegada', y > 60);
+    if(prog){
+      var alto = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.transform = 'scaleX(' + (alto>0 ? y/alto : 0) + ')';
+    }
+    if(par && !reduce && y < window.innerHeight) par.style.transform = 'translateY(' + (y*0.14) + 'px)';
+    pedido = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!pedido){ pedido = true; requestAnimationFrame(pintar); }
+  }, {passive:true});
+  pintar();
+
+  /* --- rescate anti-página-vacía (lección 03/08/2026) --- */
+  setTimeout(function(){
+    document.querySelectorAll('.rev').forEach(function(el){
+      if(parseFloat(window.getComputedStyle(el).opacity) < 0.9) el.classList.add('visible');
+    });
+    document.querySelectorAll('#titulo .pal').forEach(function(p){
+      p.style.opacity = 1; p.style.transform = 'none';
+    });
+    if(firma) firma.classList.add('fuera');
+  }, 1900);
+})();
+</script>
+</body>
+</html>
