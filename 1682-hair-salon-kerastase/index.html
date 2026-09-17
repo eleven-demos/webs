@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hair Salon Kérastase RIU Parfum · Peluquería · C.C. Varadero, Maspalomas</title>
+<meta name="description" content="Peluquería en el C.C. Varadero, Maspalomas. Trabajamos con productos Kérastase. 4,9 estrellas con 84 reseñas en Google.">
+<style>
+:root{
+  --negro:#1A1A1A;
+  --negro-suave:#262220;
+  --crema:#F7F3EF;
+  --oro:#C9A961;
+  --oro-cl:#E4CD97;
+  --tinta:#231F1D;
+  --gris:#7A7168;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  background:var(--crema);color:var(--tinta);line-height:1.62;overflow-x:hidden;
+}
+a{color:inherit}
+
+/* ---------- momento firma: las tijeras se abren y revelan el nombre ---------- */
+#firma{
+  position:fixed;inset:0;z-index:999;background:var(--negro);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:opacity .55s ease,visibility .55s ease;
+}
+#firma.fuera{opacity:0;visibility:hidden}
+.tijeras{width:150px;height:150px}
+.tijeras svg{width:100%;height:100%;overflow:visible}
+.hoja-a{transform-origin:60px 60px;animation:abre-a 1s cubic-bezier(.16,.9,.3,1) both}
+.hoja-b{transform-origin:60px 60px;animation:abre-b 1s cubic-bezier(.16,.9,.3,1) both}
+@keyframes abre-a{from{transform:rotate(-34deg)}to{transform:rotate(0)}}
+@keyframes abre-b{from{transform:rotate(34deg)}to{transform:rotate(0)}}
+.destello{opacity:0;animation:brillo .5s ease-out .85s both}
+@keyframes brillo{0%{opacity:0}40%{opacity:1}100%{opacity:0}}
+#firma .marca{
+  margin-top:30px;text-align:center;color:var(--crema);
+  font-size:clamp(22px,5.8vw,38px);font-weight:800;letter-spacing:.04em;
+  opacity:0;animation:aparece .75s ease-out 1s both;
+}
+#firma .marca small{
+  display:block;font-size:11px;letter-spacing:.34em;color:var(--oro);
+  font-weight:700;margin-top:10px;text-transform:uppercase;
+}
+@keyframes aparece{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+#firma .saltar{
+  position:absolute;bottom:26px;color:#8a8178;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:0;animation:aparece .5s ease-out 1.7s both;
+}
+
+/* ---------- cabecera ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:15px 22px;
+  transition:background .35s ease,padding .35s ease,box-shadow .35s ease;
+}
+header.pegada{background:rgba(26,26,26,.95);padding:10px 22px;box-shadow:0 6px 22px rgba(0,0,0,.25)}
+header .logo{color:var(--crema);font-weight:800;font-size:14px;letter-spacing:.08em;text-transform:uppercase}
+header nav{display:none;gap:24px}
+header nav a{color:var(--crema);text-decoration:none;font-size:14px;font-weight:600;opacity:.86;transition:opacity .2s,transform .2s}
+header nav a:hover{opacity:1;transform:translateY(-2px)}
+@media(min-width:840px){header nav{display:flex}}
+
+#progreso{
+  position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;
+  background:linear-gradient(90deg,var(--oro-cl),var(--oro));
+  transform:scaleX(0);transform-origin:left center;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:112px 22px 128px;color:var(--crema);overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 18%,rgba(201,169,97,.22),transparent 48%),
+    radial-gradient(circle at 6% 82%,rgba(247,243,239,.06),transparent 44%),
+    linear-gradient(155deg,#0f0d0c 0%,var(--negro) 62%,var(--negro-suave) 100%);
+}
+.hero .brillo-fondo{
+  position:absolute;left:0;right:0;bottom:-2px;height:130px;opacity:.14;will-change:transform;
+  background:
+    radial-gradient(ellipse 55% 100% at 25% 100%,var(--oro),transparent 60%),
+    radial-gradient(ellipse 55% 100% at 70% 100%,var(--oro),transparent 60%);
+}
+.hero .caja{position:relative;max-width:1080px;margin:0 auto;width:100%}
+.sello{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 17px;border-radius:999px;
+  background:rgba(201,169,97,.16);border:1px solid rgba(201,169,97,.5);
+  color:var(--oro-cl);font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+}
+h1{font-size:clamp(38px,9vw,84px);line-height:1.02;font-weight:800;letter-spacing:-.02em;margin:22px 0 0}
+h1 .pal{display:inline-block;opacity:0;transform:translateY(24px)}
+h1 .oro{color:var(--oro)}
+.hero p.lema{font-size:clamp(17px,2.3vw,22px);max-width:600px;margin-top:22px;color:#e6ddd0}
+.botones{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:14px;
+  text-decoration:none;font-weight:700;font-size:15.5px;
+  transition:transform .25s cubic-bezier(.34,1.5,.64,1),box-shadow .25s ease;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn.principal{background:var(--oro);color:#1a1a1a;box-shadow:0 12px 30px rgba(201,169,97,.32)}
+.btn.borde{border:1.5px solid rgba(247,243,239,.42);color:var(--crema)}
+
+/* ---------- cifras ---------- */
+.cifras{
+  position:relative;max-width:1080px;margin:-70px auto 0;padding:0 22px;z-index:5;
+  display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));
+}
+.cifra{
+  background:#fff;border-radius:18px;padding:26px 20px;text-align:center;
+  box-shadow:0 14px 36px rgba(26,26,26,.13);border:1px solid rgba(26,26,26,.06);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.cifra:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(26,26,26,.18)}
+.cifra .num{font-size:clamp(32px,5.6vw,44px);font-weight:800;color:var(--negro);line-height:1}
+.cifra .et{font-size:12.5px;color:var(--gris);margin-top:8px;font-weight:600;letter-spacing:.05em}
+.estrellas{color:var(--oro);font-size:18px;letter-spacing:3px}
+
+/* ---------- secciones ---------- */
+section{padding:84px 22px}
+.centro{max-width:1080px;margin:0 auto}
+.titulillo{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--oro);font-weight:800;margin-bottom:12px}
+h2{font-size:clamp(28px,5vw,46px);line-height:1.1;font-weight:800;letter-spacing:-.015em}
+.entradilla{font-size:17px;color:var(--gris);max-width:640px;margin-top:18px}
+
+.sobre{background:#fff}
+.sobre .rejilla{display:grid;gap:42px;align-items:center}
+@media(min-width:900px){.sobre .rejilla{grid-template-columns:1.1fr .9fr}}
+.sobre p{margin-top:17px;font-size:17px;color:#4a433c}
+.marca-trabajo{
+  margin-top:28px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;
+  background:var(--crema);border-radius:14px;border-left:5px solid var(--oro);
+  font-size:15.5px;font-weight:700;color:var(--negro);
+}
+
+/* ---------- servicios ---------- */
+.servicios{background:linear-gradient(180deg,var(--crema),#efe6d8)}
+.tarjetas{display:grid;gap:19px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.tarjeta{
+  background:#fff;border-radius:20px;padding:30px 26px;border:1px solid rgba(26,26,26,.08);
+  box-shadow:0 10px 28px rgba(26,26,26,.07);
+  transition:transform .3s cubic-bezier(.34,1.3,.64,1),box-shadow .3s ease;
+}
+.tarjeta:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgba(26,26,26,.14)}
+.tarjeta .icono{
+  width:50px;height:50px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--oro-cl),var(--oro));margin-bottom:18px;
+}
+.tarjeta .icono svg{width:25px;height:25px;stroke:#1a1a1a;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tarjeta h3{font-size:19px;font-weight:800;margin-bottom:9px}
+.tarjeta p{color:var(--gris);font-size:15.5px}
+.nota-suelta{margin-top:36px;font-size:14.5px;color:var(--gris);font-style:italic}
+
+/* ---------- confianza / reseñas ---------- */
+.confianza{background:var(--negro);color:var(--crema)}
+.confianza h2{color:#fff}
+.panel{
+  margin-top:42px;background:rgba(247,243,239,.05);border:1px solid rgba(201,169,97,.3);
+  border-radius:24px;padding:44px 30px;text-align:center;
+}
+.panel .grande{font-size:clamp(56px,12vw,84px);font-weight:800;color:var(--oro);line-height:1}
+.panel .sub{margin-top:10px;font-size:16px;color:#d7cdbe}
+.nota-honesta{margin-top:22px;font-size:14.5px;color:#a89f92;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* ---------- contacto ---------- */
+.contacto{background:#fff}
+.datos{display:grid;gap:17px;margin-top:38px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.dato{
+  border:1px solid rgba(26,26,26,.1);border-radius:18px;padding:26px 22px;background:var(--crema);
+  transition:transform .3s ease,border-color .3s ease;
+}
+.dato:hover{transform:translateY(-5px);border-color:var(--oro)}
+.dato h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--oro);margin-bottom:11px;font-weight:800}
+.dato p,.dato a{font-size:16px;color:var(--tinta);text-decoration:none;font-weight:600}
+.dato a:hover{color:var(--oro)}
+.mapa{
+  display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:16px 28px;
+  background:var(--negro);color:var(--crema);border-radius:14px;text-decoration:none;font-weight:700;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.mapa:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(26,26,26,.3)}
+
+footer{background:var(--negro);color:#a89f92;padding:52px 22px 108px;text-align:center}
+footer .nombre{color:var(--crema);font-size:19px;font-weight:800;letter-spacing:.05em}
+footer .agencia{margin-top:20px;font-size:14.5px}
+footer .agencia b{color:var(--oro)}
+
+.fija{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;display:flex;gap:10px;padding:11px 14px;
+  background:rgba(26,26,26,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(201,169,97,.3);
+}
+.fija a{flex:1;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:800;font-size:15px;transition:transform .2s ease}
+.fija a:active{transform:scale(.97)}
+.fija .llamar{background:var(--oro);color:#1a1a1a}
+.fija .ir{border:1.5px solid rgba(247,243,239,.4);color:var(--crema)}
+@media(min-width:840px){.fija{display:none}footer{padding-bottom:52px}}
+
+.agua{
+  position:fixed;right:-52px;top:76px;z-index:45;transform:rotate(45deg);
+  background:rgba(201,169,97,.95);color:#1a1a1a;font-weight:800;font-size:12.5px;
+  letter-spacing:.28em;padding:8px 62px;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.22);
+}
+
+.rev{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rev.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rev{opacity:1;transform:none}
+  h1 .pal{opacity:1;transform:none}
+  #firma{display:none}
+}
+</style>
+</head>
+<body>
+
+<noscript>
+<style>
+  #firma{display:none!important}
+  .rev{opacity:1!important;transform:none!important}
+  h1 .pal{opacity:1!important;transform:none!important}
+  #progreso{display:none}
+</style>
+</noscript>
+
+<div id="firma" aria-hidden="true">
+  <div class="tijeras">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <g class="hoja-a">
+        <path d="M60 60 L18 22" stroke="#E4CD97" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="14" cy="18" r="9" stroke="#E4CD97" stroke-width="4" fill="none"/>
+      </g>
+      <g class="hoja-b">
+        <path d="M60 60 L18 98" stroke="#E4CD97" stroke-width="6" stroke-linecap="round" fill="none"/>
+        <circle cx="14" cy="102" r="9" stroke="#E4CD97" stroke-width="4" fill="none"/>
+      </g>
+      <path d="M60 60 L108 60" stroke="#C9A961" stroke-width="6" stroke-linecap="round" fill="none"/>
+      <circle cx="60" cy="60" r="6" fill="#F7F3EF"/>
+      <circle class="destello" cx="108" cy="60" r="14" fill="none" stroke="#F7F3EF" stroke-width="2.5"/>
+    </svg>
+  </div>
+  <div class="marca">Hair Salon Kérastase<small>RIU Parfum · C.C. Varadero</small></div>
+  <div class="saltar">Toca para entrar</div>
+</div>
+
+<div id="progreso"></div>
+<div class="agua">DEMO</div>
+
+<header id="cabecera">
+  <span class="logo">Hair Salon Kérastase</span>
+  <nav>
+    <a href="#sobre">El salón</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Dónde estamos</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="brillo-fondo" id="parallax"></div>
+  <div class="caja">
+    <span class="sello">● C.C. Varadero · Maspalomas</span>
+    <h1 id="titulo"><span class="pal">Tu</span> <span class="pal">pelo,</span> <span class="pal oro">cuidado</span><br><span class="pal">de</span> <span class="pal">verdad.</span></h1>
+    <p class="lema">Peluquería en el C.C. Varadero, con productos Kérastase. 4,9★ con 84 reseñas en Google — de las mejor valoradas de la zona.</p>
+    <div class="botones">
+      <a class="btn principal" href="tel:+34666480778">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Llamar ahora
+      </a>
+      <a class="btn borde" href="#servicios">Ver el salón</a>
+    </div>
+  </div>
+</section>
+
+<div class="cifras">
+  <div class="cifra rev">
+    <div class="num"><span class="cuenta" data-fin="4.9" data-dec="1">0</span></div>
+    <div class="estrellas">★★★★★</div>
+    <div class="et">Valoración en Google</div>
+  </div>
+  <div class="cifra rev">
+    <div class="num"><span class="cuenta" data-fin="84">0</span></div>
+    <div class="et">Reseñas de clientes</div>
+  </div>
+  <div class="cifra rev">
+    <div class="num">K</div>
+    <div class="et">Productos Kérastase</div>
+  </div>
+</div>
+
+<section class="sobre" id="sobre">
+  <div class="centro rejilla">
+    <div class="rev">
+      <div class="titulillo">El salón</div>
+      <h2>Un salón de local propio, no de pasillo de hotel.</h2>
+      <p>Hair Salon Kérastase RIU Parfum tiene local propio en el C.C. Varadero, en plena Avenida del Mediterráneo de Maspalomas. Sus 4,9★ con 84 reseñas lo sitúan entre los mejor valorados de la zona.</p>
+      <p>Hoy, quien busca el salón en Google encuentra un botón de "web" que en realidad abre WhatsApp: hay que escribir a ciegas para ver si hay hueco, sin ver antes el salón ni sus servicios.</p>
+      <div class="marca-trabajo">✂ Trabajamos con productos Kérastase</div>
+    </div>
+    <div class="rev">
+      <div style="background:linear-gradient(150deg,var(--negro),#0f0d0c);border-radius:24px;padding:42px 30px;text-align:center;color:var(--crema)">
+        <div style="font-size:clamp(56px,12vw,88px);font-weight:800;color:var(--oro);line-height:1">4,9</div>
+        <div class="estrellas" style="font-size:25px;letter-spacing:5px;color:var(--oro)">★★★★★</div>
+        <div style="margin-top:12px;font-size:16.5px;color:#d7cdbe">84 reseñas en Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo">Servicios</div>
+      <h2>Lo que se espera de un salón de nivel.</h2>
+      <p class="entradilla">Categorías generales de un salón de peluquería con productos Kérastase. La carta con precios y tratamientos concretos se confirma al contactar: no figuran publicados en ningún sitio y no nos los inventamos.</p>
+    </div>
+    <div class="tarjetas">
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M6 9l12 12M18 9L6 21M9 12a3 3 0 1 1-6 0 3 3 0 0 1 6 0zM21 3a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/></svg></div>
+        <h3>Corte y peinado</h3>
+        <p>Corte a medida y peinado de salón, para el día a día o una ocasión especial.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M12 2v20M2 12h20"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h3>Coloración</h3>
+        <p>Técnicas de color con la línea de productos con la que trabaja el salón.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M12 2c-4 5-7 8-7 12a7 7 0 0 0 14 0c0-4-3-7-7-12z"/></svg></div>
+        <h3>Tratamiento capilar Kérastase</h3>
+        <p>Rutinas de tratamiento con productos Kérastase, la marca con la que trabaja el salón.</p>
+        <span class="etiqueta" style="display:inline-block;margin-top:14px;padding:5px 12px;border-radius:999px;background:rgba(201,169,97,.14);color:var(--oro);font-size:12px;font-weight:800;letter-spacing:.05em">Confirmado</span>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M4 20h16M7 20V9l5-5 5 5v11M10 20v-5h4v5"/></svg></div>
+        <h3>Local en C.C. Varadero</h3>
+        <p>A pie de centro comercial, en Avenida del Mediterráneo, Maspalomas.</p>
+      </div>
+    </div>
+    <p class="nota-suelta">Horario de atención: os lo confirmamos directamente al contactar, no está publicado en la ficha de Google.</p>
+  </div>
+</section>
+
+<section class="confianza" id="opiniones">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo" style="color:var(--oro)">Lo que dicen</div>
+      <h2>84 reseñas y 4,9 estrellas.</h2>
+    </div>
+    <div class="panel rev">
+      <div class="grande"><span class="cuenta" data-fin="84">0</span></div>
+      <div class="estrellas">★★★★★</div>
+      <div class="sub">reseñas en Google, con una media de 4,9 sobre 5</div>
+      <p class="nota-honesta">En la web definitiva aquí van vuestras reseñas reales, con el nombre del cliente y su texto. No las hemos puesto en esta demo para no copiaros nada sin permiso.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo">Dónde estamos</div>
+      <h2>C.C. Varadero, local B152-153.</h2>
+      <p class="entradilla">Avenida del Mediterráneo s/n, Maspalomas.</p>
+    </div>
+    <div class="datos">
+      <div class="dato rev">
+        <h4>Dirección</h4>
+        <p>C.C. Varadero, Av. del Mediterráneo s/n, local B152-153<br>35100 Maspalomas, Las Palmas</p>
+      </div>
+      <div class="dato rev">
+        <h4>Teléfono</h4>
+        <a href="tel:+34666480778">666 48 07 78</a>
+      </div>
+      <div class="dato rev">
+        <h4>Valoración</h4>
+        <p>4,9 ★ · 84 reseñas en Google</p>
+      </div>
+    </div>
+    <a class="mapa rev" href="https://www.google.com/maps/search/?api=1&query=Hair+Salon+Kerastase+RIU+Parfum+CC+Varadero+Maspalomas" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Cómo llegar en Google Maps
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="nombre">Hair Salon Kérastase RIU Parfum</div>
+  <p style="margin-top:10px">C.C. Varadero, Av. del Mediterráneo s/n · Maspalomas · <a href="tel:+34666480778" style="color:#C9A961;text-decoration:none">666 48 07 78</a></p>
+  <p class="agencia">Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> con datos públicos reales de vuestro negocio — esta web puede ser vuestra.<br>elevenprime.es</p>
+</footer>
+
+<div class="fija">
+  <a class="llamar" href="tel:+34666480778">Llamar</a>
+  <a class="ir" href="https://www.google.com/maps/search/?api=1&query=Hair+Salon+Kerastase+RIU+Parfum+CC+Varadero+Maspalomas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var firma = document.getElementById('firma');
+  function cerrarFirma(){ if(firma){ firma.classList.add('fuera'); } }
+  if(firma){
+    setTimeout(cerrarFirma, reduce ? 0 : 2000);
+    firma.addEventListener('click', cerrarFirma);
+    document.addEventListener('keydown', cerrarFirma, {once:true});
+  }
+
+  var pals = document.querySelectorAll('#titulo .pal');
+  pals.forEach(function(p,i){
+    p.style.transition = 'opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1)';
+    setTimeout(function(){ p.style.opacity = 1; p.style.transform = 'none'; }, (reduce?0:2150) + i*80);
+  });
+
+  var revs = document.querySelectorAll('.rev');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    revs.forEach(function(r){ io.observe(r); });
+  } else {
+    revs.forEach(function(r){ r.classList.add('visible'); });
+  }
+
+  function contar(el){
+    var fin = parseFloat(el.dataset.fin), dec = parseInt(el.dataset.dec||0,10), ini = null, dur = 1200;
+    function paso(t){
+      if(!ini) ini = t;
+      var p = Math.min((t-ini)/dur,1), v = fin*(1-Math.pow(1-p,3));
+      el.textContent = dec ? v.toFixed(dec).replace('.',',') : Math.round(v).toLocaleString('es-ES');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var cuentas = document.querySelectorAll('.cuenta');
+  if('IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ contar(e.target); io2.unobserve(e.target); } });
+    },{threshold:.5});
+    cuentas.forEach(function(c){ io2.observe(c); });
+  } else {
+    cuentas.forEach(function(c){ c.textContent = c.dataset.fin; });
+  }
+
+  var cab = document.getElementById('cabecera'),
+      prog = document.getElementById('progreso'),
+      par = document.getElementById('parallax'),
+      pedido = false;
+  function pintar(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    if(cab) cab.classList.toggle('pegada', y > 60);
+    if(prog){
+      var alto = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.transform = 'scaleX(' + (alto>0 ? y/alto : 0) + ')';
+    }
+    if(par && !reduce && y < window.innerHeight) par.style.transform = 'translateY(' + (y*0.14) + 'px)';
+    pedido = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!pedido){ pedido = true; requestAnimationFrame(pintar); }
+  }, {passive:true});
+  pintar();
+
+  /* --- rescate anti-página-vacía (lección 03/08/2026) --- */
+  setTimeout(function(){
+    document.querySelectorAll('.rev').forEach(function(el){
+      if(parseFloat(window.getComputedStyle(el).opacity) < 0.9) el.classList.add('visible');
+    });
+    document.querySelectorAll('#titulo .pal').forEach(function(p){
+      p.style.opacity = 1; p.style.transform = 'none';
+    });
+    if(firma) firma.classList.add('fuera');
+  }, 1900);
+})();
+</script>
+</body>
+</html>

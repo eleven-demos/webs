@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masaje &amp; Belleza &amp; Estética de Elena · Centro de estética · Olof Palme, Las Palmas</title>
+<meta name="description" content="Centro de estética en C. Olof Palme 11, Las Palmas. Hydrafacial, microneedling, masajes y depilación. 4,8 estrellas con 70 reseñas en Google.">
+<style>
+:root{
+  --malva:#6B4E71;
+  --malva-osc:#463049;
+  --crema:#FBF8F6;
+  --rosa:#D4A5A5;
+  --rosa-cl:#E8C5C5;
+  --tinta:#2B222D;
+  --gris:#8A7D8C;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  background:var(--crema);color:var(--tinta);line-height:1.62;overflow-x:hidden;
+}
+a{color:inherit}
+
+/* ---------- momento firma: una gota se expande y revela el nombre ---------- */
+#firma{
+  position:fixed;inset:0;z-index:999;background:var(--malva-osc);
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  transition:opacity .55s ease,visibility .55s ease;
+}
+#firma.fuera{opacity:0;visibility:hidden}
+.gota{width:130px;height:130px;position:relative}
+.gota svg{width:100%;height:100%;overflow:visible}
+.gota .halo{transform-origin:center;animation:expande 1.4s cubic-bezier(.16,.9,.3,1) both}
+.gota .nucleo{transform-origin:center;animation:cae .9s cubic-bezier(.34,1.4,.5,1) both}
+@keyframes expande{from{transform:scale(0);opacity:.9}to{transform:scale(1);opacity:0}}
+@keyframes cae{0%{transform:translateY(-40px) scale(.4);opacity:0}55%{opacity:1}100%{transform:translateY(0) scale(1);opacity:1}}
+.ondas circle{opacity:0;animation:onda 1.3s ease-out .55s both}
+.ondas circle:nth-child(2){animation-delay:.75s}
+.ondas circle:nth-child(3){animation-delay:.95s}
+@keyframes onda{0%{opacity:.7;transform:scale(.3)}100%{opacity:0;transform:scale(2.4)}}
+#firma .marca{
+  margin-top:26px;text-align:center;color:var(--crema);
+  font-size:clamp(21px,5.4vw,34px);font-weight:800;letter-spacing:.03em;
+  opacity:0;animation:aparece .75s ease-out 1.1s both;
+}
+#firma .marca small{
+  display:block;font-size:11px;letter-spacing:.32em;color:var(--rosa-cl);
+  font-weight:700;margin-top:10px;text-transform:uppercase;
+}
+@keyframes aparece{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+#firma .saltar{
+  position:absolute;bottom:26px;color:#a998ab;font-size:11.5px;letter-spacing:.2em;
+  text-transform:uppercase;opacity:0;animation:aparece .5s ease-out 1.85s both;
+}
+
+/* ---------- cabecera ---------- */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:50;display:flex;align-items:center;
+  justify-content:space-between;padding:15px 22px;
+  transition:background .35s ease,padding .35s ease,box-shadow .35s ease;
+}
+header.pegada{background:rgba(70,48,73,.95);padding:10px 22px;box-shadow:0 6px 22px rgba(0,0,0,.2)}
+header .logo{color:var(--crema);font-weight:800;font-size:14px;letter-spacing:.05em}
+header nav{display:none;gap:24px}
+header nav a{color:var(--crema);text-decoration:none;font-size:14px;font-weight:600;opacity:.86;transition:opacity .2s,transform .2s}
+header nav a:hover{opacity:1;transform:translateY(-2px)}
+@media(min-width:840px){header nav{display:flex}}
+
+#progreso{
+  position:fixed;top:0;left:0;height:3px;width:100%;z-index:60;
+  background:linear-gradient(90deg,var(--rosa-cl),var(--rosa));
+  transform:scaleX(0);transform-origin:left center;
+}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;display:flex;align-items:center;
+  padding:112px 22px 128px;color:var(--crema);overflow:hidden;
+  background:
+    radial-gradient(circle at 82% 20%,rgba(212,165,165,.26),transparent 48%),
+    radial-gradient(circle at 8% 80%,rgba(251,248,246,.08),transparent 44%),
+    linear-gradient(155deg,var(--malva-osc) 0%,var(--malva) 68%,#7a5c81 100%);
+}
+.hero .halo-fondo{
+  position:absolute;left:0;right:0;bottom:-2px;height:130px;opacity:.16;will-change:transform;
+  background:
+    radial-gradient(ellipse 60% 100% at 22% 100%,var(--rosa),transparent 60%),
+    radial-gradient(ellipse 60% 100% at 65% 100%,var(--rosa),transparent 60%);
+}
+.hero .caja{position:relative;max-width:1080px;margin:0 auto;width:100%}
+.sello{
+  display:inline-flex;align-items:center;gap:9px;padding:8px 17px;border-radius:999px;
+  background:rgba(212,165,165,.2);border:1px solid rgba(212,165,165,.55);
+  color:var(--rosa-cl);font-size:12.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+}
+h1{font-size:clamp(37px,8.6vw,80px);line-height:1.04;font-weight:800;letter-spacing:-.02em;margin:22px 0 0}
+h1 .pal{display:inline-block;opacity:0;transform:translateY(24px)}
+h1 .rosa{color:var(--rosa-cl)}
+.hero p.lema{font-size:clamp(17px,2.3vw,22px);max-width:600px;margin-top:22px;color:#eadfe8}
+.botones{display:flex;flex-wrap:wrap;gap:13px;margin-top:34px}
+.btn{
+  display:inline-flex;align-items:center;gap:10px;padding:16px 28px;border-radius:14px;
+  text-decoration:none;font-weight:700;font-size:15.5px;
+  transition:transform .25s cubic-bezier(.34,1.5,.64,1),box-shadow .25s ease;
+}
+.btn:hover{transform:translateY(-3px)}
+.btn.principal{background:var(--rosa);color:#2b222d;box-shadow:0 12px 30px rgba(212,165,165,.35)}
+.btn.borde{border:1.5px solid rgba(251,248,246,.45);color:var(--crema)}
+
+/* ---------- cifras ---------- */
+.cifras{
+  position:relative;max-width:1080px;margin:-70px auto 0;padding:0 22px;z-index:5;
+  display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));
+}
+.cifra{
+  background:#fff;border-radius:18px;padding:26px 20px;text-align:center;
+  box-shadow:0 14px 36px rgba(70,48,73,.13);border:1px solid rgba(70,48,73,.07);
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.cifra:hover{transform:translateY(-6px);box-shadow:0 20px 44px rgba(70,48,73,.2)}
+.cifra .num{font-size:clamp(32px,5.6vw,44px);font-weight:800;color:var(--malva);line-height:1}
+.cifra .et{font-size:12.5px;color:var(--gris);margin-top:8px;font-weight:600;letter-spacing:.05em}
+.estrellas{color:var(--rosa);font-size:18px;letter-spacing:3px}
+
+/* ---------- secciones ---------- */
+section{padding:84px 22px}
+.centro{max-width:1080px;margin:0 auto}
+.titulillo{font-size:12px;letter-spacing:.26em;text-transform:uppercase;color:var(--malva);font-weight:800;margin-bottom:12px}
+h2{font-size:clamp(28px,5vw,46px);line-height:1.1;font-weight:800;letter-spacing:-.015em}
+.entradilla{font-size:17px;color:var(--gris);max-width:640px;margin-top:18px}
+
+.sobre{background:#fff}
+.sobre .rejilla{display:grid;gap:42px;align-items:center}
+@media(min-width:900px){.sobre .rejilla{grid-template-columns:1.1fr .9fr}}
+.sobre p{margin-top:17px;font-size:17px;color:#4a3f4c}
+.marca-trabajo{
+  margin-top:28px;display:inline-flex;align-items:center;gap:10px;padding:14px 22px;
+  background:var(--crema);border-radius:14px;border-left:5px solid var(--rosa);
+  font-size:15px;font-weight:700;color:var(--malva-osc);
+}
+
+/* ---------- servicios ---------- */
+.servicios{background:linear-gradient(180deg,var(--crema),#f2e4e8)}
+.tarjetas{display:grid;gap:19px;margin-top:42px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.tarjeta{
+  background:#fff;border-radius:20px;padding:30px 26px;border:1px solid rgba(70,48,73,.09);
+  box-shadow:0 10px 28px rgba(70,48,73,.08);
+  transition:transform .3s cubic-bezier(.34,1.3,.64,1),box-shadow .3s ease;
+}
+.tarjeta:hover{transform:translateY(-8px);box-shadow:0 22px 48px rgba(70,48,73,.16)}
+.tarjeta .icono{
+  width:50px;height:50px;border-radius:14px;display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--rosa-cl),var(--rosa));margin-bottom:18px;
+}
+.tarjeta .icono svg{width:25px;height:25px;stroke:#3a2c3d;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.tarjeta h3{font-size:19px;font-weight:800;margin-bottom:9px}
+.tarjeta p{color:var(--gris);font-size:15.5px}
+.nota-suelta{margin-top:36px;font-size:14.5px;color:var(--gris);font-style:italic}
+
+/* ---------- confianza / reseñas ---------- */
+.confianza{background:var(--malva-osc);color:var(--crema)}
+.confianza h2{color:#fff}
+.panel{
+  margin-top:42px;background:rgba(251,248,246,.06);border:1px solid rgba(212,165,165,.32);
+  border-radius:24px;padding:44px 30px;text-align:center;
+}
+.panel .grande{font-size:clamp(56px,12vw,84px);font-weight:800;color:var(--rosa-cl);line-height:1}
+.panel .sub{margin-top:10px;font-size:16px;color:#e2d0dd}
+.nota-honesta{margin-top:22px;font-size:14.5px;color:#bba7b9;max-width:520px;margin-left:auto;margin-right:auto}
+
+/* ---------- contacto ---------- */
+.contacto{background:#fff}
+.datos{display:grid;gap:17px;margin-top:38px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}
+.dato{
+  border:1px solid rgba(70,48,73,.11);border-radius:18px;padding:26px 22px;background:var(--crema);
+  transition:transform .3s ease,border-color .3s ease;
+}
+.dato:hover{transform:translateY(-5px);border-color:var(--rosa)}
+.dato h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--malva);margin-bottom:11px;font-weight:800}
+.dato p,.dato a{font-size:16px;color:var(--tinta);text-decoration:none;font-weight:600}
+.dato a:hover{color:var(--malva)}
+.mapa{
+  display:inline-flex;align-items:center;gap:10px;margin-top:28px;padding:16px 28px;
+  background:var(--malva);color:var(--crema);border-radius:14px;text-decoration:none;font-weight:700;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.mapa:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(70,48,73,.3)}
+.instagram{
+  display:inline-flex;align-items:center;gap:9px;margin-top:16px;margin-left:12px;padding:15px 24px;
+  border:1.5px solid rgba(70,48,73,.25);color:var(--malva-osc);border-radius:14px;text-decoration:none;font-weight:700;
+  transition:transform .25s ease,border-color .25s ease;
+}
+.instagram:hover{transform:translateY(-3px);border-color:var(--rosa)}
+
+footer{background:var(--malva-osc);color:#bba7b9;padding:52px 22px 108px;text-align:center}
+footer .nombre{color:var(--crema);font-size:19px;font-weight:800;letter-spacing:.05em}
+footer .agencia{margin-top:20px;font-size:14.5px}
+footer .agencia b{color:var(--rosa-cl)}
+
+.fija{
+  position:fixed;left:0;right:0;bottom:0;z-index:55;display:flex;gap:10px;padding:11px 14px;
+  background:rgba(70,48,73,.96);backdrop-filter:blur(8px);border-top:1px solid rgba(212,165,165,.32);
+}
+.fija a{flex:1;text-align:center;padding:14px;border-radius:12px;text-decoration:none;font-weight:800;font-size:15px;transition:transform .2s ease}
+.fija a:active{transform:scale(.97)}
+.fija .llamar{background:var(--rosa);color:#2b222d}
+.fija .ir{border:1.5px solid rgba(251,248,246,.4);color:var(--crema)}
+@media(min-width:840px){.fija{display:none}footer{padding-bottom:52px}}
+
+.agua{
+  position:fixed;right:-52px;top:76px;z-index:45;transform:rotate(45deg);
+  background:rgba(107,78,113,.95);color:#fff;font-weight:800;font-size:12.5px;
+  letter-spacing:.28em;padding:8px 62px;pointer-events:none;box-shadow:0 4px 16px rgba(0,0,0,.22);
+}
+
+.rev{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,1,.36,1)}
+.rev.visible{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;transition-duration:.01ms!important}
+  .rev{opacity:1;transform:none}
+  h1 .pal{opacity:1;transform:none}
+  #firma{display:none}
+}
+</style>
+</head>
+<body>
+
+<noscript>
+<style>
+  #firma{display:none!important}
+  .rev{opacity:1!important;transform:none!important}
+  h1 .pal{opacity:1!important;transform:none!important}
+  #progreso{display:none}
+</style>
+</noscript>
+
+<div id="firma" aria-hidden="true">
+  <div class="gota">
+    <svg viewBox="0 0 120 120" aria-hidden="true">
+      <g class="ondas">
+        <circle cx="60" cy="60" r="20" fill="none" stroke="#E8C5C5" stroke-width="2.5"/>
+        <circle cx="60" cy="60" r="20" fill="none" stroke="#E8C5C5" stroke-width="2.5"/>
+        <circle cx="60" cy="60" r="20" fill="none" stroke="#E8C5C5" stroke-width="2.5"/>
+      </g>
+      <circle class="halo" cx="60" cy="60" r="30" fill="#D4A5A5"/>
+      <path class="nucleo" d="M60 30c10 14 18 24 18 34a18 18 0 0 1-36 0c0-10 8-20 18-34z" fill="#FBF8F6"/>
+    </svg>
+  </div>
+  <div class="marca">Masaje &amp; Belleza &amp; Estética<small>de Elena · Olof Palme, Las Palmas</small></div>
+  <div class="saltar">Toca para entrar</div>
+</div>
+
+<div id="progreso"></div>
+<div class="agua">DEMO</div>
+
+<header id="cabecera">
+  <span class="logo">Estética de Elena</span>
+  <nav>
+    <a href="#sobre">El centro</a>
+    <a href="#servicios">Tratamientos</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Dónde estamos</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="halo-fondo" id="parallax"></div>
+  <div class="caja">
+    <span class="sello">● C. Olof Palme, 11 · Las Palmas</span>
+    <h1 id="titulo"><span class="pal">Tu</span> <span class="pal">piel,</span> <span class="pal rosa">cuidada</span><br><span class="pal">con</span> <span class="pal">calma.</span></h1>
+    <p class="lema">Centro de masaje y estética en Olof Palme, Las Palmas. 4,8★ con 70 reseñas en Google. Hydrafacial, microneedling, masajes y depilación.</p>
+    <div class="botones">
+      <a class="btn principal" href="tel:+34628658590">
+        <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.2a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg>
+        Llamar ahora
+      </a>
+      <a class="btn borde" href="#servicios">Ver tratamientos</a>
+    </div>
+  </div>
+</section>
+
+<div class="cifras">
+  <div class="cifra rev">
+    <div class="num"><span class="cuenta" data-fin="4.8" data-dec="1">0</span></div>
+    <div class="estrellas">★★★★★</div>
+    <div class="et">Valoración en Google</div>
+  </div>
+  <div class="cifra rev">
+    <div class="num"><span class="cuenta" data-fin="70">0</span></div>
+    <div class="et">Reseñas de clientes</div>
+  </div>
+  <div class="cifra rev">
+    <div class="num">6</div>
+    <div class="et">Tratamientos publicados</div>
+  </div>
+</div>
+
+<section class="sobre" id="sobre">
+  <div class="centro rejilla">
+    <div class="rev">
+      <div class="titulillo">El centro</div>
+      <h2>Un centro de barrio con 4,8★ y 70 reseñas.</h2>
+      <p>Masaje &amp; Belleza &amp; Estética de Elena, en la calle Olof Palme 11 de Las Palmas, trabaja hydrafacial, microneedling, masaje facial y corporal, depilación y rejuvenecimiento natural de la piel.</p>
+      <p>Hoy, quien quiere reservar pasa por Booksy, que se lleva su comisión por cita, y el escaparate es Instagram. Con la nota y las reseñas que ya tiene, lo que falta es un sitio propio donde enseñar los tratamientos y recibir la cita sin intermediario.</p>
+      <div class="marca-trabajo">✦ Hydrafacial · Microneedling · Masaje facial y corporal</div>
+    </div>
+    <div class="rev">
+      <div style="background:linear-gradient(150deg,var(--malva),var(--malva-osc));border-radius:24px;padding:42px 30px;text-align:center;color:var(--crema)">
+        <div style="font-size:clamp(56px,12vw,88px);font-weight:800;color:var(--rosa-cl);line-height:1">4,8</div>
+        <div class="estrellas" style="font-size:25px;letter-spacing:5px;color:var(--rosa-cl)">★★★★★</div>
+        <div style="margin-top:12px;font-size:16.5px;color:#e2d0dd">70 reseñas en Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="servicios" id="servicios">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo">Tratamientos</div>
+      <h2>Lo que trabaja el centro.</h2>
+      <p class="entradilla">Tratamientos que el propio centro publica en su ficha. Precios no publicados en ningún sitio: se confirman al contactar.</p>
+    </div>
+    <div class="tarjetas">
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M12 2c-4 5-7 8-7 12a7 7 0 0 0 14 0c0-4-3-7-7-12z"/></svg></div>
+        <h3>Hydrafacial</h3>
+        <p>Limpieza facial profunda con hidratación intensa.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg></div>
+        <h3>Microneedling</h3>
+        <p>Tratamiento de renovación de la piel con microagujas.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M4 12c2-4 6-6 8-6s6 2 8 6c-2 4-6 6-8 6s-6-2-8-6z"/><circle cx="12" cy="12" r="2.4"/></svg></div>
+        <h3>Masaje facial</h3>
+        <p>Masaje pensado para relajar y cuidar la piel del rostro.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M4 20c4-10 12-10 16 0"/><circle cx="12" cy="7" r="3"/></svg></div>
+        <h3>Masaje corporal</h3>
+        <p>Masaje de cuerpo completo, para desconectar de verdad.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18"/></svg></div>
+        <h3>Depilación</h3>
+        <p>Servicio de depilación disponible en el centro.</p>
+      </div>
+      <div class="tarjeta rev">
+        <div class="icono"><svg viewBox="0 0 24 24"><path d="M12 21s-7-5.2-7-10a7 7 0 0 1 14 0c0 4.8-7 10-7 10z"/><circle cx="12" cy="11" r="2.6"/></svg></div>
+        <h3>Rejuvenecimiento natural</h3>
+        <p>Tratamiento orientado a cuidar la piel de forma natural.</p>
+      </div>
+    </div>
+    <p class="nota-suelta">Horario de atención: os lo confirmamos directamente al contactar, no está publicado en la ficha de Google.</p>
+  </div>
+</section>
+
+<section class="confianza" id="opiniones">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo" style="color:var(--rosa-cl)">Lo que dicen</div>
+      <h2>70 reseñas y 4,8 estrellas.</h2>
+    </div>
+    <div class="panel rev">
+      <div class="grande"><span class="cuenta" data-fin="70">0</span></div>
+      <div class="estrellas">★★★★★</div>
+      <div class="sub">reseñas en Google, con una media de 4,8 sobre 5</div>
+      <p class="nota-honesta">En la web definitiva aquí van vuestras reseñas reales, con el nombre del cliente y su texto. No las hemos puesto en esta demo para no copiaros nada sin permiso.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contacto" id="contacto">
+  <div class="centro">
+    <div class="rev">
+      <div class="titulillo">Dónde estamos</div>
+      <h2>Calle Olof Palme, 11.</h2>
+      <p class="entradilla">Las Palmas de Gran Canaria.</p>
+    </div>
+    <div class="datos">
+      <div class="dato rev">
+        <h4>Dirección</h4>
+        <p>C. Olof Palme, 11<br>35010 Las Palmas de Gran Canaria</p>
+      </div>
+      <div class="dato rev">
+        <h4>Teléfono</h4>
+        <a href="tel:+34628658590">628 65 85 90</a>
+      </div>
+      <div class="dato rev">
+        <h4>Valoración</h4>
+        <p>4,8 ★ · 70 reseñas en Google</p>
+      </div>
+    </div>
+    <a class="mapa rev" href="https://www.google.com/maps/search/?api=1&query=Masaje+Belleza+Estetica+de+Elena+Olof+Palme+11+Las+Palmas" target="_blank" rel="noopener">
+      <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Cómo llegar en Google Maps
+    </a>
+    <a class="instagram rev" href="https://instagram.com/cosmetolog_gran_canaria" target="_blank" rel="noopener">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+      @cosmetolog_gran_canaria
+    </a>
+  </div>
+</section>
+
+<footer>
+  <div class="nombre">Masaje &amp; Belleza &amp; Estética de Elena</div>
+  <p style="margin-top:10px">C. Olof Palme, 11 · Las Palmas de Gran Canaria · <a href="tel:+34628658590" style="color:#E8C5C5;text-decoration:none">628 65 85 90</a></p>
+  <p class="agencia">Esta es una <b>DEMO</b> creada por <b>Eleven AI</b> con datos públicos reales de vuestro negocio — esta web puede ser vuestra.<br>elevenprime.es</p>
+</footer>
+
+<div class="fija">
+  <a class="llamar" href="tel:+34628658590">Llamar</a>
+  <a class="ir" href="https://www.google.com/maps/search/?api=1&query=Masaje+Belleza+Estetica+de+Elena+Olof+Palme+11+Las+Palmas" target="_blank" rel="noopener">Cómo llegar</a>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var firma = document.getElementById('firma');
+  function cerrarFirma(){ if(firma){ firma.classList.add('fuera'); } }
+  if(firma){
+    setTimeout(cerrarFirma, reduce ? 0 : 2100);
+    firma.addEventListener('click', cerrarFirma);
+    document.addEventListener('keydown', cerrarFirma, {once:true});
+  }
+
+  var pals = document.querySelectorAll('#titulo .pal');
+  pals.forEach(function(p,i){
+    p.style.transition = 'opacity .6s ease, transform .6s cubic-bezier(.22,1,.36,1)';
+    setTimeout(function(){ p.style.opacity = 1; p.style.transform = 'none'; }, (reduce?0:2250) + i*80);
+  });
+
+  var revs = document.querySelectorAll('.rev');
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+    },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
+    revs.forEach(function(r){ io.observe(r); });
+  } else {
+    revs.forEach(function(r){ r.classList.add('visible'); });
+  }
+
+  function contar(el){
+    var fin = parseFloat(el.dataset.fin), dec = parseInt(el.dataset.dec||0,10), ini = null, dur = 1200;
+    function paso(t){
+      if(!ini) ini = t;
+      var p = Math.min((t-ini)/dur,1), v = fin*(1-Math.pow(1-p,3));
+      el.textContent = dec ? v.toFixed(dec).replace('.',',') : Math.round(v).toLocaleString('es-ES');
+      if(p<1) requestAnimationFrame(paso);
+    }
+    requestAnimationFrame(paso);
+  }
+  var cuentas = document.querySelectorAll('.cuenta');
+  if('IntersectionObserver' in window){
+    var io2 = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ contar(e.target); io2.unobserve(e.target); } });
+    },{threshold:.5});
+    cuentas.forEach(function(c){ io2.observe(c); });
+  } else {
+    cuentas.forEach(function(c){ c.textContent = c.dataset.fin; });
+  }
+
+  var cab = document.getElementById('cabecera'),
+      prog = document.getElementById('progreso'),
+      par = document.getElementById('parallax'),
+      pedido = false;
+  function pintar(){
+    var y = window.pageYOffset || document.documentElement.scrollTop;
+    if(cab) cab.classList.toggle('pegada', y > 60);
+    if(prog){
+      var alto = document.documentElement.scrollHeight - window.innerHeight;
+      prog.style.transform = 'scaleX(' + (alto>0 ? y/alto : 0) + ')';
+    }
+    if(par && !reduce && y < window.innerHeight) par.style.transform = 'translateY(' + (y*0.14) + 'px)';
+    pedido = false;
+  }
+  window.addEventListener('scroll', function(){
+    if(!pedido){ pedido = true; requestAnimationFrame(pintar); }
+  }, {passive:true});
+  pintar();
+
+  /* --- rescate anti-página-vacía (lección 03/08/2026) --- */
+  setTimeout(function(){
+    document.querySelectorAll('.rev').forEach(function(el){
+      if(parseFloat(window.getComputedStyle(el).opacity) < 0.9) el.classList.add('visible');
+    });
+    document.querySelectorAll('#titulo .pal').forEach(function(p){
+      p.style.opacity = 1; p.style.transform = 'none';
+    });
+    if(firma) firma.classList.add('fuera');
+  }, 1900);
+})();
+</script>
+</body>
+</html>
